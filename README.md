@@ -1,4 +1,4 @@
-docs
-====
+rikulo-docs
+===========
 
-Documentation
+Rikulo Documentation
