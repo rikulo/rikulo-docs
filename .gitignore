@@ -1,9 +1,4 @@
-debug
-codegen
 *.local
-*.class
-dartdoc
-javadoc
 Thumbs.db
 .project
 .children
