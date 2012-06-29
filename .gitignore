@@ -1,0 +1,16 @@
+debug
+codegen
+*.local
+*.class
+dartdoc
+javadoc
+Thumbs.db
+.project
+.children
+*.dart.js
+*.dart.js_
+out.js
+*.bak
+~$*.pptx
+~$*.doc
+~$*.xlsx
