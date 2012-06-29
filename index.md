@@ -1,4 +1,4 @@
 Rikulo Documentation
 ====================
 
-* [Introduction](introduction/index.md)
+* [Introduction](Introduction/index.md)
