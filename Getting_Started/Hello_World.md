@@ -66,7 +66,7 @@ All views available in an activity are arranged in a single tree. The root view 
 
     mainView.addChild(welcome);
 
-![Tree of Views](view-tree.jpg)
+![Tree of Views](view-tree.jpg?raw=true)
 
 ###Start up your activity
 
