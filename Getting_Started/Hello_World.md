@@ -8,7 +8,7 @@ To install Rikulo, you have to copy the `client` and `resources` folders to your
 
 The `client` folder contains the Rikulo source code that you have to import to your application.  The `resource` folder contains the JavaScript and CSS files that you have to add to your HTML page.
 
-> You can install Rikulo with [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/), and the package name is suggested to start with `rikulo:`, such as  `rikulo:app` and `rikulo:html`.
+> You can install Rikulo with [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/). The package names are suggested to start with `rikulo:`, such as  `rikulo:app` and `rikulo:html`.
 
 ##The Dart Code
 
@@ -42,7 +42,7 @@ Packages to import really depends on your requirement. `Activity` is part of the
 
 ###Implement an activity
 
-An activity is an application component that provides the user interface to interact with the user. An activity might be paused or resumed due to user's activities, such as answering a phone.
+An activity is an application component that provides the user interface to interact with the user. An activity might be paused or resumed due to user's interaction, such as answering a phone.
 
 Implementing an activity is straightforward: extend your class from [Activity](http://rikulo.org/api/_/app/Activity.html).
 
@@ -62,7 +62,7 @@ We also specify the layout information in the `profile` property, such that the 
 
     welcome.profile.text = "anchor: parent; location: center center";
 
-All views available in an activity are arranged in a single tree. The root view is called `mainView`, and is instantiated automatically before calling `onCreate_`. To make a view available on the screen, you have to add it the tree rooted at `mainView` by invoking the  `addChild` method.
+All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling `onCreate_`. To make a view available on the screen, you have to add it any node of the tree by invoking the  `addChild` method.
 
     mainView.addChild(welcome);
 
