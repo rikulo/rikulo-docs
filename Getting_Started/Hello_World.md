@@ -90,7 +90,11 @@ To run an application, you need a HTML page to specify the Dart file(s) to load.
 
 First, you have to specify the CSS file to load. Depending on your requirement, you can specify any files you want, as long as including `view.css` (or a customized version of it).
 
+    <link rel="stylesheet" type="text/css" href="resources/css/view.css" />
+
 Second, you have to specify your Dart file. Here is called `HelloWorld.dart`.
+
+    <script type="application/dart" src="HelloWorld.dart"></script>
 
 Also notice that Rikulo assumes HTML 5, so you shall specify `<!DOCTYPE html>` at the beginning. In additions, it is, though optional, suggested to specify the `viewpoint` meta tag if you want to run it on mobile devices:
 
