@@ -46,19 +46,27 @@ An activity is an application component that provides the user interface to inte
 
 Implementing an activity is straightforward: extend your class from [Activity](http://rikulo.org/api/_/app/Activity.html).
 
+> The current activity can be found by use of the global variable called `activity`.
+
 ###Draw your user interface
 
-After your activity is started, the `onCreate_` method will be called, and you can instantiate your user interface there.
+After your activity is started, the `onCreate_` method will be called. You can create your user interface in this method.
 
-The user interface in Rikulo is represented by a collection of *so-called* [view](http://rikulo.org/api/_/view/View.html). A view is the basic building block for the user interface. It occupies a rectangle area on the screen. In this application, we instantiate an instance of [TextView](http://rikulo.org/api/_/view/TextView.html) to show the greeting message.
+The user interface elements in a Rikulo application are built using [View](http://rikulo.org/api/_/view/View.html). A view is the basic building block. It draws something on the screen that the user can interact with.
 
-We also specify the layout information in the `profile` property, such that the message shall be placed in the center of the parent. We will discuss the layout more in the following chapter. 
+In this application, we instantiate an instance of [TextView](http://rikulo.org/api/_/view/TextView.html) to show the greeting message.
 
-    welcome.profile.text = "anchor:  parent; location: center center";
+    TextView welcome = new TextView("Hello World!");
 
-All views available in an activity are arranged in a single tree. The root view is called `mainView`, and is instantiated automatically before calling `onCreate_`. To make a view available to the user, you have to add it the tree rooted at `mainView` by invoking the  `addChild` method.
+We also specify the layout information in the `profile` property, such that the message shall be placed in the center of the parent. It is done by specifying `anchor` as parent, and `location` as `center center`.
+
+    welcome.profile.text = "anchor: parent; location: center center";
+
+All views available in an activity are arranged in a single tree. The root view is called `mainView`, and is instantiated automatically before calling `onCreate_`. To make a view available on the screen, you have to add it the tree rooted at `mainView` by invoking the  `addChild` method.
 
     mainView.addChild(welcome);
+
+![Tree of Views](view-tree.jpg)
 
 ###Start up your activity
 
