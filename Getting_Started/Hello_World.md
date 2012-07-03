@@ -12,6 +12,7 @@ The `client` folder contains the Rikulo source code that you have to import to y
 
 Here is a simple "Hello World" application.
 
+    ```dart
     #import('client/app/app.dart');
     #import('client/view/view.dart');
 
@@ -26,6 +27,7 @@ Here is a simple "Hello World" application.
     void main() {
       new HelloWorld().run();
     }
+    ```
 
 As shown above, there are basically four steps to implement a Rikulo application.
 
@@ -38,5 +40,6 @@ As shown above, there are basically four steps to implement a Rikulo application
 
 Packages to import really depends on your requirement. `Activity` is part of the `app` package, while UI objects is part of the `view` package. These two are packages that you will import in the most cases.
 
-##Implement an activity
+###Implement an activity
 
+An activity is an application component that provides the user interface to interact with the user.
