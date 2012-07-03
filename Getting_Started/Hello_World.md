@@ -12,7 +12,8 @@ The `client` folder contains the Rikulo source code that you have to import to y
 
 Here is a simple "Hello World" application.
 
-    ```dart
+```dart
+
     #import('client/app/app.dart');
     #import('client/view/view.dart');
 
@@ -27,7 +28,7 @@ Here is a simple "Hello World" application.
     void main() {
       new HelloWorld().run();
     }
-    ```
+```
 
 As shown above, there are basically four steps to implement a Rikulo application.
 
