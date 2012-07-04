@@ -61,7 +61,7 @@ We also specify the layout information in the `profile` property, such that the 
 
     welcome.profile.text = "anchor: parent; location: center center";
 
-All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling `onCreate_`. To make a view available on the screen, you have to add it any node of the tree by invoking the  `addChild` method.
+All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling `onCreate_`. To make a view available on the screen, you have to add it to a node of the tree by invoking the  `addChild` method.
 
     mainView.addChild(welcome);
 
@@ -69,11 +69,13 @@ All views available in an activity are arranged in a single tree. The root view 
 
 ###Start up your activity
 
-The `main` method is Dart's entry point. All you need to do is to start up your activity by instantiating it and invoking the `run` method as shown above.
+The `main` method is Dart's entry point. All you need to do is to start up your activity by instantiating it and invoking the `run` method.
+
+    new HelloWorld().run();
 
 ###Handle Events
 
-The view will notify the application about the user's interaction with events. You can listen and handle the events with the `on` method. For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
+The view will notify the application about the user's interaction with events. You can listen and handle the events with the `on` property of [View](http://rikulo.org/api/_/view/View.html). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
 
     welcome.on.click.add((event) {
       welcome.text = "Welcome to Rikulo.";
@@ -102,14 +104,14 @@ First, you have to specify the CSS file to load. Depending on your requirement, 
 
     <link rel="stylesheet" type="text/css" href="resources/css/view.css" />
 
-Second, you have to specify your Dart file. Here is called `HelloWorld.dart`.
+Second, you have to specify your Dart file. In this application, it is called `HelloWorld.dart`.
 
     <script type="application/dart" src="HelloWorld.dart"></script>
 
-Also notice that Rikulo assumes HTML 5, so you shall specify `<!DOCTYPE html>` at the beginning. In additions, it is, though optional, suggested to specify the `viewpoint` meta tag if you want to run it on mobile devices:
+Also notice that Rikulo assumes HTML 5, so you shall specify `<!DOCTYPE html>` at the beginning. In additions, it is, though optional, suggested to specify the `viewpoint` meta tag as follows, if you want to run the application on mobile devices:
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 Then, you visit this page to see how it works in live.
 
-> In this example, we don't specify where to show the user interface, and Rikulo will insert it under the document's `body` tag. However, depending on your requirement (such as  desktop applications), you can run several Rikulo applications at the same time and assign them to different segments on the screen.
+> In this example, we don't specify where to show the user interface, and Rikulo will, by default, insert it under the document's `body` tag. However, depending on your requirement (such as in a desktop applications), you can run several Rikulo applications at the same time and assign them to different segments on the screen.
