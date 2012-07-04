@@ -5,7 +5,7 @@
     * [Hello World](Getting_Started/Hello_World.md)
     * [Building Native Mobile Application](Getting_Started/Building_Native_Mobile_Application.md)
 *   [Views](Views/index.md)
-    * [Fundamentals](Views/Fundamentals.md)
+    * [Fundamentals](Views/Fundamentals/index.md)
     * [Activity](Views/Activity.md)
     * [Application](Views/Application.md)
     * [Canvas](Views/Canvas.md)

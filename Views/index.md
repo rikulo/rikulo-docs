@@ -1,6 +1,9 @@
 #Views
 
-* [Fundamentals](Fundamentals.md)
+* [Fundamentals](Fundamentals/index.md)
+    * [UI Overview](Fundamentals/UI_Overview.md)
+    * [Event Handling](Fundamentals/Event_Handling.md)
+    * [Positioning](Fundamentals/Positioning.md)
 * [Activity](Activity.md)
 * [Application](Application.md)
 * [Canvas](Canvas.md)
