@@ -34,5 +34,7 @@
     * [Scroller](Gestures/Scroller.md)
 *   [Animations](Animations/index.md)
     * [Fundamentals](Animations/Fundamentals.md)
+*   [Utilities](Utilities/index.md)
+    * [Message Queue](Utilities/Message_Queue.md)
 *   [View Development](View_Development/index.md)
     * [Fundamentals](View_Development/Fundamentals.md)
