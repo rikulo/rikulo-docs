@@ -58,7 +58,7 @@ In this application, we instantiate an instance of [TextView](http://rikulo.org/
 
     TextView welcome = new TextView("Hello World!");
 
-We also specify the layout information in the `profile` property, such that the message shall be placed in the center of the parent. It is done by specifying `anchor` as parent, and `location` as `center center`.
+We also specify the layout information in the `profile` property, such that the message shall be placed in the center of the parent. The code is as follows. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
 
     welcome.profile.text = "anchor: parent; location: center center";
 
@@ -71,6 +71,17 @@ All views available in an activity are arranged in a single tree. The root view 
 ###Start up your activity
 
 The `main` method is Dart's entry point. All you need to do is to start up your activity by instantiating it and invoking the `run` method as shown above.
+
+###Handle Events
+
+The view will notify the application about the user's interaction with events. You can listen and handle the events with the `on` method. For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
+
+    welcome.on.click.add((event) {
+      welcome.text = "Welcome to Rikulo.";
+      welcome.requestLayout();
+    }
+
+> Notice that we also invoke `requestLayout()` to reposition the greeting message, since we change its content and need to reposition it to the center. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
 
 ##The HTML page
 
