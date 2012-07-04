@@ -2,13 +2,12 @@
 
 This chapter shows you the basic elements of a Rikulo application by implementing a simple "Hello World" application.
 
-##Installing Rikulo
+A Rikulo application consists of
 
-To install Rikulo, you have to copy the `client` and `resources` folders to your application.
+* At least one Dart file to hold the Dart code of your application
+* At least one HTML page to load the Dart file(s)
 
-The `client` folder contains the Rikulo source code that you have to import to your application.  The `resource` folder contains the JavaScript and CSS files that you have to add to your HTML page.
-
-> You can install Rikulo with [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/). The package names are suggested to start with `rikulo:`, such as  `rikulo:app` and `rikulo:html`.
+> Please refer to [here](../Introduction/index.md) for installing Rikulo to your application.
 
 ##The Dart Code
 
