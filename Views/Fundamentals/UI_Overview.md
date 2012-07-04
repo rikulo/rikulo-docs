@@ -29,6 +29,28 @@ To draw the user interface, you can instantiate [View](http://rikulo.org/api/_/v
       }
     }
 
+##Show View on the Screen
+
+To show a view on the screen, you have to attach it to one of the hierarchy trees belonging to [the current activity](../Activity.md). For example,
+
+    activity.mainView.addChild(new TextView.html("<h1>Impacts</h1>")); //attach to mainView
+    activity.mainView = fooView; //replace the current mainView with fooView
+    activity.addDialog(fooDialog); //attach fooDialog as a dialog shown on top of mainView
+
+> [Activity](http://rikulo.org/api/_/app/Activity.html) has one main view, `mainView`, and any number of dialogs. The last added dialog will be displayed on top of the main view and other dialogs. For more information, please refer to [the Activity chapter](../Activity.md) for details.
+
+To remove a view from displaying on the screen, you can detach it by use of `removeFromParent`.
+
+    view.removeFromParent(); //detach the given view from the hierarchy tree
+    activity.removeDialog(); //detach the last added dialog
+
+To know if a view is attached to the screen, you can check the `inDocument` property.
+
+    if (view.inDocument) //the view is attached
+      doSomething();
+
+> Notice that we interchangeablely use *screen* and *document* to represent the same thing: the visual area of the device that the user interact with.
+
 ##Position
 
 The geometry of a view is that of a rectangle. A view has a location, expressed as a pair of left and top coordinates, and two dimensions, expressed as a width and a height.
@@ -78,6 +100,6 @@ By default, a CSS class named with the name of the Dart class with be assigned. 
 
 ##Relation with DOM Element
 
-A view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapulate the complexity from the application developers. You generally don't need to know about it.
+To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapulate the complexity from the application developers. You generally don't need to know about it.
 
 If you'd like to learn the details, please refer to [the View Development chapter](../../View_Development/index.md).

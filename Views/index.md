@@ -3,6 +3,7 @@
 * [Fundamentals](Fundamentals/index.md)
     * [UI Overview](Fundamentals/UI_Overview.md)
     * [Event Handling](Fundamentals/Event_Handling.md)
+    * [ID Space and Query](Fundamentals/ID_Space_and_Query.md)
     * [Using With HTML Elements](Fundamentals/Using_With_HTML_Elements.md)
 * [Activity](Activity.md)
 * [Application](Application.md)
