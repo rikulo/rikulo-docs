@@ -20,9 +20,11 @@ If a view implements [IdSpace](http://rikulo.org/api/_/view/IdSpace.html), we ca
 
 ![ID Spaces](idspace.jpg?raw=true)
 
-As shown above, let us assume `View A` and `View E` both implement [IdSpace](http://rikulo.org/api/_/view/IdSpace.html). Then, they both form an ID space seperatedly that includes their descendant views. Since `View E` forms another ID space, its descendant views are *not* part of the ID space of `View A`. However, notice that `View E` belongs to both ID spaces. Thus, you can query as follows.
+As shown above, let us assume `View A` and `View E` both implement [IdSpace](http://rikulo.org/api/_/view/IdSpace.html). Then, they both form an ID space seperatedly that includes their descendant views. The ID space of `View A` includes `A`,  `B`, `C`, `D` and `E. The Id space of `View E` includes `E`, `F` and `G`. Notice that `View E` belongs to both ID spaces.
 
     A.query("#D"); //D found
     A.query("#E"); //E found
     A.query("#E #F"); //F found
+    A.query("#E").query("#G"); //G found
     A.query("#F"); //nothing found (return null)
+    A.query("#A"); //A found
