@@ -15,7 +15,7 @@ To draw the user interface, you can instantiate [View](http://rikulo.org/api/_/v
     final ScrollView view = new ScrollView();
     view.profile.text =
       "anchor: parent; location: center center; width: 80%; height: 80%";
-    view.classes.add("scroll-view");
+    view.classes.add("v-dialog");
 
     for (int x = 0; x < 30; ++x) {
       for (int y = 0; y < 30; ++y) {
@@ -76,7 +76,7 @@ Some view subclasses might allow you to define the offset of the coordinates by 
 
 ##Layout
 
-In additions to managing the coordinates and dimensions manually, Rikulo provides the anchored layout, linear layout and others to position the views automatically. It is more convenient if you are targeting different devices with different resloutions. For example, if the user change the orientation of his tablet, all the layout will be re-positioned automatically to fit into the different aspect ratio.
+In additions to managing the coordinates and dimensions manually, Rikulo provides the anchored layout, linear layout and others to position the views automatically. It is useful if you are targeting different devices with different resloutions. For example, if the user change the orientation of his tablet, all the layout will be re-positioned automatically to fit into the different aspect ratio.
 
 Yet another example: if you don't specify the width and height, they will be calculated automatically to best fit the view.
 
@@ -91,7 +91,7 @@ For more information, please refer to [the Layouts chapter](../../Layouts/index.
 
 Views support the CSS3 styling. Like a DOM element, you can assign a CSS class to it, or specify the style directly.
 
-    view.classes.add("scroll-view");
+    view.classes.add("v-dialog");
     child.style.cssText = "border: 1px solid #553; background-color: $color";
 
 By default, a CSS class named with the name of the Dart class with be assigned. For example, [Switch](http://rikulo.org/api/_/view/Switch.html) is assigned with `"v-Switch"` initially. These CSS classes provide the default theme of a Rikulo application. You can customize them as you need it.
