@@ -10,6 +10,8 @@ You can use [TextView](http://rikulo.org/api/_/view/TextView.html) embed web con
 
 Furthermore, you can change the content dynamically by setting the `html` property.
 
+    textView.html = "<table><tr><td>${data1}</td><td>${data2}</tr></table>";
+
 > [TextView](http://rikulo.org/api/_/view/TextView.html) can show a plain text, or a fragment of HTML content, depending on the constructor and the property you use.
 
 ##Replace Web Content with Views
