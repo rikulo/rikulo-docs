@@ -41,11 +41,11 @@ Then, we can write the code as follows.
 
 1. In this example, we use a SPAN element to indicate where to insert the view. It could be anything as long as it matches what you need.
 
-    * Here we set the style to `"float:right"` since we want the anchor to align at the right. Again, it depends on what you need.
+    Here we set the style to `"float:right"` since we want the anchor to align at the right. Again, it depends on what you need.
 
 2. We then insert the view to the anchor (the SPAN element mentioned above).
 
-    * First, we have to wait until `webView` has been attached to the screen. Otherwise, `webView.node` will throw an exception.
+    First, we have to wait until `webView` has been attached to the screen. Otherwise, `webView.node` will throw an exception.
 
     To defer the insertion, you can listen the `mount` event.
 
@@ -62,7 +62,7 @@ Then, we can write the code as follows.
             new Switch(true).addToDocument(n, location: "right top");
         }
 
-    * Then, we invoke `addToDocument` to insert the view. The `node` argument shall be the anchor element.
+    Then, we invoke `addToDocument` to insert the view. The `node` argument shall be the anchor element.
 
     Here we retrieve the anchor elements with `queryAll`.
 
