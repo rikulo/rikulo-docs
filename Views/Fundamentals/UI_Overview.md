@@ -31,25 +31,48 @@ To draw the user interface, you can instantiate [View](http://rikulo.org/api/_/v
 
 ##Show View on the Screen
 
-To show a view on the screen, you have to attach it to one of the hierarchy trees belonging to [the current activity](../Activity.md). For example,
+###Attach to `mainView`
+
+When a view is instantiated, it is just like any ordinary object and has no effect on the user interface. To show a view on the screen, you can add it to a node of the main view (`mainView`) of [the current activity](../Activity.md). For example,
 
     activity.mainView.addChild(new TextView.html("<h1>Impacts</h1>")); //attach to mainView
-    activity.mainView = fooView; //replace the current mainView with fooView
-    activity.addDialog(fooDialog); //attach fooDialog as a dialog shown on top of mainView
 
-> [Activity](http://rikulo.org/api/_/app/Activity.html) has one main view, `mainView`, and any number of dialogs. The last added dialog will be displayed on top of the main view and other dialogs. For more information, please refer to [the Activity chapter](../Activity.md) for details.
-
-To remove a view from displaying on the screen, you can detach it by use of `removeFromParent`.
-
-    view.removeFromParent(); //detach the given view from the hierarchy tree
-    activity.removeDialog(); //detach the last added dialog
+> `activity` is a global variable referencing to the current activity.
 
 To know if a view is attached to the screen, you can check the `inDocument` property.
 
-    if (view.inDocument) //the view is attached
+    if (view.inDocument) //the view is attached (and then accessible by the user)
       doSomething();
 
 > Notice that we interchangeablely use *screen* and *document* to represent the same thing: the visual area of the device that the user interact with.
+
+> Also notice that when Activity's `onCreate_` is called, `mainView` is *not* attached to the screen yet. You have to wait until another callback named `onMount_` is called.
+
+To remove a view from displaying on the screen, you can detach it by use of `removeFromParent`, if it has a parent.
+
+    view.removeFromParent(); //detach the given view from the hierarchy tree
+
+You can also replace the whole main view with a hierarchy of tree too. Furthermore, the previous main view will be detached.
+
+    activity.mainView = fooView; //replace the current mainView with fooView
+
+###Attach to a dialog of the current activity
+
+In additions to the main view, you can make a view (more precisely, a hierarchy tree) to be a dialog of the current activity:
+
+    View fooDialog = new View();
+    fooDialog.addChild(new TextView("A dialog sample"));
+    activity.addDialog(fooDialog); //make fooDialog as a dialog shown on top of mainView
+
+After called, `fooDialog` will be attached to the screen, and it will be shown on top of `mainView`. Since it is attached, any child added to it will be attached too.
+
+    fooDialog.addChild(new TextView('Also attached to the screen'));
+
+To remove a dialog, you can invoke the `removeDialog` method. The last added dialog will be detached.
+
+    activity.removeDialog(); //detach the last added dialog
+
+> [Activity](http://rikulo.org/api/_/app/Activity.html) has one main view, `mainView`, and any number of dialogs. The last added dialog will be displayed on top of the main view and other dialogs. For more information, please refer to [the Activity chapter](../Activity.md) for details.
 
 ##Position
 
@@ -89,17 +112,71 @@ For more information, please refer to [the Layouts chapter](../../Layouts/index.
 
 ##Style
 
-Views support the CSS3 styling. Like a DOM element, you can assign a CSS class to it, or specify the style directly.
+###Style directly
+
+You can assign the CSS style directly.
+
+    view.style.backgroundColor = "blue";
+    view.style.cssText = "font-size: 15px; text-align: center";
+
+Notice that it is strongly suggested **not** to assign the coordinates and the dimensions to the `style` property. Rather, you shall assign them directly with the `left`, `top`, `width` and `height` properties of [View](http://rikulo.org/api/_/view/ViewConfig.html). For example,
+
+    view.style.left = "13px"; //Wrong!!
+    view.left = 13; //Correct
+    view.width = 200; //Correct
+    view.profile.width = "flex"; //Correct (it will be handled by layout manager later)
+
+###Style with CSS Classes
+
+You can assign CSS classes to it too.
 
     view.classes.add("v-dialog");
-    child.style.cssText = "border: 1px solid #553; background-color: $color";
 
 By default, a CSS class named with the name of the Dart class with be assigned. For example, [Switch](http://rikulo.org/api/_/view/Switch.html) is assigned with `"v-Switch"` initially. These CSS classes provide the default theme of a Rikulo application. You can customize them as you need it.
 
+In additions, you can remove the default CSS class too. It will remove all the default styling from the view (and probably not what you want):
+
+    switch.classes.remove("v-Switch"); //the switch look will be lost!
+
 > The prefix, `"v-"`, can be customized by setting [ViewConfig](http://rikulo.org/api/_/view/impl/ViewConfig.html)'s `classPrefix` property.
+
+###Package CSS Rules in a File
+
+In general, it is better than assigning CSS style directly to `style`, since it isolates the code from the UI design. Furthermore, the CSS rules can be collected to CSS file(s) and then linked in the HTML pages.
+
+    /** foo.css */
+    .blue {background: blue}
+
+Then, in a HTML page:
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" type="text/css" href="foo.css" />
+    ...
 
 ##Relation with DOM Element
 
-To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapulate the complexity from the application developers. You generally don't need to know about it.
+To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapulate the complexity from the application developers. You generally don't need to know much about it.
+
+If you want, you can retrieve the DOM element that represents the view on the screen by use of the `node` property.
+
+    view.node.nodes();
+
+Notice that you can access the `node` property only if the view is attached to the screen, i.e., the  `inDocument` property is true. Otherwise, it will throws an exception.
+
+Also notice that when Activity's `onCreate_` is called, `mainView` is not attached to the screen yet. It means you can't access the `node` property in `onCreate_`. To access it, you can do in the `onMount_` method. For example, the `context2D` property of [Canvas](http://rikulo.org/api/_/view/Canvas.html) depends on `node`, so we have to access it in `onMount_`:
+
+    class Foo extends Activity {
+      CanvasRenderingContext2D ctx2d;
+      void onCreate_() {
+        Canvas canvas = new Canvas();
+        canvas.profile.text = "width: flex;height: flex";
+        mainView.addChild(canvas);
+      }
+      void onMount_() { //mainView has been attached to the screen
+        ctx2d = canvas.context2D; //it can be called only if attached
+      }
+    }
 
 If you'd like to learn the details, please refer to [the View Development chapter](../../View_Development/index.md).
