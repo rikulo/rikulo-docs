@@ -40,5 +40,6 @@
     * [Fundamentals](Animations/Fundamentals.md)
 *   [Utilities](Utilities/index.md)
     * [Message Queue](Utilities/Message_Queue.md)
+    * [Miscellanous Utilities](Utilities/Miscellanous_Utilities.md)
 *   [View Development](View_Development/index.md)
     * [Fundamentals](View_Development/Fundamentals.md)
