@@ -1,6 +1,6 @@
 #Show Web Content
 
-You can use [TextView](http://rikulo.org/api/_/view/TextView.html) embed web content in your application. To do so, you simply instantiate it with the `html` constructor and then attach it to the hierarchy tree of views.
+You can use [TextView](http://rikulo.org/api/_/rikulo_view/TextView.html) embed web content in your application. To do so, you simply instantiate it with the `html` constructor and then attach it to the hierarchy tree of views.
 
     view.addChild(new TextView.html('''
       <ul>
@@ -12,11 +12,11 @@ Furthermore, you can change the content dynamically by setting the `html` proper
 
     textView.html = "<table><tr><td>${data1}</td><td>${data2}</tr></table>";
 
-> [TextView](http://rikulo.org/api/_/view/TextView.html) can show a plain text, or a fragment of HTML content, depending on the constructor and the property you use.
+> [TextView](http://rikulo.org/api/_/rikulo_view/TextView.html) can show a plain text, or a fragment of HTML content, depending on the constructor and the property you use.
 
 ##Replace Part of Web Content with Views
 
-You can replace some of the web content shown in [TextView](http://rikulo.org/api/_/view/TextView.html) with views. To do so, you have to put a special DOM element in the HTML fragment that you can insert the view into. Then, create a view and insert it to the special DOM element with the `addToDocument` method. In other words, the specail DOM element acts as an anchor.
+You can replace some of the web content shown in [TextView](http://rikulo.org/api/_/rikulo_view/TextView.html) with views. To do so, you have to put a special DOM element in the HTML fragment that you can insert the view into. Then, create a view and insert it to the special DOM element with the `addToDocument` method. In other words, the specail DOM element acts as an anchor.
 
 For example, let us say that we want to display a list of items with a switch at the right as depicted below.
 

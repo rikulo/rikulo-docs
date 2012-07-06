@@ -1,16 +1,16 @@
 #UI Overview
 
-The user interface elements in a Rikulo application are built using [View](http://rikulo.org/api/_/view/View.html). A view is the basic building block. It occupies a rectangular area on the screen, draws something on it, and interact with the user. 
+The user interface elements in a Rikulo application are built using [View](http://rikulo.org/api/_/rikulo_view/View.html). A view is the basic building block. It occupies a rectangular area on the screen, draws something on it, and interact with the user. 
 
-Rikulo provides a collection of [View](http://rikulo.org/api/_/view/View.html) subclasses that offer predefined features, such as input controls and grids.
+Rikulo provides a collection of [View](http://rikulo.org/api/_/rikulo_view/View.html) subclasses that offer predefined features, such as input controls and grids.
 
 ##View Hierarchy
 
-The user interface for each element of your application is defined using a hierarchy of [View](http://rikulo.org/api/_/view/View.html), as shown below. Unless overriden by the subclass, every view can have any number of the child views.
+The user interface for each element of your application is defined using a hierarchy of [View](http://rikulo.org/api/_/rikulo_view/View.html), as shown below. Unless overriden by the subclass, every view can have any number of the child views.
 
 ![Tree of Views](view-hierarchy.jpg?raw=true)
 
-To draw the user interface, you can instantiate [View](http://rikulo.org/api/_/view/View.html) and subclasses and then build them to a hierarchy tree of views. This hierarchy tree can be as simple or complex as you need it to be. For example,
+To draw the user interface, you can instantiate [View](http://rikulo.org/api/_/rikulo_view/View.html) and subclasses and then build them to a hierarchy tree of views. This hierarchy tree can be as simple or complex as you need it to be. For example,
 
     final ScrollView view = new ScrollView();
     view.profile.text =
@@ -72,7 +72,7 @@ To remove a dialog, you can invoke the `removeDialog` method. The last added dia
 
     activity.removeDialog(); //detach the last added dialog
 
-> [Activity](http://rikulo.org/api/_/app/Activity.html) has one main view, `mainView`, and any number of dialogs. The last added dialog will be displayed on top of the main view and other dialogs. For more information, please refer to [the Activity chapter](../Activity.md) for details.
+> [Activity](http://rikulo.org/api/_/rikulo_app/Activity.html) has one main view, `mainView`, and any number of dialogs. The last added dialog will be displayed on top of the main view and other dialogs. For more information, please refer to [the Activity chapter](../Activity.md) for details.
 
 ##Position
 
@@ -120,7 +120,7 @@ If you want, you can retrieve the DOM element that represents the view on the sc
 
 Notice that you can access the `node` property only if the view is attached to the screen, i.e., the  `inDocument` property is true. Otherwise, it will throws an exception.
 
-Also notice that when Activity's `onCreate_` is called, `mainView` is not attached to the screen yet. It means you can't access the `node` property in `onCreate_`. To access it, you can do in the `onMount_` method. For example, the `context2D` property of [Canvas](http://rikulo.org/api/_/view/Canvas.html) depends on `node`, so we have to access it in `onMount_`:
+Also notice that when Activity's `onCreate_` is called, `mainView` is not attached to the screen yet. It means you can't access the `node` property in `onCreate_`. To access it, you can do in the `onMount_` method. For example, the `context2D` property of [Canvas](http://rikulo.org/api/_/rikulo_view/Canvas.html) depends on `node`, so we have to access it in `onMount_`:
 
     class Foo extends Activity {
       CanvasRenderingContext2D ctx2d;

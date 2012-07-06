@@ -11,9 +11,9 @@ You can use the `on` method to listen the events of a view:
       doSomething(event.target);
     });
 
-As shown, the argument is an event listener. An event listener is a closure that takes an instance of [ViewEvent](http://rikulo.org/api/_/event/ViewEvent.html) or its derives as the argument.
+As shown, the argument is an event listener. An event listener is a closure that takes an instance of [ViewEvent](http://rikulo.org/api/_/rikulo_event/ViewEvent.html) or its derives as the argument.
 
-The class of an event depends on the event itself. For example, the `change` event is sent with an instance of [ChangeEvent](http://rikulo.org/api/_/event/ChangeEvent.html). For example,
+The class of an event depends on the event itself. For example, the `change` event is sent with an instance of [ChangeEvent](http://rikulo.org/api/_/rikulo_event/ChangeEvent.html). For example,
 
     TextBox textBox = new TextBox();
     textBox.on.change((ChangeEvent event) {
@@ -30,13 +30,13 @@ On the other hand, you can listen to the application-specific event as follows.
 
     view.on['foo'].add(fooListener);
 
-> Notice that `on.click` is equivalent to `on['click']`. It is one of built-in properties provided by [ViewEvents](http://rikulo.org/api/_/event/ViewEvents.html) (which is the class of the object returned by the `on` method).
+> Notice that `on.click` is equivalent to `on['click']`. It is one of built-in properties provided by [ViewEvents](http://rikulo.org/api/_/rikulo_event/ViewEvents.html) (which is the class of the object returned by the `on` method).
 
 The `sendEvent` method will invoke all registered event listeners before returning. If you prefer to queue the event and invoke the event listeners later, you can use `postEvent` instead.
 
 ##Broadcast Events
 
-If an event is not targeting to a view, you can send it with a global variable called `broadcaster`. It is an instance of [Broadcaster](http://rikulo.org/api/_/event/Broadcaster.html) used to broadcast events. For example,
+If an event is not targeting to a view, you can send it with a global variable called `broadcaster`. It is an instance of [Broadcaster](http://rikulo.org/api/_/rikulo_event/Broadcaster.html) used to broadcast events. For example,
 
     broadcaster.send(new ViewEvent('foo'));
 
@@ -46,4 +46,4 @@ Then, all listeners registered to `broadcaster` will be called.
       doSomething();
     })
 
-Rikulo utilizes `broadcaster` to send a special event, [PopupEvent](http://rikulo.org/api/_/event/PopupEvent.html). It is used to notify that a popup is showing, such that the listeners can clear up something, such as closing the popups they opened.
+Rikulo utilizes `broadcaster` to send a special event, [PopupEvent](http://rikulo.org/api/_/rikulo_event/PopupEvent.html). It is used to notify that a popup is showing, such that the listeners can clear up something, such as closing the popups they opened.
