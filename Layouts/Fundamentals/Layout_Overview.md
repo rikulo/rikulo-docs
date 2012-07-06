@@ -1,4 +1,4 @@
-#Fundamentals of Layouts
+#Layout Overview
 
 While you can specify how to position and size views as complex as you need it, there are common patterns of structuring the user interface, such as placing adjacent views horizontally or positioning a view at the bottom of another.
 
@@ -36,8 +36,6 @@ Here is a complete example:
 Here is the result:
 
 ![Layout Example 1](layout-ex1.jpg)
-
-Of course, you can nest one layout into another and so on to create sophisticated layouts.
 
 > If the width or height is not specified, it implies *content*, i.e., it shall take the exactly the size that the content requires.
 
@@ -82,4 +80,66 @@ Though `profile` is designed to work with the parent view's `layout`, it is OK t
 
 It is very useful with the so-called [Anchored Layout](Anchored Layout).
 
+##Nested Layout
+
+You can nest one layout into another and so on to create sophisticated layouts. The layout will be processed from the root view recursively into the leaf views. For example, we can place the horizontal linear layout inside the vertical linear layout to create a grid:
+
+      void onCreate_() {
+        mainView.layout.text = "type: linear; orient: vertical";
+
+        for (final String type in
+        ["text", "password", "multiline", "number", "date", "color"]) {
+          View view = new View();
+          view.layout.text = "type: linear";
+          mainView.addChild(view);
+
+          TextView label = new TextView(type);
+          label.style.textAlign = "right";
+          label.profile.width = "70";
+          view.addChild(label);
+
+          TextBox input = new TextBox(type: type);
+          view.addChild(input);
+        }
+      }
+
+![Nested Layout](layout-ex-nested.jpg)
+
+##Force to Redo the Layout of a View
+
+The layout will be handled automatically when the application is initialized, the browser's size is changed, and a view's visibility is changed. On the other hand, it doesn't detect and redo the layout, if the change of a view will affect the layout. It is the application to job to notify the change. To do so, you can invoke the `requestLayout` method of the view whose content is changed. For example, assume `textView` is an instance of [TextView](http://rikulo.org/api/_/rikulo_view/TextView.html), then we can have its layout to be handled after changing the content:
+
+    textView.html = "<ul><li>This is new content</li></ul>";
+    textView.requestLayout(); //schedule textView for handling the layout later
+
+The layout will be handled immediately. Rather, they are queued, optimized and handled later. For better control you can pass the parameters if necessary.
+
+When the layout of a view is handled, the layout of all of its descendant views will handled too. So, it might have some performance penalty for a complicated layout. Basically, the performance is better if you specify the width and height explicitly (with precise numbers), such that there is no need to calculate the dimension (which could be costly).
+
+> Of course, if the view is positioned by the application (by setting the coordinates and dimensions explicitly), you don't have to call `requestLayout`. Rather, you might want to adjust the dimension by yourself.
+
 ##Fine-tune Position by Listening the `layout` event
+
+After the layout has done, the `layout` event is fired. It is the moment you can adjust the layout in code if necessary. For example,
+
+    View view = new View();
+    view.style.backgroundColor = "#ddb";
+    view.profile.anchor = "parent";
+    view.profile.location = "center center";
+    view.profile.width = "70%";
+    view.profile.height = "80%";
+    view.on.layout.add((event) {
+      TextView txt = new TextView("onLayout: A child at 10%, 10%");
+      txt.style.border = "1px solid #663";
+      txt.left = view.width ~/ 10;
+      txt.top = view.height ~/ 10;
+      txt.on.mount.add((event2) {
+        TextView txt2 = new TextView("onMount: another child at 20%, 20%");
+        txt2.style.border = "1px solid #663";
+        txt2.left = view.width ~/ 5;
+        txt2.top = view.height ~/ 5;
+        view.addChild(txt2);
+      });
+      view.addChild(txt);
+    });
+    mainView.addChild(view);
