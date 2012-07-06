@@ -1,5 +1,4 @@
 #Fundamentals of Layouts
 
 * [Layout Overview](Layout_Overview.md)
-* [Layout Attributes](Layout_Attributes.md)
-* [Profile Attributes](Profile_Attributes.md)
+* [Attributes of Layout and Profile](Attributes_of_Layout_and_Profile.md)
