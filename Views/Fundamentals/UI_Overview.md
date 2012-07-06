@@ -110,51 +110,6 @@ Yet another example: you can *anchor* a view to its parent to particular positio
 
 For more information, please refer to [the Layouts chapter](../../Layouts/index.md).
 
-##Style
-
-###Style directly
-
-You can assign the CSS style directly.
-
-    view.style.backgroundColor = "blue";
-    view.style.cssText = "font-size: 15px; text-align: center";
-
-Notice that it is strongly suggested **not** to assign the coordinates and the dimensions to the `style` property. Rather, you shall assign them directly with the `left`, `top`, `width` and `height` properties of [View](http://rikulo.org/api/_/view/ViewConfig.html). For example,
-
-    view.style.left = "13px"; //Wrong!!
-    view.left = 13; //Correct
-    view.width = 200; //Correct
-    view.profile.width = "flex"; //Correct (it will be handled by layout manager later)
-
-###Style with CSS Classes
-
-You can assign CSS classes to it too.
-
-    view.classes.add("v-dialog");
-
-By default, a CSS class named with the name of the Dart class with be assigned. For example, [Switch](http://rikulo.org/api/_/view/Switch.html) is assigned with `"v-Switch"` initially. These CSS classes provide the default theme of a Rikulo application. You can customize them as you need it.
-
-In additions, you can remove the default CSS class too. It will remove all the default styling from the view (and probably not what you want):
-
-    switch.classes.remove("v-Switch"); //the switch look will be lost!
-
-> The prefix, `"v-"`, can be customized by setting [ViewConfig](http://rikulo.org/api/_/view/impl/ViewConfig.html)'s `classPrefix` property.
-
-###Package CSS Rules in a File
-
-In general, it is better than assigning CSS style directly to `style`, since it isolates the code from the UI design. Furthermore, the CSS rules can be collected to CSS file(s) and then linked in the HTML pages.
-
-    /** foo.css */
-    .blue {background: blue}
-
-Then, in a HTML page:
-
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <link rel="stylesheet" type="text/css" href="foo.css" />
-    ...
-
 ##Relation with DOM Element
 
 To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapulate the complexity from the application developers. You generally don't need to know much about it.

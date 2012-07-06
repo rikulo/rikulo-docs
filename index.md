@@ -9,6 +9,7 @@
         * [UI Overview](Views/Fundamentals/UI_Overview.md)
         * [Event Handling](Views/Fundamentals/Event_Handling.md)
         * [ID Space and Query](Views/Fundamentals/ID_Space_and_Query.md)
+        * [Style with CSS](Views/Fundamentals/Style_with_CSS.md)
         * [Show Web Content](Views/Fundamentals/Show_Web_Content.md)
         * [Encapsulate Data from UI with Model](Views/Fundamentals/Encapsulate_Data_from_UI_with_Model.md)
     * [Activity](Views/Activity.md)
