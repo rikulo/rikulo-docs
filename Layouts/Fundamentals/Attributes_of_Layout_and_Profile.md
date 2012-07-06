@@ -24,25 +24,34 @@ It specifies the default width (and height) for each child view. It is not the w
 
 For more information, please refer to [the profile property](#profile_width) below.
 
-###spacing and gap
+###spacing
 
 Syntax: `spacing: #n1 [#n2 [#n3 #n4]]`  
 Default: 2
 
-Syntax: `gap: #n1 [#n2]`  
-Default: *empty* (i.e., dependong on spacing)
-
 The spacing attribute specifies the spacing in pixel around the child view. It can be overridden by the child view's profile.
 
-If only a number is specified, it means all four spacing is the same as the given value. If two numbers are specified, the first number specified the top and bottom spacing, while the second the left and right spacing. If all four numbers are specified, they specify the top, right, bottom, left spacing, respectively.
+* If only a number is specified, it means all four spacing is the same as the given value.
+* If two numbers are specified, the first number specifies the top and bottom spacing, while the second the left and right spacing.
+* If all four numbers are specified, they specify the top, right, bottom, left spacing, respectively.
 
 If the spacing at the left and at the right is different, the horizontal spacing of two adjacent views is the maximal value of them. Similarly, the vertical spacing is the maximal value of the spacing at the top and at the bottom.
 
 ![Spacing](spacing.jpg?raw=true)
 
-If you prefer a different value, specify it in the gap attribute. The gap attribute specifies the spacing between two adjacent child views.
+If you prefer a different value, specify it in the gap attribute as described below.
+
+###gap
+
+Syntax: `gap: #n1 [#n2]`  
+Default: *empty* (i.e., dependong on spacing)
+
+The gap attribute specifies the spacing between two adjacent child views.
 
 ![Spacing with gap](spacing2.jpg?raw=true)
+
+* If only a number is specified, it is used for the gap at both horizontal and vertical direction.
+* If two numbers are specified, the first number specifies the gap at the vertical direction (top/bottom), and the second number the horizontal direction (left/right).
 
 ##The profile property
 
@@ -59,10 +68,6 @@ It specifies the width (and height) of the given view.
     foo.profile.width = "20%"; //20% of the total available width
     foo.profile.height = "flex 3"; //see below
 
-If the profile width (or height) is not specified and its parent's layout width (or height) is specified, then the width (or height) specified in the parent's layout will be used. If neither is specified, it will use [View's width (or height)](http://rikulo.org/api/_/rikulo_view/View.html#get:width), if it was assigned a value by the application. If it is not assigned either, it is assumed to be `content`.
-
-Notice that it also means that the width (and height) set in the profile property has the higher priority than [the width (and height) property]((http://rikulo.org/api/_/rikulo_view/View.html#set:width)).
-
 If the value is a percentage (such as 20%), it means the percentage of the total available space. For linear layout, it is the percentage of the parent's inner width (or height) (see also [View's innerWidth](http://rikulo.org/api/_/rikulo_view/View.html#get:innerWidth)).
 
 If the value is `flex #n`, it means it will take all the remaining space. If two or more child views are specified with `flex #n`, the remaining space will be divided based on the number following `flex` (if no number, 1 is assumed).
@@ -73,3 +78,14 @@ For example, if a horizontal linear layout has three child views, their profile 
     200 = (450 - 50) * 3 / (1 + 3);
 
 Interesting to note that, if you specify the profile height to `flex` in a horizontal linear layout, it will be equivalent to `100%`, since there is only one child view in the vertical direction (for a horizontal linear layout).
+
+##How to decide width and height
+
+Here is the sequence the width of a view is decided (The decision sequence of height is the same). For sake of description, we call the view `foo`.
+
+1. If `foo.profile.width` is specified, it is used
+2. If both `foo.parent.layout.width` and `foo.parent.layout` are specified, `foo.parent.layout.width` is used.
+3. If `foo.width` is specified, it is used.
+4. If none of them is specified, it is assumed to be `content`.
+
+Notice that it also means that the width (and height) set in the profile property has the higher priority than [the width (and height) property]((http://rikulo.org/api/_/rikulo_view/View.html#set:width)).
