@@ -35,7 +35,7 @@ Here is a complete example:
 
 Here is the result:
 
-![Layout Example 1](layout-ex1.jpg)
+![Layout Example 1](layout-ex1.jpg?raw=true)
 
 > If the width or height is not specified, it implies *content*, i.e., it shall take the exactly the size that the content requires.
 
@@ -69,7 +69,7 @@ Here is another example: arrange a linear layout with three child views, and the
 
 Here is the result. You can try to resize the browser, and you'll find the layout changed automatically to take over the full space (i.e., what `flex` means).
 
-![Layout Example 2](layout-ex2.jpg)
+![Layout Example 2](layout-ex2.jpg?raw=true)
 
 ###Profile without Layout
 
@@ -103,7 +103,7 @@ You can nest one layout into another and so on to create sophisticated layouts. 
         }
       }
 
-![Nested Layout](layout-ex-nested.jpg)
+![Nested Layout](layout-ex-nested.jpg?raw=true)
 
 ##Force to Redo the Layout of a View
 
