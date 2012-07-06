@@ -78,7 +78,7 @@ Though `profile` is designed to work with the parent view's `layout`, it is OK t
     view.profile.width = "flex"; //take the full space of its parent
     view.profile.height = "content"; //best bit for its content
 
-It is very useful with the so-called [Anchored Layout](Anchored Layout).
+It is very useful with the so-called [Anchor Layout](Anchor Layout).
 
 ##Nested Layout
 

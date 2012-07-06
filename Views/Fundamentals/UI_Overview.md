@@ -99,7 +99,7 @@ Some view subclasses might allow you to define the offset of the coordinates by 
 
 ##Layout
 
-In additions to managing the coordinates and dimensions manually, Rikulo provides the anchored layout, linear layout and others to position the views automatically. It is useful if you are targeting different devices with different resloutions. For example, if the user change the orientation of his tablet, all the layout will be re-positioned automatically to fit into the different aspect ratio.
+In additions to managing the coordinates and dimensions manually, Rikulo provides [anchor layout](../../Layouts/Anchor_Layout.md), [linear layout](../../Layouts/Linear_Layout.md) and others to position the views automatically. It is useful if you are targeting different devices with different resloutions. For example, if the user change the orientation of his tablet, all the layout will be re-positioned automatically to fit into the different aspect ratio.
 
 Yet another example: if you don't specify the width and height, they will be calculated automatically to best fit the view.
 

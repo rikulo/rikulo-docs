@@ -33,7 +33,7 @@
     * [Fundamentals](Layouts/Fundamentals/index.md)
         * [Layout Overview](Layouts/Fundamentals/Layout_Overview.md)
         * [Attributes of Layout and Profile](Layouts/Fundamentals/Attributes_of_Layout_and_Profile.md)
-    * [Anchored Layout](Layouts/Anchored_Layout.md)
+    * [Anchor Layout](Layouts/Anchor_Layout.md)
     * [Linear Layout](Layouts/Linear_Layout.md)
     * [Layout Manager and Customization](Layouts/Layout_Manager_and_Customization.md)
 *   [Device Services](Device_Services/index.md)
