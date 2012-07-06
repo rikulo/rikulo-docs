@@ -7,6 +7,7 @@
     * [Style with CSS](Fundamentals/Style_with_CSS.md)
     * [Show Web Content](Fundamentals/Show_Web_Content.md)
     * [Encapsulate Data from UI with Model](* [Activity](Activity.md)
+* [Activity](Activity.md)
 * [Application](Application.md)
 * [Canvas](Canvas.md)
 * [CheckBox](CheckBox.md)

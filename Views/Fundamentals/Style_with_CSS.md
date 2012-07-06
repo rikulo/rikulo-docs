@@ -22,6 +22,8 @@ Notice that it is strongly suggested **not** to assign the coordinates and the d
     view.width = 200; //Correct
     view.profile.width = "flex"; //Correct (it will be handled by layout manager later)
 
+Moreover, it is suggested to use Rikulo's [layout facility](../../Layouts/index.md) to handle the postion and layout of the user interface. It is more convenient, and it will adjust automatically based on the resolution of the device.
+
 ##Assign CSS Classes
 
 You can assign any number of CSS classes to views.
