@@ -1,5 +1,5 @@
 #Application
 
-* Package: [app](http://rikulo.org/api/_/rikulo_app.html)
-* [API Reference](http://rikulo.org/api/_/rikulo_app/Application.html)
+* Package: [app](api:)
+* API Reference: [Application](api:app)
 * [Source Code](https://github.com/rikulo/rikulo/blob/master/client/app/src/Application.dart)

@@ -3,6 +3,8 @@ Thumbs.db
 .project
 .children
 *.bak
+*.class
+out
 ~$*.pptx
 ~$*.doc
 ~$*.xlsx

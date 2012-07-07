@@ -31,8 +31,8 @@ Here is a simple "Hello World" application.
 As shown above, there are basically four steps to implement a Rikulo application.
 
 1. Import the `app` and `view` packages
-2. Implement your activity by extending from [Activity](http://rikulo.org/api/_/rikulo_app/Activity.html)
-3. Draw your user interface in the `onCreate_` callback.
+2. Implement your activity by extending from [Activity](api:app)
+3. Draw your user interface in [Activity:onCreate_](api:app).
 4. Start up the activity in the `main` method
 
 ###Import `app` and `view`
@@ -43,7 +43,7 @@ Packages to import really depends on your requirement. `Activity` is part of the
 
 An activity is an application component that provides the user interface to interact with the user. An activity might be paused or resumed due to user's interaction, such as answering a phone.
 
-Implementing an activity is straightforward: extend your class from [Activity](http://rikulo.org/api/_/rikulo_app/Activity.html).
+Implementing an activity is straightforward: extend your class from [Activity](api:app).
 
 > The current activity can be found by use of the global variable called `activity`.
 
@@ -51,9 +51,9 @@ Implementing an activity is straightforward: extend your class from [Activity](h
 
 After your activity is started, the `onCreate_` method will be called. You can create your user interface in this method.
 
-The user interface elements in a Rikulo application are built using [View](http://rikulo.org/api/_/rikulo_view/View.html). A view is the basic building block. It draws something on the screen that the user can interact with.
+The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It draws something on the screen that the user can interact with.
 
-In this application, we instantiate an instance of [TextView](http://rikulo.org/api/_/rikulo_view/TextView.html) to show the greeting message.
+In this application, we instantiate an instance of [TextView](api:view) to show the greeting message.
 
     TextView welcome = new TextView("Hello World!");
 
@@ -75,7 +75,7 @@ The `main` method is Dart's entry point. All you need to do is to start up your 
 
 ###Handle Events
 
-The view will notify the application about the user's interaction with events. You can listen and handle the events with the `on` property of [View](http://rikulo.org/api/_/rikulo_view/View.html). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
+The view will notify the application about the user's interaction with events. You can listen and handle the events with the `on` property of [View](api:view). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
 
     welcome.on.click.add((event) {
       welcome.text = "Welcome to Rikulo.";

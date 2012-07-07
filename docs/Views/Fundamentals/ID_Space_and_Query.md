@@ -2,7 +2,7 @@
 
 ##CSS-Selector-based Query
 
-The `query` and `queryAll` methods of [View](http://rikulo.org/api/_/rikulo_view/TextView.html) allow you to look up view(s) based on CSS selector. For example,
+The `query` and `queryAll` methods of [View](api:view) allow you to look up view(s) based on CSS selector. For example,
 
     view.query("#foo"); //look for a view with ID = foo
     view.queryAll("TextBox:firstChild"); //look for all TextView which is the first child
@@ -16,11 +16,11 @@ The concept of ID space is hence introduced. An ID space is a subset of a hierar
 
 > Unlike DOM, any ID in a given ID space must be unqiue. The rule was introduced to minimize the chance to assign the same ID accidentaly to different views.
 
-If a view implements [IdSpace](http://rikulo.org/api/_/rikulo_view/IdSpace.html), we call the branch starting from the view is an ID space, and the view is the space owner. [Section](http://rikulo.org/api/_/rikulo_view/Section.html) is a typical example implementing [IdSpace](http://rikulo.org/api/_/rikulo_view/IdSpace.html). You can use it to partition a hierarchy tree into several ID spaces.
+If a view implements [IdSpace](api:view), we call the branch starting from the view is an ID space, and the view is the space owner. [Section](api:view) is a typical example implementing [IdSpace](api:view). You can use it to partition a hierarchy tree into several ID spaces.
 
 ![ID Spaces](idspace.jpg?raw=true)
 
-As shown above, let us assume `View A` and `View E` both implement [IdSpace](http://rikulo.org/api/_/rikulo_view/IdSpace.html). Then, they both form an ID space seperatedly that includes their descendant views. The ID space of `View A` includes `A`,  `B`, `C`, `D` and `E. The Id space of `View E` includes `E`, `F` and `G`. Notice that `View E` belongs to both ID spaces.
+As shown above, let us assume `View A` and `View E` both implement [IdSpace](api:view). Then, they both form an ID space seperatedly that includes their descendant views. The ID space of `View A` includes `A`,  `B`, `C`, `D` and `E. The Id space of `View E` includes `E`, `F` and `G`. Notice that `View E` belongs to both ID spaces.
 
     A.query("#D"); //D found
     A.query("#E"); //E found

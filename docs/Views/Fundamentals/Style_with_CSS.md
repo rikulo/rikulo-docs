@@ -7,15 +7,15 @@ You can assign the CSS style to change the look of a view.
     view.style.backgroundColor = "blue";
     view.style.cssText = "font-size: 15px; text-align: center";
 
-[View](http://rikulo.org/api/_/rikulo_view/View.html)'s `style` is an instance of [CSSStyleDeclartion](http://api.dartlang.org/html/CSSStyleDeclaration.html). It will correct the CSS name with a proper prefix for the browser automatically. For example, the following statement will assign the value to `-webkit-transform` when running on Chrome.
+[View](api:view)'s `style` is an instance of [CSSStyleDeclartion](api:view). It will correct the CSS name with a proper prefix for the browser automatically. For example, the following statement will assign the value to `-webkit-transform` when running on Chrome.
 
     view.style.transform = "translate3d(-10px, -20px, 0)";
 
-> We don't do the correction for the CSS rules specified in a CSS file, or in [Style](http://rikulo.org/api/_/rikulo_view/Style.html).
+> We don't do the correction for the CSS rules specified in a CSS file, or in [Style](api:view).
 
 ### Don't Assign Coorinates and Dimensions with CSS
 
-Notice that it is strongly suggested **not** to assign the coordinates and the dimensions to the `style` property. Rather, you shall assign them directly with the `left`, `top`, `width` and `height` properties of [View](http://rikulo.org/api/_/rikulo_view/View.html). For example,
+Notice that it is strongly suggested **not** to assign the coordinates and the dimensions to the `style` property. Rather, you shall assign them directly with the `left`, `top`, `width` and `height` properties of [View](api:view). For example,
 
     view.style.left = "13px"; //Wrong!!
     view.left = 13; //Correct
@@ -38,17 +38,17 @@ You can assign any number of CSS classes to views.
 
     view.classes.add("v-dialog");
 
-By default, when a view is instantiated, two special CSS classes are assigned. One is called `"v-"`, which defines the basic rules for a view. The other is named with the view's Dart class, and defines the look of views. For example, it is called `"v-Switch"` for [Switch](http://rikulo.org/api/_/rikulo_view/Switch.html), and `"v-TextView"` for [TextView](http://rikulo.org/api/_/rikulo_view/Switch.html). These CSS classes provide the default theme of a Rikulo application. You can customize them as you need it.
+By default, when a view is instantiated, two special CSS classes are assigned. One is called `"v-"`, which defines the basic rules for a view. The other is named with the view's Dart class, and defines the look of views. For example, it is called `"v-Switch"` for [Switch](api:view), and `"v-TextView"` for [TextView](api:view). These CSS classes provide the default theme of a Rikulo application. You can customize them as you need it.
 
 In additions, you can remove the default CSS classes too. The default styling of the view will be gone (and probably not what you want):
 
     switch.classes.remove("v-Switch"); //the switch look will be lost!
 
-> The prefix, `"v-"`, can be customized by setting [ViewConfig](http://rikulo.org/api/_/rikulo_view/impl/ViewConfig.html)'s `classPrefix` property.
+> The prefix, `"v-"`, can be customized by setting [ViewConfig](api:view/impl)'s `classPrefix` property.
 
 ##Package CSS Rules in the Style View
 
-[Style](http://rikulo.org/api/_/rikulo_view/Style.html) is a special UI object used to hold CSS rules. You can assign CSS rules to directly.
+[Style](api:view) is a special UI object used to hold CSS rules. You can assign CSS rules to directly.
 
     mainView.addChild(new Style.content('''
     .blue {

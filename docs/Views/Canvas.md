@@ -1,5 +1,5 @@
 #Canvas
 
-* Package: [view](http://rikulo.org/api/_/rikulo_view.html)
-* [API Reference](http://rikulo.org/api/_/rikulo_view/Canvas.html)
+* Package: [view](api:)
+* API Reference: [Canvas](api:view)
 * [Source Code](https://github.com/rikulo/rikulo/blob/master/client/view/src/Canvas.dart)

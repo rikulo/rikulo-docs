@@ -1,5 +1,5 @@
 #Section
 
-* Package: [view](http://rikulo.org/api/_/rikulo_view.html)
-* [API Reference](http://rikulo.org/api/_/rikulo_view/Section.html)
+* Package: [view](api:)
+* API Reference: [Section](api:view)
 * [Source Code](https://github.com/rikulo/rikulo/blob/master/client/view/src/Section.dart)

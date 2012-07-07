@@ -12,9 +12,9 @@ First, you can specify how to arrange the appearance of the child views of a giv
 
 The type specifies which layout to use, while the other parameters specify the details, such as orientation, spacing and so on.
 
->A layout is an object implementing the [Layout](http://rikulo.org/api/_/rikulo_layout/Layout.html) interface. The type specified in `layout` actually refers to one of the layouts managed by the layout manager ([LayoutManager](http://rikulo.org/api/_/rikulo_layout/LayoutManager.html)).
+>A layout is an object implementing the [Layout](api:layout) interface. The type specified in `layout` actually refers to one of the layouts managed by the layout manager ([LayoutManager](api:layout)).
 
-The `layout` property is actually an instance of [LayoutDeclaration](http://rikulo.org/api/_/rikulo_rikulo_view/Layout.html). Thus, you can specify the layout in type-safe way, if you like. The following is equivalent to the previous snippet.
+The `layout` property is actually an instance of [LayoutDeclaration](api:layout). Thus, you can specify the layout in type-safe way, if you like. The following is equivalent to the previous snippet.
 
     foo.layout.type = "lienar";
     foo.layout.orient = "vertical";
@@ -107,7 +107,7 @@ You can nest one layout into another and so on to create sophisticated layouts. 
 
 ##Force to Redo the Layout of a View
 
-The layout will be handled automatically when the application is initialized, the browser's size is changed, and a view's visibility is changed. On the other hand, it doesn't detect and redo the layout, if the change of a view will affect the layout. It is the application to job to notify the change. To do so, you can invoke the `requestLayout` method of the view whose content is changed. For example, assume `textView` is an instance of [TextView](http://rikulo.org/api/_/rikulo_view/TextView.html), then we can have its layout to be handled after changing the content:
+The layout will be handled automatically when the application is initialized, the browser's size is changed, and a view's visibility is changed. On the other hand, it doesn't detect and redo the layout, if the change of a view will affect the layout. It is the application to job to notify the change. To do so, you can invoke the `requestLayout` method of the view whose content is changed. For example, assume `textView` is an instance of [TextView](api:view), then we can have its layout to be handled after changing the content:
 
     textView.html = "<ul><li>This is new content</li></ul>";
     textView.requestLayout(); //schedule textView for handling the layout later
