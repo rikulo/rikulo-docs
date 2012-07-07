@@ -12,7 +12,7 @@ This document is rendered online at [Documentation](http://rikulo.org/docs).
 * Link to method: \[View:requestLayout](api:view)
 * Link to getter: \[View:get:width](api:view)
 
-#Resources
+##Resources
 
 * [Home](http://rikulo.org)
 * [Documentation](http://rikulo.org/docs)
