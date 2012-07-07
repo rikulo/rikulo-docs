@@ -84,24 +84,24 @@ It is very useful with the so-called [Anchor Layout](Anchor Layout).
 
 You can nest one layout into another and so on to create sophisticated layouts. The layout will be processed from the root view recursively into the leaf views. For example, we can place the horizontal linear layout inside the vertical linear layout to create a grid:
 
-      void onCreate_() {
-        mainView.layout.text = "type: linear; orient: vertical";
+    void onCreate_() {
+      mainView.layout.text = "type: linear; orient: vertical";
 
-        for (final String type in
-        ["text", "password", "multiline", "number", "date", "color"]) {
-          View view = new View();
-          view.layout.text = "type: linear";
-          mainView.addChild(view);
+      for (final String type in
+      ["text", "password", "multiline", "number", "date", "color"]) {
+        View view = new View();
+        view.layout.text = "type: linear; spacing: 0 3"; //top and bottom: 0 since nested
+        mainView.addChild(view);
 
-          TextView label = new TextView(type);
-          label.style.textAlign = "right";
-          label.profile.width = "70";
-          view.addChild(label);
+        TextView label = new TextView(type);
+        label.style.textAlign = "right";
+        label.profile.width = "70";
+        view.addChild(label);
 
-          TextBox input = new TextBox(type: type);
-          view.addChild(input);
-        }
+        TextBox input = new TextBox(type: type);
+        view.addChild(input);
       }
+    }
 
 ![Nested Layout](layout-ex-nested.jpg?raw=true)
 

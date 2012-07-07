@@ -27,7 +27,7 @@ For more information, please refer to [the profile property](#profile_width) bel
 ###spacing
 
 Syntax: `spacing: #n1 [#n2 [#n3 #n4]]`  
-Default: 2
+Default: 3
 
 The spacing attribute specifies the spacing in pixel around the child view. It can be overridden by the child view's profile.
 
