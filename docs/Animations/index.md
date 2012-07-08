@@ -1,3 +1,0 @@
-#Animations
-
-* [Fundamentals](Fundamentals.md)
