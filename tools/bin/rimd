@@ -10,14 +10,14 @@
 docdir=$0
 docdir=${docdir%/*}
 if [ "$docdir" = "." ] ; then
-  docdir=".."
+	docdir=".."
 elif [ "$docdir" = "${docdir%/*}" ] ; then
-  docdir="."
+	docdir="."
 else
-  docdir=${docdir%/*}
+	docdir=${docdir%/*}
 fi
 if [ "$TERM" = "cygwin" ] || [ "$OSTYPE" = "cygwin" ] ; then
-  docdir=$(cygpath -u $docdir)
+	docdir=$(cygpath -u $docdir)
 fi
 
 jardir=$docdir/bin/rimd.lib
@@ -37,4 +37,13 @@ if [ ! -d $dstdir ] ; then
 fi
 
 rm -rf $dstdir/*
-#java -cp ""
+
+if [ "$TERM" = "cygwin" ] || [ "$OSTYPE" = "cygwin" ] ; then
+	S=";"
+else
+	S=":"
+fi
+CP="$jardir/rimd.jar$S$jardir/pegdown.jar$S$jardir/asm.jar$S$jardir/asm-analysis.jar$S$jardir/asm-tree.jar$S$jardir/parboiled-core.jar$S$jardir/parboiled-java.jar"
+echo $CP
+java -classpath "$CP" org.rikulo.rimd.Main \
+	--head $jardir/header.html --foot $jardir/footer.html -f $srcdir $dstdir
