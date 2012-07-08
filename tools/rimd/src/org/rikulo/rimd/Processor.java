@@ -1,3 +1,6 @@
+//Copyright (C) 2012 Potix Corporation. All Rights Reserved.
+//History: Sat, July 07, 2012
+// Author: tomyeh
 package org.rikulo.rimd;
 
 import org.pegdown.PegDownProcessor;
@@ -5,21 +8,23 @@ import java.io.Writer;
 import java.io.IOException;
 
 public class Processor {
-	private final String _header, _footer, _ext;
+	public final String header, footer, extension;
+	public int count = 0;
 
 	public Processor(String header, String footer, String ext) {
-		_header = header;
-		_footer = footer;
-		_ext = ext;
+		this.header = header;
+		this.footer = footer;
+		this.extension = ext;
 	}
 	public void process(String src, Writer dst) throws IOException {
-		if (_header != null)
-			dst.write(_header);
+		if (this.header != null)
+			dst.write(header);
 
+		++ count;
 		dst.write(new PegDownProcessor().markdownToHtml(
-			src, new RikuloLinkRenderer(_ext)));
+			src, new RikuloLinkRenderer(extension)));
 
-		if (_footer != null)
-			dst.write(_footer);
+		if (footer != null)
+			dst.write(footer);
 	}
 }

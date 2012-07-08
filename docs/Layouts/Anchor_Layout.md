@@ -1,6 +1,6 @@
 #Anchor Layout
 
-Anchor layout is used to place a view based on the offset of another view. Unlike all other layouts, it doesn't depend on the `layout` property of the parent view. Rather, it is specified by use of the anchor and location attributes of [ProfileDeclaration](api:view) (the type of [View:get:profile](api:view)).
+Anchor layout is used to place a view based on the offset of another view. Unlike all other layouts, it doesn't depend on the `layout` property of the parent view. Rather, it is specified by use of the anchor and location attributes of [ProfileDeclaration](api:view) (the type of [View.profile](api:view)).
 
 ##Anchor
 

@@ -7,10 +7,12 @@ This document is rendered online at [Documentation](http://rikulo.org/docs).
 
 ##Rikulo Flavored Markdown
 
-* Link to package: \[view](api:)
-* Link to class: \[ViewConfig](api:view/impl)
-* Link to method: \[View:requestLayout](api:view)
-* Link to getter: \[View:get:width](api:view)
+* Link to a package: \[view](api:)
+* Link to a class: \[ViewConfig](api:view/impl)
+* Link to a method: \[View.requestLayout()](api:view)
+* Link to a getter: \[View.width](api:view) or \[View.width](api:view:get)
+* Link to a setter: \[View.width](api:view:set)
+* Link to a global variable: \[activity](api:app)
 
 ##Resources
 

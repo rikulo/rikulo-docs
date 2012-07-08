@@ -1,6 +1,6 @@
 #Linear Layout
 
-Linear layout arranges the child views in a single column or a single row. You can set the direction by use of the orient attribute. You can also control the alignment, spacing and other attributes that can be found in [LayoutDeclaration](api:view) (the type of [View:get:layout](api:view)).
+Linear layout arranges the child views in a single column or a single row. You can set the direction by use of the orient attribute. You can also control the alignment, spacing and other attributes that can be found in [LayoutDeclaration](api:view) (the type of [View.layout](api:view)).
 
 ##Example 1: Header, Footer and Sidebar
 

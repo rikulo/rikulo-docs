@@ -30,14 +30,14 @@ Here is a simple "Hello World" application.
 
 As shown above, there are basically four steps to implement a Rikulo application.
 
-1. Import the `app` and `view` packages
+1. Import [app](api:) and [view](api:) packages
 2. Implement your activity by extending from [Activity](api:app)
-3. Draw your user interface in [Activity:onCreate_](api:app).
+3. Draw your user interface in [Activity.onCreate_()](api:app).
 4. Start up the activity in the `main` method
 
-###Import `app` and `view`
+###Import [app](api:) and [view](api:)
 
-Packages to import really depends on your requirement. `Activity` is part of the `app` package, while UI objects is part of the `view` package. These two are packages that you will import in the most cases.
+Packages to import really depends on your requirement. [Activity](api:app) is part of the [app](api:) package, while UI objects is part of the [view](api:) package. These two are packages that you will import in the most cases.
 
 ###Implement an activity
 
@@ -45,11 +45,11 @@ An activity is an application component that provides the user interface to inte
 
 Implementing an activity is straightforward: extend your class from [Activity](api:app).
 
-> The current activity can be found by use of the global variable called `activity`.
+> The current activity can be found by use of the global variable called [activity](api:app).
 
 ###Draw your user interface
 
-After your activity is started, the `onCreate_` method will be called. You can create your user interface in this method.
+After your activity is started, [Activity:onCreate_()](api:app) will be called. You can create your user interface in this method.
 
 The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It draws something on the screen that the user can interact with.
 
@@ -57,11 +57,11 @@ In this application, we instantiate an instance of [TextView](api:view) to show 
 
     TextView welcome = new TextView("Hello World!");
 
-We also specify the layout information in the `profile` property, such that the message shall be placed in the center of the parent. The code is as follows. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
+We also specify the layout information in [View.profile](api:view), such that the message shall be placed in the center of the parent. The code is as follows. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
 
     welcome.profile.text = "anchor: parent; location: center center";
 
-All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling `onCreate_`. To make a view available on the screen, you have to add it to a node of the tree by invoking the  `addChild` method.
+All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling [Activity.onCreate_()](api:app). To make a view available on the screen, you have to add it to a node of the tree by invoking [View.addChild()](api:view).
 
     mainView.addChild(welcome);
 
@@ -69,20 +69,20 @@ All views available in an activity are arranged in a single tree. The root view 
 
 ###Start up your activity
 
-The `main` method is Dart's entry point. All you need to do is to start up your activity by instantiating it and invoking the `run` method.
+The `main` method is Dart's entry point. All you need to do is to start up your activity by instantiating it and invoking [Activity.run()](api:app).
 
     new HelloWorld().run();
 
 ###Handle Events
 
-The view will notify the application about the user's interaction with events. You can listen and handle the events with the `on` property of [View](api:view). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
+The view will notify the application about the user's interaction with events. You can listen and handle the events with [View.on](api:view). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
 
     welcome.on.click.add((event) {
       welcome.text = "Welcome to Rikulo.";
       welcome.requestLayout();
     }
 
-> Notice that we also invoke `requestLayout()` to reposition the greeting message, since we change its content and need to reposition it to the center. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
+> Notice that we also invoke [View.requestLayout()](api:view) to reposition the greeting message, since we change its content and need to reposition it to the center. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
 
 ##The HTML page
 

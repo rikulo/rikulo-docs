@@ -68,7 +68,7 @@ It specifies the width (and height) of the given view.
     foo.profile.width = "20%"; //20% of the total available width
     foo.profile.height = "flex 3"; //see below
 
-If the value is a percentage (such as 20%), it means the percentage of the total available space. For linear layout, it is the percentage of the parent's inner width (or height) (see also [View:get:innerWidth](api:view)).
+If the value is a percentage (such as 20%), it means the percentage of the total available space. For linear layout, it is the percentage of the parent's inner width (or height) (see also [View.innerWidth](api:view)).
 
 If the value is `flex #n`, it means it will take all the remaining space. If two or more child views are specified with `flex #n`, the remaining space will be divided based on the number following `flex` (if no number, 1 is assumed).
 
@@ -88,4 +88,4 @@ Here is the sequence the width of a view is decided (The decision sequence of he
 3. If `foo.width` is specified, it is used.
 4. If none of them is specified, it is assumed to be `content`.
 
-Notice that it also means that the width (and height) set in the profile property has the higher priority than [View:set:width](api:view).
+Notice that it also means that the width (and height) set in the profile property has the higher priority than [View.width](api:view:set).

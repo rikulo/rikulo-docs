@@ -1,0 +1,40 @@
+#!/bin/bash
+# rimd
+#
+#	Purpose:
+#		Converts Rikulo flavored markdown to HTML
+#
+#Sun, Jul 08, 2012  2:31:46 PM, Created by tomyeh
+#Copyright (C) 2012 Potix Corporation. All Rights Reserved.
+#
+docdir=$0
+docdir=${docdir%/*}
+if [ "$docdir" = "." ] ; then
+  docdir=".."
+elif [ "$docdir" = "${docdir%/*}" ] ; then
+  docdir="."
+else
+  docdir=${docdir%/*}
+fi
+if [ "$TERM" = "cygwin" ] || [ "$OSTYPE" = "cygwin" ] ; then
+  docdir=$(cygpath -u $docdir)
+fi
+
+jardir=$docdir/bin/rimd.lib
+if [ ! -d $jardir ] ; then
+	echo $jardir not found
+	exit 1
+fi
+srcdir=$docdir/../docs
+if [ ! -d $srcdir ] ; then
+	echo $srcdir not found
+	exit 1
+fi
+dstdir=$docdir/../out
+if [ ! -d $dstdir ] ; then
+	echo $dstdir not found
+	exit 1
+fi
+
+rm -rf $dstdir/*
+#java -cp ""
