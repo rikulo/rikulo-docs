@@ -44,6 +44,5 @@ else
 	S=":"
 fi
 CP="$jardir/rimd.jar$S$jardir/pegdown.jar$S$jardir/asm.jar$S$jardir/asm-analysis.jar$S$jardir/asm-tree.jar$S$jardir/parboiled-core.jar$S$jardir/parboiled-java.jar"
-echo $CP
 java -classpath "$CP" org.rikulo.rimd.Main \
 	--head $jardir/header.html --foot $jardir/footer.html -f $srcdir $dstdir
