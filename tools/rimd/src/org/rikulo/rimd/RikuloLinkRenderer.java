@@ -1,4 +1,4 @@
-package org.rikulo.md2rk;
+package org.rikulo.rimd;
 
 import org.pegdown.LinkRenderer;
 import org.pegdown.ast.ExpLinkNode;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="../bin/rimd.lib/pegdown.jar"/>
+	<classpathentry kind="lib" path="../bin/rimd.lib/parboiled-core.jar"/>
+	<classpathentry kind="lib" path="../bin/rimd.lib/parboiled-java.jar"/>
+	<classpathentry kind="lib" path="../bin/rimd.lib/asm.jar"/>
+	<classpathentry kind="lib" path="../bin/rimd.lib/asm-tree.jar"/>
+	<classpathentry kind="lib" path="../bin/rimd.lib/asm-analysis.jar"/>
+	<classpathentry kind="output" path="out"/>
+</classpath>

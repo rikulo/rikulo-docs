@@ -1,4 +1,4 @@
-package org.rikulo.md2rk;
+package org.rikulo.rimd;
 
 import java.io.*;
 
@@ -40,8 +40,8 @@ public class Main {
 		}
 		if (src == null)
 			error(
-		 "md2rk - Convert Markdown to Rikulo HTML files\n\n"
-		+"md2rk [-h header] [-f footer] [src [dst]]\n\n"
+		 "rimd - convert rikulo flavored markdown to HTML\n\n"
+		+"rimd [-h header] [-f footer] [src [dst]]\n\n"
 		+"-h header\tspecifies a file that will be generated before the content.\n"
 		+"-f footer\tspecifies a file that will be generated after the content.\n"
 		+"-x extension\tspecifies the extension to replace \".md\". Default: \".html\".\n"

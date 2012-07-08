@@ -1,4 +1,4 @@
-package org.rikulo.md2rk;
+package org.rikulo.rimd;
 
 import org.pegdown.PegDownProcessor;
 import java.io.Writer;
