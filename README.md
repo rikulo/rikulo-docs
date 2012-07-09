@@ -19,7 +19,7 @@ This document is rendered online at [Documentation](http://rikulo.org/docs).
 
 ###TOC
 
-* The table of content is maintained under [header.html](docs/_config_/header.html).
+* The table of content is maintained under [header.html](rikulo-docs/tree/master/docs/_config_/header.html).
 
 ###Image
 
