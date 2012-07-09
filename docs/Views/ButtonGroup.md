@@ -4,4 +4,4 @@
 
 * Package: [view](api:)
 * API Reference: [ButtonGroup](api:view)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/view/src/ButtonGroup.dart)
+* Source: [ButtonGroup.dart](source:client/view/src)
