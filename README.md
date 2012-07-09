@@ -7,6 +7,8 @@ This document is rendered online at [Documentation](http://rikulo.org/docs).
 
 ##Rikulo Flavored Markdown
 
+###Links
+
 * Link to a package: \[view](api:)
 * Link to a class: \[ViewConfig](api:view/impl)
 * Link to a method: \[View.requestLayout()](api:view)
@@ -14,6 +16,16 @@ This document is rendered online at [Documentation](http://rikulo.org/docs).
 * Link to a setter: \[View.width](api:view:set)
 * Link to a global variable: \[activity](api:app)
 * Link to a source file in github: \[camera](source:client/device)
+
+###TOC
+
+* The table of content is maintained under [header.html](docs/_config_/header.html).
+
+###Image
+
+* To make an image viewable under github, we have to append `?raw=true` to the URL. For example,
+
+    \[Foo Image](foot.jpg?raw=true)
 
 ##Resources
 
