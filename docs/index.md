@@ -1,7 +1,6 @@
 #Rikulo Documentation
 
-Rikulo is a cross-platform framework for creating amazing Web and native mobile applications
-in Dart and HTML 5.
+Rikulo is a cross-platform framework for creating amazing Web and native mobile applications in Dart and HTML 5.
 
 ##Tutorial
 

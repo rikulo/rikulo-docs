@@ -15,7 +15,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 		String url = node.url;
 		if (url.equals("api:")) { //package: [view](api:)
 			return new Rendering(
-				"http://rikulo.org/api/_/rikulo_" + text.replace('/', '_') + ".html",
+				"http://rikulo.org/api/rikulo_" + text.replace('/', '_') + ".html",
 				"<code>" + text + "</code>");
 		} else if (url.startsWith("api:")) {
 		/* Link to a class: [ViewConfig](api:view/impl)
@@ -36,7 +36,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 			boolean bVar = i < 0 && Character.isLowerCase(text.charAt(0));
 			if (bVar)
 				return new Rendering(
-					"http://rikulo.org/api/_/rikulo_" + pkg + ".html#" + info,
+					"http://rikulo.org/api/rikulo_" + pkg + ".html#" + info,
 					"<code>" + text + "</code>");
 
 			final String clsnm = i >= 0 ?
@@ -44,7 +44,14 @@ public class RikuloLinkRenderer extends LinkRenderer {
 					+ (bSet ? "set:": bGet || !bMethod ? "get:": "") +  info.substring(i + 1):
 				info + _ext;
 			return new Rendering(
-				"http://rikulo.org/api/_/rikulo_" + pkg + "/" + clsnm,
+				"http://rikulo.org/api/rikulo_" + pkg + "/" + clsnm,
+				"<code>" + text + "</code>");
+		} else if (url.startsWith("source:")) { //source: [name](source:path)
+			String path = url.substring(7);
+			if (path.length() > 0 && path.charAt(path.length() - 1) != '/')
+				path += '/';
+			return new Rendering(
+				"https://github.com/rikulo/rikulo/tree/master/" + path + text,
 				"<code>" + text + "</code>");
 		} else {
 			final int i = url.lastIndexOf(".md");

@@ -13,6 +13,7 @@ This document is rendered online at [Documentation](http://rikulo.org/docs).
 * Link to a getter: \[View.width](api:view) or \[View.width](api:view:get)
 * Link to a setter: \[View.width](api:view:set)
 * Link to a global variable: \[activity](api:app)
+* Link to a source file in github: \[camera](source:client/device)
 
 ##Resources
 
