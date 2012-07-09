@@ -13,7 +13,10 @@ You can download Cordova/PhoneGap **[here](http://phonegap.com/download)**.
 ##Steps
 Cordova/PhoneGap supports multiple mobile platforms including Android, iOS and others. Each platform needs its own specific libraries, SDKs, and development environment.
 
+>Though each supported mobile platform in Cordova/PhoneGap needs its own specific libraries, SDKs, and development environment, however, only one Rikulo application is required to run on across all mobile platforms.
+
 For convenience, following we use the Android platform and the [Hello World](../Hello_World.md) example mentioned in previous section to show you the steps of building a native Rikulo mobile application.
+>For other platforms such as iOS, you can check the document [here](http://docs.phonegap.com/en/1.9.0/guide_getting-started_index.md.).
 
 1. Compile your Rikulo application from Dart to JavaScript. 
 	* Open your application folder in [Dart Editor](http://www.dartlang.org/docs/editor/).
@@ -26,9 +29,7 @@ For convenience, following we use the Android platform and the [Hello World](../
 
 	Now you shall have had a working `HelloCordova` sample application running in Cordova/PhoneGap environment. The entry point of the `HelloCordova` application in Cordova/PhoneGap environment is the `index.html` file under `assets/www` folder.
 
-	>For other platforms such as iOS, you can check the document [here](http://docs.phonegap.com/en/1.9.0/guide_getting-started_index.md.).
-
-3. Now let's replace the `index.html` under `assets/www` with the one from our Rikulo program.
+3. Let's replace the `index.html` under `assets/www` with the one from our Rikulo program.
 	* Copy `index.html` of our Rikulo example onto `assets/www` folder and replace the old one.
 	* Copy all resource files needed for the Rikulo example onto `assets/www` folder. e.g. the `resources` folder and files under.
 	* Copy the compiled xxx.dart.js file onto `assets/www` folder. e.g. the `HelloWorld.dart.js`.
@@ -44,7 +45,7 @@ Following we show you the basic elements of how to access device native resource
 
 ##The Dart Code
 
-	#import('client/app/app.dart');
+    #import('client/app/app.dart');
     #import('client/view/view.dart');
     #import('client/device/device.dart');
     #import('client/device/accelerometer/accelerometer.dart');
