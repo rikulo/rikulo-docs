@@ -5,6 +5,8 @@ package org.rikulo.rimd;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.util.Map;
+import java.util.Properties;
 
 public class Main {
 	final Processor _proc;
@@ -15,24 +17,62 @@ public class Main {
 		new Main(args).run();
 	}
 	private Main(String[] args) throws IOException {
-		String src = null, dst = null, header = null, footer = null, ext = ".html";
+		String src = null, dst = null, header = null, footer = null,
+			api = "", source = "", ext = ".html";
 		boolean force = false;
 		for (int i = 0; i < args.length; ++i) {
-			if ("--head".equals(args[i])) {
+			if ("--config".equals(args[i])) {
+				if (++i >= args.length)
+					error("Filename required");
+				final File config = new File(args[i]);
+				final Properties props = new Properties();
+				final Reader reader = new InputStreamReader(new FileInputStream(config), "UTF-8");
+				try {
+					props.load(reader);
+				} finally {
+					reader.close();
+				}
+				for (final Map.Entry<Object, Object> entry: props.entrySet()) {
+					final String nm = (String)entry.getKey(), val = (String)entry.getValue();
+					if ("header".equals(nm)) {
+						header = val;
+						if (!new File(header).isAbsolute())
+							header = new File(config.getParent(), header).getPath();
+					} else if ("footer".equals(nm)) {
+						footer = val;
+						if (!new File(footer).isAbsolute())
+							footer = new File(config.getParent(), footer).getPath();
+					} else if ("extension".equals(nm)) {
+						ext = val;
+					} else if ("api".equals(nm)) {
+						api = val;
+					} else if ("source".equals(nm)) {
+						source = val;
+					} else if ("force".equals(nm)) {
+						force = "true".equals(val);
+					}
+				}
+			} else if ("--header".equals(args[i])) {
 				if (++i >= args.length)
 					error("Filename required");
 				header = args[i];
-			} else if ("--foot".equals(args[i])) {
+			} else if ("--footer".equals(args[i])) {
 				if (++i >= args.length)
 					error("Filename required");
 				footer = args[i];
 			} else if ("--ext".equals(args[i])) {
 				if (++i >= args.length)
-					error("Filename required");
+					error("Extension required");
 				ext = args[i];
-				if (ext.length() > 0 && ext.charAt(0) != '.')
-					ext = "." + ext;
-			} else if ("-f".equals(args[i])) {
+			} else if ("--api".equals(args[i])) {
+				if (++i >= args.length)
+					error("URL of api required");
+				api = args[i];
+			} else if ("--source".equals(args[i])) {
+				if (++i >= args.length)
+					error("URL of source required");
+				source = args[i];
+			} else if ("--force".equals(args[i])) {
 				force = true;
 			} else if (args[i].startsWith("-")) {
 				error("Unknown option: " + args[i]);
@@ -44,16 +84,28 @@ public class Main {
 				error("Too many arguments");
 			}
 		}
+		if (ext.length() > 0 && ext.charAt(0) != '.')
+			ext = "." + ext;
 		if (src == null)
 			error(
 		 "rimd - convert rikulo flavored markdown to HTML\n\n"
 		+"rimd [-h header] [-f footer] [src [dst]]\n\n"
-		+"--head header\tspecifies a file that will be generated before the content.\n"
-		+"--foot footer\tspecifies a file that will be generated after the content.\n"
+		+"--config config.props\tspecifies a configuration file.\n"
+		+"--header header\tspecifies a file that will be generated before the content.\n"
+		+"--footer footer\tspecifies a file that will be generated after the content.\n"
 		+"--ext extension\tspecifies the extension to replace \".md\". Default: \".html\".\n"
-		+"-f\tforces the creation of the destination; overwrite if exists.\n"
+		+"--api url\tspecifies the URL of api. Default: \"\".\n"
+		+"--source url\tspecifies the URL of source. Default: \"\".\n"
+		+"--force\tforces the creation of the destination; overwrite if exists.\n"
 		+"src\tspecifies the source. If it is the directory, all files under the given directory will be processed.\n"
-		+"dst\tspecifies the destination, either a file or a console. If omitted, it will be generated to the console."
+		+"dst\tspecifies the destination, either a file or a console. If omitted, it will be generated to the console.\n\n"
+		+"Here is a sample of config.props:\n\n"
+		+"api=http://api.rikulo.org/rikulo/latest/rikulo_\n"
+		+"source=https://github.com/rikulo/rikulo/tree/master/\n"
+		+"header=header.html\n"
+		+"footer=footer.html\n"
+		+"extension=.html\n"
+		+"force=true\n"
 			);
 
 		_src = new File(src);
@@ -66,7 +118,7 @@ public class Main {
 		if (footer != null)
 			footer = read(new File(footer));
 
-		_proc = new Processor(header, footer, ext);
+		_proc = new Processor(header, footer, api, source, ext);
 		_force = force;
 	}
 	private static String read(File fl) throws IOException {
@@ -91,7 +143,7 @@ public class Main {
 			final Writer out;
 			if (dst != null) {
 				if (!_force && dst.exists())
-					error(dst + " exists. Please specify -f to overwrite if you want.");
+					error(dst + " exists. Please specify --force to overwrite if you want.");
 				log(src + " => " + dst);
 				out = new OutputStreamWriter(new FileOutputStream(dst), "UTF-8");
 			} else {
@@ -107,7 +159,7 @@ public class Main {
 
 		//Process the whole directory
 		if (!_force && !dst.exists())
-			error(dst+" not found. Please specify -f to create it if you want.");
+			error(dst+" not found. Please specify --force to create it if you want.");
 		process(src, dst);
 		log("Total " + _proc.count + " markdown files are processed.");
 	}
@@ -128,6 +180,10 @@ public class Main {
 			}
 			return;
 		}
+
+		if ("_config_".equals(src.getName()))
+			return; //ignored
+
 		if (!dst.exists() && !dst.mkdirs())
 			error("Failed to creae a directory, "+dst);
 		final String[] files = src.list();

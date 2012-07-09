@@ -1,0 +1,6 @@
+api=http://api.rikulo.org/rikulo/latest/rikulo_
+source=https://github.com/rikulo/rikulo/tree/master/
+header=header.html
+footer=footer.html
+extension=.html
+force=true
