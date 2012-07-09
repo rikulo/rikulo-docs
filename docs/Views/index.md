@@ -6,7 +6,7 @@
     * [ID Space and Query](Fundamentals/ID_Space_and_Query.md)
     * [Style with CSS](Fundamentals/Style_with_CSS.md)
     * [Show Web Content](Fundamentals/Show_Web_Content.md)
-    * [Encapsulate Data from UI with Model](Fundamentals/Encapsulate_Data_from_UI_with_Model.md)
+    * [Seperate Data from UI with Model](Fundamentals/Seperate_Data_from_UI_with_Model.md)
 * [Activity](Activity.md)
 * [Application](Application.md)
 * [Button](Button.md)
