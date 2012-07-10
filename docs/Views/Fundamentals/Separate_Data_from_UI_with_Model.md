@@ -36,7 +36,7 @@ Since the model is shared, the selection is shared too. If the user selects an i
 
 ##Not to Share the Selection
 
-If you prefer to share the data but not to share the selection, you can implement a list model that maintains the selection but *delegate* `operator[]` to another list model holding the data.
+If you prefer to share the data but not to share the selection, you can implement a list model that maintains the selection but *delegate* [ListModel.operator[ ]](api:model) to another list model holding the data.
 
     class ProxyListModel<E> extends AbstractListModel<E> {
       final ListModel<E> origin;
@@ -53,7 +53,7 @@ Then, you can split the selection as you want it.
 
 ##Data Altering
 
-If you have to change the data after assigning to UI, you have to invoke one of the alerting method in [DefaultListModel](api:model), such as [DefaultListModel.operator[]=](api:model) and [DefaultListModel.add()](api.model). For example,
+If you have to change the data after assigning to UI, you have to invoke one of the alerting method in [DefaultListModel](api:model), such as [DefaultListModel.operator[ ]=](api:model) and [DefaultListModel.add()](api:model). For example,
 
     model.add("flower"); //UI will be updated automatically to show "flower"
     model.addToSelection("flower"); //UI will be updated to select "flower"
