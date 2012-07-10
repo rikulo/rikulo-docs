@@ -4,6 +4,8 @@ You can separate the underlying data structure containing the data from the UI t
 
 To do so, you first implement a model and then assign the model to a view that supports it. For example, to display a list of options, you have to implement [ListModel](api:model). Then, you can assign it to a view that supports [ListModel](api:model), such as [RadioGroup](api:view), [DropDownList](ap:view), and [ListView](api:view) depending on your need.
 
+##Use Default Implementation
+
 Though [ListModel](api:model) is simple, you can use the default implementation, [DefaultListModel](api:model) directly. For example,
 
     new DropDownList(model: new ListModel(["apple", "orange", "lemon", "juice"]));
