@@ -25,7 +25,7 @@ This document is rendered online at [Documentation](http://docs.rikulo.org/rikul
 
 * The table of content is maintained under [header.html](rikulo-docs/tree/master/docs/_config_/header.html).
 
-###Image
+###Images
 
 * To make an image viewable under github, we have to append `?raw=true` to the URL. For example,
 
