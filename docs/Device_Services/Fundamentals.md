@@ -4,16 +4,17 @@ Rikulo leverages and integrates with [Cordova/PhoneGap](http://phonegap.com/) pl
 
 ##What Services
 
-Based on Cordova/PhoneGap, Rikulo currently supports eight native device features accross seven mobile platforms including Android, iOS, and others. Rikulo bridge Dart to Cordova's JavaScript APIs and get accessed to the following seven native device services:
+Based on Cordova/PhoneGap, Rikulo currently supports nine native device features across seven mobile platforms including Android, iOS, and others. Rikulo bridge Dart to Cordova's JavaScript APIs and get accessed to the following seven native device services:
 
-* [Accelerometer](api:device/accelerometer): access to the device's motion sensor
-* [Camera](api:device/camera): capture a photo with the device Camera
-* [Capture](api:device/capture): capture media files using device's media capture application
-* [Compass](api:device/compass): access to the device's compass sensor
-* [Contacts](api:device/contacts): read/update/create/remove the device's contact list
-* [Device](api:device): fetch the device's basic information
-* [Geolocation](api:device/geolocation): access to the device's geo-location sensor
-* [Notification](api:device/notification): trigger the device's visual/audible/vibration notifications
+* [Accelerometer](api:device/accelerometer): access to the device's motion sensor.
+* [Camera](api:device/camera): capture a photo with the device Camera.
+* [Capture](api:device/capture): capture media files using device's media capture application.
+* [Compass](api:device/compass): access to the device's compass sensor.
+* [Connection](api:device/connection): fetch the device's connection information.
+* [Contacts](api:device/contacts): read/update/create/remove the device's contact list.
+* [Device](api:device): fetch the device's basic information.
+* [Geolocation](api:device/geolocation): access to the device's geographic location sensor.
+* [Notification](api:device/notification): trigger the device's visual/audible/vibration notifications.
 
 ##Use the Services
 
@@ -38,7 +39,7 @@ Based on Cordova/PhoneGap, Rikulo currently supports eight native device feature
           new HelloWorld().run();
         }
 
-* After enabling the device's accessibility, you can use the globe variable [device](api:device) to access eight device services. For example, you can access the accelerometer by refer [device.accelerometer](api:device). Then you can register device event listener or call the accelerometer's method to access the motion sensor. 
+* After enabling the device's accessibility, you can use the global variable [device](api:device) to access nine device services. For example, you can access the accelerometer by refer [device.accelerometer](api:device). Then you can register device event listener or call the accelerometer's method to access the motion sensor. 
 
 	e.g. The following code shows an example that listens to the AccelerationEvent of the  accelerometer motion sensor and shows the acceleration value in x, y and z axis. 
 
@@ -69,4 +70,4 @@ Based on Cordova/PhoneGap, Rikulo currently supports eight native device feature
 
 Please refer to section [Building Native Mobile Application](../Getting_Started/Building_Native_Mobile_Application) for details about how to setup the Cordova/PhoneGap environment, compile the Rikulo application, and deploy and run on mobile devices.
 
->For details about how to use each supported device service, please refert to [API Reference](http://api.rikulo.org/rikulo/latest).
+>For details about how to use each supported device service, please refer to [API Reference](http://api.rikulo.org/rikulo/latest).

@@ -38,7 +38,7 @@ For convenience, following we use the Android platform and the [Hello World](../
 
 ![Cordova Android Development Environment](cordova-env.png?raw=true)
 
-# Access native mobile resources
+# Access native mobile devices' resources
 Sometimes you might want to access the mobile devices' native resources such as `Camera`, `Accelerometer`, `Compass`, `Geolocation`, `Contacts` and so on. Rikulo integrates with Cordova/PhoneGap and provide these features seamlessly.
 
 Following we show you the basic elements of how to access device native resources in Rikulo by enhancing the simple `Hello World` example application.
@@ -56,7 +56,7 @@ Following we show you the basic elements of how to access device native resource
         welcome.profile.text = "anchor:  parent; location: center center";
         mainView.addChild(welcome);
 		
-        //listen to mobile accelerometer and show the acceleration in x, y and z axis.
+        //listen to device's accelerometer and show the acceleration in x, y and z axis.
         device.accelerometer.on.accelerate.add((AccelerationEvent event) {
           welcome.text = "${event.acceleration.timeStamp},\n"
             "x:${event.acceleration.x},\ny:${event.acceleration.y},\nz:${event.acceleration.z}";
@@ -83,11 +83,11 @@ As shown above:
 
 ###Enable Device Accessibility
 
-Calling globle method [enableDeviceAccess()](api:device) in the `main` method to initialize the device accessibility.
+Calling global method [enableDeviceAccess()](api:device) in the `main` method to initialize the device accessibility.
 
 ###Access the Device Resource
 
-Via the global variable [device](api:device) you are able to access all mobile's native resources. 
+Via the global variable [device](api:device) you are able to access all mobile device's native resources. 
 
 In this application, we register a device event listener and listen to the [AccelerationEvent](api:device) of the [device.accelerometer](api:device) resource with frequency set to every 1000 milliseconds.
 
