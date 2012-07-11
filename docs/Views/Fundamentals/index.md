@@ -5,4 +5,4 @@
 * [ID Space and Query](ID_Space_and_Query.md)
 * [Style with CSS](Style_with_CSS.md)
 * [Show Web Content](Show_Web_Content.md)
-* [Seperate Data from UI with Model](Seperate_Data_from_UI_with_Model.md)
+* [Separate Data from UI with Model](Separate_Data_from_UI_with_Model.md)
