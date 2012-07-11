@@ -39,9 +39,27 @@ public class RikuloLinkRenderer extends LinkRenderer {
 				return new Rendering(_api + pkg + ".html#" + info,
 					"<code>" + text + "</code>");
 
+			String mtd = i >= 0 ? info.substring(i + 1).trim(): null;
+			boolean bOp = mtd != null && mtd.startsWith("operator");
+			if (bOp) {
+				if (mtd.indexOf('[') > 0)
+					mtd = mtd.indexOf('=') > 0 ? ":setindex": ":index";
+				else if (mtd.indexOf("==") > 0)
+					mtd = ":eq";
+				else if (mtd.indexOf('+') > 0)
+					mtd = ":add";
+				else if (mtd.indexOf('-') > 0)
+					mtd = ":sub";
+				else if (mtd.indexOf('*') > 0)
+					mtd = ":mul";
+				else if (mtd.indexOf('/') > 0)
+					mtd = ":div";
+				else
+					bOp = false;
+			}
 			final String clsnm = i >= 0 ?
 				info.substring(0, i) + ".html#"
-					+ (bSet ? "set:": bGet || !bMethod ? "get:": "") +  info.substring(i + 1):
+					+ (bSet ? "set:": bGet || (!bMethod && !bOp) ? "get:": "") +  mtd:
 				info + _ext;
 			return new Rendering(_api + pkg + "/" + clsnm,
 				"<code>" + text + "</code>");
