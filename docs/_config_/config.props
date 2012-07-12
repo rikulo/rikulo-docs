@@ -1,9 +1,9 @@
 api=http://api.rikulo.org/rikulo/latest/rikulo_
 source=https://github.com/rikulo/rikulo/tree/master/
-header=header.html
-footer=footer.html
+header=autogen-header.html
+footer=autogen-footer.html
 extension=.html
 force=true
-tmp-domain=http://rikulo.org
-tmp-header=tmp-header.html
-tmp-footer=tmp-footer.html
+template-domain=http://rikulo.org
+template-header=template-header.html
+template-footer=template-footer.html
