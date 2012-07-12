@@ -59,9 +59,9 @@ public class Main {
 		} finally {
 			reader.close();
 		}
-		domain = (String) props.get("tmp-domain");
-		header = getTemplateString((String) props.get("tmp-header"), config);
-		footer = getTemplateString((String) props.get("tmp-footer"), config);
+		domain = (String) props.get("template-domain");
+		header = getTemplateString((String) props.get("template-header"), config);
+		footer = getTemplateString((String) props.get("template-footer"), config);
 		
 		headerFile = getTemplateFile((String) props.get("header"), config);
 		footerFile = getTemplateFile((String) props.get("footer"), config);
