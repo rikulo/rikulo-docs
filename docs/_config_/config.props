@@ -4,5 +4,6 @@ header=header.html
 footer=footer.html
 extension=.html
 force=true
+tmp-domain=http://rikulo.org
 tmp-header=tmp-header.html
 tmp-footer=tmp-footer.html

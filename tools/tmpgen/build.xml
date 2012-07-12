@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project name="Rikulo doc template" default="build" basedir=".">
+
+	<!-- VARIABLES -->
+	<property name="src.dir" value="src"/>
+	<property name="classes.dir" value="bin"/>
+	<property name="lib.dir" value="../bin/rimd.lib" />
+	<property name="archive.name" value="tmpgen.jar"/>
+	<property name="mainclass" value="org.zkoss.rikulo.tmpgen.Main"/>
+	
+
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="jsoup-1.6.2.jar" />
+		</fileset>
+	</path>
+
+	<!-- TARGETS -->
+	<target name="clean">
+		<delete dir="${lib.dir}/tmpgen.jar" />
+		<mkdir dir="${classes.dir}" />
+	</target>
+
+	<target name="compile" depends="clean">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" 
+			includeAntRuntime="yes" classpathref="compile.classpath" 
+			encoding="UTF-8" target="1.6" source="1.6" />
+	</target>
+
+	<target name="build" depends="compile">
+		<jar basedir="${classes.dir}" destfile="${lib.dir}/${archive.name}">
+			<manifest>
+		        <attribute name="Main-Class" value="${mainclass}"/>
+		    </manifest>
+		</jar>
+	</target>
+
+</project>

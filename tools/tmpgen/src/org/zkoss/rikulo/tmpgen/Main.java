@@ -24,9 +24,9 @@ import org.jsoup.select.Elements;
 
 
 public class Main {
-	private static final String TMP_PATTERN = "<tmp.*?>(?s)(.+?)(?s)</tmp>";
+	private static final String TMP_PATTERN = ".*?>(?s)(.+?)(?s)</";
 	private File headerFile, footerFile;
-	private String header, footer;
+	private String header, footer, domain;
 	/**
 	 * @param args
 	 */
@@ -59,7 +59,7 @@ public class Main {
 		} finally {
 			reader.close();
 		}
-		
+		domain = (String) props.get("tmp-domain");
 		header = getTemplateString((String) props.get("tmp-header"), config);
 		footer = getTemplateString((String) props.get("tmp-footer"), config);
 		
@@ -90,7 +90,7 @@ public class Main {
 
 	private void run() throws IOException {
 		try {
-			Document doc = Jsoup.parse(new URL("http://rikulo.org/learn/"), 10000);
+			Document doc = Jsoup.parse(new URL(domain + "/learn/"), 10000);
 			
 			generateHeaderTemplate(doc);
 			generateFooterTemplate(doc);
@@ -102,20 +102,23 @@ public class Main {
 	
 	private void generateHeaderTemplate(Document doc) throws IOException {
 		String headerCnt = "";
-		String bodyCntTop = header.replaceAll(TMP_PATTERN, "");
-		Matcher matcher = Pattern.compile(TMP_PATTERN).matcher(header);
+		String pattern = "<header-template" + TMP_PATTERN+ "header-template>";
+		String bodyCntTop = header.replaceAll(pattern, "");
+		Matcher matcher = Pattern.compile(pattern).matcher(header);
 		if (matcher.find()) {
 			headerCnt = matcher.group(1);
 	    }
+		
+		doc.getElementsByTag("title").remove();
+		doc.getElementsByAttributeValue("href", "/less/learn").remove();
+		doc.getElementsByTag("script").get(0).before(headerCnt);
 		
 		relocalHref(doc.getElementsByTag("link"), "href");
 		relocalHref(doc.getElementsByTag("script"), "src");
 		relocalHref(doc.getElementsByTag("a"), "href");
 		relocalHref(doc.getElementsByTag("img"), "src");
 		
-		doc.getElementsByTag("title").remove();
-		doc.getElementsByAttributeValue("href", "/less/learn").remove();
-		doc.getElementsByTag("script").get(0).before(headerCnt);
+		
 		
 		Element inner = doc.getElementById("template-inner");
 		inner.children().remove();
@@ -124,7 +127,7 @@ public class Main {
 			.matcher(doc.html());
 		if (matcher.find()) {
 			writeStringToFile(headerFile, matcher.group(0)
-				.replace("/resource/js/lib/html5.js", "http://rikulo.org/resource/js/lib/html5.js")
+				.replace("/resource/js/lib/html5.js", domain + "/resource/js/lib/html5.js")
 				.concat(bodyCntTop));
 	    }
 	}
@@ -133,14 +136,15 @@ public class Main {
 		for (Element link : links) {
 			String href = link.attr(attr);
 			if (href.startsWith("/"))
-				 link.attr(attr, "http://rikulo.org" + href);
+				 link.attr(attr, domain + href);
 		}
 	}
 
 	private void generateFooterTemplate(Document doc) throws IOException {
 		String footerCnt = "";
-		String bodyCntBottom = footer.replaceAll(TMP_PATTERN, "");
-		Matcher matcher = Pattern.compile(TMP_PATTERN).matcher(footer);
+		String pattern = "<footer-template" + TMP_PATTERN+ "footer-template>";
+		String bodyCntBottom = footer.replaceAll(pattern, "");
+		Matcher matcher = Pattern.compile(pattern).matcher(footer);
 		if (matcher.find()) {
 			footerCnt = matcher.group(1);
 	    }
