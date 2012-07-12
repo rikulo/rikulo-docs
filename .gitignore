@@ -1,6 +1,5 @@
 *.local
 Thumbs.db
-.project
 .children
 *.bak
 *.class
