@@ -7,7 +7,7 @@ A Rikulo application consists of
 * At least one Dart file to hold the Dart code of your application
 * At least one HTML page to load the Dart file(s)
 
-> Please refer to [here](../Introduction/index.md) for installing Rikulo to your application.
+> Please refer to [here](Introduction.md) for installing Rikulo to your application.
 
 ##The Dart Code
 

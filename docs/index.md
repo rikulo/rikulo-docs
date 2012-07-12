@@ -4,7 +4,7 @@ Rikulo is a cross-platform framework for creating amazing Web and native mobile 
 
 ##Tutorial
 
-* [Introduction and Installation](Introduction/index.md)
+* [Introduction and Installation](Getting_Started/Introduction.md)
 * [Getting Started with Hello World](Getting_Started/Hello_World.md)
 * [Building Native Mobile Application](Getting_Started/Building_Native_Mobile_Application.md)
 
