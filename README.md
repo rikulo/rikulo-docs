@@ -23,7 +23,7 @@ This document is rendered online at [Documentation](http://docs.rikulo.org/rikul
 
 ###TOC
 
-* The table of content is maintained under [header.html](rikulo-docs/tree/master/docs/_config_/header.html).
+* The table of content is maintained under [template-header.html](rikulo-docs/tree/master/docs/_config_/template-header.html).
 
 ###Images
 
