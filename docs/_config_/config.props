@@ -4,3 +4,5 @@ header=header.html
 footer=footer.html
 extension=.html
 force=true
+tmp-header=tmp-header.html
+tmp-footer=tmp-footer.html
