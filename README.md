@@ -1,9 +1,13 @@
 #Rikulo Documentation
 
-> Documentation is as important as code. It, of course, has bugs, typos, hard-to-read, and more.
-> There are many ways to contribute. Please [help us](http://rikulo.org/contribute/) to make it better.
+This is the repository for [Rikulo](http://rikulo.org) documentation.
 
-This document is rendered online at [Documentation](http://docs.rikulo.org/rikulo/latest).
+Documentation is as important as code. It, of course, has bugs, typos, hard-to-read, and more. There are many ways to contribute. Please [help us](http://rikulo.org/contribute/) to make it better.
+
+Notice that this document is rendered online at [Documentation](http://docs.rikulo.org/rikulo/latest).
+
+> Rikulo is a cross-platform framework for creating amazing Web and native
+mobile applications in Dart and HTML 5.
 
 ##Rikulo Flavored Markdown
 
