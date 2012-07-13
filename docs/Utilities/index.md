@@ -1,4 +1,4 @@
 #Utilities
 
-* [Message Queue](Message_Queue.md)
+* [MessageQueue](MessageQueue.md)
 * [Miscellanous Utilities](Miscellanous_Utilities.md)

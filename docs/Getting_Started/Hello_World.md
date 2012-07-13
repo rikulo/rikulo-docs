@@ -49,7 +49,7 @@ Implementing an activity is straightforward: extend your class from [Activity](a
 
 ###Draw your user interface
 
-After your activity is started, [Activity:onCreate_()](api:app) will be called. You can create your user interface in this method.
+After your activity is started, [Activity.onCreate_()](api:app) will be called. You can create your user interface in this method.
 
 The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It draws something on the screen that the user can interact with.
 

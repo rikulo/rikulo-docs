@@ -14,7 +14,7 @@ Let us assume we have a view called `pv` and it has a child view called `cv`. He
 
 #Customization
 
-You can provide additional layouts or replace the existent ones. To do so, you first implement the [Layout](api:layout) interface. Then, register it to [LayoutManage](api:layout). For example, assume you implement a tile layout, called `TitleLayout`, and  you can register it as follows.
+You can provide additional layouts or replace the existent ones. To do so, you first implement the [Layout](api:layout) interface. Then, register it to [LayoutManager](api:layout). For example, assume you implement a tile layout, called `TitleLayout`, and  you can register it as follows.
 
     layoutManager.addLayout("tile", new TileLayout());
 

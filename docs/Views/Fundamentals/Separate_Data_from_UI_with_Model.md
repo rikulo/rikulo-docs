@@ -2,7 +2,7 @@
 
 You can separate the underlying data structure containing the data from the UI that displays the data. It is generally suggested, since you can construct and even change complex UI easier. 
 
-To do so, you first implement a model and then assign the model to a view that supports it. For example, to display a list of options, you have to implement [ListModel](api:model). Then, you can assign it to a view that supports [ListModel](api:model), such as [RadioGroup](api:view), [DropDownList](ap:view), and [ListView](api:view) depending on your need.
+To do so, you first implement a model and then assign the model to a view that supports it. For example, to display a list of options, you have to implement [ListModel](api:model). Then, you can assign it to a view that supports [ListModel](api:model), such as [RadioGroup](api:view), [DropDownList](api:view), and [ListView](api:view) depending on your need.
 
 ##Use Default Implementation
 

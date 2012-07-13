@@ -47,3 +47,7 @@ Then, all listeners registered to `broadcaster` will be called.
     })
 
 Rikulo utilizes `broadcaster` to send a special event, [PopupEvent](api:event). It is used to notify that a popup is showing, such that the listeners can clear up something, such as closing the popups they opened.
+
+##Gestures
+
+For handling drag-and-drop, scrolling, swipe and other gestures, Rikulo provides a collection of utilities in [Gestures](../Gestures/index.md) that abstract the gestures into easy callbacks. It is suggested to use one of them or implement your own to abstract the details, rather than listening the events directly.

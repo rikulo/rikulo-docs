@@ -14,7 +14,7 @@ The type specifies which layout to use, while the other parameters specify the d
 
 >A layout is an object implementing the [Layout](api:layout) interface. The type specified in `layout` actually refers to one of the layouts managed by the layout manager ([LayoutManager](api:layout)).
 
-The `layout` property is actually an instance of [LayoutDeclaration](api:layout). Thus, you can specify the layout in type-safe way, if you like. The following is equivalent to the previous snippet.
+The `layout` property is actually an instance of [LayoutDeclaration](api:view). Thus, you can specify the layout in type-safe way, if you like. The following is equivalent to the previous snippet.
 
     foo.layout.type = "lienar";
     foo.layout.orient = "vertical";
