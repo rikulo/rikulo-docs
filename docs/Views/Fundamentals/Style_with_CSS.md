@@ -7,7 +7,7 @@ You can assign the CSS style to change the look of a view.
     view.style.backgroundColor = "blue";
     view.style.cssText = "font-size: 15px; text-align: center";
 
-[View](api:view)'s `style` is an instance of [CSSStyleDeclartion](http://api.rikulo.org/rikulo/latest/html/CSSStyleDeclaration.html). It will correct the CSS name with a proper prefix for the browser automatically. For example, the following statement will assign the value to `-webkit-transform` when running on Chrome.
+[View](api:view)'s `style` is an instance of [CSSStyleDeclaration](dart:html). It will correct the CSS name with a proper prefix for the browser automatically. For example, the following statement will assign the value to `-webkit-transform` when running on Chrome.
 
     view.style.transform = "translate3d(-10px, -20px, 0)";
 

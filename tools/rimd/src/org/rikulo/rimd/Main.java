@@ -19,13 +19,13 @@ public class Main {
 	private Main(String[] args) throws IOException {
 		String src = null, dst = null, header = null, footer = null,
 			api = "", source = "", ext = ".html";
+		final Properties props = new Properties();
 		boolean force = false;
 		for (int i = 0; i < args.length; ++i) {
 			if ("--config".equals(args[i])) {
 				if (++i >= args.length)
 					error("Filename required");
 				final File config = new File(args[i]);
-				final Properties props = new Properties();
 				final Reader reader = new InputStreamReader(new FileInputStream(config), "UTF-8");
 				try {
 					props.load(reader);
@@ -118,8 +118,32 @@ public class Main {
 		if (footer != null)
 			footer = read(new File(footer));
 
-		_proc = new Processor(header, footer, api, source, ext);
+		_proc = new Processor(replaceVariables(header, props),
+			replaceVariables(footer, props), api, source, ext);
 		_force = force;
+	}
+	private static String replaceVariables(String content, Properties props) {
+		if (props.isEmpty())
+			return content;
+
+		StringBuffer sb = null;
+		for (int i = 0;;) {
+			final int j = content.indexOf("${", i);
+			if (j < 0)
+				return sb != null ? sb.append(content.substring(i)).toString(): content;
+
+			final int k = content.indexOf('}', j + 2);
+			if (k < 0)
+				error("Unclosed " + (content.length() > j + 10 ? content.substring(j, j + 10): content.substring(j)));
+
+			if (sb == null)
+				sb = new StringBuffer();
+			sb.append(content.substring(i, j));
+			final Object val = props.get(content.substring(j + 2, k));
+			if (val != null)
+				sb.append(val);
+			i = k + 1;
+		}
 	}
 	private static String read(File fl) throws IOException {
 		final Reader reader = new InputStreamReader(new FileInputStream(fl), "UTF-8");
