@@ -15,7 +15,7 @@ Cordova/PhoneGap supports multiple mobile platforms including Android, iOS and o
 
 >Though each supported mobile platform in Cordova/PhoneGap needs its own specific libraries, SDKs, and development environment, however, only one Rikulo application is required to run on across all mobile platforms.
 
-For convenience, following we use the Android platform and the [Hello World](../Hello_World.md) example mentioned in previous section to show you the steps of building a native Rikulo mobile application.
+For convenience, following we use the Android platform and the [Hello World](Hello_World.md) example mentioned in previous section to show you the steps of building a native Rikulo mobile application.
 >For other platforms such as iOS, you can check the document [here](http://docs.phonegap.com/en/1.9.0/guide_getting-started_index.md.).
 
 1. Compile your Rikulo application from Dart to JavaScript. 
@@ -72,14 +72,14 @@ Following we show you the basic elements of how to access device native resource
 
 As shown above:
 
-1. Import [device](api:) and [accelerometer](api:) packages along with others.
+1. Import [device](api:) and [device/accelerometer](api:) packages along with others.
 2. Call global method [enableDeviceAccess()](api:device) in the `main` method with proper Cordova JavaScript file name.
 >The Cordova JavaScript file name in `enableDeviceAccess` must match to what you copied under `assets/www`; e.g. in this example `cordova-1.9.0.js`.
 3. Use the native resource `accelerometer` via the global variable called [device.accelerometer](api:device).
 
-###Import [device](api:) and [accelerometer](api:) package
+###Import [device](api:) and [device/accelerometer](api:) package
 
-[device](api:) is the packages that handles all device resources. [accelerometer](api:) package is the package specific for accelerometer resource in mobile device.
+The [device](api:) package is the main package holding all device resources. The [device/accelerometer](api:) package is the package specific for accelerometer resource in mobile device.
 
 ###Enable Device Accessibility
 
@@ -89,7 +89,7 @@ Calling global method [enableDeviceAccess()](api:device) in the `main` method to
 
 Via the global variable [device](api:device) you are able to access all mobile device's native resources. 
 
-In this application, we register a device event listener and listen to the [AccelerationEvent](api:device) of the [device.accelerometer](api:device) resource with frequency set to every 1000 milliseconds.
+In this application, we register a device event listener and listen to the [AccelerationEvent](api:device/accelerometer) of the [Device.accelerometer](api:device) resource with frequency set to every 1000 milliseconds.
 
 >Per the different kind of native resources, you can access the device resources by calling directly the APIs or register proper device event listeners.
 
