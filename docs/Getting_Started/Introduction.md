@@ -38,7 +38,7 @@ A simple sample app showing how to position views in any arbitary position.
 * [input](source:samples/input) -
 A list of inputs of different types.
 * [scroll-view](source:samples/scroll-view) -
-A simple sample app showing the use of ScrollView
+Two simple sample apps showing the use of [ScrollView](api:view), including a list view.
 * [viewport](source:samples/viewport) -
 A simple sample app demostrating the implementation of a view supporting the *viewport*.
 * [circle](source:samples/circle) -
