@@ -50,4 +50,4 @@ Rikulo utilizes `broadcaster` to send a special event, [PopupEvent](api:event). 
 
 ##Gestures
 
-For handling drag-and-drop, scrolling, swipe and other gestures, Rikulo provides a collection of utilities in [Gestures](../Gestures/index.md) that abstract the gestures into easy callbacks. It is suggested to use one of them or implement your own to abstract the details, rather than listening the events directly.
+For handling drag-and-drop, scrolling, swipe and other gestures, Rikulo provides a collection of utilities in [Gestures](../../Gestures/index.md) that abstract the gestures into easy callbacks. It is suggested to use one of them or implement your own to abstract the details, rather than listening the events directly.
