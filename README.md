@@ -14,8 +14,8 @@ mobile applications in Dart and HTML 5.
 ###Links
 
 * Link to a source file in github: \[camera](source:client/device)
-* Link to a package: \[view](api:) and [device/accelerometer](api:)
-* Link to a class: \[ViewConfig](api:view/impl)
+* Link to a package: \[view](api:) and \[device/accelerometer](api:)
+* Link to a class from Rikulo: \[ViewConfig](api:view/impl)
 * Link to a class from Dart lib: \[CSSStyleDeclaration](dart:html)
 * Link to a method: \[View.requestLayout()](api:view)
 * Link to a getter: \[View.width](api:view) or \[View.width](api:view:get)
