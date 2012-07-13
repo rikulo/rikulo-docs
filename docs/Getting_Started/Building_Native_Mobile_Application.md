@@ -75,7 +75,7 @@ As shown above:
 1. Import [device](api:) and [device/accelerometer](api:) packages along with others.
 2. Call global method [enableDeviceAccess()](api:device) in the `main` method with proper Cordova JavaScript file name.
 >The Cordova JavaScript file name in `enableDeviceAccess` must match to what you copied under `assets/www`; e.g. in this example `cordova-1.9.0.js`.
-3. Use the native resource `accelerometer` via the global variable called [device.accelerometer](api:device).
+3. Use the native resource `accelerometer` via the global variable called [device](api:device).
 
 ###Import [device](api:) and [device/accelerometer](api:) package
 
