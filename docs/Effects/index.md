@@ -1,3 +1,3 @@
-#Animations
+#Effects
 
 [Fundamentals](Fundamentals.md)
