@@ -37,7 +37,7 @@ Based on Cordova/PhoneGap, Rikulo currently supports nine native device features
         }
 
         void main() {
-          enableDeviceAccess('cordova-1.9.0.js');
+          enableDeviceAccess();
           new HelloWorld().run();
         }
 
@@ -74,6 +74,6 @@ Following is an example that listens to the AccelerationEvent of the  accelerome
     }
 
     void main() {
-      enableDeviceAccess("cordova-1.9.0.js");
+      enableDeviceAccess();
       new HelloWorld().run();
     }
