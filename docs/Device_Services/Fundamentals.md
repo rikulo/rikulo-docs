@@ -37,11 +37,11 @@ Based on Cordova/PhoneGap, Rikulo currently supports nine native device features
         }
 
         void main() {
-          enableDeviceAccess('cordova-1.9.0.js');
+          enableDeviceAccess();
           new HelloWorld().run();
         }
 
-* After enabling the device's accessibility, you can use the global variable [device](api:device) to access nine device services directly. For example, you can access the accelerometer by refer [Device.accelerometer](api:device). Then you can register device event listener or call the accelerometer's method to access the motion sensor. 
+* After enabling the device's accessibility, you can use the global variable [device](api:device) to access nine device services directly. For example, you can access the accelerometer by referring [Device.accelerometer](api:device). Then you can register device event listener or call the accelerometer's method to access the motion sensor. 
 
     >For details about how to use each supported device service, please refer to [API Reference](http://api.rikulo.org).
 
@@ -74,6 +74,6 @@ Following is an example that listens to the AccelerationEvent of the  accelerome
     }
 
     void main() {
-      enableDeviceAccess("cordova-1.9.0.js");
+      enableDeviceAccess();
       new HelloWorld().run();
     }
