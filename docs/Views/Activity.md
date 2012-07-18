@@ -36,7 +36,10 @@ However, sometimes you want it to occupy part of a HTML page. For example, you w
 To do so, you can define an element in the HTML page (that loads the dart
 application) and assign it an id called `v-main`. For example,
 
+    <link rel="stylesheet" type="text/css" href="../../resources/css/view.css" />
+    ...
     <div id="v-main" style="width:100%;height:200px"></div>
+    ...
     <script type="application/dart" src="HelloWorld.dart"></script>
     <script src="../../resources/js/dart.js"></script>
 
@@ -45,6 +48,8 @@ The dimension is optional if you assign the width and height explicitly to the a
 If you want to embed multiple applications in the same HTML page, you can assign
 the DOM elements with a different ID, and then invoke [run] with the ID you assigned to the DOM elements.
 
+    <link rel="stylesheet" type="text/css" href="../../resources/css/view.css" />
+    ...
     <div id="v-part1"></div>
     ...
     <div id="v-part2"></div>
