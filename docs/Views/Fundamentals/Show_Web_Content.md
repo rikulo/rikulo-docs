@@ -47,7 +47,7 @@ Then, we can write the code as follows.
         for (Element n in webView.node.queryAll("span"))
           new Switch(true).addToDocument(n, location: "right top");
 
-    Notice that we have to do it after `webVeiw` has been added to [Activity.mainView](api:view), since the corresponding DOM elements of views are created only after they are attached to the hierarchy tree of [Activity.mainView](api:view).
+    Notice that we have to do it after `webVeiw` has been added to [Activity.mainView](api:app), since the corresponding DOM elements of views are created only after they are attached to the hierarchy tree of [Activity.mainView](api:app).
 
     If the postion or dimension of the web view is handled by the layout (for example, it is part of a linear layout). Then, you can defer the insertion of views by listening to the `layout` event (such that the anchor's position is finalized).
 
