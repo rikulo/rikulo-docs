@@ -6,7 +6,7 @@ Rikulo provides a collection of [View](api:view) subclasses that offer predefine
 
 ##View Hierarchy
 
-The user interface for each element of your application is defined using a hierarchy of [View](api:view), as shown below. Unless overriden by the subclass, every view can have any number of the child views.
+The user interface for each element of your application is defined using a hierarchy of [View](api:view), as shown below. Unless overridden by the subclass, every view can have any number of the child views.
 
 ![Tree of Views](view-hierarchy.jpg?raw=true)
 
@@ -39,21 +39,16 @@ When a view is instantiated, it is just like any ordinary object and has no effe
 
 > `activity` is a global variable referencing to the current activity.
 
-To know if a view is attached to the screen, you can check the `inDocument` property.
+> Notice that we interchangeably use *screen* and *document* to represent the same thing: the visual area of the device that the user interact with.
 
-    if (view.inDocument) //the view is attached (and then accessible by the user)
-      doSomething();
-
-> Notice that we interchangeablely use *screen* and *document* to represent the same thing: the visual area of the device that the user interact with.
-
-> Also notice that when Activity's `onCreate_` is called, `mainView` is *not* attached to the screen yet. You have to wait until another callback named `onMount_` is called.
-
-To remove a view from displaying on the screen, you can detach it by use of `removeFromParent`, if it has a parent.
+To remove a view from a hierarchy tree of views, you can use [View.removeFromParent()](api:view). It also means the view will be detached from the screen, if it was attached.
 
     view.removeFromParent(); //detach the given view from the hierarchy tree
 
-You can also replace the whole main view with a hierarchy of tree too. Furthermore, the previous main view will be detached.
+You can also replace the whole main view with a hierarchy of tree too. Furthermore, the previous main view will be detached automatically.
 
+    ScrollView fooView = new ScrollView();
+    fooView.addChild(new TextView.html("<ul><li>hi, there</li></ul>"));
     activity.mainView = fooView; //replace the current mainView with fooView
 
 ###Attach to a dialog of the current activity
@@ -83,11 +78,11 @@ As shown in the previous example, you can position a view to any location by set
     child.left = x * 50 + 2;
     child.top = y * 50 + 2;
 
-The coorinates of a view is related to the left-top corner of its parent view. When a view is moved, all of descendant views are moved accordingly. For example, if the `left` property of a view is 100, the view will be positioned at 100 pixels from the left border of the parent view. 
+The coordinates of a view is related to the left-top corner of its parent view. When a view is moved, all of descendant views are moved accordingly. For example, if the `left` property of a view is 100, the view will be positioned at 100 pixels from the left border of the parent view. 
 
 ###Border Width
 
-If a view has a border, the coordinates of the child views will start from the inner corner (i.e., the right edge of the left border, and the bottom edge of the top border). For example, if the border's with is 5, then the cooridnates will be 5 pixel away from the view's the left-top corner without the border.
+If a view has a border, the coordinates of the child views will start from the inner corner (i.e., the right edge of the left border, and the bottom edge of the top border). For example, if the border's with is 5, then the coordinates will be 5 pixel away from the view's the left-top corner without the border.
 
 The width and height of a view includes the border. Thus, if the border's width is 5, then the inner space to draw is 10 pixel smaller.
 
@@ -99,7 +94,7 @@ Some view subclasses might allow you to define the offset of the coordinates by 
 
 ##Layout
 
-In additions to managing the coordinates and dimensions manually, Rikulo provides [anchor layout](../../Layouts/Anchor_Layout.md), [linear layout](../../Layouts/Linear_Layout.md) and others to position the views automatically. It is useful if you are targeting different devices with different resloutions. For example, if the user change the orientation of his tablet, all the layout will be re-positioned automatically to fit into the different aspect ratio.
+In additions to managing the coordinates and dimensions manually, Rikulo provides [anchor layout](../../Layouts/Anchor_Layout.md), [linear layout](../../Layouts/Linear_Layout.md) and others to position the views automatically. It is useful if you are targeting different devices with different resolutions. For example, if the user change the orientation of his tablet, all the layout will be re-positioned automatically to fit into the different aspect ratio.
 
 Yet another example: if you don't specify the width and height, they will be calculated automatically to best fit the view.
 
@@ -112,26 +107,17 @@ For more information, please refer to [the Layouts chapter](../../Layouts/index.
 
 ##Relation with DOM Element
 
-To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapulate the complexity from the application developers. You generally don't need to know much about it.
+To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapsulate the complexity from the application developers. You generally don't need to know much about it.
 
-If you want, you can retrieve the DOM element that represents the view on the screen by use of the `node` property.
+If you want, you can retrieve the DOM element that represents the view on the screen by use of [View.node](api:view).
 
     view.node.nodes();
 
-Notice that you can access the `node` property only if the view is attached to the screen, i.e., the  `inDocument` property is true. Otherwise, it will throws an exception.
+Notice that you can access [View.node](api:view) only if the view has been attached to the screen. Otherwise, it will throws an exception.
 
-Also notice that when Activity's `onCreate_` is called, `mainView` is not attached to the screen yet. It means you can't access the `node` property in `onCreate_`. To access it, you can do in the `onMount_` method. For example, the `context2D` property of [Canvas](api:view) depends on `node`, so we have to access it in `onMount_`:
+To know if a view is attached to the screen, you can check [View.inDocument](api:view).
 
-    class Foo extends Activity {
-      CanvasRenderingContext2D ctx2d;
-      void onCreate_() {
-        Canvas canvas = new Canvas();
-        canvas.profile.text = "width: flex;height: flex";
-        mainView.addChild(canvas);
-      }
-      void onMount_() { //mainView has been attached to the screen
-        ctx2d = canvas.context2D; //it can be called only if attached
-      }
-    }
+    if (view.inDocument) //the view is attached (and then accessible by the user)
+      doSomething();
 
-If you'd like to learn the details, please refer to [the View Development chapter](../../View_Development/index.md).
+If you'd like to learn the details of how to develop a view, please refer to [View Development](../../View_Development/index.md).
