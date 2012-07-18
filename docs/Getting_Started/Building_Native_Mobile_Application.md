@@ -34,9 +34,9 @@ For convenience, following we use the Android platform and the [Hello World](Hel
 	* Copy all resource files needed for the Rikulo example onto `assets/www` folder. e.g. the `resources` folder and files under.
 	* Copy the compiled xxx.dart.js file onto `assets/www` folder. e.g. the `HelloWorld.dart.js`.
 
-4. Remove the version number from the cordova JavaScript file name in `assets/www` folder. e.g. rename `cordova-1.9.0.js` to `cordova.js`.
+4. Remove the version number from the file name of the cordova JavaScript file under `assets/www` folder. e.g. rename `cordova-1.9.0.js` to `cordova.js`.
 
-5. You are ready to deploy and run the Rikulo program as a native mobile application.
+5. Now you are ready to deploy and run the Rikulo program as a native mobile application.
 
 ![Cordova Android Development Environment](cordova-env.png?raw=true)
 
@@ -75,7 +75,7 @@ Following we show you the basic elements of how to access device native resource
 As shown above:
 
 1. Import [device](api:) and [device/accelerometer](api:) packages along with others.
-2. Call global method [enableDeviceAccess()](api:device) in the `main` method with proper Cordova JavaScript file name.
+2. Call global method [enableDeviceAccess()](api:device) in the `main` method.
 3. Use the native resource `accelerometer` via the global variable called [device](api:device).
 
 ###Import [device](api:) and [device/accelerometer](api:) package
