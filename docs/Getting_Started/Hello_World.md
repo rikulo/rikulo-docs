@@ -51,7 +51,7 @@ Implementing an activity is straightforward: extend your class from [Activity](a
 
 After your activity is started, [Activity.onCreate_()](api:app) will be called. You can create your user interface in this method.
 
-> Naming Convention: we append an underscore to a method to indicate the method is *protected*, i.e., it can be accessed only within the class and its subclasses.
+> Naming Convention: we append an underscore to the name of a method to indicate the method is *protected*, i.e., it can only be accessed within the class and its subclasses.
 
 The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It draws something on the screen that the user can interact with.
 
