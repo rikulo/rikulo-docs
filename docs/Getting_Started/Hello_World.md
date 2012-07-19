@@ -19,7 +19,7 @@ Here is a simple "Hello World" application.
     class HelloWorld extends Activity {
       void onCreate_() {
         TextView welcome = new TextView("Hello World!");
-        welcome.profile.text = "anchor:  parent; location: center center";
+        welcome.profile.location = "center center";
         mainView.addChild(welcome);
       }
     }
@@ -59,7 +59,7 @@ In this application, we instantiate an instance of [TextView](api:view) to show 
 
 We also specify the layout information in [View.profile](api:view), such that the message shall be placed in the center of the parent. The code is as follows. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
 
-    welcome.profile.text = "anchor: parent; location: center center";
+    welcome.profile.location = "center center";
 
 All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling [Activity.onCreate_()](api:app). To make a view available on the screen, you have to add it to a node of the tree by invoking [View.addChild()](api:view).
 

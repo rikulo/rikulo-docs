@@ -7,6 +7,7 @@ Anchor layout is used to place a view based on the offset of another view. Unlik
 The profile's anchor attribute specifies the *so-called* anchor view. For example,
 
     foo.profile.text = "anchor: parent";
+    foo.profile.anchor = "parent"; //it is equivalent to the previous statement
 
 Then, the position of the given view, `foo` in the previous example, will depend on the anchor view, `foo.parent` in the previous example. How the given view is exactly positioned depends on another attribute called `location`. Please refer to the next section for details.
 
@@ -24,7 +25,11 @@ You can specify how the given view is positioned related to the anchor view by u
 
     foo.profile.text = "anchor: parent; location: center center";
 
-The value can be one of `"north start"`, `"north center"`, `"north end"`, `"south start"`, `"south center"`, `"south end"`, `"west start"`, `"west center"`, `"west end"`, `"east start"`, `"east center"`, `"east end"`, `"top left"`, `"top center"`, `"top right"`, `"center left"`, `"center center"`, `"center right"`, `"bottom left"`, `"bottom center"`, and `"bottom right"`. If not speicified, `"top left"` is assumed.
+For sake of convenience, if [ProfileDeclaration.location](api:view) is specified, [ProfileDeclaration.anchor](api:view) is default to be `parent`. Thus, the previous statement is equivalent to the following:
+
+    foo.profile.text = "location: center center";
+
+The value of [ProfileDeclaration.location](api:view) can be one of `"north start"`, `"north center"`, `"north end"`, `"south start"`, `"south center"`, `"south end"`, `"west start"`, `"west center"`, `"west end"`, `"east start"`, `"east center"`, `"east end"`, `"top left"`, `"top center"`, `"top right"`, `"center left"`, `"center center"`, `"center right"`, `"bottom left"`, `"bottom center"`, and `"bottom right"`. If not speicified, `"top left"` is assumed.
 
 Here is the locations of all these values specify.
 
