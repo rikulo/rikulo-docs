@@ -51,6 +51,8 @@ Implementing an activity is straightforward: extend your class from [Activity](a
 
 After your activity is started, [Activity.onCreate_()](api:app) will be called. You can create your user interface in this method.
 
+> Naming Convention: we append an underscore to a method to indicate the method is *protected*, i.e., it can be accessed only within the class and its subclasses.
+
 The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It draws something on the screen that the user can interact with.
 
 In this application, we instantiate an instance of [TextView](api:view) to show the greeting message.
@@ -114,4 +116,4 @@ Also notice that Rikulo assumes HTML 5, so you shall specify `<!DOCTYPE html>` a
 
 Then, you visit this page to see how it works in live.
 
-> In this example, we don't specify where to show the user interface, and Rikulo will, by default, insert it under the document's `body` tag. However, depending on your requirement (such as in a desktop applications), you can run several Rikulo applications at the same time and assign them to different segments on the screen.
+> In this example, we don't specify where to show the user interface, and Rikulo will, by default, insert it under the document's `body` tag. However, depending on your requirement (such as in a desktop applications), you can run several Rikulo applications at the same time and assign them to different segments on the screen. Please refer to [Make Activity Being Part of HTML Page](../Views/Activity.md) for details.
