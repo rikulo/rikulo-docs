@@ -90,7 +90,8 @@ You can nest one layout into another and so on to create sophisticated layouts. 
       for (final String type in
       ["text", "password", "multiline", "number", "date", "color"]) {
         View view = new View();
-        view.layout.text = "type: linear; spacing: 0 3"; //top and bottom: 0 since nested
+        view.layout.text = "type: linear; align: center; spacing: 0 3";
+            //top and bottom: 0 since nested
         mainView.addChild(view);
 
         TextView label = new TextView(type);
