@@ -1,5 +1,5 @@
 #Scroller
 
-* Package: [html](api:)
-* API Reference: [Scroller](api:html)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/html/src/Scroller.dart)
+* Package: [gesture](api:)
+* API Reference: [Scroller](api:gesture)
+* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/gesture/src/Scroller.dart)

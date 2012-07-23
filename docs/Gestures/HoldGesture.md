@@ -1,5 +1,5 @@
 #HoldGesture
 
-* Package: [html](api:)
-* API Reference: [HoldGesture](api:html)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/html/src/HoldGesture.dart)
+* Package: [gesture](api:)
+* API Reference: [HoldGesture](api:gesture)
+* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/gesture/src/HoldGesture.dart)

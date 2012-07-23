@@ -52,8 +52,7 @@ else
 	S=":"
 fi
 CP="$jardir/tmpgen.jar$S$jardir/jsoup-1.6.2.jar"
-java -classpath "$CP" org.zkoss.rikulo.tmpgen.Main \
-	--config $srcdir/_config_/config.props
+java -classpath "$CP" org.zkoss.rikulo.tmpgen.Main --config $srcdir/_config_/config.props
 CP="$jardir/rimd.jar$S$jardir/pegdown.jar$S$jardir/asm.jar$S$jardir/asm-analysis.jar$S$jardir/asm-tree.jar$S$jardir/parboiled-core.jar$S$jardir/parboiled-java.jar"
 java -classpath "$CP" org.rikulo.rimd.Main \
 	--config $srcdir/_config_/config.props $srcdir $dstdir

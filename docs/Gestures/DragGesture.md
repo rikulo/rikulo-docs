@@ -1,5 +1,5 @@
 #DragGesture
 
-* Package: [html](api:)
-* API Reference: [DragGesture](api:html)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/html/src/DragGesture.dart)
+* Package: [gesture](api:)
+* API Reference: [DragGesture](api:gesture)
+* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/gesture/src/DragGesture.dart)
