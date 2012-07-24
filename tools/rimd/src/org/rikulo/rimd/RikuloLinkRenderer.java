@@ -36,7 +36,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 			final String pkg = url.substring(bApi ? 4: 5).replace('/', '_');
 
 			int i = text.lastIndexOf('(');
-			final boolean bMethod = i >= 0;
+//			final boolean bMethod = i >= 0;
 			final String info = i >= 0 ? text.substring(0, i): text;
 			i = info.indexOf('.');
 			boolean bVar = i < 0 && Character.isLowerCase(text.charAt(0));
@@ -64,7 +64,8 @@ public class RikuloLinkRenderer extends LinkRenderer {
 			}
 			final String clsnm = i >= 0 ?
 				info.substring(0, i) + ".html#"
-					+ (bSet ? "set:": bGet || (!bMethod && !bOp) ? "get:": "") +  mtd:
+//					+ (bSet ? "set:": bGet || (!bMethod && !bOp) ? "get:": "")
+					+ mtd:
 				info + _ext;
 			return new Rendering(urlPrefix + pkg + "/" + clsnm,
 				"<code>" + text + "</code>");

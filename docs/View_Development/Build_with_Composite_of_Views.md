@@ -29,7 +29,7 @@ You can implement it as a subclass of [View](api:view) as follows.
       }
     }
 
-Then, you can use it without knowing how it is implemented.
+Then, the application can use it without knowing how it is implemented.
 
     mainView.layout.text = "type: linear; orient: vertical";
     mainView.addChild(new LabeledInput("username"));
@@ -37,12 +37,12 @@ Then, you can use it without knowing how it is implemented.
 
 ###The className Property
 
-To work with [View.query()](api:view), you have to implement [View.className](api:view) with returning the view's class name.
+To work with [View.query()](api:view), you have to implement [View.className](api:view) to return the view's class name.
 
     class LabeledInput extends View {
       String get className() => "LabeledInput";
 
-Then, the application can query it with this class name, such as
+Therefore, the application can query it with this class name, such as
 
     mainView.query("LabeledInput");
 
