@@ -2,4 +2,5 @@
 
 [Fundamentals](Fundamentals.md)
 [EasingMotion](EasingMotion.md)
-[LinearPositionMotion](LinearPositionMotion.md)
+[LinearPathMotion](LinearPathMotion.md)
+[Motion](Motion.md)
