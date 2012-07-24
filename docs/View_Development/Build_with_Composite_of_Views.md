@@ -35,4 +35,31 @@ Then, you can use it without knowing how it is implemented.
     mainView.addChild(new LabeledInput("username"));
     mainView.addChild(new LabeledInput("password"));
 
-#Event Handling
+###The className Property
+
+To work with [View.query()](api:view), you have to implement [View.className](api:view) with returning the view's class name.
+
+    class LabeledInput extends View {
+      String get className() => "LabeledInput";
+
+Then, the application can query it with this class name, such as
+
+    mainView.query("LabeledInput");
+
+##Event Handling
+
+You can *propagate* the events sent by the internal views to the caller of the composite view. To do so, you can listen to the event you care and handle it the way you want. For example, in this sample, you can propagate the `change` event as follows.
+
+    LabeledInput(String label, [String value]) {
+      ...
+      _input.on.change.add((ChangeEvent event) {
+        sendEvent(new ChangeEvent(event.value, target: this));
+        });
+    }
+
+Then, the application can listen the `change` event if necessary.
+
+    for (LabeledInput view in mainView.queryAll("LabeledInput"))
+      view.on.change.add((event) {
+        print("$event received");
+        });
