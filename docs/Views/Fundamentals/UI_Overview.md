@@ -1,6 +1,6 @@
 #UI Overview
 
-The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It occupies a rectangular area on the screen, draws something on it, and interact with the user. 
+The basic building block of the user interface in a Rikulo application is [View](api:view). A View occupies a rectangular area on the screen and is responsible for drawing and event handling.
 
 Rikulo provides a collection of [View](api:view) subclasses that offer predefined features, such as input controls and grids.
 
@@ -10,11 +10,10 @@ The user interface for each element of your application is defined using a hiera
 
 ![Tree of Views](view-hierarchy.jpg?raw=true)
 
-To draw the user interface, you can instantiate [View](api:view) and subclasses and then build them to a hierarchy tree of views. This hierarchy tree can be as simple or complex as you need it to be. For example,
+To draw the user interface, you can instantiate [View](api:view) and its subclasses, and then compose them into a hierarchy tree of views. This hierarchy tree can be as simple or complex as you need it to be. For example,
 
     final ScrollView view = new ScrollView();
-    view.profile.text =
-      "anchor: parent; location: center center; width: 80%; height: 80%";
+    view.profile.text = "location: center center; width: 80%; height: 80%";
     view.classes.add("v-dialog");
 
     for (int x = 0; x < 30; ++x) {
@@ -28,6 +27,8 @@ To draw the user interface, you can instantiate [View](api:view) and subclasses 
         view.addChild(child);
       }
     }
+
+As shown above, the composing of a hierarchy tree is done by use of [View.addChild](api:view).
 
 ##Show View on the Screen
 
