@@ -3,7 +3,7 @@
 ##Lifecyle
 Let us assume we have a view called `pv` and it has a child view called `cv`. Here is a flow how Rikulo handles the layout `pv` (triggered by, say, [View.requestLayout](api:view)).
 
-![Lifecylce of Layout](layoutLifecycle.jpg)
+![Lifecylce of Layout](layoutLifecycle.jpg?raw=true)
 
 * The handling of layout is taken from the parent to its child views. In other words, in this case, `pv` will be handled and then `cv`.
 * When handling the layout, [View.measureWidth_](api:view) and [View.measureHeight_](api:view) will, if necessary, be called recursively from the parent to its child views to measure the dimension.

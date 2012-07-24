@@ -2,7 +2,9 @@
 
 The simplest way to implement a view is to compose it with other views like a macro view (aka., a composite view). For example, assume we want to have a view that displays a label and also an input as shown below.
 
-![A Composite View](composite.jpg)
+![A Composite View](composite.jpg?raw=true)
+
+> The source code can be found at github: [composite-view](source:samples).
 
 ##Composite
 
@@ -11,7 +13,8 @@ You can implement it as a subclass of [View](api:view) as follows.
     class LabeledInput extends View {
       TextView _label;
       TextBox _input;
-      LabelInput(String label, [String value]) {
+
+      LabeledInput(String label, [String value]) {
         layout.type = "linear"; //use horizontal linear layout
         addChild(_label = new TextView(label));
         addChild(_input = new TextBox(value));
@@ -29,7 +32,7 @@ You can implement it as a subclass of [View](api:view) as follows.
 Then, you can use it without knowing how it is implemented.
 
     mainView.layout.text = "type: linear; orient: vertical";
-    mainView.addChild(new LabelInput("username"));
-    mainView.addChild(new LabelInput("password"));
+    mainView.addChild(new LabeledInput("username"));
+    mainView.addChild(new LabeledInput("password"));
 
 #Event Handling
