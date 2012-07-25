@@ -6,7 +6,7 @@ The creation and removal are done automatically by Rikulo. You need only to over
 
 ##Render the HTML fragment
 
-When the DOM element(s) of a view shall be created, [View.draw()](api:view) will be called to generate the HTML fragment representing the DOM element(s). Rikulo will create the DOM element(s) based on the fragment and insert them to the browser's DOM tree.
+When the DOM element(s) of a view shall be created, [View.draw()](api:view) will be called to generate the HTML fragment representing the DOM element(s). Rikulo will create the DOM element(s) based on the fragment and insert them to the browser's DOM tree automatically.
 
 For example, here is the default implementation of [View.draw()](api:view):
 
@@ -19,7 +19,7 @@ For example, here is the default implementation of [View.draw()](api:view):
       out.add('</').add(tag).add('>');
     }
 
-As shown, it utilizes a few methods, such as [View:domTag_](api:view) and [View.doInner_()](api:view), to simplify the generation of the HTML fragment. In additions, it is usually easier to override them separately instead of overriding [View:draw()](api:view).
+As shown, it utilizes a few methods, such as [View.domTag_](api:view) and [View.doInner_()](api:view), to simplify the generation of the HTML fragment. In additions, it is usually easier to override them separately instead of overriding [View.draw()](api:view).
 
 
 ###Override [View.domTag_](api:view)
@@ -30,7 +30,7 @@ As shown, it utilizes a few methods, such as [View:domTag_](api:view) and [View.
 
 [View.domAttrs_()](api:view) generates the DOM attributes for the enclosing tags. By default, it generates the `id` attribute to be [View.uuid](api:view), the `class` attribute to represent [View.classes](api:view), the `style` attribute to represent the view's coordinates and visibility, etc.
 
-Though optional, it is suggested to override [View.domAttrs_()](api:view) to generate additional attributes, as you want, rather than overriding [View:draw()](api:view) and generating there. For example,
+Though optional, it is suggested to override [View.domAttrs_()](api:view) to generate additional attributes, as you want, rather than overriding [View.draw()](api:view) and generating there. For example,
 
     void domAttrs_(StringBuffer out,
     [bool noId=false, bool noStyle=false, bool noClass=false]) {
@@ -46,7 +46,7 @@ Though optional, it is suggested to override [View.domAttrs_()](api:view) to gen
 
 ###Override [View.domInner_()](api:view)
 
-[View.domInner_()](api:view) generates the HTML fragment for the content inside the enclosing tag ([View.domTag_]). By default, it invokes [View.draw()](api:view) for each child view, and then concatenates the result:
+[View.domInner_()](api:view) generates the HTML fragment for the content inside the enclosing tag ([View.domTag_](api:view)). By default, it invokes [View.draw()](api:view) for each child view, and then concatenates the result:
 
   void domInner_(StringBuffer out) {
     for (View child = firstChild; child !== null; child = child.nextSibling) {
@@ -62,7 +62,7 @@ If you'd like to add additional layers of DOM elements, you can override it as f
       out.add('</div');
     }
 
-If you need to access an additional layer, you can generate the `id` attribute for it. Then, you can retrieve the DOM element back by use of [View.getNode()](api.view). For example,
+If you need to access an additional layer, you can generate the `id` attribute for it. Then, you can retrieve the DOM element back by use of [View.getNode()](api:view). For example,
 
     void domInner_(StringBuffer out) {
       out.add('<div class="v-inner"><div id="').add(uuid).add('-foo">')

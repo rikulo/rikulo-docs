@@ -16,7 +16,7 @@ As shown, [ScrollView](api:view) is made of two DIV elements, and the DOM elemen
 
 To interact with the user, [ScrollView](api:view) will listen the touch and mouse event for handling the scrolling.
 
-> [ScrollView](api:view) doesn't listen the DOM event directly. Rather, it leverages [the gesture](../Gestures/Fundamentals.md) called [Scroller](api:gesture) for easy implementation.
+> [ScrollView](api:view) doesn't listen the DOM event directly. Rather, it leverages [the gesture](../../Gestures/Fundamentals.md) called [Scroller](api:gesture) for easy implementation.
 
 ##Build a View with DOM Elements
 
