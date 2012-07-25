@@ -8,7 +8,7 @@ The simplest way to implement a view is to compose it with other views like a ma
 
 ##Composite
 
-You can implement it as a subclass of [View](api:view) as follows.
+You can implement it by extending from [View](api:view) or any of its subclasses as follows.
 
     class LabeledInput extends View {
       TextView _label;
@@ -23,9 +23,9 @@ You can implement it as a subclass of [View](api:view) as follows.
       void set label(String label) {
         _label.text = label;
       }
-      String get value() => _value.value;
+      String get value() => _input.value;
       void set value(String value) {
-        _value.value = value;
+        _input.value = value;
       }
     }
 
