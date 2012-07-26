@@ -6,7 +6,7 @@ The creation and removal are done automatically by Rikulo. You need only to over
 
 ##Render the HTML fragment
 
-When the DOM element(s) of a view shall be created, [View.draw()](api:view) will be called to generate the HTML fragment representing the DOM element(s). Rikulo will create the DOM element(s) based on the fragment and insert them to the browser's DOM tree automatically.
+When the DOM element(s) of a view shall be created, [View.draw()](api:view) will be called to generate the HTML fragment representing the DOM element(s). Rikulo will create the DOM element(s) based on the fragment and insert them to the browser's DOM tree automatically (aka., the document).
 
 For example, here is the default implementation of [View.draw()](api:view):
 
