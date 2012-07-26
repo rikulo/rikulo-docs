@@ -110,6 +110,7 @@ public class Main {
 	    }
 		
 		doc.getElementsByTag("title").remove();
+		doc.getElementsByAttributeValueContaining("content", "width=device-width").remove();
 		doc.getElementsByAttributeValue("href", "/less/learn").remove();
 		doc.getElementsByTag("script").get(0).before(headerCnt);
 		
