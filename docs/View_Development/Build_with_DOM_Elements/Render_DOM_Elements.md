@@ -42,7 +42,8 @@ Though optional, it is suggested to override [View.domAttrs_()](api:view) to gen
       super.domAttrs_(out, noId, noStyle, noClass);
     }
 
-> The `noId`, `noStyle` and `noClass` arguments are designed if you prefer to generate any of these attributes by yourself, rather than by the superclass.
+> The `noId`, `noStyle` and `noClass` arguments are designed if you prefer to generate any of these attributes by yourself, rather than by the superclass.  
+However, the generation of the `id` attribute is important since [View.node](api:view) depends on it, so, if you specify `noId` to true, you have to generate it by yourself.
 
 ###Override [View.domInner_()](api:view)
 
@@ -65,7 +66,7 @@ If you'd like to add additional layers of DOM elements, you can override it as f
 If you need to access an additional layer, you can generate the `id` attribute for it. Then, you can retrieve the DOM element back by use of [View.getNode()](api:view). For example,
 
     void domInner_(StringBuffer out) {
-      out.add('<div class="v-inner"><div id="').add(uuid).add('-foo">')
+      out.add('<div class="v-inner"><div id="').add(uuid).add('-foo">');
       super.domInner_(out); //render child views
       out.add('</div');
     }
