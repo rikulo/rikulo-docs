@@ -4,6 +4,8 @@
 * API Reference: [Activity](api:app)
 * Source: [Activity.dart](source:client/app/src)
 
+An activity is a UI that the user can interact with. Each activity has a main view called [Activity.mainView](api:app). It is the root of the hierarchy tree of views that builds the UI for an activity.
+
 ##Compose UI
 
 You can extend [Activity](api:app) and override [Activity.onCreate_](api:app) to
