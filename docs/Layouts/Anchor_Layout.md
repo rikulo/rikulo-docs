@@ -23,7 +23,7 @@ You can specify a CSS selector too. Again, it must be the parent or one of its s
 
 You can specify how the given view is positioned related to the anchor view by use the location attribute. For example, the following statement positioned `foo` at the center of its parent.
 
-    foo.profile.text = "anchor: parent; location: center center";
+    foo.profile.text = "location: center center";
 
 For sake of convenience, if [ProfileDeclaration.location](api:view) is specified, [ProfileDeclaration.anchor](api:view) is default to be `parent`. Thus, the previous statement is equivalent to the following:
 
@@ -38,6 +38,16 @@ Here is the locations of all these values specify.
 As shown above, the border doesn't count when positioning a view based on the given location.
 
 > Rikulo is smart enough to detect the keywords, so `"north start"` is the same as `"start north" and so on.
+
+##Dimension
+
+You can specify the dimension with fixed value, a percentage or `flex`. For example,
+
+    view.profile.text = "location: center center; width: 50%; height: 50%";
+
+In additions, you can specify `min-width`, `max-width`, `min-height` and `max-height` to make sure it won't getting too small or too large. It is quite useful for so-called Responsive Web Design. For example,
+
+    view.profile.text = "location: center center; min-height: 60; width: 50%; min-width: 100";
 
 ##Anchor Layout Nested in Other Layout
 
