@@ -2,4 +2,5 @@
 
 * Package: [gesture](api:)
 * API Reference: [Scroller](api:gesture)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/gesture/src/Scroller.dart)
+* Source Code: [Scroller.dart](source:client/gesture/src)
+* Samples: [ScrollView.dart](source:client/view/src)

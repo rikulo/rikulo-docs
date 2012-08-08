@@ -2,4 +2,4 @@
 
 * Package: [effect](api:)
 * API Reference: [Motion](api:effect)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/effect/src/Motion.dart)
+* Source Code: [Motion.dart](source:client/effect/src)
