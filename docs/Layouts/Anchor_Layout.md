@@ -64,3 +64,8 @@ For example, in the following example, `view1` will be positioned to the left-to
 
     View view2 = new View(); //handled by linear layout
     hlayout.addChild(view2);
+
+##Samples
+
+* [FreeLayoutDemo.dart](source:samples/free-layout)
+* [HelloWorld.dart](source:samples/helloworld)

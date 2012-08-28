@@ -2,4 +2,5 @@
 
 * Package: [gesture](api:)
 * API Reference: [HoldGesture](api:gesture)
-* [Source Code](https://github.com/rikulo/rikulo/blob/master/client/gesture/src/HoldGesture.dart)
+* Source Code: [HoldGesture.dart](source:client/gesture/src)
+* Samples: [printc.dart](source:client/util/src)
