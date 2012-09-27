@@ -23,19 +23,19 @@ if [ "$TERM" = "cygwin" ] || [ "$OSTYPE" = "cygwin" ] ; then
 	docdir=$(cygpath -u $docdir)
 fi
 
-jardir=$docdir/bin/rimd.lib
+jardir=$docdir/tool/rimd.lib
 if [ ! -d $jardir ] ; then
 	echo $jardir not found
 	exit 1
 fi
-srcdir=$docdir/../docs
+srcdir=$docdir/docs
 if [ ! -d $srcdir ] ; then
 	echo $srcdir not found
 	exit 1
 fi
 
 if [ "$1" = "" ] ; then 
-	dstdir=$docdir/../out
+	dstdir=$docdir/out
 	if [ ! -d $dstdir ] ; then
 		echo $dstdir not found
 		exit 1
