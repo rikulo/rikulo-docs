@@ -2,8 +2,8 @@
 
 * Package: [app](api:)
 * API Reference: [Activity](api:app)
-* Source: [Activity.dart](source:client/app/src)
-* Samples: [HelloWorld.dart](source:samples/helloworld)
+* Source: [Activity.dart](source:lib/src/app)
+* Samples: [HelloWorld.dart](source:example/helloworld)
 
 An activity is a UI that the user can interact with. Each activity has a main view called [Activity.mainView](api:app). It is the root of the hierarchy tree of views that builds the UI for an activity.
 

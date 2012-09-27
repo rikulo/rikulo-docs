@@ -67,5 +67,5 @@ For example, in the following example, `view1` will be positioned to the left-to
 
 ##Samples
 
-* [FreeLayoutDemo.dart](source:samples/free-layout)
-* [HelloWorld.dart](source:samples/helloworld)
+* [FreeLayoutDemo.dart](source:example/free-layout)
+* [HelloWorld.dart](source:example/helloworld)

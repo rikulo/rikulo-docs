@@ -89,7 +89,7 @@ The width and height of a view includes the border. Thus, if the border's width 
 
 ###Inner Offset
 
-Some view subclasses might allow you to define the offset of the coordinates by setting the `innerLeft` and `innerTop` properties. In other words, `innerLeft` and `innerTop` specify the offset from the left-top corner. You can explore the [viewport](source:samples) sample.
+Some view subclasses might allow you to define the offset of the coordinates by setting the `innerLeft` and `innerTop` properties. In other words, `innerLeft` and `innerTop` specify the offset from the left-top corner. You can explore the [viewport](source:example) sample.
 
 > Notice that View and most subclasses don't allow you to change them, though it is straightforward to extend them to support it.
 

@@ -2,5 +2,5 @@
 
 * Package: [view](api:)
 * API Reference: [Image](api:view)
-* Source: [Image.dart](source:client/view/src)
-* Samples: [AlbumDemo.dart](source:samples/gesture) and [ViewportDemo.dart](source:samples/viewport)
+* Source: [Image.dart](source:lib/src/view)
+* Samples: [AlbumDemo.dart](source:example/gesture) and [ViewportDemo.dart](source:example/viewport)

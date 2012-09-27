@@ -26,9 +26,9 @@ Based on Cordova/PhoneGap, Rikulo currently supports nine native device features
 
 * In your Rikulo application, before accessing any specific device services, you have to enable the device accessibility first by calling the global method [enableDeviceAccess()](api:device) which enables Rikulo device service code to use Cordova/PhoneGap JavaScript APIs.
 
-        #import('client/app/app.dart');
-        #import('client/view/view.dart');
-        #import('client/device/device.dart');
+        #import('package:rikulo/app.dart');
+        #import('package:rikulo/view.dart');
+        #import('package:rikulo/device.dart');
 
         class HelloWorld extends Activity {
           void onCreate_() {
@@ -50,10 +50,10 @@ Based on Cordova/PhoneGap, Rikulo currently supports nine native device features
 
 Following is an example that listens to the AccelerationEvent of the  accelerometer motion sensor and shows the acceleration value in x, y and z axis every 1000 milliseconds. 
 
-    #import('client/app/app.dart');
-    #import('client/view/view.dart');
-    #import('client/device/device.dart');
-    #import('client/device/accelerometer/accelerometer.dart');
+    #import('package:rikulo/app.dart');
+    #import('package:rikulo/view.dart');
+    #import('package:rikulo/device.dart');
+    #import('package:rikulo/device/accelerometer.dart');
 
     class HelloWorld extends Activity {
       void onCreate_() {

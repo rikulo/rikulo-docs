@@ -35,4 +35,4 @@ The default implementation will insert the DOM element(s) under `p.node`. In oth
         _nestedNode.insertAdjacentHTML("beforeEnd", childInfo);
     }
 
-For a real example, you can refer to [the viewport example](https://github.com/rikulo/rikulo/tree/master/samples/viewport).
+For a real example, you can refer to [the viewport example](https://github.com/rikulo/rikulo/tree/master/example/viewport).

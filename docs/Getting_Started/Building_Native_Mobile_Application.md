@@ -47,10 +47,10 @@ Following we show you the basic elements of how to access device native resource
 
 ##The Dart Code
 
-    #import('client/app/app.dart');
-    #import('client/view/view.dart');
-    #import('client/device/device.dart');
-    #import('client/device/accelerometer/accelerometer.dart');
+    #import('package:rikulo/app.dart');
+    #import('package:rikulo/view.dart');
+    #import('package:rikulo/device.dart');
+    #import('package:rikulo/device/accelerometer.dart');
 
     class HelloWorld extends Activity {
       void onCreate_() {

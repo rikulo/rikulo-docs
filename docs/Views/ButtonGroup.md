@@ -4,5 +4,5 @@
 
 * Package: [view](api:)
 * API Reference: [ButtonGroup](api:view)
-* Source: [ButtonGroup.dart](source:client/view/src)
+* Source: [ButtonGroup.dart](source:lib/src/view)
 * Samples: 

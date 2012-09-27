@@ -2,5 +2,5 @@
 
 * Package: [view](api:)
 * API Reference: [TextBox](api:view)
-* Source: [TextBox.dart](source:client/view/src)
-* Samples: [InputSamples.dart](source:samples/input)
+* Source: [TextBox.dart](source:lib/src/view)
+* Samples: [InputSamples.dart](source:example/input)

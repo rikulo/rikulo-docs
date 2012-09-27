@@ -13,8 +13,8 @@ A Rikulo application consists of
 
 Here is a simple "Hello World" application.
 
-    #import('client/app/app.dart');
-    #import('client/view/view.dart');
+    #import('package:rikulo/app.dart');
+    #import('package:rikulo/view.dart');
 
     class HelloWorld extends Activity {
       void onCreate_() {

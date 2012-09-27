@@ -4,7 +4,7 @@ The simplest way to implement a view is to compose it with other views like a ma
 
 ![A Composite View](composite.jpg?raw=true)
 
-> The source code can be found at github: [composite-view](source:samples).
+> The source code can be found at github: [composite-view](source:example).
 
 ##Composite
 

@@ -2,7 +2,7 @@
 
 * Package: [app](api:)
 * API Reference: [Application](api:app)
-* Source: [Application.dart](source:client/app/src)
+* Source: [Application.dart](source:lib/src/app)
 
 An application is the base class for holding global application states.
 

@@ -62,5 +62,5 @@ Here is a typical application layout.
 
 ##Samples
 
-* [LinearLayoutDemo.dart](source:samples/linear-layout)
-* [InputSamples.dart](source:samples/input)
+* [LinearLayoutDemo.dart](source:example/linear-layout)
+* [InputSamples.dart](source:example/input)
