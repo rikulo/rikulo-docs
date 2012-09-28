@@ -36,17 +36,25 @@ By default, [Activity.mainView](api:app) will occupy the whole screen. In other 
 
 However, sometimes you want it to take only a part of a HTML page. For example, you want to want an activity to take only a part of a blog. Or, you want to have multiple activities in the same HTML page and each of them serves a part of UI.
 
-To do so, you can define an element in the HTML page (that loads the dart
-application) and assign it an id called `v-main`. For example,
+To do so, you can declare an element in the HTML page (that loads the dart
+application) and assign it with a unique ID. For instance, we assign `main` in the following example:
 
     <link rel="stylesheet" type="text/css" href="packages/rikulo/resource/css/view.css" />
     ...
-    <div id="v-main" style="width:100%;height:200px"></div>
+    <div id="main" style="width:100%;height:200px"></div>
     ...
     <script type="application/dart" src="HelloWorld.dart"></script>
     <script src="packages/rikulo/resource/js/dart.js"></script>
 
-The dimension is optional if you assign the width and height explicitly to the activity's main view ([Activity.mainView](api:app)).
+Then, we can invoke the activity as follows:
+
+    void main() {
+        new FooActivity().run("main");
+    }
+
+[Activity.run](api:app) assumes the ID to be `v-main` if not specified, so you can assign `v-main` to the element to make the Dart code transparent to the HTML page.
+
+Also notice that, since the CSS position of every view is default to absolute, so you have to assign the dimension of the element explicitly in the HTML page.
 
 If you want to embed multiple applications in the same HTML page, you can assign
 the DOM elements with a different ID, and then invoke [run] with the ID you assigned to the DOM elements.
