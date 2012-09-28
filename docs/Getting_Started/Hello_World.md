@@ -94,17 +94,20 @@ To run an application, you need a HTML page to specify the Dart file(s) to load.
     <html>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" type="text/css" href="resources/css/view.css" />
+        <link rel="stylesheet" type="text/css" href="packages/rikulo/resource/css/view.css" />
       </head>
       <body>
         <script type="application/dart" src="HelloWorld.dart"></script>
-        <script src="resources/js/dart.js"></script>
+        <script src="packages/rikulo/resource/js/dart.js"></script>
       </body>
     </html>
 
 First, you have to specify the CSS file to load. Depending on your requirement, you can specify any files you want, as long as including `view.css` (or a customized version of it).
 
-    <link rel="stylesheet" type="text/css" href="resources/css/view.css" />
+    <link rel="stylesheet" type="text/css"
+     href="packages/rikulo/resource/css/view.css" />
+
+> By default, [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/) installed the resources under the `packages/rikulo/resource` folder. If your HTML file is not in the root of the project, you have to change the path accordingly.
 
 Second, you have to specify your Dart file. In this application, it is called `HelloWorld.dart`.
 

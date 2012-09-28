@@ -1,6 +1,6 @@
 #Show Web Content
 
-You can use [TextView](api:view) embed web content in your application. To do so, you simply instantiate it with the `html` constructor and then attach it to the hierarchy tree of views.
+You can use [TextView](api:view) to display web content in your application. To do so, you simply instantiate it with the `html` constructor and then attach it to the hierarchy tree of views.
 
     view.addChild(new TextView.html('''
       <ul>
@@ -13,6 +13,8 @@ Furthermore, you can change the content dynamically by setting the `html` proper
     textView.html = "<table><tr><td>${data1}</td><td>${data2}</tr></table>";
 
 > [TextView](api:view) can show a plain text, or a fragment of HTML content, depending on the constructor and the property you use.
+
+> Here we discuss how to display Web content in a view. If you embed a view into a part of a HTML page (e.g., the page has headers and footers made of pure HTML), please refer to [the Embed in HTML Page section](Embed_in_HTML_Page.html).
 
 ##Replace Part of Web Content with Views
 
