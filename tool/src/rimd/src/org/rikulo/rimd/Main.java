@@ -18,7 +18,7 @@ public class Main {
 	}
 	private Main(String[] args) throws IOException {
 		String src = null, dst = null, header = null, footer = null,
-			api = "", source = "", ext = ".html";
+			api = "", dartapi = "", source = "", ext = ".html", toc = null;
 		final Properties props = new Properties();
 		boolean force = false;
 		for (int i = 0; i < args.length; ++i) {
@@ -46,32 +46,18 @@ public class Main {
 						ext = val;
 					} else if ("api".equals(nm)) {
 						api = val;
+					} else if ("dart-api".equals(nm)) {
+						dartapi = val;
 					} else if ("source".equals(nm)) {
 						source = val;
+					} else if ("toc".equals(nm)) {
+						toc = val;
+						if (!new File(toc).isAbsolute())
+							toc = new File(config.getParent(), toc).getPath();
 					} else if ("force".equals(nm)) {
 						force = "true".equals(val);
 					}
 				}
-			} else if ("--header".equals(args[i])) {
-				if (++i >= args.length)
-					error("Filename required");
-				header = args[i];
-			} else if ("--footer".equals(args[i])) {
-				if (++i >= args.length)
-					error("Filename required");
-				footer = args[i];
-			} else if ("--ext".equals(args[i])) {
-				if (++i >= args.length)
-					error("Extension required");
-				ext = args[i];
-			} else if ("--api".equals(args[i])) {
-				if (++i >= args.length)
-					error("URL of api required");
-				api = args[i];
-			} else if ("--source".equals(args[i])) {
-				if (++i >= args.length)
-					error("URL of source required");
-				source = args[i];
 			} else if ("--force".equals(args[i])) {
 				force = true;
 			} else if (args[i].startsWith("-")) {
@@ -91,11 +77,6 @@ public class Main {
 		 "rimd - convert rikulo flavored markdown to HTML\n\n"
 		+"rimd [-h header] [-f footer] [src [dst]]\n\n"
 		+"--config config.props\tspecifies a configuration file.\n"
-		+"--header header\tspecifies a file that will be generated before the content.\n"
-		+"--footer footer\tspecifies a file that will be generated after the content.\n"
-		+"--ext extension\tspecifies the extension to replace \".md\". Default: \".html\".\n"
-		+"--api url\tspecifies the URL of api. Default: \"\".\n"
-		+"--source url\tspecifies the URL of source. Default: \"\".\n"
 		+"--force\tforces the creation of the destination; overwrite if exists.\n"
 		+"src\tspecifies the source. If it is the directory, all files under the given directory will be processed.\n"
 		+"dst\tspecifies the destination, either a file or a console. If omitted, it will be generated to the console.\n\n"
@@ -118,8 +99,11 @@ public class Main {
 		if (footer != null)
 			footer = read(new File(footer));
 
+		if (toc != null)
+			props.put("toc", readTOC(new File(toc), (String)props.get("context-path")));
+
 		_proc = new Processor(replaceVariables(header, props),
-			replaceVariables(footer, props), api, source, ext);
+			replaceVariables(footer, props), api, dartapi, source, ext);
 		_force = force;
 	}
 	private static String replaceVariables(String content, Properties props) {
@@ -144,6 +128,90 @@ public class Main {
 				sb.append(val);
 			i = k + 1;
 		}
+	}
+	private static String readTOC(File fl, String contextPath) throws IOException {
+		final BufferedReader reader = new BufferedReader(
+				new InputStreamReader(new FileInputStream(fl), "UTF-8"));
+		try {
+			final StringBuffer sb = new StringBuffer(8192).append("<ul class=\"root-level\">\n");
+			String in;
+			int indent = 0, level = 0;
+			final int[] indents = new int[10]; //at most 10 levels
+			final String[] paths = new String[10];
+			paths[0] = "";
+			if (contextPath != null && contextPath.endsWith("/"))
+				contextPath = contextPath.substring(0, contextPath.length() - 1);
+
+			nextLine:
+			for (int nLine = 1; (in = reader.readLine()) != null; ++nLine) {
+				int i = 0, len = in.length();
+				char cc;
+				for (;; ++i) {
+					if (i >= len)
+						continue nextLine;
+					cc = in.charAt(i);
+					if (cc == '\t')
+						throw new IOException("Line "+nLine+": TAB not allowed. Please use space instead");
+					if (cc != ' ') {
+						if (cc == '/' && i + 1 < len && in.charAt(i + 1) == '/')
+							continue nextLine;
+						break;
+					}
+				}
+				if (i > indent) {
+					final int sblen = sb.length();
+					if (sblen > 6 && sb.substring(sblen - 6, sblen - 1).equals("</li>"))
+						sb.delete(sblen - 6, sblen - 1); //remove "</li>"
+					addSpaces(sb, level);
+					sb.append("<ul>\n");
+					indents[++level] = i;
+				} else if (i < indent) {
+					while (--level >= 0) {
+						addSpaces(sb, level);
+						sb.append("</ul></li>\n");
+						if (indents[level] <= i)
+							break;
+					}
+				}
+				indent = i;
+				addSpaces(sb, level);
+				final boolean
+					link = cc != '!',
+					index = cc == '+';
+				final String txt = (!link || index ? in.substring(i + 1): in.substring(i)).trim(),
+					uri = txt.replace(' ', '_');
+				sb.append("<li");
+				if (link) {
+					sb.append("><a href=\"");
+					if (contextPath != null)
+						sb.append(contextPath);
+					for (int j = 0; j < level; ++j)
+						sb.append(paths[j]);
+					sb.append('/').append(uri);
+					if (!index)
+						sb.append(".html");
+					sb.append("\">");
+				} else {
+					sb.append(" class=\"category\"><span>");
+				}
+				sb.append(txt);
+				if (link)
+					sb.append("</a>");
+				else
+					sb.append("</span>");
+				sb.append("</li>\n");
+				paths[level] = '/' + uri;
+			}
+			while (--level >= 0)
+				sb.append("</ul>\n");
+			return sb.append("</ul>\n").toString();
+		} finally {
+			reader.close();
+		}
+	}
+	private static void addSpaces(StringBuffer sb, int count) {
+		while (--count >= 0)
+			sb.append(' ');
 	}
 	private static String read(File fl) throws IOException {
 		final Reader reader = new InputStreamReader(new FileInputStream(fl), "UTF-8");

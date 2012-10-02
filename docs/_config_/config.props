@@ -1,4 +1,5 @@
 api=http://api.rikulo.org/rikulo/latest/rikulo_
+dart-api=http://api.dartlang.org/docs/continuous/dart_
 source=https://github.com/rikulo/rikulo/tree/master/
 context-path=/rikulo/latest/
 header=autogen-header.html
@@ -8,3 +9,4 @@ force=true
 template-domain=http://rikulo.org
 template-header=template-header.html
 template-footer=template-footer.html
+toc=toc.txt

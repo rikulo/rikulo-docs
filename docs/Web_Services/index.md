@@ -1,6 +1,6 @@
 #Web Services
 
 * [Fundamentals](Fundamentals.md)
-* [Google Maps](gmaps.md)
-* [Google Services](gapis.md)
-* [Yahoo Services](yapis.md)
+* [Google Maps](Google_Maps.md)
+* [Google Services](Google_Services.md)
+* [Yahoo Services](Yahoo_Services.md)

@@ -7,19 +7,16 @@ import org.pegdown.LinkRenderer;
 import org.pegdown.ast.ExpLinkNode;
 
 public class RikuloLinkRenderer extends LinkRenderer {
-	final String _api, _source, _dart, _ext;
-	RikuloLinkRenderer(String api, String source, String ext) {
-		_api = api;
-		_dart = api.substring(0, api.lastIndexOf('/') + 1);
-		_source = source;
-		_ext = ext;
+	final Processor _proc;
+	RikuloLinkRenderer(Processor proc) {
+		_proc = proc;
 	}
 	public Rendering render(ExpLinkNode node, String text) {
 		String url = node.url;
 		boolean bApi = false;
 		if ((bApi = url.equals("api:")) || url.equals("dart:")) {
 		//package: [view](api:) or [html](dart:)
-			final String urlPrefix = bApi ? _api: _dart;
+			final String urlPrefix = bApi ? _proc.api: _proc.dartapi;
 			return new Rendering(urlPrefix + text.replace('/', '_') + ".html",
 				"<code>" + text + "</code>");
 		} else if ((bApi = url.startsWith("api:")) || url.startsWith("dart:")) {
@@ -29,7 +26,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 		* Link to a setter: [View.width](api:view:set)
 		* Link to a global variable: [activity](api:app)
 		*/
-			final String urlPrefix = bApi ? _api: _dart;
+			final String urlPrefix = bApi ? _proc.api: _proc.dartapi;
 			boolean bGet = url.endsWith(":get"), bSet = !bGet && url.endsWith(":set");
 			if (bGet || bSet)
 				url = url.substring(0, url.length() - 4);
@@ -66,14 +63,14 @@ public class RikuloLinkRenderer extends LinkRenderer {
 				info.substring(0, i) + ".html#"
 //					+ (bSet ? "set:": bGet || (!bMethod && !bOp) ? "get:": "")
 					+ mtd:
-				info + _ext;
+				info + _proc.extension;
 			return new Rendering(urlPrefix + pkg + "/" + clsnm,
 				"<code>" + text + "</code>");
 		} else if (url.startsWith("source:")) { //source: [name](source:path)
 			String path = url.substring(7);
 			if (path.length() > 0 && path.charAt(path.length() - 1) != '/')
 				path += '/';
-			return new Rendering(_source + path + text,
+			return new Rendering(_proc.source + path + text,
 				"<code>" + text + "</code>");
 		} else {
 			final int i = url.lastIndexOf(".md");

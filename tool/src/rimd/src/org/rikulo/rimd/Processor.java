@@ -8,13 +8,14 @@ import java.io.Writer;
 import java.io.IOException;
 
 public class Processor {
-	public final String header, footer, api, source, extension;
+	public final String header, footer, api, dartapi, source, extension;
 	public int count = 0;
 
-	public Processor(String header, String footer, String api, String source, String ext) {
+	public Processor(String header, String footer, String api, String dartapi, String source, String ext) {
 		this.header = header;
 		this.footer = footer;
 		this.api = api;
+		this.dartapi = dartapi;
 		this.source = source;
 		this.extension = ext;
 	}
@@ -23,8 +24,7 @@ public class Processor {
 			dst.write(header);
 
 		++ count;
-		dst.write(new PegDownProcessor().markdownToHtml(
-			src, new RikuloLinkRenderer(api, source, extension)));
+		dst.write(new PegDownProcessor().markdownToHtml(src, new RikuloLinkRenderer(this)));
 
 		if (footer != null)
 			dst.write(footer);
