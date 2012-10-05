@@ -110,6 +110,7 @@ public class Main {
 	    }
 		
 		doc.getElementsByTag("title").remove();
+		doc.getElementsByAttributeValue("name", "description").remove();
 		doc.getElementsByAttributeValueContaining("content", "width=device-width").remove();
 		doc.getElementsByAttributeValue("href", "/less/learn").remove();
 		doc.getElementsByTag("script").get(0).before(headerCnt);
@@ -186,8 +187,4 @@ public class Main {
 		System.err.println("rimd: " + msg);
 		System.exit(-1);
 	}
-	private static void log(String msg) {
-		System.out.println("rimd: " + msg);
-	}
-
 }

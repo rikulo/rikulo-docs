@@ -4,7 +4,7 @@
 	<!-- VARIABLES -->
 	<property name="src.dir" value="src"/>
 	<property name="classes.dir" value="bin"/>
-	<property name="lib.dir" value="../bin/rimd.lib" />
+	<property name="lib.dir" value="../../rimd.lib" />
 	<property name="archive.name" value="tmpgen.jar"/>
 	<property name="mainclass" value="org.zkoss.rikulo.tmpgen.Main"/>
 	
