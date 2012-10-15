@@ -1,6 +1,6 @@
 #UI Overview
 
-The basic building block of the user interface in a Rikulo application is [View](api:view). A View occupies a rectangular area on the screen and is responsible for drawing and event handling.
+The basic building block of the user interface in a Rikulo application is [View](api:view). A View occupies a rectangular area on the browser and is responsible for drawing and event handling.
 
 Rikulo provides a collection of [View](api:view) subclasses that offer predefined features, such as input controls and grids.
 
@@ -28,47 +28,45 @@ To draw the user interface, you can instantiate [View](api:view) and its subclas
       }
     }
 
-As shown above, the composing of a hierarchy tree is done by use of [View.addChild](api:view).
+As shown above, the composing of a hierarchy tree is done by use of [View.addChild()](api:view).
 
-##Show View on the Screen
+##Show View on the Browser
 
-###Attach to `mainView`
+When a view is instantiated, it is just like any ordinary object and has no effect on the user interface. To show a view on the browser, you can add it to [document](dart:html). It can be done by invoking [View.addToDocument()](api.view) against the root view of a hierarchy of views. For example,
 
-When a view is instantiated, it is just like any ordinary object and has no effect on the user interface. To show a view on the screen, you can add it to a node of the main view (`mainView`) of [the current activity](../Activity.md). For example,
+    new View()
+      ..layout.type = "linear"
+      ..addChild(new TextView("Name"))
+      ..addChild(new TextBox())
+      ..addToDcument(); //make it available to the browser
 
-    activity.mainView.addChild(new TextView.html("<h1>Impacts</h1>")); //attach to mainView
+> Notice that we interchangeably use *screen*, *browser*, and *document* to represent the same thing: the visual area of the device that the user interact with.
 
-> `activity` is a global variable referencing to the current activity.
-
-> Notice that we interchangeably use *screen* and *document* to represent the same thing: the visual area of the device that the user interact with.
-
-To remove a view from a hierarchy tree of views, you can use [View.removeFromParent()](api:view). It also means the view will be detached from the screen, if it was attached.
+To remove a view from a hierarchy tree of views, you can use [View.removeFromParent()](api:view). It also means the view will be detached from the browser, if it was attached.
 
     view.removeFromParent(); //detach the given view from the hierarchy tree
 
-You can also replace the whole main view with a hierarchy of tree too. Furthermore, the previous main view will be detached automatically.
+By default, [View.addToDocument()](api:view) will check if any element ([Element](dart:html)) is assigned with id called `v-main`. If found, the views will be inserted into the element. If not found, the views will be inserted right under `document.body`.
 
-    ScrollView fooView = new ScrollView();
-    fooView.addChild(new TextView.html("<ul><li>hi, there</li></ul>"));
-    activity.mainView = fooView; //replace the current mainView with fooView
+##Attach views under a particular element
 
-###Attach to a dialog of the current activity
+If you want to attach a hierarchy of views to a particular element, you can specify the element as the first argument. For example, assume you want want to put it under an element named `part`, you can do as follows.
 
-In additions to the main view, you can make a view (more precisely, a hierarchy tree) to be a dialog of the current activity:
+    view.addToDocument(document.query("#part"));
 
-    View fooDialog = new View();
-    fooDialog.addChild(new TextView("A dialog sample"));
-    activity.addDialog(fooDialog); //make fooDialog as a dialog shown on top of mainView
+For more information, please refer to [Embed in HTML Page](../Views/Fundamentals/Embed_in_HTML_Page.md).
 
-After called, `fooDialog` will be attached to the screen, and it will be shown on top of `mainView`. Since it is attached, any child added to it will be attached too.
+###Attach views as a dialog
 
-    fooDialog.addChild(new TextView('Also attached to the screen'));
+A dialog is a user interface that limits the user from accessing other user interfaces except the hierarchy views. It is useful if you want the user to enter something before proceed. To do so, you can specify `mode: "dialog"` when calling [View.addToDocument](api:view), such as
 
-To remove a dialog, you can invoke the `removeDialog` method. The last added dialog will be detached.
+    view.addToDocument(mode: "dialog");
 
-    activity.removeDialog(); //detach the last added dialog
+Here is an example ([source code is available here](https://github.com/rikulo/rikulo/blob/master/test/TestDialog2.html)).
 
-> [Activity](api:app) has one main view, `mainView`, and any number of dialogs. The last added dialog will be displayed on top of the main view and other dialogs. For more information, please refer to [the Activity chapter](../Activity.md) for details.
+![Dialog](dialog.jpg?raw=true)
+
+As shown, there is a *semi-transparent mask* to prevent the user from accessing user interfaces other than the given view.
 
 ##Position
 
@@ -87,11 +85,7 @@ If a view has a border, the coordinates of the child views will start from the i
 
 The width and height of a view includes the border. Thus, if the border's width is 5, then the inner space to draw is 10 pixel smaller.
 
-###Inner Offset
-
-Some view subclasses might allow you to define the offset of the coordinates by setting the `innerLeft` and `innerTop` properties. In other words, `innerLeft` and `innerTop` specify the offset from the left-top corner. You can explore the [viewport](source:example) sample.
-
-> Notice that View and most subclasses don't allow you to change them, though it is straightforward to extend them to support it.
+> You can add additional offset to the coordinate of child views, such that you have more space to put other user interfaces, such as a toolbar. Please refer to [the viewport example](source:example) for details.
 
 ##Layout
 
@@ -108,17 +102,19 @@ For more information, please refer to [the Layouts chapter](../../Layouts/index.
 
 ##Relation with DOM Element
 
-To show itself on the screen, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. However, Rikulo is aimed to encapsulate the complexity from the application developers. You generally don't need to know much about it.
+To show itself on the browser, a view is built with one or multiple DOM elements, depending on the complexity that the view offers.
 
-If you want, you can retrieve the DOM element that represents the view on the screen by use of [View.node](api:view).
+> Rikulo is aimed to encapsulate the complexity from the application developers. You can skip this section if you'd like.
 
-    view.node.nodes();
+To save the memory, the DOM element(s) of a hierarchy of views won't be created until [View.addToDocument()](api:view) of its root view has been called (aka., attached). Once attached, you can retrieve the DOM element(s) that represents the view on the browser by use of [View.node](api:view).
 
-Notice that you can access [View.node](api:view) only if the view has been attached to the screen. Otherwise, it will throws an exception.
+    print("${view.node.id}");
 
-To know if a view is attached to the screen, you can check [View.inDocument](api:view).
+Notice that you can access [View.node](api:view) only if the view has been attached to the browser. Otherwise, it will throws an exception.
+
+To know if a view is attached to the browser, you can check [View.inDocument](api:view).
 
     if (view.inDocument) //the view is attached (and then accessible by the user)
       doSomething();
 
-If you'd like to learn the details of how to develop a view, please refer to [View Development](../../View_Development/index.md).
+If you'd like to learn the details of how to develop a view, please refer to [View Development](../../View_Development).
