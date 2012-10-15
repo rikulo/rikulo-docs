@@ -21,7 +21,7 @@ Here is a simple example for displaying a label.
     class MyLabel extends View {
       String _text = "";
 
-      String get text() => _text;
+      String get text => _text;
       void set text(String text) {
         _text = text;
         if (inDocument) //check if attached

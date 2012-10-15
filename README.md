@@ -20,7 +20,7 @@ mobile applications in Dart and HTML 5.
 * Link to a method: \[View.requestLayout()](api:view)
 * Link to a getter: \[View.width](api:view) or \[View.width](api:view:get)
 * Link to a setter: \[View.width](api:view:set)
-* Link to a global variable: \[activity](api:app)
+* Link to a global variable: \[rootViews](api:view)
 * Link to operator[]: \[ListModel.operator[ ]](api:model) (note: space between [ and ] required)
 * Link to operator[]=: \[ListModel.operator[ ]=](api:model) (note: space between [ and ] required)
 * Link to operator==: \[ListModel.operator==](api:model) (also support +, - and so on)

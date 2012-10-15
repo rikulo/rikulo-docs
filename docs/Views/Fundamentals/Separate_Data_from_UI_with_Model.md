@@ -43,7 +43,7 @@ If you prefer to share the data but not to share the selection, you can implemen
       PorxyListModel(ListModel<E> this.origin);
 
       E operation[](int index) => origin[index];
-      int get length() => origin.length;
+      int get length => origin.length;
     }
 
 Then, you can split the selection as you want it.

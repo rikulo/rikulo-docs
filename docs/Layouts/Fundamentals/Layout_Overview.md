@@ -21,9 +21,11 @@ The `layout` property is actually an instance of [LayoutDeclaration](api:view). 
 
 Here is a complete example:
 
+    final rootView = new View()..addToDocument();
+
     View hlayout = new View();
     hlayout.layout.text = "type: linear; width: 100; height: 70; spacing: 10";
-    mainView.addChild(hlayout);
+    rootView.addChild(hlayout);
 
     View view = new View();
     view.style.cssText = "background: yellow; border: 1px solid black";
@@ -49,10 +51,12 @@ In other words, the `layout` property specifies how to arrange the child views, 
 
 Here is another example: arrange a linear layout with three child views, and the last child view takes the rest of the space as follows.
 
+    final rootView = new View()..addToDocument();
+
     View hlayout = new View();
     hlayout.layout.text = "type: linear; width: 100; height: 70; spacing: 10";
     hlayout.profile.width = "flex";
-    mainView.addChild(hlayout);
+    rootView.addChild(hlayout);
 
     View view = new View();
     view.style.cssText = "background: yellow; border: 1px solid black";
@@ -84,24 +88,24 @@ It is very useful with the so-called [Anchor Layout](Anchor Layout).
 
 You can nest one layout into another and so on to create sophisticated layouts. The layout will be processed from the root view recursively into the leaf views. For example, we can place the horizontal linear layout inside the vertical linear layout to create a grid:
 
-    void onCreate_() {
-      mainView.layout.text = "type: linear; orient: vertical";
+    final rootView = new View()
+      ..layout.text = "type: linear; orient: vertical"
+      ..addToDocument();
 
-      for (final String type in
-      ["text", "password", "multiline", "number", "date", "color"]) {
-        View view = new View();
-        view.layout.text = "type: linear; align: center; spacing: 0 3";
-            //top and bottom: 0 since nested
-        mainView.addChild(view);
+    for (final String type in
+    ["text", "password", "multiline", "number", "date", "color"]) {
+      View view = new View();
+      view.layout.text = "type: linear; align: center; spacing: 0 3";
+          //top and bottom: 0 since nested
+      rootView.addChild(view);
 
-        TextView label = new TextView(type);
-        label.style.textAlign = "right";
-        label.profile.width = "70";
-        view.addChild(label);
+      TextView label = new TextView(type);
+      label.style.textAlign = "right";
+      label.profile.width = "70";
+      view.addChild(label);
 
-        TextBox input = new TextBox(type: type);
-        view.addChild(input);
-      }
+      TextBox input = new TextBox(type: type);
+      view.addChild(input);
     }
 
 ![Nested Layout](layout-ex-nested.jpg?raw=true)
@@ -143,4 +147,4 @@ After the layout has done, the `layout` event is fired. It is the moment you can
       });
       view.addChild(txt);
     });
-    mainView.addChild(view);
+    view.addToDocument();

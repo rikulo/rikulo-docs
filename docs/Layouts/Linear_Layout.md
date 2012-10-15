@@ -8,56 +8,56 @@ Here is a typical application layout.
 
 ![Border Layout](borderlayout.jpg?raw=true)
 
-    void onCreate_() {
-      mainView.layout.text = "type: linear; orient: vertical; spacing: 0";
+    final rootView = new View()
+      ..layout.text = "type: linear; orient: vertical; spacing: 0"
+      ..addToDocument();
 
-      View header = new View();
-      header.style.cssText = "background: blue";
-      header.profile.text = "width: flex; height: 30";
-      mainView.addChild(header);
+    View header = new View();
+    header.style.cssText = "background: blue";
+    header.profile.text = "width: flex; height: 30";
+    rootView.addChild(header);
 
-      View inner = new View();
-      inner.layout.text = "type: linear; spacing: 0"; //default: horizontal
-      inner.profile.text = "width: flex; height: flex";
-      mainView.addChild(inner);
+    View inner = new View();
+    inner.layout.text = "type: linear; spacing: 0"; //default: horizontal
+    inner.profile.text = "width: flex; height: flex";
+    rootView.addChild(inner);
 
-      View sidebar = new View();
-      sidebar.style.cssText = "background: orange";
-      sidebar.profile.text = "width: 20%; height: flex";
-      inner.addChild(sidebar);
+    View sidebar = new View();
+    sidebar.style.cssText = "background: orange";
+    sidebar.profile.text = "width: 20%; height: flex";
+    inner.addChild(sidebar);
 
-      View content = new View();
-      content.profile.text = "width: flex; height: flex";
-      inner.addChild(content);
+    View content = new View();
+    content.profile.text = "width: flex; height: flex";
+    inner.addChild(content);
 
-      View footer = new View();
-      footer.style.cssText = "background: green";
-      footer.profile.text = "width: flex; height: 30";
-      mainView.addChild(footer);
-    }
+    View footer = new View();
+    footer.style.cssText = "background: green";
+    footer.profile.text = "width: flex; height: 30";
+    rootView.addChild(footer);
 
 ##Example 2: Input Form
 
 ![Input Form](inputform.jpg?raw=true)
 
-    void onCreate_() {
-      mainView.layout.text = "type: linear; orient: vertical";
+    final rootView = new View()
+      ..layout.text = "type: linear; orient: vertical"
+      ..addToDocument();
 
-      for (final String type in
-      ["text", "password", "multiline", "number", "date", "color"]) {
-        View view = new View();
-        view.layout.text = "type: linear; align: center; spacing: 0 3";
-          //top and bottom: 0 since nested
-        mainView.addChild(view);
+    for (final String type in
+    ["text", "password", "multiline", "number", "date", "color"]) {
+      View view = new View();
+      view.layout.text = "type: linear; align: center; spacing: 0 3";
+        //top and bottom: 0 since nested
+      rootView.addChild(view);
 
-        TextView label = new TextView(type);
-        label.style.textAlign = "right";
-        label.profile.width = "70";
-        view.addChild(label);
+      TextView label = new TextView(type);
+      label.style.textAlign = "right";
+      label.profile.width = "70";
+      view.addChild(label);
 
-        TextBox input = new TextBox(type: type);
-        view.addChild(input);
-      }
+      TextBox input = new TextBox(type: type);
+      view.addChild(input);
     }
 
 ##Samples

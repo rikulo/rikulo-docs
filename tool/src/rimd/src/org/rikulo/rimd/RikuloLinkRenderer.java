@@ -24,7 +24,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 		* Link to a method: [View.requestLayout()](api:view)
 		* Link to a getter: [View.width](api:view) or [View.width](api:view:get)
 		* Link to a setter: [View.width](api:view:set)
-		* Link to a global variable: [activity](api:app)
+		* Link to a global variable: [rootViews](api:view)
 		*/
 			final String urlPrefix = bApi ? _proc.api: _proc.dartapi;
 			boolean bGet = url.endsWith(":get"), bSet = !bGet && url.endsWith(":set");

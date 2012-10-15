@@ -1,18 +1,18 @@
 #Embed in HTML Page
 
-By default, [Activity.mainView](api:app) will occupy the whole screen. In other words, it assumes the main view is the only UI element that the user will interact with.
+By default, [View.addToDocument()](api:view) will add the view to `document.body`. In other words, it assumes the view can occupy anywhere in the whole browser. It is common for a simple or mobile Web applications. 
 
-However, for a Web application, it is common to have a header, a footer and even several banners. They are usually better to be done in pure HTML and CSS since they are static and can be implemented by a designer who might not be familiar with Dart.
+On the other hand, a Web application usually has a header, a footer and even several banners. They are usually (and better) implemented in pure HTML and CSS, since they are static and can be implemented by a UI designer.
 
-To do so, you can implement with HTML (or any server-side technology, such as JSP) and then embed Rikulo views to the place that rich UI is required. For example,
+To do so, you can implement the HTML page with static HTML tags (or any server-side technology, such as JSP and PHP), and then embed the Rikulo views into particular location(s) for handling the rich user interfaces. For example,
 
 ![Embed in HTML page](embedInHTMLPage.png?raw=true)
 
-> Of course, you can embed any number of Rikulo views into different parts of the HTML page, depending on your requirement
+> You can embed any number of Rikulo views into different parts of the HTML page, depending on your requirement
 
 ##The HTML Page
 
-To embed views into the HTML page, you have to declare an element where the rich UI will take place (while the content really depends what you want). To access the element in Dart, an unique ID shall be assigned. Here is an example,
+To embed views into the HTML page, you have to declare an element where Rikulo views will be placed. To identify the element in Dart code, you can assign an unique ID to it. Here is an example,
 
     <!DOCTYPE html>
     <html>
@@ -24,7 +24,7 @@ To embed views into the HTML page, you have to declare an element where the rich
         <div id="header>Your Header Here</div>
         <div id="container">
           <div id="sidebar">Your Sidebar Here</div>
-          <div id="v-main"><!-- Rikulo view will be embedded here --></div>
+          <div id="main"><!-- Rikulo view will be embedded here --></div>
         </div>
         <div id="footer">Your Footer Here</div>
         <script type="application/dart" src="Your.dart"></script>
@@ -32,27 +32,33 @@ To embed views into the HTML page, you have to declare an element where the rich
       </body>
     </html>
 
-As shown above, we assign the element with an unique ID called `v-main` that will be used in the Dart application to identify the element.
+As shown above, we assign the element with an unique ID called `main` that will be used in the Dart application to identify the element.
 
 > Like other HTML pages, you have to specify `view.css`, the dart file, and `dart.js`.
 
 ###Dimension of the Element
 
-The CSS position of every Rikulo view is default to absolute. Thus, if you don't assign the dimension to the element, it might overlap with the other elements, such as footers. To avoid the overlapping, you can specify in CSS, such as:
+It is important to notice that you *have to* assign the dimension to the element. For example,
 
     #main {
       width: 600px;
       min-height: 500px;
     }
 
+Rikulo will take the dimension you assigned to limit where the view can occupy.
+
 ##The Dart Code
 
-If you assign `v-main` as the element's ID, you don't need to modify your Dart application. In other words, the application can be run on different layout without modification.
+In the Dart code, you can identify the element to add the views as follows.
 
-However, if you prefer to assign a different ID to the element, you have to specify the same ID explicitly when calling [Activity.run](api:app). For example, if the ID is called `part1`, then you can do as follows:
+    view.addToDocument(document.query("#main"));
 
-    void main() {
-      new FooActivity().run("part1");
-    }
+The view will be then limited the given element. For example, `view.profile.location = "center center"` will place the view at the center of the element.
 
-It is useful if you have multiple Dart applications to replace multiple parts of the HTML page.
+> You can add different hierarchy of views to different elements. [Here is a more complicated example](https://github.com/rikulo/rikulo/blob/master/test/TestEmbed.dart).
+
+###`v-main`
+
+If the element is not given, [View.addToDocument()](api:view) will look for any element called `v-main` first, and then, if not found, `document.body`.
+
+With this special id, your application can run on different layout without modification. For instance, if the HTML page doesn't have this element, Rikulo views will take over the whole browser. If the element is found, Rikulo views is limited to it.

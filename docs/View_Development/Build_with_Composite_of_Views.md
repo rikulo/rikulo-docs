@@ -19,11 +19,11 @@ You can implement it by extending from [View](api:view) or any of its subclasses
         addChild(_label = new TextView(label));
         addChild(_input = new TextBox(value));
       }
-      String get label() => _label.text;
+      String get label => _label.text;
       void set label(String label) {
         _label.text = label;
       }
-      String get value() => _input.value;
+      String get value => _input.value;
       void set value(String value) {
         _input.value = value;
       }
@@ -31,16 +31,17 @@ You can implement it by extending from [View](api:view) or any of its subclasses
 
 Then, the application can use it without knowing how it is implemented.
 
-    mainView.layout.text = "type: linear; orient: vertical";
-    mainView.addChild(new LabeledInput("username"));
-    mainView.addChild(new LabeledInput("password"));
+    new View()
+      ..layout.text = "type: linear; orient: vertical"
+      ..addChild(new LabeledInput("username"))
+      ..addChild(new LabeledInput("password"));
 
 ###The className Property
 
 To work with [View.query()](api:view), you have to implement [View.className](api:view) to return the view's class name.
 
     class LabeledInput extends View {
-      String get className() => "LabeledInput";
+      String get className => "LabeledInput";
 
 Therefore, the application can query it with this class name, such as
 
@@ -59,7 +60,7 @@ You can *propagate* the events sent by the internal views to the caller of the c
 
 Then, the application can listen the `change` event if necessary.
 
-    for (LabeledInput view in mainView.queryAll("LabeledInput"))
+    for (LabeledInput view in rootView.queryAll("LabeledInput"))
       view.on.change.add((event) {
         print("$event received");
         });

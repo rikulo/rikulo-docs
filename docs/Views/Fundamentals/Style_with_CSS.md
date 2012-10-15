@@ -46,26 +46,26 @@ In additions, you can remove the default CSS classes too. The default styling of
 
 > The prefix, `"v-"`, can be customized by setting [ViewConfig](api:view/impl)'s `classPrefix` property.
 
-##Package CSS Rules in the Style View
-
-[Style](api:view) is a special UI object used to hold CSS rules. You can assign CSS rules to directly.
-
-    mainView.addChild(new Style.content('''
-    .blue {
-      background: blue; color: white
-    }
-    '''));
-
-Or, you can load an external CSS file holding the CSS rules.
-
-    mainView.addChild(new Style("foo.css"));
-
 ##Package CSS Rules in a File
 
-In general, it is better to package CSS rules in a file, since it isolates the code from the UI design. Furthermore, you can specify the CSS file(s) in the HTML pages (so you don't have to touch the Dart code). For example,
+In general, it is better to package CSS rules in a file, since it isolates the code from the UI design. Furthermore, you can specify the CSS file(s) in the HTML pages, such that you can customize the look without modifying any Dart code. For example,
 
     <!DOCTYPE html>
     <html>
       <head>
         <link rel="stylesheet" type="text/css" href="foo.css" />
     ...
+
+##Package CSS Rules in the Style View
+
+If you want to add CSS rules in Dart code, you can use [Style](api:view). It is a special UI object used to define CSS rules. For example,
+
+    new Style.content('''
+    .blue {
+      background: blue; color: white
+    }
+    ''').addToDocument();
+
+In additions, you can load an external CSS file to include a collection of CSS rules as follows.
+
+    new Style("foo.css").addToDocument();
