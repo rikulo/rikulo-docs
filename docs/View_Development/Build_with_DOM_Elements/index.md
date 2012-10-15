@@ -6,7 +6,7 @@ A [View](api:view) is made up of one or multiple DOM elements. In other words, a
 
 The structure of the associated DOM elements are usually simple, such [View](api:view), [TextView](api:view) and [ScrollView](api:view), while some can be complex, such as [Switch](api:view). It all depends on the requirement and whether HTML + CSS matches what you need.
 
-> Though rarely, you can draw the content in the fully customized way with [the Canvas element](http://api.dartlang.org/html/CanvasElement.html) too.
+> Though rarely, you can draw the content in the fully customized way with [CanvasElement](dart:html) too.
 
 Here is an example.
 

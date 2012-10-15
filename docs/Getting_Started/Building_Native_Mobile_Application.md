@@ -16,7 +16,7 @@ Cordova/PhoneGap supports multiple mobile platforms including Android, iOS and o
 >Though each supported mobile platform in Cordova/PhoneGap needs its own specific libraries, SDKs, and development environment, however, only one Rikulo application is required to run on across all mobile platforms.
 
 For convenience, following we use the Android platform and the [Hello World](Hello_World.md) example mentioned in previous section to show you the steps of building a native Rikulo mobile application.
->For other platforms such as iOS, you can check the document [here](http://docs.phonegap.com/en/1.9.0/guide_getting-started_index.md.).
+>For other platforms such as iOS, you can check the document [here](http://docs.phonegap.com/en/2.1.0/).
 
 1. Compile your Rikulo application from Dart to JavaScript. 
 	* Open your application folder in [Dart Editor](http://www.dartlang.org/docs/editor/).
@@ -25,7 +25,7 @@ For convenience, following we use the Android platform and the [Hello World](Hel
 
 	>DartEditor actually calls `dart2js` in dart-sdk to do the compiling job.
 
-2. Install and setup a new `HelloCordova` project in the Cordova/PhoneGap Android developing environment as specified [here](http://docs.phonegap.com/en/1.9.0/guide_getting-started_android_index.md.html#Getting%20Started%20with%20Android).
+2. Install and setup a new `HelloCordova` project in the Cordova/PhoneGap Android developing environment as specified [here](http://docs.phonegap.com/en/2.1.0/).
 
 	Now you shall have had a working `HelloCordova` sample application running in Cordova/PhoneGap environment. The entry point of the `HelloCordova` application in Cordova/PhoneGap environment is the `index.html` file under `assets/www` folder.
 

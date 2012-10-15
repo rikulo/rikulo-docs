@@ -25,15 +25,15 @@ Here is a simple example for displaying a label.
       void set text(String text) {
         _text = text;
         if (inDocument) //check if attached
-          node.innerHTML = StringUtil.encodeXML(_text); //update the DOM element
+          node.innerHTML = XMLUtil.encode(_text); //update the DOM element
       }
       void domInner_(StringBuffer out) {
-        out.add(StringUtil.encodeXML(_text));
+        out.add(XMLUtil.encode(_text));
         super.domInner_(out); //render child views
       }
     }
 
- As shown, we update the DOM element in the setter and in `domInner_`. In additions, we use [StringUtil.encodeXML](api:util) to escape the special characters such as <.
+ As shown, we update the DOM element in the setter and in `domInner_`. In additions, we use [XMLUtil.encode](api:util) to escape the special characters such as <.
 
 ##Render with [View.invalidate()](api:view)
 

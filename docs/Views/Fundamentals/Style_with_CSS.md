@@ -60,7 +60,7 @@ In general, it is better to package CSS rules in a file, since it isolates the c
 
 If you want to add CSS rules in Dart code, you can use [Style](api:view). It is a special UI object used to define CSS rules. For example,
 
-    new Style.content('''
+    new Style.fromContent('''
     .blue {
       background: blue; color: white
     }
