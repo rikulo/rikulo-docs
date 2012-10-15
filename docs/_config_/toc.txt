@@ -15,11 +15,9 @@
     Event Handling
     ID Space and Query
     Style with CSS
-    Show Web Content
     Embed in HTML Page
+    Show Web Content
     Separate Data from UI with Model
-  Activity
-  Application
   Button
   //ButtonGroup
   Canvas

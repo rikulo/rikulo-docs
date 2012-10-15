@@ -13,86 +13,86 @@ A Rikulo application consists of
 
 Here is a simple "Hello World" application.
 
-    #import('package:rikulo/app.dart');
-    #import('package:rikulo/view.dart');
-
-    class HelloWorld extends Activity {
-      void onCreate_() {
-        TextView welcome = new TextView("Hello World!");
-        welcome.profile.location = "center center";
-        mainView.addChild(welcome);
-      }
-    }
+    import 'package:rikulo/view.dart';
 
     void main() {
-      new HelloWorld().run();
+      new TextView("Hello World!") //create UI
+        .addToDocument(); //make it available to the browser
     }
 
-As shown above, there are basically four steps to implement a Rikulo application.
+As shown above, there are basically three steps to implement a Rikulo application.
 
-1. Import [app](api:) and [view](api:) packages
-2. Implement your activity by extending from [Activity](api:app)
-3. Draw your user interface in [Activity.onCreate_()](api:app).
-4. Start up the activity in the `main` method
+1. Import the [view](api:) package.
+2. Draw your user interface by instantiating UI elements ([View](api:view) and subclasses).
+3. Show your user interface on the browser by invoking [View.addToDocument()](api:view).
 
-###Import [app](api:) and [view](api:)
+###Import the [view](api:) package
 
-Packages to import really depends on your requirement. [Activity](api:app) is part of the [app](api:) package, while UI objects is part of the [view](api:) package. These two are packages that you will import in the most cases.
-
-###Implement an activity
-
-An activity is an application component that provides the user interface to interact with the user. An activity might be paused or resumed due to user's interaction, such as answering a phone.
-
-Implementing an activity is straightforward: extend your class from [Activity](api:app).
-
-> The current activity can be found by use of the global variable called [activity](api:app).
+Packages to import depend on your requirement. The [view](api:) package is usually what you will import, since it has many UI elements.
 
 ###Draw your user interface
 
-After your activity is started, [Activity.onCreate_()](api:app) will be called. You can create your user interface in this method.
-
-> Naming Convention: we append an underscore to the name of a method to indicate the method is *protected*, i.e., it can only be accessed within the class and its subclasses.
-
-The user interface elements in a Rikulo application are built using [View](api:view). A view is the basic building block. It draws something on the screen that the user can interact with.
+The user interface elements in a Rikulo application are built using views. A view is the basic building block. It draws something on the screen and interact with the user.
 
 In this application, we instantiate an instance of [TextView](api:view) to show the greeting message.
 
-    TextView welcome = new TextView("Hello World!");
+    new TextView("Hello World!");
 
-We also specify the layout information in [View.profile](api:view), such that the message shall be placed in the center of the parent. The code is as follows. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
+> A view is an instance of [View](api:view) and its subclasses.  
+> [TextView](api:view) is a subclass of [View](api:view) for displaying messages.
 
-    welcome.profile.location = "center center";
-
-All views available in an activity are arranged in a single tree. The root view is called `mainView`. It is instantiated automatically before calling [Activity.onCreate_()](api:app). To make a view available on the screen, you have to add it to a node of the tree by invoking [View.addChild()](api:view).
-
-    mainView.addChild(welcome);
+Views can be arranged in a hierarchy of views, as show below, to define any user interface you want. The topmost view is called the root view.
 
 ![Tree of Views](view-hierarchy.jpg?raw=true)
 
-###Start up your activity
+For example, we can define the user interface as follows.
 
-The `main` method is Dart's entry point. All you need to do is to start up your activity by instantiating it and invoking [Activity.run()](api:app).
+    new View()
+      ..layout.type = "linear" //arrange the layout of child views linearly
+      ..addChild(new TextView("Name")) //a label
+      ..addChild(new TextBox()); //an input
 
-    new HelloWorld().run();
+As shown above, a hierarchy of views is arranged by use of [View.addChild()](api:view). Furthermore, [View.layout](api.view) controls how to arrange the child views (aka., subviews). For more information, please refer to [the UI Overview](../Views/Fundamentals/UI_Overview.md).
+
+###Show your user interface on the browser
+
+Notice that the hierarchy of views you create is just a tree of normal objects. To make it available to the browser, you can invoke [View.addToDocument()](api:view) against the root view. For example,
+
+    new View()
+      ..layout.type = "linear"
+      ..addChild(new TextView("Name"))
+      ..addChild(new TextBox())
+      ..addToDcument(); //make it available to the browser
+
+On the hand, you can remove a hierarchy of views from the browser by invoking [View.removeFromDocument()](api.view).
+
+If you want to add the user interface into a particular element ([Element](dart:html)) rather than `document.body` (which is default), you can specify the element as the first argument. For example, assume you want want to put it under an element named `part`, you can do as follows.
+
+    view.addToDocument(document.query("#part"));
+
+For more information, please refer to [Embed in HTML Page](../Views/Fundamentals/Embed_in_HTML_Page.md).
 
 ###Handle Events
 
 The view will notify the application about the user's interaction with events. You can listen and handle the events with [View.on](api:view). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
 
-    welcome.on.click.add((event) {
-      welcome.text = "Welcome to Rikulo.";
-      welcome.requestLayout();
-    }
+    new TextView("Hello World!")
+      ..on.click.add((event) {
+        (event.target as TextView).text = "Welcome to Rikulo.";
+        event.target.requestLayout();
+      })
+      ..addToDocument();
 
-> Notice that we also invoke [View.requestLayout()](api:view) to reposition the greeting message, since we change its content and need to reposition it to the center. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
+> Notice that we invoke [View.requestLayout()](api:view) to reposition the greeting message, since we change its content and need to reposition it. For more information, please refer to [the Layouts chapter](../Layouts/index.md).
 
 ##The HTML page
 
-To run an application, you need a HTML page to specify the Dart file(s) to load. Here is a typical example:
+To run an application, you need a HTML page to define the user interface in HTML and specify the Dart file(s) to load. Here is a typical example:
 
     <!DOCTYPE html>
     <html>
       <head>
+        <title>Foo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" type="text/css" href="packages/rikulo/resource/css/view.css" />
       </head>
@@ -107,7 +107,7 @@ First, you have to specify the CSS file to load. Depending on your requirement, 
     <link rel="stylesheet" type="text/css"
      href="packages/rikulo/resource/css/view.css" />
 
-> By default, [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/) installed the resources under the `packages/rikulo/resource` folder. If your HTML file is not in the root of the project, you have to change the path accordingly.
+> By default, [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/) installed the resources under the `packages/rikulo/resource` folder.
 
 Second, you have to specify your Dart file. In this application, it is called `HelloWorld.dart`.
 
@@ -117,6 +117,8 @@ Also notice that Rikulo assumes HTML 5, so you shall specify `<!DOCTYPE html>` a
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+> It is harmless if running on a desktop browser.
+
 Then, you visit this page to see how it works in live.
 
-> In this example, we don't specify where to show the user interface, and Rikulo will, by default, insert it under the document's `body` tag. However, depending on your requirement (such as in a desktop applications), you can run several Rikulo applications at the same time and assign them to different segments on the screen. Please refer to [Make Activity Being Part of HTML Page](../Views/Activity.md) for details.
+> In this example, we don't specify where to show the user interface, and [View.addToDocument()](api:view) will, by default, insert it under the document's `body` tag. However, depending on your requirement, you can put different hierarchy of views into different parts of the document. Please refer to [Embed in HTML Page](../Views/Fundamentals/Embed_in_HTML_Page.md) for details.
