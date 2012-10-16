@@ -1,6 +1,8 @@
 #UI Overview
 
-The basic building block of the user interface in a Rikulo application is [View](api:view). A View occupies a rectangular area on the browser and is responsible for drawing and event handling.
+The basic building block of the user interface in a Rikulo application is [View](api:view). A view occupies a rectangular area on the browser and is responsible for drawing and event handling.
+
+A view is an instance of [View](api:view) and its subclasses. To define the user interface is all about picking up the right views, instantiating them and arranging them into one or multiple hierarchy of views.
 
 Rikulo provides a collection of [View](api:view) subclasses that offer predefined features, such as input controls and grids.
 
@@ -67,6 +69,8 @@ Here is an example ([source code is available here](https://github.com/rikulo/ri
 ![Dialog](dialog.jpg?raw=true)
 
 As shown, there is a *semi-transparent mask* to prevent the user from accessing user interfaces other than the given view.
+
+Also notice that the dialog will be positioned at the center, if `profile.location` is not specified. In other words, after the invocation, `profile.location` will become `center center`, if it was empty. Of course, you can position it to different location if you want.
 
 ##Position
 

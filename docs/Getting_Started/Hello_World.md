@@ -34,14 +34,15 @@ Packages to import depend on your requirement. The [view](api:) package is usual
 
 The user interface elements in a Rikulo application are built using views. A view is the basic building block. It draws something on the screen and interact with the user.
 
-In this application, we instantiate an instance of [TextView](api:view) to show the greeting message.
+A view is an instance of [View](api:view) and its subclasses. To define the user interface is all about picking up the right views, instantiating them and putting them together.
+
+For example, we instantiate an instance of [TextView](api:view) to show the greeting message in this sample application.
 
     new TextView("Hello World!");
 
-> A view is an instance of [View](api:view) and its subclasses.  
 > [TextView](api:view) is a subclass of [View](api:view) for displaying messages.
 
-Views can be arranged in a hierarchy of views, as show below, to define any user interface you want. The topmost view is called the root view.
+Views can be arranged in a hierarchy of views, as show below, to define more complex user interface you want. The view at the top is called the root view.
 
 ![Tree of Views](view-hierarchy.jpg?raw=true)
 
@@ -64,9 +65,9 @@ Notice that the hierarchy of views you create is just a tree of normal objects. 
       ..addChild(new TextBox())
       ..addToDcument(); //make it available to the browser
 
-On the hand, you can remove a hierarchy of views from the browser by invoking [View.removeFromDocument()](api.view).
+On the hand, you can remove a hierarchy of views from the browser by invoking [View.removeFromDocument()](api.view). If you want to remove a branch, you can invoke [View.removeFromParent()](api.view).
 
-If you want to add the user interface into a particular element ([Element](dart:html)) rather than `document.body` (which is default), you can specify the element as the first argument. For example, assume you want want to put it under an element named `part`, you can do as follows.
+If you want to add the user interface into a particular element ([Element](dart:html)) rather than `document.body` (which is the default), you can specify the element as the first argument. For example, assume you want want to put it under an element named `part`, you can do as follows.
 
     view.addToDocument(document.query("#part"));
 
@@ -74,7 +75,7 @@ For more information, please refer to [Embed in HTML Page](../Views/Fundamentals
 
 ###Handle Events
 
-The view will notify the application about the user's interaction with events. You can listen and handle the events with [View.on](api:view). For example, we can rewrite the "Hello World" application to change the greeting message when the user touches it as follows.
+The view will notify the application about the user's interaction with events. You can listen and handle the events with [View.on](api:view). For example, we can rewrite the "Hello World" application to change the greeting message when the user clicks the greeting message as follows.
 
     new TextView("Hello World!")
       ..on.click.add((event) {
@@ -120,5 +121,3 @@ Also notice that Rikulo assumes HTML 5, so you shall specify `<!DOCTYPE html>` a
 > It is harmless if running on a desktop browser.
 
 Then, you visit this page to see how it works in live.
-
-> In this example, we don't specify where to show the user interface, and [View.addToDocument()](api:view) will, by default, insert it under the document's `body` tag. However, depending on your requirement, you can put different hierarchy of views into different parts of the document. Please refer to [Embed in HTML Page](../Views/Fundamentals/Embed_in_HTML_Page.md) for details.
