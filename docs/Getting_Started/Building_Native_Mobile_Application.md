@@ -87,7 +87,7 @@ Following we show you the basic elements of how to access device native resource
 
 As shown above:
 
-1. Import [rikulo_gap/gap.dart](gap:) packages along with others.
+1. Import [rikulo_gap/gap.dart](gap:) library along with others.
 2. Call global method [enableDeviceAccess()](gap:) in the `main` method which will return a `Future<Device>`.
 3. Use the native resource `accelerometer` via the global variable called [accelerometer](gap:) when the device is ready.
 
