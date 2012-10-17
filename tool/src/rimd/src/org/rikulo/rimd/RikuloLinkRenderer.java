@@ -31,7 +31,9 @@ public class RikuloLinkRenderer extends LinkRenderer {
 			final String urlPrefix = bApi ? _proc.api: bDart ? _proc.dartapi:
 				_proc.libapi.replace("{lib}", lib);
 			return new Rendering(urlPrefix + text.replace('/', '_') + ".html",
-				"<code>" + (bDart ? "dart:" : "rikulo_" + text) + "</code>");
+				"<code>" + (bDart ? "dart:" + text :
+					"package:rikulo" + (lib != null ? "_" + lib: "") + "/" + text + ".dart")
+					+ "</code>");
 		} else if ((bApi = url.startsWith("api:")) || (bDart = url.startsWith("dart:"))
 		|| url.indexOf(':') > 0) {
 		/* Link to a class: [ViewConfig](api:view/impl) or [CSSStyleDecalration](dart:html)
