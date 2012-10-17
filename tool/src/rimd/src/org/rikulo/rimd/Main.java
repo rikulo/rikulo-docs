@@ -18,7 +18,8 @@ public class Main {
 	}
 	private Main(String[] args) throws IOException {
 		String src = null, dst = null, header = null, footer = null,
-			api = "", dartapi = "", source = "", ext = ".html", toc = null;
+			api = "", libapi = "", dartapi = "", source = "", libsource = "",
+			ext = ".html", toc = null;
 		final Properties props = new Properties();
 		boolean force = false;
 		for (int i = 0; i < args.length; ++i) {
@@ -44,12 +45,16 @@ public class Main {
 							footer = new File(config.getParent(), footer).getPath();
 					} else if ("extension".equals(nm)) {
 						ext = val;
-					} else if ("api".equals(nm)) {
+					} else if ("api".equals(nm)) { //rikulo
 						api = val;
+					} else if ("lib-api".equals(nm)) { //rikulo-lib
+						libapi = val;
 					} else if ("dart-api".equals(nm)) {
 						dartapi = val;
 					} else if ("source".equals(nm)) {
 						source = val;
+					} else if ("lib-source".equals(nm)) {
+						libsource = val;
 					} else if ("toc".equals(nm)) {
 						toc = val;
 						if (!new File(toc).isAbsolute())
@@ -103,7 +108,7 @@ public class Main {
 			props.put("toc", readTOC(new File(toc), (String)props.get("context-path")));
 
 		_proc = new Processor(replaceVariables(header, props),
-			replaceVariables(footer, props), api, dartapi, source, ext);
+			replaceVariables(footer, props), api, libapi, dartapi, source, libsource, ext);
 		_force = force;
 	}
 	private static String replaceVariables(String content, Properties props) {

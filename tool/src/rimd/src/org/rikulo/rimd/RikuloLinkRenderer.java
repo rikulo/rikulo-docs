@@ -13,24 +13,41 @@ public class RikuloLinkRenderer extends LinkRenderer {
 	}
 	public Rendering render(ExpLinkNode node, String text) {
 		String url = node.url;
-		boolean bApi = false;
-		if ((bApi = url.equals("api:")) || url.equals("dart:")) {
-		//package: [view](api:) or [html](dart:)
-			final String urlPrefix = bApi ? _proc.api: _proc.dartapi;
+		boolean bApi = false, bDart = false;
+		if (url.startsWith("source:")) {
+		//source: [name](source:dir) or [name](source:lib:dir)
+			final int i = url.indexOf(':', 7);
+			final String lib = i >= 0 ? url.substring(7, i): null;
+			String dir = url.substring(i >= 0 ? i + 1: 7);
+			if (dir.length() > 0 && dir.charAt(dir.length() - 1) != '/')
+				dir += '/';
+			return new Rendering(
+				(lib != null ? _proc.libsource.replace("{lib}", lib): _proc.source) + dir + text,
+				"<code>" + text + "</code>");
+		} else if ((bApi = url.equals("api:")) || (bDart = url.equals("dart:"))
+		|| url.endsWith(":")) {
+		//package: [view](api:) or [html](dart:) or (el_impl)(el:)
+			final String lib = !bApi && !bDart ? url.substring(0, url.length() - 1): null;
+			final String urlPrefix = bApi ? _proc.api: bDart ? _proc.dartapi:
+				_proc.libapi.replace("{lib}", lib);
 			return new Rendering(urlPrefix + text.replace('/', '_') + ".html",
 				"<code>" + text + "</code>");
-		} else if ((bApi = url.startsWith("api:")) || url.startsWith("dart:")) {
+		} else if ((bApi = url.startsWith("api:")) || (bDart = url.startsWith("dart:"))
+		|| url.indexOf(':') > 0) {
 		/* Link to a class: [ViewConfig](api:view/impl) or [CSSStyleDecalration](dart:html)
 		* Link to a method: [View.requestLayout()](api:view)
 		* Link to a getter: [View.width](api:view) or [View.width](api:view:get)
 		* Link to a setter: [View.width](api:view:set)
 		* Link to a global variable: [rootViews](api:view)
 		*/
-			final String urlPrefix = bApi ? _proc.api: _proc.dartapi;
+			int iColon = 0;
+			final String lib = !bApi && !bDart ? url.substring(0, iColon = url.indexOf(':')): null;
+			final String urlPrefix = bApi ? _proc.api: bDart ? _proc.dartapi:
+				_proc.libapi.replace("{lib}", lib);
 			boolean bGet = url.endsWith(":get"), bSet = !bGet && url.endsWith(":set");
 			if (bGet || bSet)
 				url = url.substring(0, url.length() - 4);
-			final String pkg = url.substring(bApi ? 4: 5).replace('/', '_');
+			final String pkg = url.substring(bApi ? 4: bDart ? 5: iColon + 1).replace('/', '_');
 
 			int i = text.lastIndexOf('(');
 //			final boolean bMethod = i >= 0;
@@ -45,7 +62,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 			boolean bOp = mtd != null && mtd.startsWith("operator");
 			if (bOp) {
 				if (mtd.indexOf('[') > 0)
-					mtd = mtd.indexOf('=') > 0 ? ":setindex": ":index";
+					mtd = mtd.indexOf('=') > 0 ? "[]=": "[]";
 				else if (mtd.indexOf("==") > 0)
 					mtd = ":eq";
 				else if (mtd.indexOf('+') > 0)
@@ -61,16 +78,9 @@ public class RikuloLinkRenderer extends LinkRenderer {
 			}
 			final String clsnm = i >= 0 ?
 				info.substring(0, i) + ".html#"
-//					+ (bSet ? "set:": bGet || (!bMethod && !bOp) ? "get:": "")
-					+ mtd:
+					+ mtd + (bSet ? "=": ""):
 				info + _proc.extension;
 			return new Rendering(urlPrefix + pkg + "/" + clsnm,
-				"<code>" + text + "</code>");
-		} else if (url.startsWith("source:")) { //source: [name](source:path)
-			String path = url.substring(7);
-			if (path.length() > 0 && path.charAt(path.length() - 1) != '/')
-				path += '/';
-			return new Rendering(_proc.source + path + text,
 				"<code>" + text + "</code>");
 		} else {
 			final int i = url.lastIndexOf(".md");

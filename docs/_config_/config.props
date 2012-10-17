@@ -1,6 +1,8 @@
 api=http://api.rikulo.org/rikulo/latest/rikulo_
+lib-api=http://api.rikulo.org/rikulo-{lib}/latest/rikulo_
 dart-api=http://api.dartlang.org/docs/continuous/dart_
 source=https://github.com/rikulo/rikulo/tree/master/
+lib-source=https://github.com/rikulo/rikulo-{lib}/tree/master/
 context-path=/rikulo/latest/
 header=autogen-header.html
 footer=autogen-footer.html

@@ -13,18 +13,29 @@ mobile applications in Dart and HTML 5.
 
 ###Links
 
-* Link to a source file in github: \[Camera.dart](source:lib/src/device/camera)
-* Link to a package: \[view](api:) and \[device/accelerometer](api:)
-* Link to a class from Rikulo: \[ViewConfig](api:view/impl)
-* Link to a class from Dart lib: \[CSSStyleDeclaration](dart:html)
-* Link to a method: \[View.requestLayout()](api:view)
-* Link to a getter: \[View.width](api:view) or \[View.width](api:view:get)
-* Link to a setter: \[View.width](api:view:set)
-* Link to a global variable: \[rootViews](api:view)
-* Link to operator[]: \[ListModel.operator[ ]](api:model) (note: space between [ and ] required)
-* Link to operator[]=: \[ListModel.operator[ ]=](api:model) (note: space between [ and ] required)
-* Link to operator==: \[ListModel.operator==](api:model) (also support +, - and so on)
+####Link to Rikulo
 
+* Source file in github: \[View.dart](source:lib/src/view)
+* Package: \[view](api:) and \[view_select](api:)
+* Class: \[ViewConfig](api:view_impl)
+* Method: \[View.requestLayout()](api:view)
+* Getter: \[View.width](api:view) or \[View.width](api:view:get)
+* Setter: \[View.width](api:view:set)
+* Global variable: \[rootViews](api:view)
+* operator[]: \[ListModel.operator[ ]](api:model) (note: space between [ and ] required)
+* operator[]=: \[ListModel.operator[ ]=](api:model) (note: space between [ and ] required)
+* operator==: \[ListModel.operator==](api:model) (also support +, - and so on)
+
+###Link to Rikulo Libraries
+
+* Source file in github: \[Acceleration.dart](source:gap:lib/src)
+* Package: \[gap](gap:) or \[el_impl](gap:)
+* Class: \[Acceleration](gap:gap) or \[ClassUtil](el:el_impl)
+* Method/Getter/Setter...: similar
+
+####Link to Dart SDK
+
+* Class from Dart SDK: \[Element](dart:html)
 
 ###TOC
 
