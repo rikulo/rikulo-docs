@@ -35,7 +35,7 @@ public class RikuloLinkRenderer extends LinkRenderer {
 					"package:rikulo" + (lib != null ? "_" + lib: "") + "/" + text + ".dart")
 					+ "</code>");
 		} else if ((bApi = url.startsWith("api:")) || (bDart = url.startsWith("dart:"))
-		|| url.indexOf(':') > 0) {
+		|| (url.indexOf(':') > 0 && url.indexOf("://") < 0)) {
 		/* Link to a class: [ViewConfig](api:view/impl) or [CSSStyleDecalration](dart:html)
 		* Link to a method: [View.requestLayout()](api:view)
 		* Link to a getter: [View.width](api:view) or [View.width](api:view:get)
