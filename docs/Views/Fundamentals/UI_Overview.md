@@ -34,7 +34,7 @@ As shown above, the composing of a hierarchy tree is done by use of [View.addChi
 
 ##Show View on the Browser
 
-When a view is instantiated, it is just like any ordinary object and has no effect on the user interface. To show a view on the browser, you can add it to [document](dart:html). It can be done by invoking [View.addToDocument()](api.view) against the root view of a hierarchy of views. For example,
+When a view is instantiated, it is just like any ordinary object and has no effect on the user interface. To show a view on the browser, you can add it to [document](dart:html). It can be done by invoking [View.addToDocument()](api:view) against the root view of a hierarchy of views. For example,
 
     new View()
       ..layout.type = "linear"
@@ -56,7 +56,7 @@ If you want to attach a hierarchy of views to a particular element, you can spec
 
     view.addToDocument(document.query("#part"));
 
-For more information, please refer to [Embed in HTML Page](../Views/Fundamentals/Embed_in_HTML_Page.md).
+For more information, please refer to [Embed in HTML Page](Embed_in_HTML_Page.md).
 
 ###Attach views as a dialog
 

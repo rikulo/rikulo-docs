@@ -23,7 +23,7 @@ The Rikulo download includes:
 
 The `lib` folder contains the Rikulo source code that you have to import to your application.  In additions, the `lib/resource` folder contains the JavaScript and CSS files that you have to add to your HTML page.
 
-> You can install Rikulo with [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/). The package name to install is `rikulo`. Please put it to your `pubspec.yaml` (under `dependencies:`).
+> You can install Rikulo with [the Dart Package Manager](http://pub.dartlang.org/doc). The package name to install is `rikulo`. Please put it to your `pubspec.yaml` (under `dependencies:`).
 
 ###Exploring the Samples
 

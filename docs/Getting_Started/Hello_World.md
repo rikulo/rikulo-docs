@@ -53,7 +53,7 @@ For example, we can define the user interface as follows.
       ..addChild(new TextView("Name")) //a label
       ..addChild(new TextBox()); //an input
 
-As shown above, a hierarchy of views is arranged by use of [View.addChild()](api:view). Furthermore, [View.layout](api.view) controls how to arrange the child views (aka., subviews). For more information, please refer to [the UI Overview](../Views/Fundamentals/UI_Overview.md).
+As shown above, a hierarchy of views is arranged by use of [View.addChild()](api:view). Furthermore, [View.layout](api:view) controls how to arrange the child views (aka., subviews). For more information, please refer to [the UI Overview](../Views/Fundamentals/UI_Overview.md).
 
 ###Show your user interface on the browser
 
@@ -65,7 +65,7 @@ Notice that the hierarchy of views you create is just a tree of normal objects. 
       ..addChild(new TextBox())
       ..addToDcument(); //make it available to the browser
 
-On the hand, you can remove a hierarchy of views from the browser by invoking [View.removeFromDocument()](api.view). If you want to remove a branch, you can invoke [View.removeFromParent()](api.view).
+On the hand, you can remove a hierarchy of views from the browser by invoking [View.removeFromDocument()](api:view). If you want to remove a branch, you can invoke [View.removeFromParent()](api:view).
 
 If you want to add the user interface into a particular element ([Element](dart:html)) rather than `document.body` (which is the default), you can specify the element as the first argument. For example, assume you want want to put it under an element named `part`, you can do as follows.
 
