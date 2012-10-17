@@ -108,7 +108,7 @@ First, you have to specify the CSS file to load. Depending on your requirement, 
     <link rel="stylesheet" type="text/css"
      href="packages/rikulo/resource/css/view.css" />
 
-> By default, [the Dart Package Manager](http://www.dartlang.org/docs/pub-package-manager/) installed the resources under the `packages/rikulo/resource` folder.
+> By default, [the Dart Package Manager](http://pub.dartlang.org/doc) installed the resources under the `packages/rikulo/resource` folder.
 
 Second, you have to specify your Dart file. In this application, it is called `HelloWorld.dart`.
 
