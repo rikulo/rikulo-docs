@@ -1,20 +1,22 @@
 #Fundamentals of Device Services
 
-Rikulo leverages and integrates with [Cordova/PhoneGap](http://phonegap.com/) platform allowing you to create native mobile applications and get access to native device resources and services in Dart and HTML5.
+[Rikulo Gap](https://github.com/rikulo/rikulo-gap) is the library which bridge Dart program to [Apache Cordova/PhoneGap](http://phonegap.com/)'s JavaScript APIs. With the help of the Rikulo Gap library, Rikulo leverages and integrates with the mobile platform allowing you to create native mobile applications and get access to native device resources and services in Dart and HTML5.
+
+>Apache Cordova/PhoneGap is a platform for building native mobile applications using HTML, CSS and JavaScript.
 
 ##What Services
 
-Based on Cordova/PhoneGap, Rikulo currently supports nine native device features across seven mobile platforms including Android, iOS, and others. Rikulo bridge Dart to Cordova's JavaScript APIs and get accessed to the following nine native device services:
+Based on Cordova/PhoneGap, Rikulo Gap currently supports nine native device features across seven mobile platforms including Android, iOS, and others. Rikulo Gap bridge Dart to Cordova's JavaScript APIs and get accessed to the following nine native device services:
 
-* [Accelerometer](api:device/accelerometer): access to the device's motion sensor.
-* [Camera](api:device/camera): capture a photo with the device camera.
-* [Capture](api:device/capture): capture media files using device's media capture application.
-* [Compass](api:device/compass): access to the device's compass sensor.
-* [Connection](api:device/connection): fetch the device's connection information.
-* [Contacts](api:device/contacts): read/update/create/remove the device's contact list.
-* [Device](api:device): fetch the device's basic information.
-* [XGeolocation](api:device/geolocation): access to the device's geographic location sensor.
-* [XNotification](api:device/notification): trigger the device's visual/audible/vibration notifications.
+* [Accelerometer](gap:gap): access to the device's motion sensor.
+* [Camera](gap:gap): capture a photo with the device camera.
+* [Capture](gap:gap): capture media files using device's media capture application.
+* [Compass](gap:gap): access to the device's compass sensor.
+* [Connection](gap:gap): fetch the device's connection information.
+* [Contacts](gap:gap): read/update/create/remove the device's contact list.
+* [Device](gap:gap): fetch the device's basic information.
+* [Geolocation](gap:gap): access to the device's geographic location sensor.
+* [Notification](gap:gap): trigger the device's visual/audible/vibration notifications.
 
 ##Use the Services
 
@@ -24,56 +26,63 @@ Based on Cordova/PhoneGap, Rikulo currently supports nine native device features
 
     >Please refer to section [Building Native Mobile Application](../Getting_Started/Building_Native_Mobile_Application) for details about how to setup the Cordova/PhoneGap environment, compile the Rikulo application, and deploy and run on mobile devices.
 
-* In your Rikulo application, before accessing any specific device services, you have to enable the device accessibility first by calling the global method [enableDeviceAccess()](api:device) which enables Rikulo device service code to use Cordova/PhoneGap JavaScript APIs.
+* In your Rikulo application, before accessing any specific device services or resources, you have to enable the device accessibility first by calling the global method [enableDeviceAccess()](gap:gap) which will initialize and enable the device services and make your Dart appliction ready to use Cordova's JavaScript APIs.
 
-        import 'package:rikulo/app.dart';
-        import 'package:rikulo/view.dart';
-        import 'package:rikulo/device.dart';
+      import 'package:rikulo/view.dart';
+      import 'package:rikulo_gap/gap.dart';
 
-        class HelloWorld extends Activity {
-          void onCreate_() {
-            ...
-          }
-        }
+      void main() {
+        //enable the device
+        Future<Device> enable = enableDeviceAccess();
 
-        void main() {
-          enableDeviceAccess();
-          new HelloWorld().run();
-        }
+        //when device is enabled and ready
+        enable.then((device) { ... });
 
-* After enabling the device's accessibility, you can use the global variable [device](api:device) to access nine device services directly. For example, you can access the accelerometer by referring [Device.accelerometer](api:device). Then you can register device event listener or call the accelerometer's method to access the motion sensor. 
+        //if failed to enable the device and/or time out!
+        enable.handleException((ex) { ... }); 
+      }
 
-    >For details about how to use each supported device service, please refer to [API Reference](http://api.rikulo.org).
+* After enabling the device's accessibility, you can use the global variables such as [device](gap:gap) to access nine mobile services directly. For example, you can access the accelerometer by referring [accelerometer](gap:gap). Then you can call the accelerometer's method to access or watch the motion sensor.
+
+    >For details about how to use each supported device service, please refer to [API Reference](http://api.rikulo.org/rikulo-gap/latest/).
 
 
 ##A Simple Example
 
-Following is an example that listens to the AccelerationEvent of the  accelerometer motion sensor and shows the acceleration value in x, y and z axis every 1000 milliseconds. 
+Following is an example that watch the [Acceleration](gap:gap) information of the accelerometer motion sensor and shows the acceleration value in x, y and z axis every 1000 milliseconds. 
 
-    import 'package:rikulo/app.dart';
-    import 'package:rikulo/view.dart';
-    import 'package:rikulo/device.dart';
-    import 'package:rikulo/device/accelerometer.dart';
+      import 'package:rikulo/view.dart';
+      import 'package:rikulo_gap/gap.dart';
 
-    class HelloWorld extends Activity {
-      void onCreate_() {
+      showAcceleration() {
         TextView welcome = new TextView("Hello Accelerometer!");
         welcome.profile.text = "anchor:  parent; location: center center";
-        mainView.addChild(welcome);
+        new View()..addToDocument()
+                  ..addChild(welcome);
 
-        //listen to mobile accelerometer event and show the acceleration in x, y and z axis.
-        device.accelerometer.on.accelerate.add((AccelerationEvent event) {
-          welcome.text = 
-            "${event.acceleration.timeStamp},\n"
-            "x:${event.acceleration.x},\n"
-            "y:${event.acceleration.y},\n"
-            "z:${event.acceleration.z}";
-          welcome.requestLayout(true);
-        }, options: new AccelerometerOptions(frequency:1000));
+        //watch accelerometer and show the acceleration in x, y and z axis.
+        accelerometer.watchAcceleration(
+          (accel) {
+            welcome.text = "${accel.timestamp},\n"
+                         "x:${accel.x},\n"
+                         "y:${accel.y},\n"
+                         "z:${accel.z}";
+            welcome.requestLayout(true); }, 
+          () => print("Fail to get acceleration"),
+          new AccelerometerOptions(frequency:1000)
+        );
       }
-    }
 
-    void main() {
-      enableDeviceAccess();
-      new HelloWorld().run();
-    }
+      void main() {
+        //enable the device
+        Future<Device> enable = enableDeviceAccess(); 
+
+        //when device is enabled and ready
+        enable.then((device) => showAcceleration());
+
+        //if failed to enable the device and/or timeout!
+        enable.handleException((ex) { 
+          print("Fail to enable the device.");
+          return true;
+        });
+      }
