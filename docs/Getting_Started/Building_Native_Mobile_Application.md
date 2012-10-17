@@ -6,7 +6,18 @@ With the help of Rikulo Gap, Rikulo leverages and integrates with Cordova/PhoneG
 
 >Rikulo Gap is the library which bridge Dart program to Apache Cordova/PhoneGap's JavaScript APIs.
 
-##Download
+##Install Rikulo Gap
+
+Add this to `pubspec.yaml` (or create it) of your application:
+
+    dependencies:
+      rikulo_gap:
+
+Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the Dart SDK):
+
+    pub install
+
+##Download PhoneGap
 
 You can download Cordova/PhoneGap **[here](http://phonegap.com/download)**.
 
@@ -91,9 +102,9 @@ As shown above:
 2. Call global method [enableDeviceAccess()](gap:) in the `main` method which will return a `Future<Device>`.
 3. Use the native resource `accelerometer` via the global variable called [accelerometer](gap:) when the device is ready.
 
-###Import [rikulo_gap/gap.dart](gap:) package
+###Import [rikulo_gap/gap.dart](gap:) library
 
-The [rikulo_gap](gap:) package is the main package holding all device resources.
+The [rikulo_gap](gap:) library is the main library holding all device resources.
 
 ###Enable Device Accessibility
 

@@ -28,7 +28,7 @@ As shown above, there are basically three steps to implement a Rikulo applicatio
 
 ###Import the [view](api:) library
 
-Packages to import depend on your requirement. The [view](api:) library is usually what you will import, since it has many UI elements.
+Libraries to import depend on your requirement. The [view](api:) library is usually what you will import, since it has many UI elements.
 
 ###Draw your user interface
 
