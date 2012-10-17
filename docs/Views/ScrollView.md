@@ -1,6 +1,6 @@
 #ScrollView
 
-* Package: [view](api:)
+* Library: [view](api:)
 * API Reference: [ScrollView](api:view)
 * Source: [ScrollView.dart](source:lib/src/view)
 * Samples:

@@ -1,6 +1,6 @@
 #DragGesture
 
-* Package: [gesture](api:)
+* Library: [gesture](api:)
 * API Reference: [DragGesture](api:gesture)
 * Source Code: [GragGesture.dart](source:lib/src/gesture)
 * Samples:

@@ -16,7 +16,7 @@ mobile applications in Dart and HTML 5.
 ####Link to Rikulo
 
 * Source file in github: \[View.dart](source:lib/src/view)
-* Package: \[view](api:) and \[view_select](api:)
+* Library: \[view](api:) and \[view_select](api:)
 * Class: \[ViewConfig](api:view_impl)
 * Method: \[View.requestLayout()](api:view)
 * Getter: \[View.width](api:view) or \[View.width](api:view:get)
@@ -26,10 +26,10 @@ mobile applications in Dart and HTML 5.
 * operator[]=: \[ListModel.operator[ ]=](api:model) (note: space between [ and ] required)
 * operator==: \[ListModel.operator==](api:model) (also support +, - and so on)
 
-###Link to Rikulo Libraries
+###Link to Rikulo Independent Libraries
 
 * Source file in github: \[Acceleration.dart](source:gap:lib/src)
-* Package: \[gap](gap:) or \[el_impl](gap:)
+* Library: \[gap](gap:) or \[el_impl](gap:)
 * Class: \[Acceleration](gap:gap) or \[ClassUtil](el:el_impl)
 * Method/Getter/Setter...: similar
 

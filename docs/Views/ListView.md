@@ -2,7 +2,7 @@
 
 (not ready yet)
 
-* Package: [view](api:)
+* Library: [view](api:)
 * API Reference: [ListView](api:view)
 * Source: [ListView.dart](source:lib/src/view)
 * Samples: 

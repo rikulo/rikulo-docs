@@ -1,3 +1,3 @@
 #Yahoo Servcies
 
-* Package: [service/yapis](api:)
+* Library: [service/yapis](api:)

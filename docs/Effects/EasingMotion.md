@@ -1,6 +1,6 @@
 #EasingMotion
 
-* Package: [effect](api:)
+* Library: [effect](api:)
 * API Reference: [EasingMotion](api:effect)
 * Source Code: [EasingMotion.dart](source:lib/src/effect)
 * Samples:

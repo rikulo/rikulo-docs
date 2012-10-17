@@ -1,3 +1,3 @@
 #Google Services
 
-* Package: [service/gapis](api:)
+* Library: [service/gapis](api:)

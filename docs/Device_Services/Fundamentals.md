@@ -18,6 +18,17 @@ Based on Cordova/PhoneGap, Rikulo Gap currently supports nine native device feat
 * [Geolocation](gap:gap): access to the device's geographic location sensor.
 * [Notification](gap:gap): trigger the device's visual/audible/vibration notifications.
 
+##Installation
+
+Add this to your `pubspec.yaml` (or create it):
+
+    dependencies:
+      rikulo_gap:
+
+Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the Dart SDK):
+
+    pub install
+
 ##Use the Services
 
 * At first, download Cordova/PhoneGap platform and setup the environment.

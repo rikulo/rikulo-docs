@@ -22,13 +22,13 @@ Here is a simple "Hello World" application.
 
 As shown above, there are basically three steps to implement a Rikulo application.
 
-1. Import the [view](api:) package.
+1. Import the [view](api:) library.
 2. Draw your user interface by instantiating UI elements ([View](api:view) and subclasses).
 3. Show your user interface on the browser by invoking [View.addToDocument()](api:view).
 
-###Import the [view](api:) package
+###Import the [view](api:) library
 
-Packages to import depend on your requirement. The [view](api:) package is usually what you will import, since it has many UI elements.
+Packages to import depend on your requirement. The [view](api:) library is usually what you will import, since it has many UI elements.
 
 ###Draw your user interface
 
