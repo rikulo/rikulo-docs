@@ -79,11 +79,9 @@
   Geolocation
   Notification
 
-!Web Services
-  Fundamentals
-  Google Maps
-  Google Services
-  Yahoo Services
+#!Web Services
+#  Fundamentals
+#  Yahoo Services
 
 !Utilities
   MessageQueue
