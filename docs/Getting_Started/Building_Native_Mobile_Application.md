@@ -118,4 +118,4 @@ In this application, we register a success callback function and an error callba
 
 >Per the different kind of native resources, you can access the device resources by calling directly the APIs or by register proper callback functions.
 
->For details about what device resources are available, please check [Device Services](../Device_Services/index.md).
+>For details about what device resources are available, please check [Rikulo Gap](../Rikulo_Gap/index.md).

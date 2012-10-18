@@ -68,7 +68,7 @@
     Handle DOM Events
     Override Inherited Methods
 
-!Device Services
+!Rikulo Gap
   Fundamentals
   Accelerometer
   Camera

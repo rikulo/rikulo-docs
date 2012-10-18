@@ -1,4 +1,4 @@
-#Fundamentals of Device Services
+#Fundamentals of Rikulo Gap
 
 [Rikulo Gap](https://github.com/rikulo/rikulo-gap) is the library which bridge Dart program to [Apache Cordova/PhoneGap](http://phonegap.com/)'s JavaScript APIs. With the help of the Rikulo Gap library, Rikulo leverages and integrates with the mobile platform allowing you to create native mobile applications and get access to native device resources and services in Dart and HTML5.
 
@@ -20,7 +20,8 @@ Based on Cordova/PhoneGap, Rikulo Gap currently supports nine native device feat
 
 ##Installation
 
-Add this to your `pubspec.yaml` (or create it):
+Rikulo Gap is not part of [Rikulo package](http://pub.dartlang.org/packages/rikulo).
+You have to add this to your `pubspec.yaml` (or create it):
 
     dependencies:
       rikulo_gap:
