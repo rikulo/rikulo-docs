@@ -7,27 +7,38 @@ in Dart and HTML 5. You can access your application directly with a modern Web b
 any plug-in. You can also build it as a native mobile application accessing the device's resources
 transparently.
 
-##Download
+##Install from Dart Pub Repository
 
-You can download Rikulo **[here](https://github.com/rikulo/rikulo/downloads)**.
+To install Rikulo from [Dart Pub Repostiory](http://pub.dartlang.org/packages/rikulo), you can add this to your `pubspec.yaml` (or create it):
 
-The Rikulo download includes:
+    dependencies:
+      rikulo:
 
-* [lib](source:) - Rikulo source code.
-* [example](source:) - Many sample Rikulo applications.
-* [test](source:) - A collection of test cases.
+Then, If you’re using [Dart Editor](http://www.dartlang.org/docs/editor/), select “Pub Install” from the “Tools” menu. If you’re rocking the command line, do:
 
-###Installation
+    pub install
 
-* Copy the `lib` folder to your Dart project.
+For more information, please refer to [Pub: Getting Started](http://pub.dartlang.org/doc).
 
-The `lib` folder contains the Rikulo source code that you have to import to your application.  In additions, the `lib/resource` folder contains the JavaScript and CSS files that you have to add to your HTML page.
+##Install from Github for Bleeding Edge Stuff
 
-> You can install Rikulo with [the Dart Package Manager](http://pub.dartlang.org/doc). The package name to install is `rikulo`. Please put it to your `pubspec.yaml` (under `dependencies:`).
+Rikulo is under heavy development. To get the latest features that haven't been formally released yet, you can specify the Git repository in your `pubspec.yam` as follows.
 
-###Exploring the Samples
+    dependencies:
+      rikulo:
+        git: git@github.com:rikulo/rikulo.git
 
-To run the samples, you can browser the HTML file directly with [Dartium](http://www.dartlang.org/dartium/), or open the folder in [Dart Editor](http://www.dartlang.org/docs/editor/).
+For more information, please refer to [Pub: Dependencies](http://pub.dartlang.org/doc/pubspec.html#dependencies).
+
+##Explore Examples
+
+To explore the examples, you can browser the source code directly on [Rikulo's Git repository here](https://github.com/rikulo/rikulo).
+
+To run the examples, you can clone the Git repository to your local drive by running `git` as follows.
+
+    git clone git@github.com:rikulo/rikulo.git
+
+Then, you can browser the HTML files under the `example` folder directly with [Dartium](http://www.dartlang.org/dartium/), or run them in [Dart Editor](http://www.dartlang.org/docs/editor/).
 
 * [helloworld](source:example) - Hello, World!
 * [free-layout](source:example) - A layout sample illustrating 21 built-in anchor points.
