@@ -34,7 +34,7 @@ For more information, please refer to [Pub: Dependencies](http://pub.dartlang.or
 
 To explore the examples, you can browser the source code directly on [Rikulo's Git repository here](https://github.com/rikulo/rikulo).
 
-To run the examples, you can clone the Git repository to your local drive by running `git` as follows.
+To run the examples, you can either [click here](https://github.com/rikulo/rikulo/zipball/master) to download the source code, or run `git` to clone the Git repository to your local drive as follows.
 
     git clone git@github.com:rikulo/rikulo.git
 
