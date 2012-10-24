@@ -26,7 +26,7 @@ Rikulo is under heavy development. To get the latest features that haven't been 
 
     dependencies:
       rikulo:
-        git: git@github.com:rikulo/rikulo.git
+        git: git://github.com/rikulo/rikulo.git
 
 For more information, please refer to [Pub: Dependencies](http://pub.dartlang.org/doc/pubspec.html#dependencies).
 
@@ -36,7 +36,7 @@ To explore the examples, you can browser the source code directly on [Rikulo's G
 
 To run the examples, you can either [click here](https://github.com/rikulo/rikulo/zipball/master) to download the source code, or run `git` to clone the Git repository to your local drive as follows.
 
-    git clone git@github.com:rikulo/rikulo.git
+    git clone git://github.com/rikulo/rikulo.git
 
 Then, you can browser the HTML files under the `example` folder directly with [Dartium](http://www.dartlang.org/dartium/), or run them in [Dart Editor](http://www.dartlang.org/docs/editor/).
 
