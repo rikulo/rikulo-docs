@@ -80,9 +80,17 @@
   Geolocation
   Notification
 
-//!Web Services
-//  Fundamentals
-//  Yahoo Services
+!Web Services
+  Fundamentals
+  Rikulo GAPI
+    GAnalytics
+    GFeed
+    GLoader
+  Rikulo GeoIP
+    SmartIP
+  Rikulo YAPI
+    YPlaceFinder
+    YWeather
 
 !Utilities
   MessageQueue
