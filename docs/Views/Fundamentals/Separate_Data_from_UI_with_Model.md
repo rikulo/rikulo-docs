@@ -2,7 +2,7 @@
 
 You can separate the underlying data structure containing the data from the UI that displays the data. It is generally suggested, since you can construct and even change complex UI easier. 
 
-To do so, you first implement a model and then assign the model to a view that supports it. For example, to display a list of options, you have to implement [ListModel](api:model). Then, you can assign it to a view that supports [ListModel](api:model), such as [RadioGroup](api:view) and [DropDownList](api:view) depending on your need.
+To do so, you first implement a model and then assign the model to a view that supports it. For example, to display a list of options, you have to implement [ListModel](api:model). Then, you can assign it to a view that supports [ListModel](api:model), such as [DropDownList](api:view) depending on your need.
 
 ##Use Default Implementation
 
@@ -29,8 +29,8 @@ As shown, [DefaultListModel](api:model) also implements [Disables](api:model), s
 
 You can have two or more views to share the same model.
 
-    new DropDownList(model: model);
-    new RadioGroup(model: model);
+    final dd1 = new DropDownList(model: model);
+    final dd2 = new DropDownList(model: model);
 
 Since the model is shared, the selection is shared too. If the user selects an item in one of views, all other views will reflect it.
 

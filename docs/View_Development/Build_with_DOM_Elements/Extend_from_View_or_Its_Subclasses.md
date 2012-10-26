@@ -1,6 +1,8 @@
 #Extend from View or Its Subclasses
 
-A view must be a subclass of [View](api:view). Here are existent subclasses that you might consider to extend from.
+A view must be a subclass of [View](api:view). To implement a view, you shall extend from [View](api:view) or its subclasses.
+
+Here are a few existent subclasses that you might extend from:
 
 * [View](api:view): the most fundamental class.
 * [ScrollView](api:view): a view container that allows the user to scroll the content in a smaller viewport.

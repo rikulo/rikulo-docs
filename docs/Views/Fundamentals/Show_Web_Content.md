@@ -40,7 +40,7 @@ Then, we can write the code as follows.
     for (final node in webView.node.queryAll("span"))
       new Switch(true)
         ..profile.location = "right top"
-        ..addToDocument(node);
+        ..addToDocument(ref: node);
 
 1. In this example, we use a SPAN element to indicate where to insert the view. It could be anything as long as it matches what you need. 
 
@@ -51,6 +51,6 @@ Then, we can write the code as follows.
         for (final node in webView.node.queryAll("span"))
           new Switch(true)
             ..profile.location = "right top"
-            ..addToDocument(node);
+            ..addToDocument(ref: node);
 
     Notice that we have to do it after `webVeiw..addToDocument()` has been called. Otherwise, `webView.node` won't be ready.

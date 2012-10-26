@@ -25,7 +25,8 @@
   DropDownList
   Image
   //ListView
-  RadioGroup
+  MultilineBox
+  //RadioButton
   ScrollView
   Section
   Style
@@ -64,9 +65,9 @@
   +Build with DOM Elements
     Extend from View or Its Subclasses
     Render DOM Elements
-    Implement Fields
     Handle DOM Events
-    Override Inherited Methods
+    An Example
+    Advanced Topics
 
 !Rikulo Gap
   Fundamentals

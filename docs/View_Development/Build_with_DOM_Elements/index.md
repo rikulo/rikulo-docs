@@ -4,9 +4,11 @@
 
 A [View](api:view) is made up of one or multiple DOM elements. In other words, a view utilizes HTML 5 and CSS 3 to display the content to meet the requirement. In additions, the view interacts with the user by listening the DOM event sent by the DOM elements.
 
-The structure of the associated DOM elements are usually simple, such [View](api:view), [TextView](api:view) and [ScrollView](api:view), while some can be complex, such as [Switch](api:view). It all depends on the requirement and whether HTML + CSS matches what you need.
-
 > Though rarely, you can draw the content in the fully customized way with [CanvasElement](dart:html) too.
+
+The structure of the associated DOM elements are usually simple, such [View](api:view), [TextView](api:view) and [ScrollView](api:view), while some can be complex, such as [Switch](api:view).
+
+It all depends on the requirement and whether HTML + CSS matches what you need. In additions, the top element can be found by use of [View.node](api:view).
 
 Here is an example.
 
@@ -18,10 +20,17 @@ To interact with the user, [ScrollView](api:view) will listen the touch and mous
 
 > [ScrollView](api:view) doesn't listen the DOM event directly. Rather, it leverages [the gesture](../../Gestures/Fundamentals.md) called [Scroller](api:gesture) for easy implementation.
 
+The view is a thin layer on top of [View.node](api:view). Many of [View](api:view) API is a proxy of the underlying [View.node](api:view), such as [View.id](api:view) and [View.style](api:view). Here is a list of differences.
+
+* Two CSS classes are always assigned: `v-` and `v-xxx` (where `xxx` is the view's class name [View.className](api:view)).
+    * The `v-` CSS class has two important CSS rules that you shall not change: `box-sizing: border-box;` and `position: absolute;`
+    * The `v-xxx` is used to customize the look of a given type of views.
+* The left, top, with and height properties of a view shall be altered by use of [View](api:view)'s API, such as [View.left](api:view).
+
 ##Build a View with DOM Elements
 
 1. [Extend from View or Its Subclasses](Extend_from_View_or_Its_Subclasses.md)
 2. [Render DOM Elements](Render_DOM_Elements.md)
-3. [Implement Fields](Implement_Fields.md) to hold the states, if any
-4. [Handle DOM Events](Handle_DOM_Events.md) to interact with user, if necessary
-5. [Override Inherited Methods](Override_Inherited_Methods.md) for fine-grained control, if necessary
+3. [Handle DOM Events](Handle_DOM_Events.md)
+4. [An Example](An_Example.md)
+5. [Advanced Topics](Advanced_Topics.md)

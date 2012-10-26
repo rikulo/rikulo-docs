@@ -48,19 +48,19 @@ To remove a view from a hierarchy tree of views, you can use [View.removeFromPar
 
     view.removeFromParent(); //detach the given view from the hierarchy tree
 
-By default, [View.addToDocument()](api:view) will check if any element ([Element](dart:html)) is assigned with id called `v-main`. If found, the views will be inserted into the element. If not found, the views will be inserted right under `document.body`.
+By default, [View.addToDocument()](api:view) will check if any DOM element ([Element](dart:html)) is assigned with id called `v-main`. If found, the views will be inserted into the DOM element. If not found, the views will be inserted right under `document.body`.
 
-##Attach views under a particular element
+##Attach views under a particular DOM element
 
-If you want to attach a hierarchy of views to a particular element, you can specify the element as the first argument. For example, assume you want want to put it under an element named `part`, you can do as follows.
+If you want to attach a hierarchy of views to a particular DOM element, you can specify the DOM element as the `ref` argument. For example, assume you want want to put it under a DOM element named `part`, you can do as follows.
 
-    view.addToDocument(document.query("#part"));
+    view.addToDocument(ref: document.query("#part"));
 
 For more information, please refer to [Embed in HTML Page](Embed_in_HTML_Page.md).
 
 ###Attach views as a dialog
 
-A dialog is a user interface that limits the user from accessing other user interfaces except the hierarchy views. It is useful if you want the user to enter something before proceed. To do so, you can specify `mode: "dialog"` when calling [View.addToDocument](api:view), such as
+A dialog is a user interface that limits the user from accessing other user interfaces except the hierarchy views. It is useful if you want the user to enter something before proceed. To do so, you can specify `mode: "dialog"` when calling [View.addToDocument()](api:view), such as
 
     view.addToDocument(mode: "dialog");
 
@@ -106,19 +106,17 @@ For more information, please refer to [the Layouts chapter](../../Layouts/index.
 
 ##Relation with DOM Element
 
-To show itself on the browser, a view is built with one or multiple DOM elements, depending on the complexity that the view offers.
+> Rikulo is aimed to encapsulate the DOM complexity from the application developers. You can skip this section if you'd like.
 
-> Rikulo is aimed to encapsulate the complexity from the application developers. You can skip this section if you'd like.
+To show itself on the browser, a view is built with one or multiple DOM elements, depending on the complexity that the view offers. The top element can be found by use of [View.node](api:view).
 
-To save the memory, the DOM element(s) of a hierarchy of views won't be created until [View.addToDocument()](api:view) of its root view has been called (aka., attached). Once attached, you can retrieve the DOM element(s) that represents the view on the browser by use of [View.node](api:view).
+The view is a thin layer on top of [View.node](api:view). Many of [View](api:view) API is a proxy of the underlying [View.node](api:view), such as [View.id](api:view) and [View.style](api:view).
 
-    print("${view.node.id}");
+Here is a list of notices if you'd like to work with the view and its `node`interchangeably.
 
-Notice that you can access [View.node](api:view) only if the view has been attached to the browser. Otherwise, it will throws an exception.
-
-To know if a view is attached to the browser, you can check [View.inDocument](api:view).
-
-    if (view.inDocument) //the view is attached (and then accessible by the user)
-      doSomething();
+* Two CSS classes are always assigned: `v-` and `v-xxx` (where `xxx` is the view's class name [View.className](api:view)).
+    * The `v-` CSS class has two important CSS rules that you shall not change: `box-sizing: border-box;` and `position: absolute;`
+    * The `v-xxx` is used to customize the look of a given type of views.
+* The left, top, with and height properties of a view shall be altered by use of [View](api:view)'s API, such as [View.left](api:view).
 
 If you'd like to learn the details of how to develop a view, please refer to [View Development](../../View_Development).
