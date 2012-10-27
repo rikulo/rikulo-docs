@@ -26,7 +26,7 @@
   Image
   //ListView
   MultilineBox
-  //RadioButton
+  RadioButton
   ScrollView
   Section
   Style
