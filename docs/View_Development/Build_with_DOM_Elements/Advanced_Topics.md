@@ -33,8 +33,10 @@ For example, assume the child element to put the child elements is identified as
       if (beforeChild !== null)
         super.addChildNode_(child, beforeChild);
       else
-        getNode('cnt').nodes.add(child.node);
+        getNode('cnt').nodes.add(child.jointNode);
     }
+
+Notice that we use [View.jointNode](api:view) instead of [View.node](api:view) to retrieve the child view's element to add to this view's hierarchy of elements. [View.jointNode](api:view) is the same as [View.node](api:view) for almost all kind of views, except [PopupView](api:view), which puts [View.node](api:view) elsewhere.
 
 For a real example, you can refer to [Viewport.dart](source:example/viewport).
 
