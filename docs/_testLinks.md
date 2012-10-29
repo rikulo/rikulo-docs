@@ -16,8 +16,8 @@
 ##Link to Rikulo Libraries
 
 * Source file in github: [Acceleration.dart](source:gap:lib/src)
-* Library: [gap](gap:) or [el_impl](gap:)
-* Class: [Acceleration](gap:gap) or [ClassUtil](el:el_impl)
+* Library: [acceleration](gap:) or [el_impl](el:)
+* Class: [Acceleration](gap:acceleration) or [ClassUtil](el:el_impl)
 * Method/Getter/Setter...: similar
 
 ##Link to Dart SDK
