@@ -12,7 +12,7 @@ To do so, you can implement the HTML page with static HTML tags (or any server-s
 
 ##The HTML Page
 
-To embed views into the HTML page, you have to declare an element where Rikulo views will be placed. To identify the element in Dart code, you can assign an unique ID to it. Here is an example,
+To embed views into the HTML page, you have to declare a DOM element where Rikulo views will be placed. To identify the DOM element in Dart code, you can assign an unique ID to it. Here is an example,
 
     <!DOCTYPE html>
     <html>
@@ -32,13 +32,13 @@ To embed views into the HTML page, you have to declare an element where Rikulo v
       </body>
     </html>
 
-As shown above, we assign the element with an unique ID called `main` that will be used in the Dart application to identify the element.
+As shown above, we assign the DOM element with an unique ID called `main` that will be used in the Dart application to identify the DOM element.
 
 > Like other HTML pages, you have to specify `view.css`, the dart file, and `dart.js`.
 
 ###Dimension of the Element
 
-It is important to notice that you *have to* assign the dimension to the element. For example,
+It is important to notice that you *have to* assign the dimension to the DOM element. For example,
 
     #main {
       width: 600px;
@@ -49,16 +49,16 @@ Rikulo will take the dimension you assigned to limit where the view can occupy.
 
 ##The Dart Code
 
-In the Dart code, you can identify the element to add the views as follows.
+In the Dart code, you can identify the DOM element to add the views as follows.
 
-    view.addToDocument(document.query("#main"));
+    view.addToDocument(ref: document.query("#main"));
 
-The view will be then limited the given element. For example, `view.profile.location = "center center"` will place the view at the center of the element.
+The view will be then limited the given DOM element. For example, `view.profile.location = "center center"` will place the view at the center of the DOM element.
 
-> You can add different hierarchy of views to different elements. [Here is a more complicated example](https://github.com/rikulo/rikulo/blob/master/test/TestEmbed.dart).
+> You can add different hierarchy of views to different DOM elements. [Here is a more complicated example](https://github.com/rikulo/rikulo/blob/master/test/TestEmbed.dart).
 
 ###`v-main`
 
-If the element is not given, [View.addToDocument()](api:view) will look for any element called `v-main` first, and then, if not found, `document.body`.
+If the DOM element is not given, [View.addToDocument()](api:view) will look for any DOM element called `v-main` first, and then, if not found, `document.body`.
 
-With this special id, your application can run on different layout without modification. For instance, if the HTML page doesn't have this element, Rikulo views will take over the whole browser. If the element is found, Rikulo views is limited to it.
+With this special id, your application can run on different layout without modification. For instance, if the HTML page doesn't have this DOM element, Rikulo views will take over the whole browser. If the DOM element is found, Rikulo views is limited to it.

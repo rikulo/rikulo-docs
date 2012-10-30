@@ -1,101 +1,53 @@
 #Render DOM Elements
 
-As described in [UI Overview](../../Views/Fundamentals/UI_Overview.md), the DOM element(s) of a view is created when the view is attached to the screen, and removed when the view is detached from the screen.
+##Override [View.render_()](api:view)
 
-The creation and removal are done automatically by Rikulo. You need only to override [View.draw()](api:view) to generate the HTML fragment representing the DOM element(s) that are going to created.
+Rendering the DOM elements is straightforward: override [View.render_()](api:view) to create and return them:
 
-##Render the HTML fragment
+    Element render_() => new Element.tag("select");
 
-When the DOM element(s) of a view shall be created, [View.draw()](api:view) will be called to generate the HTML fragment representing the DOM element(s). Rikulo will create the DOM element(s) based on the fragment and insert them to the browser's DOM tree automatically (aka., the document).
+You don't need to worry the child views. Their DOM elements will be created recursively if necessary, and composed based on the hierarchy of views.
 
-For example, here is the default implementation of [View.draw()](api:view):
+###Handle DOM events
 
-    void draw(StringBuffer out) {
-      final String tag = domTag_;
-      out.add('<').add(tag);
-      domAttrs_(out);
-      out.add('>');
-      domInner_(out);
-      out.add('</').add(tag).add('>');
+After rendering the DOM elements, you can initialize the DOM elements before returning. For example, you can register a DOM listener:
+
+    Element render_() {
+      final node = new Element.tag("input");
+      node.on.change((event) {
+        //do something
+        });
+      return node;
     }
 
-As shown, it utilizes a few methods, such as [View.domTag_](api:view) and [View.doInner_()](api:view), to simplify the generation of the HTML fragment. In additions, it is usually easier to override them separately instead of overriding [View.draw()](api:view).
+For more information, please refer to [the Handle DOM Events section](Handle_DOM_Events.md).
 
+###Access child elements
 
-###Override [View.domTag_](api:view)
+If the view is represented by a hierarchy of DOM elements, you can access a child element by use of [Element.query()](dart:html). For example,
 
-[View.domTag_](api:view) returns the HTML tag used to enclose the HTML fragment. By default, it is `DIV` and it can override to return a different value you like.
-
-###Override [View.domAttrs_()](api:view)
-
-[View.domAttrs_()](api:view) generates the DOM attributes for the enclosing tags. By default, it generates the `id` attribute to be [View.uuid](api:view), the `class` attribute to represent [View.classes](api:view), the `style` attribute to represent the view's coordinates and visibility, etc.
-
-Though optional, it is suggested to override [View.domAttrs_()](api:view) to generate additional attributes, as you want, rather than overriding [View.draw()](api:view) and generating there. For example,
-
-    void domAttrs_(StringBuffer out,
-    [bool noId=false, bool noStyle=false, bool noClass=false]) {
-      out.add(' type="').add(type).add('"');
-      if (disabled)
-        out.add(' disabled="disabled"');
-      if (autofocus)
-        out.add(' autofocus="autofocus"');
-      super.domAttrs_(out, noId, noStyle, noClass);
+    void render_() {
+      final node = new Element.html('<div><div class="foo-button"></div></div>');
+      node.query("div.foo-button").on.add((event) {
+        //handle it
+        });
+      return node;
     }
 
-> The `noId`, `noStyle` and `noClass` arguments are designed if you prefer to generate any of these attributes by yourself, rather than by the superclass.  
-However, the generation of the `id` attribute is important since [View.node](api:view) depends on it, so, if you specify `noId` to true, you have to generate it by yourself.
+However, be aware that a view might have child views of the same type. It means, your [Element.query()](dart:html) might return the wrong element if child views have been added (e.g., a child element of a child view).
 
-###Override [View.domInner_()](api:view)
+> The previous example is safe, since the child nodes are not added when [View.render_()](api:view) is called.
 
-[View.domInner_()](api:view) generates the HTML fragment for the content inside the enclosing tag ([View.domTag_](api:view)). By default, it invokes [View.draw()](api:view) for each child view, and then concatenates the result:
+To avoid the conflict, it is suggested to name the id of the child element by prefixing [View.uuid](api:view) as follows.
 
-  void domInner_(StringBuffer out) {
-    for (View child = firstChild; child !== null; child = child.nextSibling) {
-      child.draw(out);
-    }
-  }
+    Element render_()
+    => new Element.html('<div><div id="$uuid-inner"</div>');
 
-If you'd like to add additional layers of DOM elements, you can override it as follows.
+[View.uuid](api:view) is unique in the whole browser (even if you run multiple Dart applications), so `id="$uuid-inner"` can uniquely identify the child element regardless how the user might organize the view hierarchy.
 
-    void domInner_(StringBuffer out) {
-      out.add('<div class="v-inner">'); //additional layers
-      super.domInner_(out); //render child views
-      out.add('</div');
-    }
+If your child element is identified in this way, you can then use [View.getNode()](api:view) to retrieve them. For example,
 
-If you need to access an additional layer, you can generate the `id` attribute for it. Then, you can retrieve the DOM element back by use of [View.getNode()](api:view). For example,
+    Element get innerNode => getNode('inner');
+      //'inner' shall match the suffix following $uuid-
 
-    void domInner_(StringBuffer out) {
-      out.add('<div class="v-inner"><div id="').add(uuid).add('-foo">');
-      super.domInner_(out); //render child views
-      out.add('</div');
-    }
-
-Then, `getNode("foo")` returns the element whose `id` is assigned with `uuid`, dash and `foo`.
-
-If a view doesn't allow child views at all, you can generate the HTML fragment inside the enclosing tag directly. For example,
-
-    void domInner_(StringBuffer out) {
-      out.add("Hi, $name");
-      //no need to call back super.domInner_ if you're sure no child allowed
-    }
-
-##Initial DOM elements
-
-After the DOM elements are created and inserted into the browser's DOM tree, [View.mount_()](api:view) will be called. Therefore, you can initialize DOM elements, if necessary, in [View.mount_()](api:view). For example, you can listen the DOM elements:
-
-    void mount_() {
-      super.mount_();
-
-      getNode("foo").on.click.add((_onFooClick));
-    }
-
-##Clean up DOM elements
-
-Similarly, [View.unmount_()](api:view) will be called to clean up DOM elements, if necessary, when the DOM elements are detached. For example, you can remove the listener of DOM events:
-
-    void unmount_() {
-      getNode("foo").on.click.remove(_onFooClick);
-
-      super.unmount_();
-    }
+It is a short cut of `node.query('#$uuid-inner')`.
