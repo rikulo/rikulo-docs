@@ -46,8 +46,25 @@ Then, all listeners registered to `broadcaster` will be called.
       doSomething();
     })
 
-Rikulo utilizes `broadcaster` to send a special event, [PopupEvent](api:event). It is used to notify that a popup is showing, such that the listeners can clear up something, such as closing the popups they opened.
+In additions, the broadcast event will be sent to every root views (see aslo [rootViews](api:html)). Thus, you can register the listener in the root view too.
 
+###Activation and Popup
+
+There is a special broadcast event called [ActivateEvent](api:event). It indicates a view (or an DOM element) is *activated*. By activated it means the view (or the element) will become the *focal point* for users to interact with. For example, it happens when the user clicks on a view or an element.
+
+A typical use of this event is to close the pop-ups. For example, we can implement a pop-up view that will be closed automatically when the user clicks outside of the view as follows:
+
+    class Popup extends View {
+      Popup() {
+        on.activate.add((event) { //assume Popup is a root view
+          if (event.shallClose(this))
+            remove();
+        });
+      }
+    }
+
+Please refer to [TestPopup1.dart](source:test) for a complete example.
+ 
 ##Gestures
 
 For handling drag-and-drop, scrolling, swipe and other gestures, Rikulo provides a collection of utilities in [Gestures](../../Gestures/index.md) that abstract the gestures into easy callbacks. It is suggested to use one of them or implement your own to abstract the details, rather than listening the events directly.

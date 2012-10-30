@@ -44,9 +44,9 @@ When a view is instantiated, it is just like any ordinary object and has no effe
 
 > Notice that we interchangeably use *screen*, *browser*, and *document* to represent the same thing: the visual area of the device that the user interact with.
 
-To remove a view from a hierarchy tree of views, you can use [View.removeFromParent()](api:view). It also means the view will be detached from the browser, if it was attached.
+To remove a view from a hierarchy tree of views, you can use [View.remove()](api:view). It also means the view will be detached from the browser, if it was attached.
 
-    view.removeFromParent(); //detach the given view from the hierarchy tree
+    view.remove(); //detach the given view from the hierarchy tree
 
 By default, [View.addToDocument()](api:view) will check if any DOM element ([Element](dart:html)) is assigned with id called `v-main`. If found, the views will be inserted into the DOM element. If not found, the views will be inserted right under `document.body`.
 
