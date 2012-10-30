@@ -4,7 +4,7 @@ Rikulo GeoIP is a Dart bridge to the on-line geo-ip JavaScript service provided 
 
 ##Services
 
-* [SmartIP](geoip:geoip): Google Analytics service.
+* [SmartIP](geoip:smartip): Geo-IP service.
 
 ##Installation
 
@@ -22,7 +22,7 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
 Following is an example that load the geo information per the caller's IP address.
 
-import 'package:rikulo_geoip/rikulo_geoip.dart';
+import 'package:rikulo_geoip/smartip.dart';
 
     void main() {
 

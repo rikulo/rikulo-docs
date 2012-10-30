@@ -4,9 +4,9 @@ Rikulo GAPI is a Dart bridge to those frequently used on-line JavaScript service
 
 ##Services
 
-* [GAnalytics](gapi:gapi): Google Analytics service.
-* [GFeed](gapi:gapi): Google Feed reader service.
-* [GLoader](gapi:gapi): Google API loading service.
+* [GAnalytics](gapi:ganalytics): Google Analytics service.
+* [GFeed](gapi:gfeed): Google Feed reader service.
+* [GLoader](gapi:gloader): Google API loading service.
 
 ##Installation
 
@@ -24,7 +24,7 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
 Following is an example that load the feed from the Digg's. with `GFeed` service. 
 
-    import 'package:rikulo_gapi/rikulo_gapi.dart';
+    import 'package:rikulo_gapi/gfeed.dart';
 
     void main() {
       // Create a feed instance that will grab Digg's feed.

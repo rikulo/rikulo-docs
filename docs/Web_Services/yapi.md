@@ -4,8 +4,8 @@ Rikulo YAPI is a Dart bridge to those frequently used on-line JavaScript service
 
 ##Services
 
-* [YPlaceFinder](yapi:yapi): load geo information per the specified location.
-* [YWeather](yapi:yapi): Load current/forecast weather information per the specified woeid(Where On Earth ID).
+* [YPlaceFinder](yapi:yplacefinder): load geo information per the specified location.
+* [YWeather](yapi:yweather): Load current/forecast weather information per the specified woeid(Where On Earth ID).
 
 ##Installation
 
@@ -23,10 +23,11 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
 Following is an example that load the weather inforamation of the San Francisco city with `YPlaceFinder` and `YWeather` service. 
 
-    import 'package:rikulo_yapi/rikulo_yapi.dart';
+    import 'package:rikulo_yapi/yplacefinder.dart';
+    import 'package:rikulo_yapi/yweather.dart';
     
     void main() {
-    	//get geoinfo of San Francisco
+    	//get geoinfo of San Francisco with YPlacefinder
     	Future<Map> geoinfo = 
     		new YPlaceFinder().loadGeoInfo({'location' : 'San+Francisco,+CA'});
 
@@ -34,7 +35,7 @@ Following is an example that load the weather inforamation of the San Francisco 
         //retrieve woeid of San Francisco
         String woeid = result['ResultSet']['Result']['woeid']; 
 
-        //use the woeid to retrieve the wheather info of San Francisco
+        //use the woeid to retrieve the weather info of San Francisco
         new YWeather(woeid).loadWeatherInfo()
           .then((Map result) => print(result));
       });
