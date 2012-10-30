@@ -65,7 +65,7 @@ Notice that the hierarchy of views you create is just a tree of normal objects. 
       ..addChild(new TextBox())
       ..addToDcument(); //make it available to the browser
 
-On the hand, you can remove a hierarchy of views from the browser by invoking [View.removeFromDocument()](api:view). If you want to remove a branch, you can invoke [View.removeFromParent()](api:view).
+On the hand, you can remove a hierarchy of views from the browser by invoking [View.remove()](api:view). If you want to remove a branch, you can invoke [View.remove()](api:view).
 
 If you want to add the user interface into a particular DOM element ([Element](dart:html)) rather than `document.body` (which is the default), you can specify the DOM element as the `ref` argument. For example, assume you want want to put it under a DOM element named `part`, you can do as follows.
 
@@ -95,7 +95,7 @@ To run an application, you need a HTML page to define the user interface in HTML
       <head>
         <title>Foo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" type="text/css" href="packages/rikulo/resource/css/view.css" />
+        <link rel="stylesheet" type="text/css" href="packages/rikulo/resource/css/breeze/view.css" />
       </head>
       <body>
         <script type="application/dart" src="HelloWorld.dart"></script>
@@ -106,7 +106,7 @@ To run an application, you need a HTML page to define the user interface in HTML
 First, you have to specify the CSS file to load. Depending on your requirement, you can specify any files you want, as long as including `view.css` (or a customized version of it).
 
     <link rel="stylesheet" type="text/css"
-     href="packages/rikulo/resource/css/view.css" />
+     href="packages/rikulo/resource/css/breeze/view.css" />
 
 > By default, [the Dart Package Manager](http://pub.dartlang.org/doc) installed the resources under the `packages/rikulo/resource` folder.
 

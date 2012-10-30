@@ -14,9 +14,9 @@ Then, the user can search it by the class's name:
 
 In additions, A CSS class named `"v-$className"` will be added to [View.classes](api:view) for customizing the look of views of the same type.
 
-##[View.isViewGroup()](api:view)
+##[View.isViewGroup](api:view)
 
-[View.isViewGroup()](api:view) indicates whether the given view is a view group.
+[View.isViewGroup](api:view) indicates whether the given view is a view group.
 A view group can contains other views (called child views). If false, an exception is thrown when [View.addChild()](api:view) is called.
 
 
@@ -40,7 +40,7 @@ For example, assume the child element to put the child elements is identified as
 
 When a hierarchy of views are added to the browser (i.e., [View.addToDocument()](api:view) is called), [View.mount_()](api:view) will be called for every view in the hierarchy.
 
-Similarly, [View.unmount_()](api:view) will be called if it is detached (i.e., [View.removeFromDocument()](api:view)).
+Similarly, [View.unmount_()](api:view) will be called if it is detached (i.e., [View.remove()](api:view)).
 
 For example, if you want [Layout Manager](../../Layouts/LayoutManager.md) to defer until a particular image is loaded, you can do as follows.
 
