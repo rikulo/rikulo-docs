@@ -34,11 +34,11 @@ If the view is represented by a hierarchy of DOM elements, you can access a chil
       return node;
     }
 
-However, be aware that a view might have child views of the same type. It means, your [Element.query()](dart:html) might return the wrong element if child views have been added (e.g., a child element of a child view).
+However, be aware that a view might have child views of the same type. It means, your [Element.query()](dart:html) might return the wrong element if child views have been added (e.g., it might return a child view's element wrongly).
 
 > The previous example is safe, since the child nodes are not added when [View.render_()](api:view) is called.
 
-To avoid the conflict, it is suggested to name the id of the child element by prefixing [View.uuid](api:view) as follows.
+To avoid the conflict, you can name the id of the child element by prefixing [View.uuid](api:view) as follows.
 
     Element render_()
     => new Element.html('<div><div id="$uuid-inner"</div>');
