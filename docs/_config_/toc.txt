@@ -26,6 +26,7 @@
   Image
   //ListView
   MultilineBox
+  Panel
   RadioButton
   ScrollView
   Section
