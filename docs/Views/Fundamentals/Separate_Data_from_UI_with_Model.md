@@ -8,7 +8,7 @@ To do so, you first implement a model and then assign the model to a view that s
 
 Though [ListModel](api:model) is simple, you can use the default implementation, [DefaultListModel](api:model) directly. For example,
 
-    new DropDownList(model: new ListModel(["apple", "orange", "lemon", "juice"]));
+    new DropDownList(model: new DefaultListModel(["apple", "orange", "lemon", "juice"]));
 
 ##Selection
 
@@ -66,9 +66,9 @@ You can implement [TreeModel](api:model) to represent a hierarchy data structure
 
     DefaultTreeModel<String> model = new DefaultTreeModel(nodes: [
       "Wonderland",
-      new TreeNode("Australia",
+      new DefaultTreeNode("Australia",
         ["Sydney", "Melbourne", "Port Hedland"]),
-      new TreeNode("New Zealand",
+      new DefaultTreeNode("New Zealand",
         ["Cromwell", "Queenstown"])]);
     new DropDownList(model: model); //DropDownList supports TreeModel too
 
