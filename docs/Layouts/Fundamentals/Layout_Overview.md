@@ -104,7 +104,7 @@ You can nest one layout into another and so on to create sophisticated layouts. 
       label.profile.width = "70";
       view.addChild(label);
 
-      view.addChild(type == "multiline" ? new MultilineBox(): new TextBox(type: type));
+      view.addChild(type == "multiline" ? new MultilineBox(): new TextBox(null, type));
     }
 
 ![Nested Layout](layout-ex-nested.jpg?raw=true)

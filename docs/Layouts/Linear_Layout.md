@@ -56,7 +56,7 @@ Here is a typical application layout.
       label.profile.width = "70";
       view.addChild(label);
 
-      view.addChild(type == "multiline" ? new MultilineBox(): new TextBox(type: type));
+      view.addChild(type == "multiline" ? new MultilineBox(): new TextBox(null, type));
     }
 
 ##Samples

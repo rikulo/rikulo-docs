@@ -26,8 +26,20 @@ In other words, you don't have to handle DOM events, if you just want to proxy t
 
 > [TestDragAndDrop.dart](source:test) is an example that handles the drag and drop events transparently. All these events are handled by the default event proxy.
 
-###[View.getDOMEventDispatcher_()](api:view)
+###[View.onEventListened_()](api:view)
 
-The event proxy is actually handled by [View.getDOMEventDispatcher_()](api:view). You can override if you'd like to intercept the default handling.
+The event proxy is actually handled by [View.onEventListened_()](api:view). You can override if you'd like to intercept the default handling. For example,
 
-Please refer to [TextBox.dart](source:lib/src/view) for a real example.
+    void onEventListened_(String type, [Element target]) {
+      if (type == "change") {
+        //handle it specially
+      } else {
+        super.onEventListened_(type, target);
+      }
+    }
+
+If the DOM event is an input event, such as `change` and `keyDown`, the default implementation will try to find a child element that is INPUT, TEXTAREA, SELECT, BUTTON, and A. If it is not what you want, you can override it to specify the right element:
+
+    void onEventListened_(String type, [Element target]) {
+      super.onEventListened_((type, type == "change" ? getNode("inp"): target);
+    }
