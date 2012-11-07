@@ -1,4 +1,4 @@
 #Standard Elements
 
-* [&lt; Apply >](Apply.md)
-* [&lt; Template name="*template-name*" >](Template.md)
+* [&lt;Apply >](Apply.md)
+* [&lt;Template name="*template-name*" >](Template.md)
