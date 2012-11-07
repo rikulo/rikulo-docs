@@ -60,7 +60,8 @@ Following we show you the basic elements of how to access device native resource
 ##The Dart Code
 
     import 'package:rikulo/view.dart';
-    import 'package:rikulo_gap/gap.dart';
+    import 'package:rikulo_gap/device.dart';
+    import 'package:rikulo_gap/accelerometer.dart';
 
     showAcceleration() {
       //prepare a text view to show the acceleration information
@@ -98,23 +99,24 @@ Following we show you the basic elements of how to access device native resource
 
 As shown above:
 
-1. Import [gap](gap:) library along with others.
-2. Call global method [enableDeviceAccess()](gap:gap) in the `main` method which will return a `Future<Device>`.
-3. Use the native resource `accelerometer` via the global variable called [accelerometer](gap:gap) when the device is ready.
+1. Import [device](gap:) and [accelerometer](gap:) libraries along with others.
+2. Call global method [enableDeviceAccess()](gap:device) in the `main` method which will return a `Future<Device>`.
+3. Use the native resource `accelerometer` via the global variable called [accelerometer](gap:accelerometer) when the device is ready.
 
-###Import [gap](gap:) library
+###Import [device](gap:) and [accelerometer](gap:) libraries along with others
 
-The [gap](gap:) library is the main library holding all device resources.
+The [device](gap:) library is the library holding device resources.
+The [accelerometer](gap:) library is the library that handle the device motion sensor.
 
 ###Enable Device Accessibility
 
-Calling global method [enableDeviceAccess()](gap:gap) in the `main` method to enable and initialize the device accessibility. This method returns a `Future<Device>` object. After the device is enabled and ready, the function in the Future's then() method will be called with the enabled device as the function argument. If failed to enable the device or timeout, the onException function in Future's handleException() method will be called with the thrown exception object.
+Calling global method [enableDeviceAccess()](gap:device) in the `main` method to enable and initialize the device accessibility. This method returns a `Future<Device>` object. After the device is enabled and ready, the function in the Future's then() method will be called with the enabled device as the function argument. If failed to enable the device or timeout, the onException function in Future's handleException() method will be called with the thrown exception object.
 
 ###Access the Device Resource
 
-Via the global mobile facility variables such as [accelerometer](gap:gap) you are able to access all mobile device's native resources. 
+Via the global mobile facility variables such as [accelerometer](gap:accelerometer) you are able to access all mobile device's native resources. 
 
-In this application, we register a success callback function and an error callback function to [Accelerometer.watchAcceleration()](gap:gap) method with the frequency of the [AccelerometerOptions](gap:gap) set to every 1000 milliseconds. This makes the mobile accelerometer service return the [Acceleration](gap:gap) information via the registered success callback function every 1000 milliseconds.
+In this application, we register a success callback function and an error callback function to [Accelerometer.watchAcceleration()](gap:accelerometer) method with the frequency of the [AccelerometerOptions](gap:accelerometer) set to every 1000 milliseconds. This makes the mobile accelerometer service return the [Acceleration](gap:accelerometer) information via the registered success callback function every 1000 milliseconds.
 
 >Per the different kind of native resources, you can access the device resources by calling directly the APIs or by register proper callback functions.
 
