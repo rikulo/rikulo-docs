@@ -23,7 +23,7 @@ For example, assume we have a sign-in form as follows.
 
 Then, we can implement the `signIn` method as follows:
 
-    void signIn(View view) {
+    void SignIn(View view) {
       view.query("Button").on.click.add((event) {
         final username = view.query("#username").value,
           password = view.query("#password").value;

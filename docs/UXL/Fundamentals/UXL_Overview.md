@@ -73,7 +73,8 @@ The binding of Dart objects into views are straightforward. As shown in the abov
 
     SigIn(rememberMe: getRememberMeFromCookie())[0].addToDocument();
 
-##Embed Dart code into UXL
+
+###Embed Dart code into UXL
 
 You can embed Dart code with [the dart Directive](../Standard_Directives/dart.md). For example, you can make a UXL file as a standard-alone application as follows.
 
@@ -87,6 +88,12 @@ You can embed Dart code with [the dart Directive](../Standard_Directives/dart.md
 
     <Template name="SignIn" args="rememberMe: ''">
     ....
+
+###Model-View-Controller (MVC)
+
+Embeding Dart code in a UXL file is convenient. However, for sake of maintenance, it is usually better to separate the code from the view as much as possible. In additions, people who writes UXL files might not know Dart at all.
+
+To do so, you can apply the so-called [Mode-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern. For more information, please refer to [MVC Overview](MVC_Overview.md).
 
 ###Define multiple templates in a UXL file
 
