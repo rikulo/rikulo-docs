@@ -104,6 +104,23 @@ Yet another example: you can *anchor* a view to its parent to particular positio
 
 For more information, please refer to [the Layouts chapter](../../Layouts/index.md).
 
+##UXL
+
+In additions to Dart, you can define the user interface in a manner similar to authoring HTML and XML pages. The markup language in called UXL (User-interface eXtensible Language), which is a variant of XML. Here is an example:
+
+    <Template name="SignIn">
+      <Panel layout="type:linear; orient: vertical; spacing: 4"
+        profile="location: center center; width: 180; height: 145">
+        Username or Email
+        <TextBox id="username" />
+        Password
+        <TextBox id="password"/>
+        <Button text="Sign in" profile="spacing: 12 4 4 4"/>
+      </Panel>
+    </Template>
+
+For more information, please refer to [Rikulo UXL](../../UXL).
+
 ##Relation with DOM Element
 
 > Rikulo is aimed to encapsulate the DOM complexity from the application developers. You can skip this section if you'd like.
