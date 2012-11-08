@@ -52,12 +52,13 @@ UXL compiler will then compile it into a Dart file containing the following func
 
     List<View> SignIn({View parent, rememberMe: ''}) {
       List<View> _vcr_ = new List();
-    ...
+      ...
       final _v0_ = (_this_ = new Panel())
+      ...
       if (parent != null)
         parent.addChild(_v0_);
       _vcr_.add(_v0_);
-    ...
+      ...
       return _vcr_;
     }
 
@@ -71,12 +72,12 @@ Then, you can instantiate the views defined in this template whatever you want. 
 
 The binding of Dart objects into views are straightforward. As shown in the above example, you can define as many as arguments you want in the template. Then, you can invoke it by passing the right object to it. For example, you can retrieve the username from the cookie and then pass it to the template function:
 
-    SigIn(rememberMe: getRememberMeFromCookie())[0].addToDocument();
+    SignIn(rememberMe: getRememberMeFromCookie())[0].addToDocument();
 
 
 ###Embed Dart code into UXL
 
-You can embed Dart code with [the dart Directive](../Standard_Directives/dart.md). For example, you can make a UXL file as a standard-alone application as follows.
+You can embed Dart code with [the dart directive](../Standard_Directives/dart.md). For example, you can make a UXL file as a standard-alone application as follows.
 
     <?dart
     import "package:rikulo/view.dart";

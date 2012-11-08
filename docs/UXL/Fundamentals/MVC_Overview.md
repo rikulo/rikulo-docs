@@ -1,3 +1,3 @@
 #MVC Overview
 
-*Under Construction*
+*Under Construction* In the meantime, please refer to [the control attribute](../Standard_Attributes/control.md).
