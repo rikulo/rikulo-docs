@@ -9,6 +9,8 @@ A Rikulo application consists of
 
 > Please refer to [here](Introduction.md) for installing Rikulo to your application.
 
+> If you prefer to define the user interfaces in a manner similar to authoring HTML/XML pages, please refer to [Rikulo UXL](../UXL). It compiles the user interface specified in XML into Dart code.
+
 ##The Dart Code
 
 Here is a simple "Hello World" application.

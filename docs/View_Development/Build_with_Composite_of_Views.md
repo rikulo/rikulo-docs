@@ -36,6 +36,8 @@ Then, the application can use it without knowing how it is implemented.
       ..addChild(new LabeledInput("username"))
       ..addChild(new LabeledInput("password"));
 
+> If you're familiar with XML, you can use [Rikulo UXL](../UXL) to composite the views. Please refer to [Use UXL Templates in Dart](../UXL/Fundamentals/Use_UXL_Templates_in_Dart.md) for more information.
+
 ###The className Property
 
 To work with [View.query()](api:view), you have to implement [View.className](api:view) to return the view's class name.

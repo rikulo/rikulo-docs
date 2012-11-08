@@ -2,7 +2,7 @@
 
 UXL (User-interface eXtensible language) is a markup language for describing applications' user interfaces. UXL is a simple variant of XML. It allows you to define user interfaces in a similar manner to authoring HTML and XML pages.
 
-> Depending on your preference and the knowledge of your team, you can design UI in Dart, UXL or both.
+> Depending on your preference and your team's skill, you can design UI in Dart, UXL or both.
 
 ##How it Works
 

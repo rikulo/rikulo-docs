@@ -5,7 +5,7 @@
 
 The `forEach` attribute provides a compact way to iterate over a range of values. For example,
 
-    <Template name="List" args="customers"
+    <Template name="List" args="customers">
       <View forEach="customer in customers">
         $customer
       </View>
