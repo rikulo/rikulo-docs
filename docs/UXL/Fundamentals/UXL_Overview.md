@@ -133,3 +133,12 @@ If the template you are going to use is defined in other UXL file, you can decla
     <Template name="FriendList" args="friends">
       <Friend friend="$each" forEach="each in friends"/>
     </Template>
+
+###UXL and XML
+
+UXL is basically a XML document, but there are a few differences:
+
+* Multiple root elements are allowed. Thus, you can declare many templates as follows.
+
+        <Template name="A">...</Template>
+        <Template name="B">...</Template>
