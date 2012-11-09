@@ -10,10 +10,14 @@ The `name` attribute will become the function's name. The list of arguments spec
 
 The function will return a list of the top-level views being instantiated. In other words, it has the same content as `parent.children`, if `parent` is given.
 
+If you want to add the created views as child views of a particular view, you can pass the view as the `parent` argument. If you don't, you can simply ignore the `parent` argument and retrieve them from the returned list.
+
 For example,
 
     <Template name="Simple" args="user">
-      ${user.name} <Button text="Profile"/>
+      <Panel layout="type: linear">
+        ${user.name} <Button text="Profile"/>
+      </Panel>
     </Template>
 
 will generate
@@ -21,3 +25,5 @@ will generate
     List<View> Simple({View parent, user}) {
       ...
     }
+
+Furthermore, `Simple` will return a list with a single element, an instance of `Panel`, since `Panel` is the only top-level view.

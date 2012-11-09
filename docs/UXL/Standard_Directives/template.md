@@ -2,7 +2,7 @@
 
     <? template name1 [name2...] ?>
 
-The `template` directive declares a list of templates that are defined in other UXL files or at the end of the same UXL file. UXL compiler won't parse your Dart file or other UXL files, so you have to declares the templates that will be used explicitly.
+The `template` directive declares a list of templates that are defined in other UXL files. UXL compiler won't parse your Dart file or other UXL files, so you have to declares the external templates explicitly.
 
 > Notice that a template is actually a Dart function, while a view is an object. UXL compiler will generate Dart differently according to their types.
 

@@ -68,6 +68,8 @@ Then, you can instantiate the views defined in this template whatever you want. 
       SignIn()[0].addToDocument();
     }
 
+![Sign in](SignIn.jpg?raw=true)
+
 ###Binding Dart objects
 
 The binding of Dart objects into views are straightforward. As shown in the above example, you can define as many as arguments you want in the template. Then, you can invoke it by passing the right object to it. For example, you can retrieve the username from the cookie and then pass it to the template function:

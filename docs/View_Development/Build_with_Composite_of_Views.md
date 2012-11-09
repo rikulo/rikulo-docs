@@ -38,17 +38,6 @@ Then, the application can use it without knowing how it is implemented.
 
 > If you're familiar with XML, you can use [Rikulo UXL](../UXL) to composite the views. Please refer to [Use UXL Templates in Dart](../UXL/Fundamentals/Use_UXL_Templates_in_Dart.md) for more information.
 
-###The className Property
-
-To work with [View.query()](api:view), you have to implement [View.className](api:view) to return the view's class name.
-
-    class LabeledInput extends View {
-      String get className => "LabeledInput";
-
-Therefore, the application can query it with this class name, such as
-
-    mainView.query("LabeledInput");
-
 ##Event Handling
 
 You can *propagate* the events sent by the internal views to the caller of the composite view. To do so, you can listen to the event you care and handle it the way you want. For example, in this sample, you can propagate the `change` event as follows.
