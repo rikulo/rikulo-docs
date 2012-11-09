@@ -72,14 +72,42 @@ Then, you can instantiate the views defined in this template whatever you want. 
 
 ###Binding Dart objects
 
-The binding of Dart objects into views are straightforward. As shown in the above example, you can define as many as arguments you want in the template. Then, you can invoke it by passing the right object to it. For example, you can retrieve the username from the cookie and then pass it to the template function:
+The binding of Dart objects into views are straightforward. As shown in the above example, you can define as many as arguments you want in the template. Then, you can invoke it by passing the right object to it. For example, you can retrieve the user's name from the cookie and then pass it to the template function:
 
     SignIn(rememberMe: getRememberMeFromCookie())[0].addToDocument();
 
+You can also reference to Dart objects in the XML attributes. For example,
+
+    <TextBox value="${customer.firstName}, ${customer.lastName}"/>
+
+Notice that if the expression has exactly one `${...}`, it will be generated directly (without converting to a string). It is useful if you'd like to specify a non-string value:
+
+    <View left="${100}"/> <!-- assign 100 rather "100" to left -->
+    <Foo user="${currentUser}"/> <!-- you must make sure the types match -->
+
+On the other hand, you have to enforce the string conversion if the type you expect is a string:
+
+    <TextBox value="${foo.toString()}"/>
+     <!-- toString required if foo isn't a string since TextBox's value expects -->
+
+> Notice that it is XML, so you can express multiple lines by simply entering LINEFEED:
+
+        <TextView html="
+        <ul>
+          <li>Now is ${new Date()}</li>
+        </ul>" />
+          <!-- auto convert to string since it is not a pure ${..} -->
 
 ###Embed Dart code into UXL
 
-You can embed Dart code with [the dart directive](../Standard_Directives/dart.md). For example, you can make a UXL file as a standard-alone application as follows.
+You can embed Dart code with [the dart directive](../Standard_Directives/dart.md). For example, you can declare the generated dart file as a library or part of a library.
+
+    <?dart
+    library foo;
+    import "package:rikulo/view.dart";
+    ?>
+
+You can even make a UXL file as a standard-alone application:
 
     <?dart
     import "package:rikulo/view.dart";
@@ -94,7 +122,7 @@ You can embed Dart code with [the dart directive](../Standard_Directives/dart.md
 
 ###Model-View-Controller (MVC)
 
-Embeding Dart code in a UXL file is convenient. However, for sake of maintenance, it is usually better to separate the code from the view as much as possible. In additions, people who writes UXL files might not know Dart at all.
+Embedding Dart code in a UXL file is convenient. However, for sake of maintenance, it is usually better to separate the code from the view as much as possible. In additions, people who writes UXL files might not know Dart at all.
 
 To do so, you can apply the so-called [Mode-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern. For more information, please refer to [MVC Overview](MVC_Overview.md).
 
@@ -113,6 +141,8 @@ Or, put one inside another:
     </Template>
 
 They are equivalent.
+
+> UXL is basically a XML document, but multiple root elements are allowed. Thus, you can declare multiple templates as shown above.
 
 ###Use templates in templates
 
@@ -133,12 +163,3 @@ If the template you are going to use is defined in other UXL file, you can decla
     <Template name="FriendList" args="friends">
       <Friend friend="$each" forEach="each in friends"/>
     </Template>
-
-###UXL and XML
-
-UXL is basically a XML document, but there are a few differences:
-
-* Multiple root elements are allowed. Thus, you can declare many templates as follows.
-
-        <Template name="A">...</Template>
-        <Template name="B">...</Template>
