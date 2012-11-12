@@ -1,0 +1,25 @@
+//TOC
+//
+//!foo: no link
+//+foo: no need to append .html (i.e., it is a folder containing index.html)
+
+Getting Started (Introduction)
+Views (Fundamentals/UI Overview)
+Layouts (Fundamentals/Layout Overview)
+UXL (Fundamentals/UXL Overview)
+Gestures (Fundamentals)
+Effects (Fundamentals)
+View Development (Fundamentals)
+
+!Rikulo Gap
+  Fundamentals
+  Accelerometer
+  Camera
+  Capture
+  Compass
+  Connection
+  Contacts
+  Geolocation
+  Notification
+
+Web Services (Fundamentals)
