@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -13,25 +13,53 @@ import java.util.Properties;
  * @author tomyeh
  */
 class TOC {
-	final List<TOCInfo> tocs = new LinkedList<TOCInfo>();
-
 	void read(Properties props, File dir, String contextPath) throws IOException {
-		final String[] names = dir.list();
-		if (names != null)
-			for (int i = 0; i < names.length; ++i) {
-				final String name = names[i];
-				if (name.startsWith("toc-") && name.endsWith(".txt")) {
-					Main.log("Read TOC in "+name);
-					props.put(name.substring(0, name.length() - 4),
-						parse(new File(dir, name), contextPath));
+		//Parse toc.txt (root) first and also generate cats
+		final List<Category> cats = new ArrayList<Category>();
+		props.put("toc-root", parse(new File(dir, "toc.txt"), contextPath, null, null, cats));
+
+		Main.log("Read TOC. There are "+cats.size()+" categories.");
+
+		//Parse others
+		final String[] flnms = dir.list();
+		if (flnms != null)
+			for (int i = 0; i < flnms.length; ++i) {
+				final String flnm = flnms[i];
+				if (flnm.startsWith("toc-") && flnm.endsWith(".txt")) {
+					final String name = flnm.substring(4, flnm.length() - 4);
+					final StringBuffer bfr = new StringBuffer(), afr = new StringBuffer();
+					boolean found = false;
+					for (final Category cat: cats) {
+						if (found) {
+							afr.append(cat.output);
+						} else {
+							found = cat.name.equals(name);
+							if (!found)
+								bfr.append(cat.output);
+						}
+					}
+					if (!found)
+						Main.error("Category "+name+" not found in "+cats);
+
+					props.put("toc-" + name, parse(new File(dir, flnm), contextPath, bfr.toString(), afr.toString(), null));
 				}
 			}
 	}
-	String parse(File fl, String contextPath) throws IOException {
+	/**
+	 * Parse a TOC file
+	 * @param before the content that shall be inserted before the category. Ignored if null.
+	 * @param after the content that shall be inserted after the category. Ignored if null.
+	 * @param cats a list of categories to return. Ignored if null. If not null, the categories
+	 * found will be added to the given list.
+	 */
+	String parse(File fl, String contextPath, String before, String after, List<Category> cats)
+	throws IOException {
 		final BufferedReader reader = new BufferedReader(
 				new InputStreamReader(new FileInputStream(fl), "UTF-8"));
 		try {
 			final StringBuffer sb = new StringBuffer(8192).append("<ul class=\"root-level\">\n");
+			if (before != null) sb.append(before);
+
 			String in;
 			int indent = 0, level = 0;
 			final int[] indents = new int[10]; //at most 10 levels
@@ -89,27 +117,36 @@ class TOC {
 					uri = realuri = txt.replace(' ', '_');
 				}
 
-				sb.append("<li>");
+				final StringBuffer lnsb = new StringBuffer();
+				lnsb.append("<li>");
 				if (link) {
-					sb.append("<a href=\"");
+					lnsb.append("<a href=\"");
 					if (contextPath != null)
-						sb.append(contextPath);
+						lnsb.append(contextPath);
 					for (int j = 0; j < level; ++j)
-						sb.append(paths[j]);
-					sb.append('/').append(realuri);
+						lnsb.append(paths[j]);
+					lnsb.append('/').append(realuri);
 					if (!index)
-						sb.append(".html");
-					sb.append("\">");
+						lnsb.append(".html");
+					lnsb.append("\">");
 				}
-				sb.append(txt);
+				lnsb.append(txt);
 				if (link)
-					sb.append("</a>");
-				sb.append("</li>\n");
+					lnsb.append("</a>");
+				lnsb.append("</li>\n");
+
+				if (cats != null && level == 0)
+					cats.add(new Category(txt.replace(' ', '_'), lnsb.toString()));
+				sb.append(lnsb);
 
 				paths[level] = '/' + uri;
 			}
+
 			while (--level >= 0)
-				sb.append("</ul>\n");
+				sb.append("</ul></li>\n");
+
+			if (after != null)
+				sb.append(after);
 			return sb.append("</ul>\n").toString();
 		} finally {
 			reader.close();
@@ -120,11 +157,16 @@ class TOC {
 			sb.append(' ');
 	}
 }
-class TOCInfo {
+
+class Category {
 	String name;
-	String content;
-	TOCInfo(String name, String content) {
+	String output;
+
+	Category(String name, String output) {
 		this.name = name;
-		this.content = content;
+		this.output = output;
+	}
+	public String toString() {
+		return name;
 	}
 }

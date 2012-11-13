@@ -2,9 +2,7 @@
 //
 //!foo: no link
 //+foo: no need to append .html (i.e., it is a folder containing index.html)
-
-Getting Started (Introduction)
-Views (Fundamentals/UI Overview)
+//foo (sublink): use foo/sublink as the link
 
 !Layouts
   !Fundamentals
@@ -14,10 +12,3 @@ Views (Fundamentals/UI Overview)
   Anchor Layout
   Linear Layout
   LayoutManager
-
-UXL (Fundamentals/UXL Overview)
-Gestures (Fundamentals)
-Effects (Fundamentals)
-View Development (Fundamentals)
-Rikulo Gap (Fundamentals)
-Web Services (Fundamentals)

@@ -2,8 +2,7 @@
 //
 //!foo: no link
 //+foo: no need to append .html (i.e., it is a folder containing index.html)
-
-Getting Started (Introduction)
+//foo (sublink): use foo/sublink as the link
 
 !Views
   !Fundamentals
@@ -31,11 +30,3 @@ Getting Started (Introduction)
   TextBox
   TextView
   View
-
-Layouts (Fundamentals/Layout Overview)
-UXL (Fundamentals/UXL Overview)
-Gestures (Fundamentals)
-Effects (Fundamentals)
-View Development (Fundamentals)
-Rikulo Gap (Fundamentals)
-Web Services (Fundamentals)
