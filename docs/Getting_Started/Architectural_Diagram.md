@@ -8,3 +8,4 @@
 * [Effects](../Effects/Fundamentals.md) - animation effects, such as easing and linear motion.
 * [Device Service (Rikulo Gap)](../Rikulo_Gap/Fundamentals.md) - utilities to access the device's native resources, such as motion sensor, camera and compass (by use of Cordova).
 * [Web Services](../Web_Services/Fundamentals.md) - utilities to access web services, such as Yahoo Weather and Smart IP.
+* [UXL](../UXL/Fundamentals/UXL_Overview.md) - a markup language for describing applications' user interfaces in a manner similar to authoring HTML and XML pages.
