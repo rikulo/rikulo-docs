@@ -126,26 +126,6 @@ Embedding Dart code in a UXL file is convenient. However, for sake of maintenanc
 
 To do so, you can apply the so-called [Mode-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern. For more information, please refer to [MVC Overview](MVC_Overview.md).
 
-###Define multiple templates in a UXL file
-
-You can define multiple templates in the same UXL files. You can declare them one-by-one:
-
-    <Template name="Foo1">...</Template>
-    <Template name="Foo2">...</Template>
-
-It will generate two global functions, `Foo1` and `Foo2`.
-
-> UXL is basically a XML document, but multiple root elements are allowed. Thus, you can declare multiple templates as shown above.
-
-Alternatively, you can put one template inside another:
-
-    <Template name="Foo1">
-      <Template name="Foo2">...</Template>
-      ...
-    </Template>
-
-It will generate one global function, `Foo1` and `Foo2` is a local function of `Foo1`. For more information, please refer to [the Template element](../Standard_Elements/Template.md).
-
 ###Use templates in templates
 
 Each XML element in a UXL can describe no longer how to instantiate a view but also how to invoke a template. For example,
@@ -165,3 +145,24 @@ If the template you are going to use is defined in other UXL file, you can decla
     <Template name="FriendList" args="friends">
       <Friend friend="$each" forEach="each in friends"/>
     </Template>
+
+###Define multiple templates in a UXL file
+
+You can define multiple templates in the same UXL files:
+
+    <Template name="Foo1">...</Template>
+    <Template name="Foo2">...</Template>
+
+It will generate two global functions, `Foo1` and `Foo2`.
+
+> UXL is basically a XML document, but multiple root elements are allowed. Thus, you can declare multiple templates as shown above.
+
+In additions, you can put one template inside another:
+
+    <Template name="Foo1">
+      <Template name="Foo2">...</Template>
+      ...
+    </Template>
+
+It will generate one global function, `Foo1`, and a local function, `Foo2`. `Foo2` is a local variable of `Foo1`. For more information, please refer to [the Template element](../Standard_Elements/Template.md).
+
