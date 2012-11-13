@@ -10,8 +10,9 @@ The controller must be a closure that take a single argument typed as [View](api
 
 For example, assume we have a sign-in form as follows.
 
-    <Template name="SignIn" control="signIn">
-      <Panel layout="type:linear; orient: vertical; spacing: 4"
+    <Template name="SignIn">
+      <Panel control="signIn"
+        layout="type:linear; orient: vertical; spacing: 4"
         profile="location: center center; width: 180; height: 145">
         Username or Email
         <TextBox id="username" />
