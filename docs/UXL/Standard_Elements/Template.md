@@ -27,3 +27,33 @@ will generate
     }
 
 Furthermore, `Simple` will return a list with a single element, an instance of `Panel`, since `Panel` is the only top-level view.
+
+##Nested Templates
+
+you can put one template inside another:
+
+    <Template name="Foo1">
+      <Template name="Foo2">...</Template>
+      ...
+    </Template>
+
+It will generate one global function, `Foo1` and one local function, `Foo2` as follows. 
+
+    List<View> Foo1({parent}) {
+      List<View Foo2({parent}) {
+        ...
+      }
+      ...
+    }
+
+Notice that `Foo2` is accessible only inside `Foo1`:
+
+    <Template name="Foo1">
+      <View data-foo="Foo2"/> <!-- Wrong! Foo2 is not accessible here -->
+      <Template name="Foo2">...</Template>
+      <View data-foo="Foo2"/> <!-- Correct! Foo2 is accessible here -->
+    </Template>
+    <Template name="Foo3">
+      <View data-foo="Foo2"/> <!-- Wrong! Foo2 is not accessible here -->
+      <View data-foo="Foo1"/> <!-- Correct! Foo1 is accessible here -->
+    </Template>

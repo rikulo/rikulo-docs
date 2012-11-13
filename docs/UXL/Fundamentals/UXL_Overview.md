@@ -133,16 +133,18 @@ You can define multiple templates in the same UXL files. You can declare them on
     <Template name="Foo1">...</Template>
     <Template name="Foo2">...</Template>
 
-Or, put one inside another:
+It will generate two global functions, `Foo1` and `Foo2`.
+
+> UXL is basically a XML document, but multiple root elements are allowed. Thus, you can declare multiple templates as shown above.
+
+Alternatively, you can put one template inside another:
 
     <Template name="Foo1">
       <Template name="Foo2">...</Template>
       ...
     </Template>
 
-They are equivalent.
-
-> UXL is basically a XML document, but multiple root elements are allowed. Thus, you can declare multiple templates as shown above.
+It will generate one global function, `Foo1` and `Foo2` is a local function of `Foo1`. For more information, please refer to [the Template element](../Standard_Elements/Template.md).
 
 ###Use templates in templates
 
