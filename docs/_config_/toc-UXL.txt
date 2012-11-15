@@ -13,6 +13,7 @@
     control
     forEach
     if
+    on.event
   +Standard Directives
     dart
     template
