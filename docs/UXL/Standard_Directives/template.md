@@ -1,6 +1,6 @@
 #The template Directives
 
-    <? template name1 [name2...] ?>
+>    <? template *name1* [*name2*...] ?>
 
 The `template` directive declares a list of templates that are defined in other UXL files. UXL compiler won't parse your Dart file or other UXL files, so you have to declares the external templates explicitly.
 

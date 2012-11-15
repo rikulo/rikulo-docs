@@ -1,6 +1,6 @@
 #The dart Directive
 
-    <? dart any_valid_dart_code ?>
+>    <? dart *any_valid_dart_code* ?>
 
 The `dart` directive allows you to write blocks of Dart code inside UXL.
 

@@ -1,6 +1,6 @@
 #The Template Element
 
-    <Template name="template_name" [args="a_list_of_arguments"] [description="a_description"]>
+>    <Template name="*template_name*" [args="*a_list_of_arguments*"] [description="*a_description*"]>
 
 The `Template` element defines a template. A template will be compiled to a Dart function. The signature is as follows:
 
@@ -57,3 +57,16 @@ Notice that `Foo2` is accessible only inside `Foo1`:
       <View data-foo="Foo2"/> <!-- Wrong! Foo2 is not accessible here -->
       <View data-foo="Foo1"/> <!-- Correct! Foo1 is accessible here -->
     </Template>
+
+##args: beforeChild
+
+By default, the created views will be appended to the given parent if any. If you prefer to allow the caller to control whether to insert, you can specify `beforeChild` as one of your arguments. For example,
+
+    <Tempalte name="Foo" args="beforeChild, whatever">
+    ...
+
+Then, the caller can pass a child as `beforeChild` such that all created views will be inserted before it:
+
+    Foo(parent: parent, beforeChild: refChild);
+
+> Since `beforeChild` is interpreted specially, you can use it for other purposes.

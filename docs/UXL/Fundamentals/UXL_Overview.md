@@ -37,20 +37,20 @@ A UXL file defines one or multiple templates. A template will be compiled into a
 
 For example, here we define a `SignIn` template:
 
-    <Template name="SignIn" args="rememberMe: ''">
-      <Panel layout="type:linear; orient: vertical; spacing: 4"
+    <Template name="SignIn" args="rememberMe">
+      <Panel layout="type:linear; orient: vertical; spacing: 8"
         profile="location: center center; width: 180; height: 145">
         Username or Email
         <TextBox id="username" value="$rememberMe" />
         Password
         <TextBox id="password"/>
-        <Button text="Sign in" profile="spacing: 12 4 4 4"/>
+        <Button text="Sign in"/>
       </Panel>
     </Template>
 
 UXL compiler will then compile it into a Dart file containing the following function:
 
-    List<View> SignIn({View parent, rememberMe: ''}) {
+    List<View> SignIn({View parent, rememberMe}) {
       List<View> _vcr_ = new List();
       ...
       final _v0_ = (_this_ = new Panel())
@@ -70,7 +70,7 @@ Then, you can instantiate the views defined in this template whatever you want. 
 
 ![Sign in](SignIn.jpg?raw=true)
 
-###Binding Dart objects
+###Data Binding: bind Dart objects
 
 The binding of Dart objects into views are straightforward. As shown in the above example, you can define as many as arguments you want in the template. Then, you can invoke it by passing the right object to it. For example, you can retrieve the user's name from the cookie and then pass it to the template function:
 
@@ -98,6 +98,38 @@ On the other hand, you have to enforce the string conversion if the type you exp
         </ul>" />
           <!-- auto convert to string since it is not a pure ${..} -->
 
+###Command Binding: handle events
+
+You can bind an event to a Dart function with [the on.*event* attribute](../Standard_Attributes/on.event.md):
+
+    <Button text="Sign in" on.click="signIn"/>
+
+Then, whenever the button is clicked, the function called `signIn` will be called. The function is called *command handler*. The signature is as follows:
+
+    void signIn(ViewEvent event) {
+      //handle the command
+    }
+
+By default, the command handler is a top-level (aka., global) function. However, for sake of better structure, you can handle multiple commands in a single instance. It can be done easily with [the control attribute](../Standard_Attributes/control.md):
+
+    <View control="SignInControl"> <!-- SignInControl is a Dart class -->
+      ...
+      <Button text="Sign in" on.click="signIn"/>
+
+Then, you can handle commands in an instance of `SignInControl` (which is created automatically when the view is instantiated):
+
+    class SignInControl extends Control {
+      void signIn(ViewEvent event) {
+        //handle the command
+      }
+    }
+
+As shown, `SignInControl` shall extend from [Control](uxl:uxl). In the simplest form, you don't need to know anything about [Control](uxl:uxl) but add your command handlers there.
+
+> Notice that, after the command handler is called, the user interface will be re-rendered automatically to reflect the latest states. Thus, you don't need to touch UI in command handlers, unless you want the fine-grained control.
+
+> It is the so-called Controller in the [Model-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern.
+
 ###Embed Dart code into UXL
 
 You can embed Dart code with [the dart directive](../Standard_Directives/dart.md). For example, you can declare the generated dart file as a library or part of a library.
@@ -117,14 +149,14 @@ You can even make a UXL file as a standard-alone application:
     }
     ?>
 
-    <Template name="SignIn" args="rememberMe: ''">
+    <Template name="SignIn" args="rememberMe">
     ....
 
 ###Model-View-Controller (MVC)
 
-Embedding Dart code in a UXL file is convenient. However, for sake of maintenance, it is usually better to separate the code from the view as much as possible. In additions, people who writes UXL files might not know Dart at all.
+Embedding Dart code in a UXL file is convenient. However, for sake of maintenance, it is usually better to separate the code from the view as much as possible. Furthermore, people who write UXL files might not know Dart at all.
 
-To do so, you can apply the so-called [Mode-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern. For more information, please refer to [MVC Overview](MVC_Overview.md).
+To do so, you can apply the so-called Model-View-Controller (MVC) design pattern. For more information, please refer to [MVC Overview](../Fundamentals/MVC_Overview.md).
 
 ###Use templates in templates
 
