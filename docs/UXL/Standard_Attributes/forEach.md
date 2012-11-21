@@ -1,7 +1,7 @@
 #The forEach Attribute
 
->    forEach="*each_name* in *collection_expression*"  
-    forEach="*i = 0; i < 10; i++*"
+>forEach="*each_name* in *collection_expression*"  
+forEach="*i = 0; i < 10; i++*"
 
 The `forEach` attribute provides a compact way to iterate over a range of values. For example,
 

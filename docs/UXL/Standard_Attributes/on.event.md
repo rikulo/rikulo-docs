@@ -1,10 +1,9 @@
 #The on.*event* Attribute
 
->    on.*event_name*="*command_name*"  
-    on.*event_name*="*controller_name*.*command_name*"  
-    on.*event_name*="*command_name1*, *controller_name2*.*command_name2*..."
+>on.*event_name*="*command_name*"  
+on.*event_name*="*controller_name*.*command_name*"  
 
-The on.*event* attribute binds an event with one or multiple command handlers. If you'd like to bind multiple command handlers, separate them with commas (,).
+The on.*event* attribute binds an event with a command handler.
 
 For example, you can binds the click event of a button with a command handler called `signIn` as follows:
 

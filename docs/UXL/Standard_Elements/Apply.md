@@ -1,6 +1,6 @@
 #The Apply Element
 
-    <Apply [if="a_condition"] [forEach="a_for_statement"]>
+><Apply [if="*a_condition*"] [forEach="*a_for_statement*"]>
 
 The `Apply` element allows you to group a collection of views and control how to generate them. For example, you can generate them repeatedly with [the `forEach` attribute](../Standard_Attributes/forEach.md) such as
 

@@ -1,6 +1,6 @@
 #The Template Element
 
->    <Template name="*template_name*" [args="*a_list_of_arguments*"] [description="*a_description*"]>
+><Template name="*template_name*" [args="*a_list_of_arguments*"] [description="*a_description*"]>
 
 The `Template` element defines a template. A template will be compiled to a Dart function. The signature is as follows:
 

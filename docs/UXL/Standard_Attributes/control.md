@@ -1,9 +1,9 @@
 #The control Attribute
 
->    control="*Controller_Class*"  
-    control="*controll_name*: *Controller_Class*"  
-    control="*an_expression*"  
-    control="*controll_name*: *an_expression*"
+>control="*Controller_Class*"  
+control="*controll_name*: *Controller_Class*"  
+control="*an_expression*"  
+control="*controll_name*: *an_expression*"
 
 The `control` attributes specifies the controller for mediating the view and model in the so-called [Mode-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern.
 
