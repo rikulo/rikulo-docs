@@ -1,5 +1,7 @@
 #ScrollView
 
+A view container that can be scrolled by the user.
+
 * Library: [view](api:)
 * API Reference: [ScrollView](api:view)
 * Source: [ScrollView.dart](source:lib/src/view)

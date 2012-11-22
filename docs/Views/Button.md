@@ -1,5 +1,7 @@
 #Button
 
+A button.
+
 * Library: [view](api:)
 * API Reference: [Button](api:view)
 * Source: [Button.dart](source:lib/src/view)

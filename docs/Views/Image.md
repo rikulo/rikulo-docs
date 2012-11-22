@@ -1,5 +1,7 @@
 #Image
 
+A view for display an image.
+
 * Library: [view](api:)
 * API Reference: [Image](api:view)
 * Source: [Image.dart](source:lib/src/view)

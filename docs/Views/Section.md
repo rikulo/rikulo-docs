@@ -1,5 +1,7 @@
 #Section
 
+A section is a view implementing ID space, [IdSpace](api:view). It is usually used to hold a section of UI that is usually indepedent of the others.
+
 * Library: [view](api:)
 * API Reference: [Section](api:view)
 * Source: [Section.dart](source:lib/src/view)

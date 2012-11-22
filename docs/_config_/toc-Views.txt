@@ -20,13 +20,14 @@
   DropDownList
   Image
   //ListView
-  MultilineBox
+  Link
   Panel
   RadioButton
   ScrollView
   Section
   Style
   Switch
+  TextArea
   TextBox
   TextView
   View
