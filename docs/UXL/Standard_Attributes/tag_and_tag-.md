@@ -1,4 +1,4 @@
-#The tag Attribute
+#The tag and tag-* Attribute
 
 >tag="*tagName*"  
 tag-*attr_name*="*attr_value*"

@@ -11,10 +11,11 @@
     Use UXL Templates in Dart
   +Standard Attributes
     control
+    data-
     forEach
     if
     on.event
-    tag
+    tag and tag-
   +Standard Directives
     dart
     template
