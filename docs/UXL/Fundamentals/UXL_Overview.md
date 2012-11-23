@@ -29,7 +29,7 @@ To install stuff that is still in development, add this to your `pubspec.yam`:
 
     dependencies:
       rikulo_uxl:
-        git: git://github.com/rikulo/rikulo-uxl.git
+        git: git://github.com/rikulo/uxl.git
 
 ##UXL Templates
 
