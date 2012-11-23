@@ -131,9 +131,8 @@ The view is a thin layer on top of [View.node](api:view). Many of [View](api:vie
 
 Here is a list of notices if you'd like to work with the view and its `node`interchangeably.
 
-* Two CSS classes are always assigned: `v-` and `v-xxx` (where `xxx` is the view's class name [View.className](api:view)).
+* Two CSS classes are assigned initially: `v-` and `v-xxx` (where `xxx` is the view's class name [View.className](api:view)).
     * The `v-` CSS class has two important CSS rules that you shall not change: `box-sizing: border-box;` and `position: absolute;`
     * The `v-xxx` is used to customize the look of a given type of views.
-* The left, top, with and height properties of a view shall be altered by use of [View](api:view)'s API, such as [View.left](api:view).
 
 If you'd like to learn the details of how to develop a view, please refer to [View Development](../../View_Development).
