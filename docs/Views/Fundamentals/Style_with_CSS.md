@@ -7,28 +7,13 @@ You can assign the CSS style to change the look of a view.
     view.style.backgroundColor = "blue";
     view.style.cssText = "font-size: 15px; text-align: center";
 
-[View](api:view)'s `style` is an instance of [CSSStyleDeclaration](dart:html). It will correct the CSS name with a proper prefix for the browser automatically. For example, the following statement will assign the value to `-webkit-transform` when running on Chrome.
-
-    view.style.transform = "translate3d(-10px, -20px, 0)";
-
-> We don't do the correction for the CSS rules specified in a CSS file, or in [Style](api:view).
-
-### Don't Assign Coorinates and Dimensions with CSS
-
-Notice that it is strongly suggested **not** to assign the coordinates and the dimensions to the `style` property. Rather, you shall assign them directly with the `left`, `top`, `width` and `height` properties of [View](api:view). For example,
-
-    view.style.left = "13px"; //Wrong!!
-    view.left = 13; //Correct
-    view.width = 200; //Correct
-    view.profile.width = "flex"; //Correct (it will be handled by layout manager later)
-
-Moreover, it is suggested to use Rikulo's [layout facility](../../Layouts/index.md) to handle the postion and layout of the user interface. It is more convenient, and it will adjust automatically based on the resolution of the device.
+[View.style](api:view) is an instance of [CSSStyleDeclaration](dart:html).
 
 ### Don't Assign CSS Margin
 
-Don't assign [the CSS margin](http://www.w3schools.com/css/css_margin.asp) to the view, since it will introduce an offset to the view's coorinates (and then might cause the layout manager  positions it wrongly).
+Don't assign [the CSS margin](http://www.w3schools.com/css/css_margin.asp) to the view, since it will introduce an offset to the view's coordinates (and then might cause the layout manager positions it wrongly).
 
-On the other hand, it is OK to use [the CSS padding](http://www.w3schools.com/css/css_padding.asp), and it won't have any effect to the coordinate of the child views.
+On the other hand, it is OK to use [the CSS padding](http://www.w3schools.com/css/css_padding.asp), and it doesn't have any effect to the coordinate of the child views.
 
 > Of course, you can use the CSS margin in [the web content hold in TextView](Show_Web_Content.md). You can use it in the implementation of a view too. For example, you might implement a view by representing it with multiple DOM elements and you can assign any CSS styles, including margin, position and dimension, to these elements as what you need.
 
@@ -60,7 +45,7 @@ In general, it is better to package CSS rules in a file, since it isolates the c
 
 If you want to add CSS rules in Dart code, you can use [Style](api:view). It is a special UI object used to define CSS rules. For example,
 
-    new Style.fromContent('''
+    new Style(content: '''
     .blue {
       background: blue; color: white
     }
@@ -68,4 +53,4 @@ If you want to add CSS rules in Dart code, you can use [Style](api:view). It is 
 
 In additions, you can load an external CSS file to include a collection of CSS rules as follows.
 
-    new Style("foo.css").addToDocument();
+    new Style(src: "foo.css").addToDocument();

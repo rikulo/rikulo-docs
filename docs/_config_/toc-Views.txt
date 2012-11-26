@@ -8,8 +8,8 @@
   !Fundamentals
     UI Overview
     Event Handling
-    ID Space and Query
     Style with CSS
+    ID Space and Query
     Embed in HTML Page
     Show Web Content
     Separate Data from UI with Model

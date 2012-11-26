@@ -84,7 +84,7 @@ Notice that the selected item in [DefaultTreeModel](api:model) is an instance of
 
 ##Renderer
 
-By default, views that support model will convert the data to a string and display it. If you want to customize it, you have to implement a renderer to generate the content to display. For example, to customize the renderer of [DropDownList](api:view), you can implement [StringRenderer](api:model) and then assign an instance to [DropDownList](api:view) as follows:
+By default, views that support model will convert the data to a string and display it. If you want to customize it, you have to implement a renderer to generate the content to display. For example, to customize the renderer of [DropDownList](api:view), you can implement [Renderer](api:model) and then assign an instance to [DropDownList](api:view) as follows:
 
     new DropDownList(model: model,
       renderer: (RenderContext context) => "..${context.data}...");
