@@ -38,8 +38,10 @@ The event proxy is actually handled by [View.onEventListened_()](api:view). You 
       }
     }
 
-If the DOM event is an input event, such as `change` and `keyDown`, the default implementation will try to find a child element that is INPUT, TEXTAREA, SELECT, BUTTON, and A. If it is not what you want, you can override it to specify the right element:
+If the DOM event is an input event, such as `change` and `keyDown`, the default implementation will check if a child element is INPUT, TEXTAREA, SELECT, BUTTON, and A. Then, pass it to the `target` argument. Otherwise, [View.node](api:view) is passed.
+
+If it is not what you want, you can override it to specify the right element:
 
     void onEventListened_(String type, [Element target]) {
-      super.onEventListened_((type, type == "change" ? getNode("inp"): target);
+      super.onEventListened_(type, type == "change" ? getNode("inp"): target);
     }

@@ -8,9 +8,11 @@ Rendering the DOM elements is straightforward: override [View.render_()](api:vie
 
 You don't need to worry the child views. Their DOM elements will be created recursively if necessary, and composed based on the hierarchy of views.
 
+> If you have to create the DOM element(s) in the constructor, you can create and assign it to [View.node](api:view:set) directly in the constructor. Then, [View.render_()](api:view) won't be called (since it is called only if [View.node](api:view) is called and no value is ever assigned).
+
 ###Handle DOM events
 
-After rendering the DOM elements, you can initialize the DOM elements before returning. For example, you can register a DOM listener:
+After rendering the DOM elements, you can initialize the DOM elements before returning, if necessary. For example, you can register a DOM listener:
 
     Element render_() {
       final node = new Element.tag("input");

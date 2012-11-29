@@ -22,10 +22,10 @@ To interact with the user, [ScrollView](api:view) will listen the touch and mous
 
 The view is a thin layer on top of [View.node](api:view). Many of [View](api:view) API is a proxy of the underlying [View.node](api:view), such as [View.id](api:view) and [View.style](api:view). Here is a list of differences.
 
-* Two CSS classes are always assigned: `v-` and `v-xxx` (where `xxx` is the view's class name [View.className](api:view)).
+* Two CSS classes are always assigned: `v-` and `v-clsnm` (where `clsnm` is the view's class name [View.className](api:view)).
     * The `v-` CSS class has two important CSS rules that you shall not change: `box-sizing: border-box;` and `position: absolute;`
-    * The `v-xxx` is used to customize the look of a given type of views.
-* The left, top, with and height properties of a view shall be altered by use of [View](api:view)'s API, such as [View.left](api:view).
+    * The `v-clsnm` is used to customize the look of a given type of views.
+* The position and dimension of a view (i.e., left, top, with and height) can only be measured in pixels. It doesn't support `em` and other units of measurement.
 
 ##Build a View with DOM Elements
 

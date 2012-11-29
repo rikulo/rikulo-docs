@@ -1,6 +1,6 @@
 #Fundamentals of Rikulo Gap
 
-[Rikulo Gap](https://github.com/rikulo/rikulo-gap) is the package which bridge Dart program to [Apache Cordova/PhoneGap](http://phonegap.com/)'s JavaScript APIs. With the help of the Rikulo Gap package, Rikulo leverages and integrates with the mobile platform allowing you to create native mobile applications and get access to native device resources and services in Dart and HTML5.
+[Rikulo Gap](https://github.com/rikulo/gap) is the package which bridge Dart program to [Apache Cordova/PhoneGap](http://phonegap.com/)'s JavaScript APIs. With the help of the Rikulo Gap package, Rikulo leverages and integrates with the mobile platform allowing you to create native mobile applications and get access to native device resources and services in Dart and HTML5.
 
 >Apache Cordova/PhoneGap is a platform for building native mobile applications using HTML, CSS and JavaScript.
 
@@ -56,7 +56,7 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
 * After enabling the device's accessibility, you can use the global variables such as [device](gap:device) to access nine mobile services directly. For example, you can access the accelerometer by referring [accelerometer](gap:accelerometer). Then you can call the accelerometer's method to access or watch the motion sensor.
 
-    >For details about how to use each supported device service, please refer to [API Reference](http://api.rikulo.org/rikulo-gap/latest/).
+    >For details about how to use each supported device service, please refer to [API Reference](http://api.rikulo.org/gap/latest/).
 
 
 ##A Simple Example
