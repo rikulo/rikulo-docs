@@ -1,8 +1,8 @@
 #Show Web Content
 
-You can use [TextView](api:view) to display web content in your application. To do so, you simply instantiate it with the `fromHTML` constructor and then attach it to the hierarchy tree of views.
+You can use [TextView](api:view) to display web content in your application. To do so, you simply instantiate it with the `fromHtml` constructor and then attach it to the hierarchy tree of views.
 
-    view.addChild(new TextView.fromHTML('''
+    view.addChild(new TextView.fromHtml('''
       <ul>
       <li>Welcome to Rikulo</li>
       </ul>
@@ -28,7 +28,7 @@ For example, let us say that we want to display a list of items with a switch at
 
 Then, we can write the code as follows.
 
-    final webView = new TextView.fromHTML('''
+    final webView = new TextView.fromHtml('''
       <ul style="line-height: 23px">
         <li>Structured Web Apps <span style="float:right"></span></li>
         <li>Structured UI Model <span style="float:right"></span></li>

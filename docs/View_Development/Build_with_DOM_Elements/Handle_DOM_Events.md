@@ -16,7 +16,7 @@ If you have to handle it for every instance, you can register it in [View.render
 
 ##The Default Handling of DOM Events
 
-[View](api:view) handles all DOM events automatically, such as `click`, `focus`, `blur`, `mouseOver` and etc. The default handling is so-called *event proxy*. As its name suggests, it proxies a DOM event with an instance of [ViewEvent](api:event). Then, send the instance to the view, if the user ever registers an event (by using [View.on](api:view)).
+[View](api:view) handles all DOM events automatically, such as `click`, `focus`, `blur`, `mouseOver` and etc. The default handling is so-called *event proxy*. As its name suggests, it proxies a DOM event with an instance of [DomEvent](api:event) (a subclass of [ViewEvent](api:event)). Then, send the instance to the view, if the user ever registers an event (by using [View.on](api:view)).
 
 In other words, you don't have to handle DOM events, if you just want to proxy them with [ViewEvent](api:event). For example, the following snippet works well *without* any assistant code.
 

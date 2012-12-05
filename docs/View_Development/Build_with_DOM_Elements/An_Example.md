@@ -6,9 +6,9 @@ Here is a simple example for displaying a label.
       //@override
       Element render_() => new Element.tag("div");
 
-      String get html => node.innerHTML;
+      String get html => node.innerHtml;
       void set html(String html) {
-        node.innerHTML = html;
+        node.innerHtml = html;
       }
     }
 
