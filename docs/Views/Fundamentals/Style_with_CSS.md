@@ -7,7 +7,7 @@ You can assign the CSS style to change the look of a view.
     view.style.backgroundColor = "blue";
     view.style.cssText = "font-size: 15px; text-align: center";
 
-[View.style](api:view) is an instance of [CSSStyleDeclaration](dart:html).
+[View.style](api:view) is an instance of [CssStyleDeclaration](dart:html).
 
 ### Don't Assign CSS Margin
 

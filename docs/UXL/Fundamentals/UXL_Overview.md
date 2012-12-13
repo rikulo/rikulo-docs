@@ -120,13 +120,11 @@ Then, you can handle commands in an instance of `SignInControl` (which is create
 
     class SignInControl extends Control {
       void signIn(ViewEvent event) {
-        //handle the command
+        //handle the command, such as altering model and updating UI
       }
     }
 
-As shown, `SignInControl` shall extend from [Control](uxl:uxl). In the simplest form, you don't need to know anything about [Control](uxl:uxl) but add your command handlers there.
-
-> Notice that, after the command handler is called, the user interface will be re-rendered automatically to reflect the latest states. Thus, you don't need to touch UI in command handlers, unless you want the fine-grained control.
+As shown, `SignInControl` shall extend from [Control](uxl:uxl).
 
 > It is the so-called Controller in the [Model-View-Controller (MVC)](../Fundamentals/MVC_Overview.md) design pattern.
 

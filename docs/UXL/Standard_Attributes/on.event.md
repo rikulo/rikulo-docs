@@ -45,19 +45,49 @@ As shown, `SignInControl` shall extend from [Control](uxl:uxl). In the simplest 
       }
     }
 
-###Automatically Re-rendering
+###Implement Command Handlers
 
-After the command handler is called, the user interface will be re-rendered automatically to reflect the latest states. Thus, you don't need to touch UI in command handlers, unless you want the fine-grained control. For example,
+The function of a command handler depends on your requirement. Typically, it
+manipulates the data and then updates UI accordingly.
 
-    class CustomerControl {
-      Customer current;
-      ...
-      void delete(ViewEvent event) {
-        current.remove(); //manipulate data directly
+For example, in response to a delete command, you can delete the data and then remove the view directly as follows:
+
+    void delete(ViewEvent event) {
+      model.delete(something);
+      view.query("#foo").remove(); //update only the part of UI being affected
+    }
+
+ Alternatively, if there are a lot of views to modify, you can invoke [Control.render()](uxl:uxl) to re-render the whole hierarchy of views starting at [Control.view](uxl:uxl) as follows:
+
+     void reload(ViewEvent event) {
+       model.reload();
+       render(); //re-render the view
+     }
+
+For better separation of data and UI, you can implement your data model by extending from [DataModel](api:model), and then send a data event to indicate the data has been changed. Thus, you don't have to update UI directly in a command handler, since it is done automatically by the listener of the data events.
+
+For example,
+
+    class YourModel extends Model {
+      void add(something) {
+        ...//modify the model
+        sendEvent(new YourDataEvent(this, 'add', something));
       }
     }
 
-Please refer to [Control](uxl:uxl) for how to control whether to re-rendering automatically.
+    class YourControl extends Control {
+      YourControl(YourModel model) {
+        model.on.add.add((YourDataEvent e) {
+          ...//alter UI accordingly
+        });
+      }
+      void add(e) {
+        model.add(something);
+        //no need to update UI here since the listener above will handle it
+      }
+    }
+
+Please refer to [Control](uxl:uxl) for how to seperate the UI updating from the model altering further with [DataModel](api:model).
 
 ###Nested Controller
 
