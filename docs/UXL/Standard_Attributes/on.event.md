@@ -68,7 +68,7 @@ For better separation of data and UI, you can implement your data model by exten
 
 For example,
 
-    class YourModel extends Model {
+    class YourModel extends DataModel {
       void add(something) {
         ...//modify the model
         sendEvent(new YourDataEvent(this, 'add', something));
