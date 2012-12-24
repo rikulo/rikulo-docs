@@ -8,22 +8,7 @@ UXL (User-interface eXtensible language) is a markup language for describing app
 
 ![How UXL works](how-uxl-works.jpg?raw=true)
 
-First, you define the user interface in a UXL file, then you can use UXL compiler to compile it into a dart file containing the defined templates. There are two ways to compile UXL: automatic building with Dart Editor or manual compiling.
-
-To have Dart Editor taking care of UXL compiling, simply add a build.dart in the root directory of your project with the following content:
-
-	import 'package:rikulo_uxl/compile.dart';
-	void main() {
-		build(new Options().arguments);
-	}
-
-With this build.dart script, whenever your UXL is modified, it will be re-compiled.
-
-You can also compile a UXL file manually by running `uc.dart` (UXL compiler) with [command line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:
-
-    dart bin/uc.dart your-uxl-file(s)
-
-The UXL compiler will generate a Dart file for each UXL file you gave. Then, you can use the generated Dart file to instantiate the user interfaces.
+First, you define the user interface in a UXL file, then you can use UXL compiler to compile it into a dart file containing the defined templates. 
 
 ##Install
 
@@ -41,6 +26,29 @@ To install stuff that is still in development, add this to your `pubspec.yam`:
     dependencies:
       rikulo_uxl:
         git: git://github.com/rikulo/uxl.git
+
+##Usage
+
+There are two ways to compile UXL: automatic building with Dart Editor or manual compiling.
+
+###Build UXL with Dart Editor
+
+To have Dart Editor taking care of UXL compiling, simply add a build.dart in the root directory of your project with the following content:
+
+	import 'package:rikulo_uxl/compile.dart';
+	void main() {
+		build(new Options().arguments);
+	}
+
+With this build.dart script, whenever your UXL is modified, it will be re-compiled.
+
+###Compile Manually
+
+You can also compile a UXL file manually by running `uc.dart` (UXL compiler) with [command line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:
+
+    dart bin/uc.dart your-uxl-file(s)
+
+The UXL compiler will generate a Dart file for each UXL file you gave.
 
 ##UXL Templates
 
