@@ -28,7 +28,7 @@ To embed views into the HTML page, you have to declare a DOM element where Rikul
         </div>
         <div id="footer">Your Footer Here</div>
         <script type="application/dart" src="Your.dart"></script>
-        <script src="packages/rikulo/lib/resource/js/dart.js"></script>
+        <script src="packages/browser/dart.js"></script>
       </body>
     </html>
 

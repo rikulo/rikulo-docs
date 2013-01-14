@@ -101,7 +101,7 @@ To run an application, you need a HTML page to define the user interface in HTML
       </head>
       <body>
         <script type="application/dart" src="HelloWorld.dart"></script>
-        <script src="packages/rikulo/resource/js/dart.js"></script>
+        <script src="packages/browser/dart.js"></script>
       </body>
     </html>
 
