@@ -5,6 +5,7 @@
 //foo (sublink): use foo/sublink as the link
 
 !Request and Response
-  Request Routing and Handling
+  Request Handling
+  Request Routing
   Request Forwarding and Inclusion
   MVC Design Pattern

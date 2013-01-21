@@ -5,6 +5,6 @@
 //foo (sublink): use foo/sublink as the link
 
 Getting Started (Introduction)
-Request and Response (Request Routing and Handling)
-Configuration (Host and Port)
+Request and Response (Request Handling)
 RSP (Fundamentals/RSP Overview)
+Configuration (Host and Port)
