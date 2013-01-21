@@ -4,6 +4,6 @@
 //+foo: no need to append .html (i.e., it is a folder containing index.html)
 //foo (sublink): use foo/sublink as the link
 
-!Getting Started
-  Introduction
-  Hello World
+!Configuration
+  Host and Port
+  Error Handling
