@@ -10,6 +10,15 @@
 #Sun, Jul 08, 2012  2:31:46 PM, Created by tomyeh
 #Copyright (C) 2012 Potix Corporation. All Rights Reserved.
 #
+if [ "$1" == "" ] ; then
+	echo "Usage: rimd directory"
+	echo
+	echo "Example:"
+	echo "  tool/rimd ui"
+	echo "  tool/rimd stream"
+	exit 1
+fi
+
 docdir=$0
 docdir=${docdir%/*}
 if [ "$docdir" = "." ] ; then
@@ -28,7 +37,7 @@ if [ ! -d $jardir ] ; then
 	echo $jardir not found
 	exit 1
 fi
-srcdir=$docdir/docs
+srcdir=$docdir/$1
 if [ ! -d $srcdir ] ; then
 	echo $srcdir not found
 	exit 1
