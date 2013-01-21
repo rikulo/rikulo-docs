@@ -22,7 +22,7 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 
 ##Install from Github for Bleeding Edge Stuff
 
-Rikulo is under heavy development. To get the latest features that haven't been formally released yet, you can specify the Git repository in your `pubspec.yam` as follows.
+To get the latest features that haven't been formally released yet, you can specify the Git repository in your `pubspec.yam` as follows.
 
     dependencies:
       rikulo:
