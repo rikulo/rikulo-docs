@@ -36,7 +36,7 @@ A request handler can optionally return an URI to forward the request to. For ex
 
 Please notice that a connection might be included by another connections, and connections are usually handled asynchronously (the nature of a scalable Rikulo Stream server). It is not easy to find out the right moment to close the output stream in a complex environment.
 
-To simplify the effort, [HttpConnect.close](api:stream) and [HttpConnect.error](api:stream) are introduced. All you have to do is to invoke [HttpConnect.close](api:stream) when a handler completes the rendering successfully. Rikulo Stream knows when to close the output stream. For example,
+To minimize the effort, [HttpConnect.close](api:stream) and [HttpConnect.error](api:stream) are introduced. All you have to do is to invoke [HttpConnect.close](api:stream) when a handler completes the rendering successfully. Rikulo Stream knows when to close the output stream. For example,
 
     void currentTime(HttpConnect connect) {
       connect.response
@@ -55,4 +55,17 @@ If a connection is handled asynchronously, set the success callback with [HttpCo
         ..pipe(connect.response.outputStream, close: false);
     }
 
-> You don't need to catch an exception for calling [HttpConnect.error](api:stream), since it was done before calling a request handler.
+###HttpConnect's then method
+
+Rikulo Stream will catch and handle exceptions thrown by request handlers. However, if the request handler is processed asynchronously, it is the request handler's job to invoke [HttpConnect.error](api:stream) manually if an error occurs.
+
+To minimize the effort, you can use [HttpConnect.then](api:stream) instead of calling `Future.then` directly. [HttpConnect.then](api:stream) will catch exceptions and delegate to [HttpConnect.error](api:stream) for the default error handling.
+
+For example, the following code will run correctly, even if the server doesn't have the permission to read the given file:
+
+     connect.then(file.exists, (exists) {
+       if (exists)
+           doSomething(); //any exception will be caught and handled
+       throw new Http404();
+     }
+
