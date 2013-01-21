@@ -1,7 +1,7 @@
-api=http://api.rikulo.org/rikulo/latest/rikulo_
+api=http://api.rikulo.org/stream/latest/
 lib-api=http://api.rikulo.org/{lib}/latest/rikulo_
 dart-api=http://api.dartlang.org/docs/releases/latest/dart_
-source=https://github.com/rikulo/rikulo/tree/master/
+source=https://github.com/rikulo/stream/tree/master/
 lib-source=https://github.com/rikulo/{lib}/tree/master/
 context-path=/rikulo/latest/
 header=autogen-header.html

@@ -111,10 +111,10 @@ class TOC {
 						throw new IOException(fl+":"+nLine+": Unclosed parenthesis");
 					final String sublink = txt.substring(m + 1, txt.length() - 1); 
 					txt = txt.substring(0, m).trim();
-					realuri = (txt + '/' + sublink).replace(' ', '_');
-					uri = txt.replace(' ', '_');
+					realuri = (txt + '/' + sublink).replace(' ', '_').replace('*', '-');
+					uri = txt.replace(' ', '_').replace('*', '-');
 				} else {
-					uri = realuri = txt.replace(' ', '_');
+					uri = realuri = txt.replace(' ', '_').replace('*', '-');
 				}
 
 				final StringBuffer lnsb = new StringBuffer();
