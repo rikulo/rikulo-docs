@@ -7,3 +7,5 @@
 !Getting Started
   Introduction
   Hello World
+  URI Mapping and Request Handlers
+  MVC Design Pattern

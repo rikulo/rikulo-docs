@@ -7,8 +7,8 @@
 !RSP
   !Fundamentals
     RSP Overview
-    Customize Tags
-  +Tags
+    Custom Tags
+  +Standard Tags
     =
     *
     dart
