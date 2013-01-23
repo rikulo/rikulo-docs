@@ -6,9 +6,23 @@ Let's begin by implementing a tiny application that displays a welcome message.
 
 First, let us create a directory named `helloworld`. All files for this application reside in this directory. It is also known as the *project* directory.
 
-Inside the directory, create a directory named `webapp`. All your server-side Dart code reside in this directory. In additions, any files under `webapp` directory cannot be accessed directly from the clients.
+Inside the `helloworld` directory, create a directory named `web`. It will be the root directory for serving web pages. All Dart files and web resources reside in this directory.
+
+Inside the `web` directory, create a directory named `webapp`. All your server-side Dart code reside in this directory. In additions, any files under `webapp` directory cannot be accessed directly from the clients.
 
 > The application, on the other hand, can access, forward and include any files.
+
+##Create pubspec.yaml
+
+Inside the `helloworld` directory, create a `pubspec.yaml` with the following contents:
+
+    name: helloworld
+    version: 1.0.0
+    description: Hello World Sample Application
+    dependencies:
+      stream: any
+
+Then, change to the `helloworld` directory, and run [pub install](http://pub.dartlang.org/doc/), either on the command line or through the Dart Editor menu: `Tools > Pub Install`.
 
 ##Create the Main Program
 
@@ -22,7 +36,7 @@ Inside the `webapp` directory, we have to prepare a main program that starts the
 
 ##Create the Welcome Message
 
-To display the welcome message, create a HTML file named `index.html`, put it right under the project directory (`helloworld`), and give it the following contents.
+To display the welcome message, create a HTML file named `index.html`, put it right under the 'web' directory, and give it the following contents.
 
     <!DOCTYPE html>
     <html>
@@ -38,7 +52,7 @@ To display the welcome message, create a HTML file named `index.html`, put it ri
 
 You can start the application by invoking the main program as follows:
 
-    dart helloworld/main.dart
+    dart web/webapp/main.dart
 
 The web server is now running, listening for requests on port 8080.  You can test the application by visiting the following URL in your web browser:
 

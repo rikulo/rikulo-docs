@@ -63,9 +63,11 @@ To minimize the effort, you can use [HttpConnect.then](api:stream) instead of ca
 
 For example, the following code will run correctly, even if the server doesn't have the permission to read the given file:
 
-     connect.then(file.exists, (exists) {
-       if (exists)
-           doSomething(); //any exception will be caught and handled
-       throw new Http404();
-     }
+    connect.then(file.exists, (exists) {
+      if (exists) {
+        doSomething(); //any exception will be caught and handled
+        return;
+      }
+      throw new Http404();
+    }
 
