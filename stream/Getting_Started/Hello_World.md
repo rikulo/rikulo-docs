@@ -36,7 +36,7 @@ Inside the `webapp` directory, we have to prepare a main program that starts the
 
 ##Create the Welcome Message
 
-To display the welcome message, create a HTML file named `index.html`, put it right under the 'web' directory, and give it the following contents.
+To display the welcome message, create a HTML file named `index.html`, put it right under the `web` directory, and give it the following contents.
 
     <!DOCTYPE html>
     <html>
