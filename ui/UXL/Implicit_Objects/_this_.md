@@ -1,6 +1,6 @@
 #Implicit Object: `_this_`
 
->View _this_;
+>[View](api:view) _this_;
 
 It references to the view being instantiated. It can be used in the attributes. For example,
 

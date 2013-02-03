@@ -1,4 +1,4 @@
-#Standard Tags
+#The Standard Tags
 
 RSP provides a collection of standard tags which provides core functionality common to most applications.
 
