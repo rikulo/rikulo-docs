@@ -103,6 +103,9 @@ class TOC {
 				addSpaces(sb, level);
 
 				final boolean link = cc != '!', index = cc == '+';
+				if (cc == '\\') //escape
+					cc = in.charAt(++i);
+
 				String txt = (!link || index ? in.substring(i + 1): in.substring(i)).trim();
 				final String uri, realuri;
 				if (txt.endsWith(")")) { //xxx (sublink)
