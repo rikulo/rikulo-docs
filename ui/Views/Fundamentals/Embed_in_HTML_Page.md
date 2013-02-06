@@ -55,7 +55,7 @@ In the Dart code, you can identify the DOM element to add the views as follows.
 
 The view will be then limited the given DOM element. For example, `view.profile.location = "center center"` will place the view at the center of the DOM element.
 
-> You can add different hierarchy of views to different DOM elements. [Here is a more complicated example](https://github.com/rikulo/rikulo/blob/master/test/TestEmbed.dart).
+> You can add different hierarchy of views to different DOM elements. Here is a more complicated example: [TestEmbed.dart](source:test).
 
 ###`v-main`
 

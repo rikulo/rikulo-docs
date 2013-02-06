@@ -12,7 +12,7 @@ transparently.
 To install Rikulo from [Dart Pub Repostiory](http://pub.dartlang.org/packages/rikulo), you can add this to your `pubspec.yaml` (or create it):
 
     dependencies:
-      rikulo:
+      rikulo_ui:
 
 Then, If you’re using [Dart Editor](http://www.dartlang.org/docs/editor/), select “Pub Install” from the “Tools” menu. If you’re rocking the command line, do:
 
@@ -26,17 +26,17 @@ To get the latest features that haven't been formally released yet, you can spec
 
     dependencies:
       rikulo:
-        git: git://github.com/rikulo/rikulo.git
+        git: git://github.com/rikulo/ui.git
 
 For more information, please refer to [Pub: Dependencies](http://pub.dartlang.org/doc/pubspec.html#dependencies).
 
 ##Explore Examples
 
-To explore the examples, you can browser the source code directly on [Rikulo's Git repository here](https://github.com/rikulo/rikulo).
+To explore the examples, you can browser the source code directly on [Rikulo's Git repository here](https://github.com/rikulo/ui).
 
-To run the examples, you can either [click here](https://github.com/rikulo/rikulo/zipball/master) to download the source code, or run `git` to clone the Git repository to your local drive as follows.
+To run the examples, you can either [click here](https://github.com/rikulo/ui/zipball/master) to download the source code, or run `git` to clone the Git repository to your local drive as follows.
 
-    git clone git://github.com/rikulo/rikulo.git
+    git clone git://github.com/rikulo/ui.git
 
 Then, you can browser the HTML files under the `example` folder directly with [Dartium](http://www.dartlang.org/dartium/), or run them in [Dart Editor](http://www.dartlang.org/docs/editor/).
 

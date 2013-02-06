@@ -13,4 +13,4 @@ Rikulo is a cross-platform framework for creating amazing Web and native mobile 
 
 * [API Reference](http://api.rikulo.org)
 * [Discussion](http://stackoverflow.com/questions/tagged/rikulo)
-* [Issues](https://github.com/rikulo/rikulo/issues)
+* [Issues](https://github.com/rikulo/ui/issues)

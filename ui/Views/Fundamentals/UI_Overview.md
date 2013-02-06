@@ -64,7 +64,7 @@ A dialog is a user interface that limits the user from accessing other user inte
 
     view.addToDocument(mode: "dialog");
 
-Here is an example ([source code is available here](https://github.com/rikulo/rikulo/blob/master/test/TestDialog2.html)).
+Here is an example: [TestDialog2.html](source:test).
 
 ![Dialog](dialog.jpg?raw=true)
 

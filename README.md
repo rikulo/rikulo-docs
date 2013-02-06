@@ -4,7 +4,7 @@ This is the repository for [Rikulo](http://rikulo.org) documentation.
 
 Documentation is as important as code. It, of course, has bugs, typos, hard-to-read, and more. There are many ways to contribute. Please [help us](http://rikulo.org/contribute/) to make it better.
 
-Notice that this document is rendered online at [Documentation](http://docs.rikulo.org/rikulo/latest).
+Notice that this document is rendered online at [Documentation](http://docs.rikulo.org/ui/latest).
 
 > Rikulo is a cross-platform framework for creating amazing Web and native
 mobile applications in Dart and HTML 5.
@@ -50,8 +50,8 @@ mobile applications in Dart and HTML 5.
 ##Resources
 
 * [Home](http://rikulo.org)
-* [Documentation](http://docs.rikulo.org/rikulo/latest)
-* [API Reference](http://api.rikulo.org/rikulo/latest)
-* [Source Code](https://github.com/rikulo/rikulo)
+* [Documentation](http://docs.rikulo.org/ui/latest)
+* [API Reference](http://api.rikulo.org/ui/latest)
+* [Source Code](https://github.com/rikulo/ui)
 * [Discussion](http://stackoverflow.com/questions/tagged/rikulo)
-* [Issues](https://github.com/rikulo/rikulo/issues)
+* [Issues](https://github.com/rikulo/ui/issues)
