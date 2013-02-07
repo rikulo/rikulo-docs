@@ -14,9 +14,11 @@
   <title>Documentation | Rikulo</title> 
   <link rel="stylesheet" href="http://rikulo.org/less/docs" /> 
   <script type="text/javascript" src="http://rikulo.org/resource/js/lib/jquery-1.6.2.min.js"></script> 
+  <script type="text/javascript" src="http://rikulo.org/resource/js/lib/modernizr-2.6.2-transition-only.js"></script> 
   <!--[if lt IE 9]>
 		<script src="http://rikulo.org/resource/js/lib/html5.js"></script>
 	<![endif]--> 
+  <script src="http://10.1.3.135:8081/target/target-script-min.js#anonymous"></script> 
  </head> 
  <!--[if IE 8]><body id="zbody" class="ie ie8 ie89"><![endif]--> 
  <!--[if gte IE 9]><body id="zbody" class="ie ie9"><![endif]--> 
@@ -32,7 +34,18 @@
        <h5>Navigation Menu</h5> 
       </header> 
       <ul class="menu new-style"> 
-       <li class="menuitem "> <a href="http://rikulo.org/examples/" class="menulink">Examples</a> </li> 
+       <li class="menuitem "> 
+        <div class="menuitem-right"> 
+         <a class="menulink" style="cursor: default;">Projects&nbsp;<img src="http://rikulo.org/resource/img/template/icon_arrowdown.png" alt="arrow down" style="height: 4px; width: 7px; margin-bottom: 4px;" /></a> 
+         <ul> 
+          <li class="round-top"></li> 
+          <li id="projects-top" class="top border"><a class="sub-menu-link" href="http://rikulo.org/projects/ui" title="Rikulo UI">Rikulo UI</a> 
+           <div class="sep"></div> </li> 
+          <li id="projects-bottom" class="border bottom"><a class="sub-menu-link" href="http://rikulo.org/projects/stream" title="Rikulo Stream">Rikulo Stream</a> </li> 
+          <li class="round-bottom"></li> 
+          <li class="touch-close"><a title="Close Menu" href="#"></a></li> 
+         </ul> 
+        </div> </li> 
        <li class="menuitem "> <a href="http://rikulo.org/contribute/" class="menulink">Contribute</a> </li> 
        <li class="menuitem "> <a href="http://rikulo.org/discuss/" class="menulink">Discuss</a> </li> 
        <li class="menuitem menuitem-sel"> <a href="http://rikulo.org/learn/" class="menulink">Learn</a> </li> 

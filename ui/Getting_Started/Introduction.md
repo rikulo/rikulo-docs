@@ -25,7 +25,7 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 To get the latest features that haven't been formally released yet, you can specify the Git repository in your `pubspec.yam` as follows.
 
     dependencies:
-      rikulo:
+      rikulo_ui:
         git: git://github.com/rikulo/ui.git
 
 For more information, please refer to [Pub: Dependencies](http://pub.dartlang.org/doc/pubspec.html#dependencies).

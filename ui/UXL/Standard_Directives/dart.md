@@ -11,7 +11,7 @@ It is typically used to declare a library and import other libraries. For exampl
     <?dart
     library foo;
 
-    import "package:rikulo/view.dart"
+    import "package:rikulo_ui/view.dart"
     ?>
 
 ##Make a UXL file part of a library
@@ -27,7 +27,7 @@ It can also be used to declare the generated Dart file as part of a library.
 Technically, you can do whatever you want. For example, you can make a UXL file as an application by embedding the `main` function. For example,
 
     <?dart
-    import "package:rikulo/view.dart";
+    import "package:rikulo_ui/view.dart";
 
     void main() {
       SignIn()[0].addToDocument();

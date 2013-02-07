@@ -17,7 +17,7 @@ To embed views into the HTML page, you have to declare a DOM element where Rikul
     <!DOCTYPE html>
     <html>
       <head>
-        <link rel="stylesheet" type="text/css" href="packages/rikulo/resource/css/default/view.css" />
+        <link rel="stylesheet" type="text/css" href="packages/rikulo_ui/resource/css/default/view.css" />
         <link rel="stylesheet" type="text/css" href="your.css"/>
       </head>
       <body>

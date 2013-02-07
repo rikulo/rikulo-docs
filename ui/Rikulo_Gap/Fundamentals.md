@@ -40,7 +40,7 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
 * In your Rikulo application, before accessing any specific device services or resources, you have to enable the device accessibility first by calling the global method [enableDeviceAccess()](gap:device) which will initialize and enable the device services and make your Dart appliction ready to use Cordova's JavaScript APIs.
 
-      import 'package:rikulo/view.dart';
+      import 'package:rikulo_ui/view.dart';
       import 'package:rikulo_gap/device.dart';
 
       void main() {
@@ -63,7 +63,7 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
 Following is an example that watch the [Acceleration](gap:accelerometer) information of the accelerometer motion sensor and shows the acceleration value in x, y and z axis every 1000 milliseconds. 
 
-      import 'package:rikulo/view.dart';
+      import 'package:rikulo_ui/view.dart';
       import 'package:rikulo_gap/device.dart';
       import 'package:rikulo_gap/accelerometer.dart';
 

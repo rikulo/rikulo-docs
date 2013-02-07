@@ -153,13 +153,13 @@ You can embed Dart code with [the dart directive](../Standard_Directives/dart.md
 
     <?dart
     library foo;
-    import "package:rikulo/view.dart";
+    import "package:rikulo_ui/view.dart";
     ?>
 
 You can even make a UXL file as a standard-alone application:
 
     <?dart
-    import "package:rikulo/view.dart";
+    import "package:rikulo_ui/view.dart";
 
     void main() {
       SignIn()[0].addToDocument();

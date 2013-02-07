@@ -59,7 +59,7 @@ Following we show you the basic elements of how to access device native resource
 
 ##The Dart Code
 
-    import 'package:rikulo/view.dart';
+    import 'package:rikulo_ui/view.dart';
     import 'package:rikulo_gap/device.dart';
     import 'package:rikulo_gap/accelerometer.dart';
 
