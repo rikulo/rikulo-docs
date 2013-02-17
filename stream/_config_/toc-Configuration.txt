@@ -5,5 +5,5 @@
 //foo (sublink): use foo/sublink as the link
 
 !Configuration
-  Host and Port
   Error Handling
+  Host and Port

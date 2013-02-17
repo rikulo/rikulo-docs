@@ -68,4 +68,4 @@ You can map an exception to an URI or a handler too. For example, if you'd like 
 
 Then, if the application throws an instance of `StupidError`, it will be delegated to the handler called `stupidErrorHandler` for handling.
 
-Notice that you have to specify both the library's name and the class's name separated with a dot.
+> Notice that you have to specify both the library's name and the class's name separated with a dot.
