@@ -1,6 +1,6 @@
 #Request Routing
 
-To map a request handler to a URI, you have to specify it in a map passed to the `uriMapping` argument of [StreamServer.run()](api:stream). For example,
+To map a request handler to a URI, you have to specify it in a map passed to the `uriMapping` argument of the constructor of [StreamServer](api:stream). For example,
 
     void main() {
       new StreamServer(uriMapping: {

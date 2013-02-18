@@ -7,6 +7,7 @@
 !Request and Response
   Request Handling
   Request Routing
+  Request Filtering
   Request Forwarding and Inclusion
   MVC Design Pattern
   Form Handling
