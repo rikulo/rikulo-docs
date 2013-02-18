@@ -7,4 +7,4 @@
 Getting Started (Introduction)
 Request and Response (Request Handling)
 RSP (Fundamentals/RSP Overview)
-Configuration (Host and Port)
+Configuration (Error Handling)
