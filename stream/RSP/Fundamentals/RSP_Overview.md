@@ -49,11 +49,11 @@ To compile your RSP files automatically, you just need to add a `build.dart` fil
       build(new Options().arguments);
     }
 
-With this `build.dart` script, whenever your RSP is modified, it will be re-compiled.
+With this `build.dart` script, whenever your RSP is modified, it will be re-compiled automatically.
 
 ###Compile Manually
 
-To compile a RSP file manually, run `rspc` (RSP compiler) to compile it into the dart file with [command line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:
+To compile a RSP file manually, you can run `rspc` (RSP compiler) to compile it into the dart file with [command line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:
 
     dart bin/rspc.dart your-rsp-file(s)
 
