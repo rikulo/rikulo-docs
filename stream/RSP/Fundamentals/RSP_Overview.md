@@ -34,7 +34,7 @@ where [[dart]](../Standard_Tags/dart.md) and [[= ...]](../Standard_Tags/=.md) ar
 
 Each RSP page will be compiled into a request handler and put into a Dart file. The recommended file extension for a RSP page is `.rsp.html` (or `.rsp.xml`, depending on the file type), and the generated Dart file will be named by changing the file extension to `.rsp.dart`.
 
-You can control the name of the request handler and additional arguments by use of [[page]](../Standard_Tags/page.md). If omitted, the file name will be assumed.
+You can control the name of the request handler and additional arguments by use of the [[page]](../Standard_Tags/page.md) tag. If omitted, the file name will be assumed.
 
 ##How to Compile
 
@@ -61,7 +61,7 @@ A dart file is generated for each RSP file you gave.
 
 ##Put Together
 
-The generated Dart files shall be part of your Dart server application. There are basically two ways to do it. First, you can make it *part of* a library. It can be done by use of [[dart]](../Standard_Tags/dart.md) as follows:
+The generated Dart files shall be part of your Dart server application. There are basically two ways to do it. First, you can make it *part of* a library. It can be done by use of the [[dart]](../Standard_Tags/dart.md) tag as follows:
 
     [dart]
     part of some_of_your_library;
@@ -70,7 +70,7 @@ The generated Dart files shall be part of your Dart server application. There ar
 
 Then, you can include the generated Dart file in your library.
 
-Second, you can make it an independent library. It can be done by use of [[dart]](../Standard_Tags/dart.md) as follows:
+Second, you can make it an independent library. It can be done by use of the [[dart]](../Standard_Tags/dart.md) tag as follows:
 
     [dart]
     library your_rsp_library;
