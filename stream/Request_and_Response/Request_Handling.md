@@ -46,28 +46,25 @@ To minimize the effort, [HttpConnect.close](api:stream) and [HttpConnect.error](
 
 ###Handling Request Asynchronously
 
-If a connection is handled asynchronously, set the success callback with [HttpConnect.close](api:stream) and the error callback with [HttpConnect.error](api:stream), such that the output stream will be closed when necessary, and the error handling will take place if needed. For example,
+If a connection is handled asynchronously, set the success callback with [HttpConnect.close](api:stream) and the error callback with [HttpConnect.error](api:stream), such that the output stream will be closed, if necessary, and [the error handling](../Configuration/Error_Handling.md) will take place, if an error occurs. For example,
 
     void copyFile(HttpConnect connect, {File file}) {
       file.openInputStream()
         ..onError = connect.error //forward to connect.error for error handling
-        ..onClosed = connect.close //forward to connect.close for completion
+        ..onClosed = connect.close //forward to connect.close upon completion
         ..pipe(connect.response.outputStream, close: false);
     }
 
-###HttpConnect's then method
+###Future.catchError
 
-Rikulo Stream will catch and handle exceptions thrown by request handlers. However, if the request handler is processed asynchronously, it is the request handler's job to invoke [HttpConnect.error](api:stream) manually if an error occurs.
+Rikulo Stream will catch and handle exceptions thrown by request handlers. However, if the request handler is processed asynchronously, you have to forward the error to [HttpConnect.error](api:stream). Therefore, the connection will be closed, if necessary, and [the error handling](../Configuration/Error_Handling.md) will take place, if an error occurs.
 
-To minimize the effort, you can use [HttpConnect.then](api:stream) instead of calling `Future.then` directly. [HttpConnect.then](api:stream) will catch exceptions and delegate to [HttpConnect.error](api:stream) for the default error handling.
-
-For example, the following code will run correctly, even if the server doesn't have the permission to read the given file:
-
-    connect.then(file.exists, (exists) {
+    file.exists().then((exists) {
       if (exists) {
         doSomething(); //any exception will be caught and handled
+        connect.close(); //forward to connect.close upon completion
         return;
       }
       throw new Http404();
-    }
+    }).catchError(connect.error); //forward to connect.error for error handling
 
