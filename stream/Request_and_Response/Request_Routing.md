@@ -7,7 +7,7 @@ To map a request handler to a URI, you have to specify it in a map passed to the
         "/server-info": serverInfo,
         "/order/.*": order,
         "/user/.*": user
-      }).run();
+      }).start();
     }
 
 For sake of management, it is suggested to put the mapping in a separated Dart file named `config.dart` for holding all configurations. For example,
@@ -23,7 +23,7 @@ Then, you can start your server as follows:
 
     //main.dart
     void main() {
-      new StreamServer(uriMapping: _mapping).run();
+      new StreamServer(uriMapping: _mapping).start();
     }
 
 The server's administrator can then change the configuration in `config.dart` without much knowledge of Dart language.

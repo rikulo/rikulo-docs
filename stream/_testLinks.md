@@ -5,7 +5,7 @@
 * Source file in github: [connect.dart](source:lib/src)
 * Library: [stream](api:) and [stream_plugin](api:)
 * Class: [StreamServer](api:stream)
-* Method: [StreamServer.run()](api:stream)
+* Method: [StreamServer.start()](api:stream)
 * Field: [StreamServer.version](api:stream)
 * Global variable: [contentTypes](api:stream)
 * operator[]: [ListModel.operator[ ]](api:model) (note: space between [ and ] required)

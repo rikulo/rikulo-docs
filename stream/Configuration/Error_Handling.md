@@ -2,7 +2,7 @@
 
 To configure the handling of errors, you have to prepare a map as the `errorMapping` parameters when instantiating [StreamServer](api:stream). For example,
 
-    new StreamServer(uriMapping: fooUriMapping, errorMapping: fooErrorMapping).run();
+    new StreamServer(uriMapping: fooUriMapping, errorMapping: fooErrorMapping).start();
 
 Each entry of the map is a mapping of a status code (such as 404) or an exception to a handler. For example,
 

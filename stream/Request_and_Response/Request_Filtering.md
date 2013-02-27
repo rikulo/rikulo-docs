@@ -13,7 +13,7 @@ To map a filter to a URI, you have to specify it in a map passed to the `filterM
 
     new StreamServer(filterMapping: {
       "/.*": logFilter
-    }, uriMapping: yourUriMapping, errorMapping: yourErrorMapping).run();
+    }, uriMapping: yourUriMapping, errorMapping: yourErrorMapping).start();
 
 ##Filter Signature
 

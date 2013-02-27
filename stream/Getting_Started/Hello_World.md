@@ -31,7 +31,7 @@ Inside the `webapp` directory, we have to prepare a main program that starts the
     import "package:stream/stream.dart";
 
     void main() {
-      new StreamServer().run();
+      new StreamServer().start();
     }
 
 ##Create the Welcome Message
