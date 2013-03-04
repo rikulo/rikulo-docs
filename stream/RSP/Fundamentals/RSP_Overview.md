@@ -6,7 +6,7 @@ RSP (Rikulo Stream Page) is a technology that helps developers create dynamicall
 
 ##Example
 
-Here is a JSP page:
+Here is a RSP page:
 
     [dart]
     part of hello_template;
