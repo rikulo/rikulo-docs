@@ -10,22 +10,19 @@ UXL (User-interface eXtensible language) is a markup language for describing app
 
 First, you define the user interface in a UXL file, then you can use UXL compiler to compile it into a dart file containing the defined templates. 
 
-##Install
+##Installation
 
-###Install from Dart Pub repository
-
-Add this to your `pubspec.yaml` (or create it):
-
-    dependencies:
-      rikulo_uxl:
-
-###Install from Github for bleeding edge stuff
-
-To install stuff that is still in development, add this to your `pubspec.yam`:
+Rikulo Gap is not part of [Rikulo package](http://pub.dartlang.org/packages/rikulo).
+You have to add this to your `pubspec.yaml` (or create it):
 
     dependencies:
       rikulo_uxl:
-        git: git://github.com/rikulo/uxl.git
+
+Then, If you’re using [Dart Editor](http://www.dartlang.org/docs/editor/), select “Pub Install” from the “Tools” menu. If you’re rocking the command line, do:
+
+    pub install
+
+For more information, please refer to [Pub: Getting Started](http://pub.dartlang.org/doc).
 
 ##Usage
 

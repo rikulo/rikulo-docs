@@ -7,9 +7,9 @@ in Dart and HTML 5. You can access your application directly with a modern Web b
 any plug-in. You can also build it as a native mobile application accessing the device's resources
 transparently.
 
-##Install from Dart Pub Repository
+##Installation
 
-To install Rikulo from [Dart Pub Repostiory](http://pub.dartlang.org/packages/rikulo), you can add this to your `pubspec.yaml` (or create it):
+Add this to your `pubspec.yaml` (or create it):
 
     dependencies:
       rikulo_ui:
@@ -19,16 +19,6 @@ Then, If you’re using [Dart Editor](http://www.dartlang.org/docs/editor/), sel
     pub install
 
 For more information, please refer to [Pub: Getting Started](http://pub.dartlang.org/doc).
-
-##Install from Github for Bleeding Edge Stuff
-
-To get the latest features that haven't been formally released yet, you can specify the Git repository in your `pubspec.yam` as follows.
-
-    dependencies:
-      rikulo_ui:
-        git: git://github.com/rikulo/ui.git
-
-For more information, please refer to [Pub: Dependencies](http://pub.dartlang.org/doc/pubspec.html#dependencies).
 
 ##Explore Examples
 

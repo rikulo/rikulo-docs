@@ -26,9 +26,11 @@ You have to add this to your `pubspec.yaml` (or create it):
     dependencies:
       rikulo_gap:
 
-Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the Dart SDK):
+Then, If you’re using [Dart Editor](http://www.dartlang.org/docs/editor/), select “Pub Install” from the “Tools” menu. If you’re rocking the command line, do:
 
     pub install
+
+For more information, please refer to [Pub: Getting Started](http://pub.dartlang.org/doc).
 
 ##Use the Services
 

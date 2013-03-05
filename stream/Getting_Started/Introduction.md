@@ -2,9 +2,9 @@
 
 Rikulo Stream is a Dart web server supporting URI mapping, template technology, file-based static resources and MVC design pattern.
 
-##Install from Dart Pub Repository
+##Installation
 
-To install Rikulo Stream from [Dart Pub Repostiory](http://pub.dartlang.org/packages/rikulo), you can add this to your `pubspec.yaml` (or create it):
+Add this to your `pubspec.yaml` (or create it):
 
     dependencies:
       stream:
@@ -14,16 +14,6 @@ Then, If you’re using [Dart Editor](http://www.dartlang.org/docs/editor/), sel
     pub install
 
 For more information, please refer to [Pub: Getting Started](http://pub.dartlang.org/doc).
-
-##Install from Github for Bleeding Edge Stuff
-
-To get the latest features that haven't been formally released yet, you can specify the Git repository in your `pubspec.yam` as follows.
-
-    dependencies:
-      stream:
-        git: git://github.com/rikulo/stream.git
-
-For more information, please refer to [Pub: Dependencies](http://pub.dartlang.org/doc/pubspec.html#dependencies).
 
 ##Configure Dart Editor to Compile Templates Automatically
 

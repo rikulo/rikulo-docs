@@ -1,6 +1,6 @@
 #Form Handling
 
-When handling the data of a submitted form, you can use [ObjectUtil.inject](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) to convert the query parameters into an object.
+When handling the data of a submitted form, you can use [ObjectUtil.inject()](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) to convert the query parameters into an object.
 
 For example, assume we have a form as follows:
 
@@ -45,7 +45,7 @@ Then, you can implement a request handling for the action called `search` in the
       ObjectUtil.inject(new Criteria(), connect.request.queryParameters, silent: true)
         .then((criteria) {
           searchResult(connect, criteria: criteria);
-        });
+        }).catchError(connect.error);
     }
 
 > For a runnable example, you can refer to the [features](source:test) example.
