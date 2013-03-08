@@ -2,13 +2,13 @@
 
 **Syntax 1**
 
->[forward "*a_uri*"/]
+>[forward "*a_uri*" /]
 
 Forwards to the given URI. The content following the forward tag won't be generated.
 
 **Syntax 2**
 
->[forward *method_name* *name1*="*value1*" *name2*="*value2*"/]
+>[forward *method_name* *name1*="*value1*" *name2*="*value2*" /]
 
 Or,
 

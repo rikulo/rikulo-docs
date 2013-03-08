@@ -2,13 +2,13 @@
 
 **Syntax 1**
 
->[include *a_uri*/]
+>[include "*a_uri*" /]
 
 Includes the given URI.
 
 **Syntax 2**
 
->[include *method_name* *name1*="*value1*" *name2*="*value2*"/]
+>[include *method_name* *name1*="*value1*" *name2*="*value2*" /]
 
 Or,
 

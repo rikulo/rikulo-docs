@@ -9,20 +9,20 @@ RSP (Rikulo Stream Page) is a technology that helps developers create dynamicall
 Here is a RSP page:
 
     [dart]
-    part of hello_template;
+    part of hello_rsp;
     [/dart]
     <!DOCTYPE html>
     <html>
       <head>
-        <title>Stream: Hello Templates</title>
+        <title>Stream: Hello RSP</title>
         <link href="theme.css" rel="stylesheet" type="text/css" />
       </head>
       <body>
-        <h1>Stream: Hello Templates</h1>
+        <h1>Stream: Hello RSP</h1>
         <p>Now is [=new DateTime.now()].</p>
         <p>This page is served by Rikulo Stream [=connect.server.version].</p>
         <p>Please refer to
-      <a href="https://github.com/rikulo/stream/tree/master/example/hello-template">Github</a> for how it is implemented.</a>
+      <a href="https://github.com/rikulo/stream/tree/master/example/hello-rsp">Github</a> for how it is implemented.</a>
       </body>
     </html>
 
