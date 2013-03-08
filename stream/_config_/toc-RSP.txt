@@ -7,6 +7,7 @@
 !RSP
   !Fundamentals
     RSP Overview
+    Templating: Composite View Pattern
     Custom Tags
   +Standard Tags
     \!--
@@ -19,6 +20,7 @@
     if
     include
     page
+    var
     while
   +Implicit Objects
     connect

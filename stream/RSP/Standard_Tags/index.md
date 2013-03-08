@@ -12,4 +12,5 @@ RSP provides a collection of standard tags which provides core functionality com
 * [[if]](if.md)
 * [[include]](include.md)
 * [[page]](page.md)
+* [[var]](var.md)
 * [[while]](while.md)

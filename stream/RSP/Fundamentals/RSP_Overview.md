@@ -75,6 +75,7 @@ Second, you can make it an independent library. It can be done by use of the [[d
     [dart]
     library your_rsp_library;
 
+    import "dart:io";
     import "package:stream/stream.dart";
     [/dart]
 
