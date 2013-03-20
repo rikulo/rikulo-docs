@@ -44,7 +44,7 @@ Then, you can start the server by running `main.dart` in the example you'd like 
 After started, you can visit [http://localhost:8080](http://localhost:8080) to see the example.
 
 * [Hello Static Resources](https://github.com/rikulo/stream/tree/master/example/hello-static) demonstrates how to use file-based static resources.
-* [Hello Dynamic Contents](https://github.com/rikulo/stream/tree/master/example/hello-dynamic) demonstrates how to generate dynamic contents in response to Ajax requests sent from a Dart program running at the client.
+* [Hello Ajax Contents](https://github.com/rikulo/stream/tree/master/example/hello-ajax) demonstrates how to generate dynamic contents in response to Ajax requests sent from a Dart program running at the client.
 * [Hello RSP](https://github.com/rikulo/stream/tree/master/example/hello-rsp) demonstrates how to use RSP pages.
 * [Hello MVC](https://github.com/rikulo/stream/tree/master/example/hello-mvc) demonstrates how to apply MVC design pattern.
 * [Hello Templating](https://github.com/rikulo/stream/tree/master/example/hello-templating) demonstrates how to apply the Composite View pattern for sharing layouts.

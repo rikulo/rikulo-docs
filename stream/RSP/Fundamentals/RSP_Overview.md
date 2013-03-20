@@ -8,9 +8,7 @@ RSP (Rikulo Stream Page) is a technology that helps developers create dynamicall
 
 Here is a RSP page:
 
-    [dart]
-    part of hello_rsp;
-    [/dart]
+    [page partOf="hello.rsp.dart"]
     <!DOCTYPE html>
     <html>
       <head>
@@ -26,7 +24,7 @@ Here is a RSP page:
       </body>
     </html>
 
-where [[dart]](../Standard_Tags/dart.md) and [[= ...]](../Standard_Tags/=.md) are [RSP tags](../Standard_Tags). They generate the dynamic content, while the rest are static data that are output directly.
+where [[page]](../Standard_Tags/page.md) and [[= ...]](../Standard_Tags/=.md) are [RSP tags](../Standard_Tags). They generate the dynamic content, while the rest are static data that are output directly.
 
 ##How it Works
 
@@ -34,11 +32,11 @@ where [[dart]](../Standard_Tags/dart.md) and [[= ...]](../Standard_Tags/=.md) ar
 
 Each RSP page will be compiled into a request handler and put into a Dart file. The recommended file extension for a RSP page is `.rsp.html` (or `.rsp.xml`, depending on the file type), and the generated Dart file will be named by changing the file extension to `.rsp.dart`.
 
-You can control the name of the request handler and additional arguments by use of the [[page]](../Standard_Tags/page.md) tag. If omitted, the file name will be assumed.
+You can control the name of the request handler and additional arguments by use of the [[page]](../Standard_Tags/page.md) tag. If omitted, the filename will be assumed.
 
 ##How to Compile
 
-There are two ways to compile RSP files into dart files: automatic building with Dart Editor or manual compiling.
+There are two ways to compile RSP files into Dart files: automatic building with Dart Editor or manual compiling.
 
 ###Build with Dart Editor
 
@@ -53,30 +51,58 @@ With this `build.dart` script, whenever your RSP is modified, it will be re-comp
 
 ###Compile Manually
 
-To compile a RSP file manually, you can run `rspc` (RSP compiler) to compile it into the dart file with [command line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:
+To compile a RSP file manually, you can run `rspc` (RSP compiler) to compile it into the Dart file with [command line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:
 
     dart bin/rspc.dart your-rsp-file(s)
 
-A dart file is generated for each RSP file you gave.
+A Dart file is generated for each RSP file you gave.
+
+##File Location
+
+You can put RSP files (`*.rsp.*`) under any folder you'd like. In general, it is suggested to put them under the folder with other static resources, such as CSS and JS files (other than the `webapp` folder) for easy management.
+
+The generated Dart files (`*.rsp.dart`) will be always generated under the `webapp` folder. For example, let us say we put `foo.rsp.html` under the `web/abc` folder, then `foo.rsp.dart` will be generated under the `web/webapp/abc` folder.
+
+> Notice that RSP files can't be accessed directly from client, even if it is not put under the `webapp` folder. By default, they are mapped to [Http404](api:stream).
+
+> Also notice that the folder of a RSP file resides has no effect how it behaves. What does matter is the generated render function and the URI it is mapped to.
 
 ##Put Together
 
-The generated Dart files shall be part of your Dart server application. There are basically two ways to do it. First, you can make it *part of* a library. It can be done by use of the [[dart]](../Standard_Tags/dart.md) tag as follows:
+The generated Dart files shall be part of your Dart server application. There are a few ways to do it.
 
-    [dart]
-    part of some_of_your_library;
-    [/dart]
+###Generated as an Independent Library
+
+By default, the generated Dart file is an independent library. All you need to do is to import it in your main program.
+
+    //your_main.dart
+    import 'abc/foo.dart';
+
+In the generated Dart file, `dart:io` and `package:stream/stream.dart` will be imported by default. If you'd like to import others, you can specify them in the `import` attribute with the [[page]](../Standard_Tags/page.md) tag. For example,
+
+    [page import="dart:async, dart:collection show HashMap"]
     ...
 
-Then, you can include the generated Dart file in your library.
+###Generated as Part of Another Library
 
-Second, you can make it an independent library. It can be done by use of the [[dart]](../Standard_Tags/dart.md) tag as follows:
+Making every RSP file as an independent library can end up with too many libraries. It is usually more convenient to manage if you group several RSP files into a single library.
 
-    [dart]
-    library your_rsp_library;
+It can be done by making the generate Dart file as *part of* another library with the [[page]](../Standard_Tags/page.md) tag as follows:
 
-    import "dart:io";
-    import "package:stream/stream.dart";
-    [/dart]
+    [page partOf="your_lib.dart"]
+    ...
 
-Then, you can import it in your main library. Notice that you have to import the stream package as shown above.
+As shown, the `partOf` attribute specifies the path of the library file. In this example, it is `your_lib.dart`. RSP compiler will maintain `your_lib.dart` automatically. If it doesn't exists, it will be created. If exists, the `part` statement will be inserted to `your_lib.dart` if necessary.
+
+Furthermore, you can specify the `import` attribute in the [[page]](../Standard_Tags/page.md) tag too. The libraries specified in the `import` attribute will be updated to `your_lib.dart` too.
+
+Alternatively, if you prefer to maintain the relationship among these Dart files manually, you can specify the library's name (rather than a file path) in the `partOf` attribute. For example,
+
+    [page partOf="one_of_your_library"]
+    ...
+
+Then, you can include the generated Dart file in your library (manually with the `part` statement in Dart).
+
+    //your_lib.dart
+    library one_of_your_library;
+    part "your.rsp.dart";
