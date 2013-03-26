@@ -71,7 +71,7 @@ In [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) servi
 
 ##Map URI to a Request Handler
 
-A URI is typically mapped to a request handler (aka., renderer). A request handler is as a closure. Its first argument must be [HttpConncet](api:stream). It can take additional optional named parameters. For example,
+A URI is typically mapped to a request handler (aka., renderer). A request handler is as a closure. Its first argument must be [HttpConnect](api:stream). It can take additional optional named parameters. For example,
 
     void listUser(HttpConnect connect) {
     }
