@@ -6,7 +6,7 @@ A *request handler* is a function that processes a particular phase of a request
 
     void currentTime(HttpConnect connect) {
       connect.response
-        .outputStream.write("<html><body>It is now ${new Date.now()}.</body></html>");
+        .write("<html><body>It is now ${new Date.now()}.</body></html>");
       connect.close(); //see HttpConnect described below
     }
 
@@ -28,6 +28,23 @@ A request handler can optionally return an URI to forward the request to. For ex
       return null; //null means done
     }
 
+##Request Routing
+
+The map a request handler to a URI, you can specify a URI mapping when instantiating [StreamServer](api:stream). For example,
+
+    void main() {
+      new StreamServer(uriMapping: {
+        "/server-info": (connect) {
+          connect.response.write("<html><body>${getServerInfo()}.</body></html>");
+          connect.close();
+        },
+        "/order/.*": placeOrder,
+        "/user/.*": user
+      }).start();
+    }
+
+As shown, the URI is a regular expression staring with '/'. Furthermore, you can specify the HTTP method for RESTful services, name the matched group and so on. For more information, please refer to the [Request Routing](Request_Routing.md) section.
+
 ##HttpConnect
 
 [HttpConnect](api:stream) encapsulates all information of a HTTP connection including the request ([HttpRequest](dart:io)) and the response ([HttpResponse](dart:io)).
@@ -40,8 +57,8 @@ To minimize the effort, [HttpConnect.close](api:stream) and [HttpConnect.error](
 
     void currentTime(HttpConnect connect) {
       connect.response
-        .outputStream.write("<html><body>It is now ${new Date.now()}.</body></html>");
-      connect.close(); //instead of connect.response.outputStream.close()
+        .write("<html><body>It is now ${new Date.now()}.</body></html>");
+      connect.close(); //instead of connect.response.close()
     }
 
 ###Handling Request Asynchronously
@@ -52,7 +69,7 @@ If a connection is handled asynchronously, set the success callback with [HttpCo
       file.openInputStream()
         ..onError = connect.error //forward to connect.error for error handling
         ..onClosed = connect.close //forward to connect.close upon completion
-        ..pipe(connect.response.outputStream, close: false);
+        ..pipe(connect.response. close: false);
     }
 
 ###Future.catchError
