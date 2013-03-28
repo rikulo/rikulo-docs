@@ -30,7 +30,7 @@ A request handler can optionally return an URI to forward the request to. For ex
 
 ##Request Routing
 
-The map a request handler to a URI, you can specify a URI mapping when instantiating [StreamServer](api:stream). For example,
+To map a request handler to a URI, you can specify a URI mapping when instantiating [StreamServer](api:stream). For example,
 
     void main() {
       new StreamServer(uriMapping: {
