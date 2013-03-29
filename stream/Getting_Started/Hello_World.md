@@ -10,7 +10,18 @@ Inside the `helloworld` directory, create a directory named `web`. It will be th
 
 Inside the `web` directory, create a directory named `webapp`. All your server-side Dart code reside in this directory. In additions, any files under `webapp` directory cannot be accessed directly from the clients.
 
-> The application, on the other hand, can access, forward and include any files.
+> The application, on the other hand, can access, forward and include any files under `web`.
+
+Here is the directory structure to create in this sample.
+
+    hello-world/
+      pubspec.yaml
+      web/
+        index.html
+        webapp/
+          main.dart
+
+> Notice that the `web` directory is required since [pub](http://pub.dartlang.org/doc/package-layout.html) installed packages only under `web`, `test` and `example` directories.
 
 ##Create pubspec.yaml
 
