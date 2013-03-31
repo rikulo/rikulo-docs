@@ -1,10 +1,10 @@
 #The dart tag
 
->[dart]*any dart code*[/dart]
+>[:dart]*any dart code*[/dart]
 
 Specifies any dart code to be output to the generated dart file. For example,
 
-    [dart]
+    [:dart]
     var foo = ["something", "else"];
     [/dart]
 

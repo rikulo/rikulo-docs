@@ -1,14 +1,14 @@
 #The if tag
 
->[if *condition*] *...* [/if]
+>[:if *condition*] *...* [/if]
 
 Specifies the if statement. For example,
 
-    [if foo.isDirectory]
+    [:if foo.isDirectory]
       <li>[= foo.name] is a directory</li>
-    [else if foo.isFile]
+    [:else if foo.isFile]
       <li>[= foo.name] is a file.</li>
-    [else]
+    [:else]
       <li>[= foo.name] is unknown.</li>
     [/if]
 

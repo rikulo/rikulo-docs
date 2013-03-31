@@ -8,7 +8,7 @@ RSP (Rikulo Stream Page) is a technology that helps developers create dynamicall
 
 Here is a RSP page:
 
-    [page partOf="hello.rsp.dart"]
+    [:page partOf="hello.rsp.dart"]
     <!DOCTYPE html>
     <html>
       <head>
@@ -24,7 +24,7 @@ Here is a RSP page:
       </body>
     </html>
 
-where [[page]](../Standard_Tags/page.md) and [[= ...]](../Standard_Tags/=.md) are [RSP tags](../Standard_Tags). They generate the dynamic content, while the rest are static data that are output directly.
+where [[:page]](../Standard_Tags/page.md) and [[= ...]](../Standard_Tags/=.md) are [RSP tags](../Standard_Tags). They generate the dynamic content, while the rest are static data that are output directly.
 
 ##How it Works
 
@@ -32,7 +32,7 @@ where [[page]](../Standard_Tags/page.md) and [[= ...]](../Standard_Tags/=.md) ar
 
 Each RSP page will be compiled into a request handler and put into a Dart file. The recommended file extension for a RSP page is `.rsp.html` (or `.rsp.xml`, depending on the file type), and the generated Dart file will be named by changing the file extension to `.rsp.dart`.
 
-You can control the name of the request handler and additional arguments by use of the [[page]](../Standard_Tags/page.md) tag. If omitted, the filename will be assumed.
+You can control the name of the request handler and additional arguments by use of the [[:page]](../Standard_Tags/page.md) tag. If omitted, the filename will be assumed.
 
 ##How to Compile
 
@@ -81,27 +81,27 @@ By default, the generated Dart file is an independent library. All you need to d
     //your_main.dart
     import 'abc/foo.dart';
 
-In the generated Dart file, `dart:io` and `package:stream/stream.dart` will be imported by default. If you'd like to import others, you can specify them in the `import` attribute with the [[page]](../Standard_Tags/page.md) tag. For example,
+In the generated Dart file, `dart:io` and `package:stream/stream.dart` will be imported by default. If you'd like to import others, you can specify them in the `import` attribute with the [[:page]](../Standard_Tags/page.md) tag. For example,
 
-    [page import="dart:async, dart:collection show HashMap"]
+    [:page import="dart:async, dart:collection show HashMap"]
     ...
 
 ###Generated as Part of Another Library
 
 Making every RSP file as an independent library can end up with too many libraries. It is usually more convenient to manage if you group several RSP files into a single library.
 
-It can be done by making the generate Dart file as *part of* another library with the [[page]](../Standard_Tags/page.md) tag as follows:
+It can be done by making the generate Dart file as *part of* another library with the [[:page]](../Standard_Tags/page.md) tag as follows:
 
-    [page partOf="your_lib.dart"]
+    [:page partOf="your_lib.dart"]
     ...
 
 As shown, the `partOf` attribute specifies the path of the library file. In this example, it is `your_lib.dart`. RSP compiler will maintain `your_lib.dart` automatically. If it doesn't exists, it will be created. If exists, the `part` statement will be inserted to `your_lib.dart` if necessary.
 
-Furthermore, you can specify the `import` attribute in the [[page]](../Standard_Tags/page.md) tag too. The libraries specified in the `import` attribute will be updated to `your_lib.dart` too.
+Furthermore, you can specify the `import` attribute in the [[:page]](../Standard_Tags/page.md) tag too. The libraries specified in the `import` attribute will be updated to `your_lib.dart` too.
 
 Alternatively, if you prefer to maintain the relationship among these Dart files manually, you can specify the library's name (rather than a file path) in the `partOf` attribute. For example,
 
-    [page partOf="one_of_your_library"]
+    [:page partOf="one_of_your_library"]
     ...
 
 Then, you can include the generated Dart file in your library (manually with the `part` statement in Dart).

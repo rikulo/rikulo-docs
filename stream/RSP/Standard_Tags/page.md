@@ -1,10 +1,12 @@
 #The page tag
 
->[page name="*closure_name*" args="*a_list_of_arguments*" description="*a_description*"
+>[:page name="*closure_name*" args="*a_list_of_arguments*" description="*a_description*"
 
 >partOf="*a_dart_file_or_a_lib_name*" import="*a_list_of_lib_names*" contentType="*a_content_type*"]
 
 Specifies the information about this page.
+
+> Notice that you can end with either `]` or `/]`.
 
 ##The partOf Attribute
 
@@ -12,13 +14,13 @@ Specifies the information about this page.
 
 You can specify the path of a Dart file in the `partOf` attribute to indicate that the generated Dart file shall be part of the given Dart file. For example,
 
-    [page partOf="../main.dart"]
+    [:page partOf="../main.dart"]
 
 Notice that RSP compiler will maintain the given Dart file automatically, including adding the `part` and `import` statements if necessary.
 
 Alternatively, you can specify the library's name in the `partOf` attribute if you prefer to maintain the library manually:
 
-    [page partOf="my_killer_app"]
+    [:page partOf="my_killer_app"]
 
 If the `partOf` attribute is omitted, the generated Dart file will be generated as an indepedent library. You have to import it manually when accessing it.
 
@@ -28,7 +30,7 @@ If the `partOf` attribute is omitted, the generated Dart file will be generated 
 
 The `import` attribute specifies the libraries to import. For example,
 
-    [page import="dart:async, dart:collection show HashMap"]
+    [:page import="dart:async, dart:collection show HashMap"]
 
 > Notice that `dart:io` and `dart:io` and `package:stream/stream.dart` will be imported by default. You don't need to specify them.
 
@@ -42,7 +44,7 @@ The `import` attribute specifies the libraries to import. For example,
 
 The `name` attribute, if specified, will become the closure's name. The `args` attribute, if specified, defines additional named parameters for the closure. For example,
 
-    [page name="foo" args="from:0, to:100"]
+    [:page name="foo" args="from:0, to:100"]
 
 will generate a closure as follows:
 

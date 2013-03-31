@@ -13,7 +13,7 @@ In Rikulo Stream, a template is a RSP page. For example, here is the template we
 You can create a RSP page as the template:
 
     [!-- classic.rsp.html --]
-    [page args="header, sidebar, body, footer"]
+    [:page args="header, sidebar, body, footer"]
     <div>
       <div class="header">
         [=header]
@@ -29,7 +29,7 @@ You can create a RSP page as the template:
       </div>
     </div>
 
-As shown, the `args` attribute of the [page](../Standard_Tags/page.md) tag defines the names of fragments (aka., the insert points or *gaps*). Then, you can reference them in the locations you'd like with the [=](../Standard_Tags/=.md) tag.
+As shown, the `args` attribute of the [[:page]](../Standard_Tags/page.md) tag defines the names of fragments (aka., the insert points or *gaps*). Then, you can reference them in the locations you'd like with the [[=]](../Standard_Tags/=.md) tag.
 
 ##Create the Composited Page
 
@@ -43,20 +43,20 @@ A composited page is the page composited by use of one or more templates and pag
         <link href="theme.css" rel="stylesheet" type="text/css" />
       </head>
       <body>
-        [include classic]
-          [var header]
-            [include "/header.html"/]
+        [:include classic]
+          [:var header]
+            [:include "/header.html"/]
           [/var]
 
-          [var sidebar]
-            [include sidebar/]
+          [:var sidebar]
+            [:include sidebar/]
           [/var]
 
-          [var footer]
-            [include "/footer.html"/]
+          [:var footer]
+            [:include "/footer.html"/]
           [/var]
 
-          [var body]
+          [:var body]
       <h1>Hello Templating</h1>
       <p>In this example, we demostrate how to define the shared layout (aka., the template), define page ...</p>
           [/var]
@@ -64,7 +64,7 @@ A composited page is the page composited by use of one or more templates and pag
       </body>
     </html>
 
-As shown, we include the template by use of the [include](../Standard_Tags/include.md) tag. Then, we use the [var](../Standard_Tags/page.md) tag to define the content of a page fragment that will be inserted into the template.
+As shown, we include the template by use of the [[:include]](../Standard_Tags/include.md) tag. Then, we use the [[:var]](../Standard_Tags/var.md) tag to define the content of a page fragment that will be inserted into the template.
 
 For a runnable example, you can refer to the [hello-templating](source:example) example.
 
@@ -75,7 +75,7 @@ As you might suggest, a composited page can use any number of templates. A templ
 In additions, you can design a template to be a complete web page and let the composited page to replace only the fragments that need to be changed. For example,
 
     [!-- classic.rsp.html --]
-    [page args="title, header, sidebar, body, footer"]
+    [:page args="title, header, sidebar, body, footer"]
     <!DOCTYPE html>
     <html>
       <head>
@@ -85,18 +85,18 @@ In additions, you can design a template to be a complete web page and let the co
       <body>
         <div>
           <div class="header">
-          [if header != null]
+          [:if header != null]
             [=header]
-          [else]
-            [include "/header.html"/]
+          [:else]
+            [:include "/header.html"/]
           [/if]
           </div>
 
           <div class="sidebar">
-          [if sidebar != null]
+          [:if sidebar != null]
             [=sidebar]
-          [else]
-            [include sidebar/]
+          [:else]
+            [:include sidebar/]
           [/if]
           </div>
 
@@ -105,10 +105,10 @@ In additions, you can design a template to be a complete web page and let the co
           </div>
 
           <div class="footer">
-          [if footer != null]
+          [:if footer != null]
             [=footer]
-          [else]
-            [include "/footer.html"/]
+          [:else]
+            [:include "/footer.html"/]
           [/if]
           </div>
         </div>
@@ -118,8 +118,8 @@ In additions, you can design a template to be a complete web page and let the co
 Then, the composited page can be much simpler:
 
     [!-- home.rsp.html --]
-    [include classic title="Stream: Hello Templating"]
-      [var body]
+    [:include classic title="Stream: Hello Templating"]
+      [:var body]
       <h1>Hello Templating</h1>
       <p>In this example, we demostrate how to define the shared layout (aka., the template), define page ...</p>
       [/var]

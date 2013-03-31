@@ -1,10 +1,10 @@
 #The while tag
 
->[while *condition*] *...* [/while]
+>[:while *condition*] *...* [/while]
 
 Specifies the while statement. For example,
 
-    [while user.hasMoreRoles]
+    [:while user.hasMoreRoles]
       do something with it
     [/while]
 
