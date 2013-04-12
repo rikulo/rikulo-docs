@@ -97,7 +97,7 @@ To run an application, you need a HTML page to define the user interface in HTML
       <head>
         <title>Foo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" type="text/css" href="packages/rikulo_ui/resource/css/default/view.css" />
+        <link rel="stylesheet" type="text/css" href="packages/rikulo_ui/css/default/view.css" />
       </head>
       <body>
         <script type="application/dart" src="HelloWorld.dart"></script>
@@ -108,9 +108,9 @@ To run an application, you need a HTML page to define the user interface in HTML
 First, you have to specify the CSS file to load. Depending on your requirement, you can specify any files you want, as long as including `view.css` (or a customized version of it).
 
     <link rel="stylesheet" type="text/css"
-     href="packages/rikulo_ui/resource/css/default/view.css" />
+     href="packages/rikulo_ui/css/default/view.css" />
 
-> By default, [the Dart Package Manager](http://pub.dartlang.org/doc) installed the resources under the `packages/rikulo_ui/resource` folder.
+> Both `packages/rikulo_ui/css/default/view.css` and `packages/browser/dart.js` are installed by [the Dart Package Manager (pub)](http://pub.dartlang.org/doc).
 
 Second, you have to specify your Dart file. In this application, it is called `HelloWorld.dart`.
 

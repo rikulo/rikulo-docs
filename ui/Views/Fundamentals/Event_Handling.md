@@ -46,7 +46,7 @@ Then, all listeners registered to `broadcaster` will be called.
       doSomething();
     })
 
-In additions, the broadcast event will be sent to every root views (see aslo [rootViews](api:html)). Thus, you can register the listener in the root view too.
+In additions, the broadcast event will be sent to every root views (see aslo [rootViews](api:view)). Thus, you can register the listener in the root view too.
 
 ###Activation and Popup
 
