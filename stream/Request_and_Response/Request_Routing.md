@@ -95,3 +95,5 @@ In additions to mapping a URI to a request handler, you can map it to another UR
     ...
 
 As shown, you can specify the matched group in the forwarded URI too. To do so, you can simply enclose the name with a parenthesis, such as `(info)` in the previous example.
+
+> Notice that `(name)` retrieves the value from [HttpConnect.dataset](api:stream). Thus, it can be any value set by your application, such as filters, includers and forwarders.

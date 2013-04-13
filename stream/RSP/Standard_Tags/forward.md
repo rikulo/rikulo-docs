@@ -39,3 +39,9 @@ In the above example, we assume `flag` and `detail` are two named parameters of 
       ...
 
 As shown, you can put any content in [[:var]](var.md).
+
+==Differences between include and forward==
+
+1. The RSP page returns immediately after [[:forward]](forward.md) executes. In the other words, none of the succeeding content will be rendered to the output after [[:forward]](forward.md).
+
+2. Any updates to HTTP headers in the included page will be ignored, while the forwarded page is allowed to update the headers. Thus, it is OK to write any content before and after [[:include]](include.md). It also implies before calling [[:forward]](forward.md), no content shall be output. Otherwise, it will cause an exception if the forwarded page updates the HTTP headers.
