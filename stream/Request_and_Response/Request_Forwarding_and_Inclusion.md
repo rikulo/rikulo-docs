@@ -32,12 +32,12 @@ To include the output of another URI, you can use [HttpConnect.include](api.conn
 
 ##Difference between forward and inclusion
 
-As their names suggested, you shall use [HttpConnect.forward](api:stream) to forward a request to another URI, while use [HttpConnect.include](api:stream) to include the output of another URI(s).
+As their names suggested, you shall use [HttpConnect.forward](api:stream) to forward a request to another URI, while using [HttpConnect.include](api:stream) to include the output of another URI(s).
 
-From the technical point of view, [HttpConnect.forward](api:stream) and [HttpConnect.include](api:stream) are the same, except:
+It is worth to notice that, from the technical point of view, [HttpConnect.forward](api:stream) and [HttpConnect.include](api:stream) are the same, except:
 
-* The included request handler won't be able to generate any HTTP headers. Any updates to HTTP headers in the included request handler are simply ignored.
+* The included request handler won't be able to update any HTTP headers. Any updates to the HTTP headers in the included request handler are simply ignored.
 
-This subtle difference helps you to include any request handler even if it will update HTTP headers. On the other hand, you can't write any content to [HttpResponse](dart:io) before invoking [HttpConnect.forward](api:stream).
+This subtle difference helps you to include any request handler even if it will update some HTTP headers. On the other hand, you can't write any content to [HttpResponse](dart:io) before invoking [HttpConnect.forward](api:stream), unless you're sure the forwarded request handler won't update any HTTP headers.
 
 > Notice that [HttpResponse](dart:io) will throw an exception if you update the HTTP headers after writing some output. In other words, you can update the HTTP headers only before the first invocation of `HttpResponse.write()`.
