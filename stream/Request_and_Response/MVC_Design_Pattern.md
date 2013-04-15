@@ -47,6 +47,6 @@ As shown, [[:page]](../RSP/Standard_Tags/page.md) specifies the named argument (
 
 ##Model
 
-The model represents the underlaying data used by an application. Stream doesn't provides a model layer of its own. Depending on your requirement, you can choose the database and object mapping layer that best fits your needs, such as [CouchClient](https://github.com/rikulo/couchclient) for accessing [Couchbase](http://www.couchbase.com/).
+The model represents the underlaying data used by an application. Stream doesn't provides a model layer of its own. You can choose the database and object mapping layer that best fits your needs, such as [CouchClient](https://github.com/rikulo/couchclient) for accessing [Couchbase](http://www.couchbase.com/).
 
-> For a runnable example, you can refer to the [hello-mvc](source:example) example.
+> For a simple yet runnable example, you can refer to the [hello-mvc](source:example) example.
