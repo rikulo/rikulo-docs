@@ -57,7 +57,20 @@ A request handler can have any number of named arguments too. They are usually u
 
 ###Chain the request handlers
 
-You can *chain* the request handlers easily with [HttpConnect.include](api:stream). For example,
+Chaining the request handlers is straightforward: there is no difference from chaining `Future` objects:
+
+    Future foo(HttpConnect connect) {
+      //assume you have two other renders: header and footer
+      return header(connect).then((_) {
+        connect.response.write("write the body...");
+        return footer(connect);
+      });
+    }
+
+If you'd like to wrap [HttpConnect](api:stream) to, say, prevent the update of HTTP headers or to redirect the output to a string buffer, you can use [HttpConnect.chain](api:stream), [HttpConnect.buffer](api:stream), or [HttpConnectWrapper](api:stream).
+
+###Chain to another URI
+To chain to another URI, you can use [HttpConnect.include](api:stream) or [HttpConnect.forward](api:stream):
 
     Future foo(HttpConnect connect) {
       return connect.include("/webapp/header").then((_) {
@@ -65,8 +78,6 @@ You can *chain* the request handlers easily with [HttpConnect.include](api:strea
         return connect.include("/webapp/footer");
       });
     }
-
-In additions to [HttpConnect.include](api:stream), you can invoke another request handlers directly depending on your requirements.
 
 > For information, please refer to [Request Forwarding and Inclusion](Request_Forwarding_and_Inclusion.md) and [Templating - Composite View Pattern](../RSP/Fundamentals/Templating-_Composite_View_Pattern.md).
 
