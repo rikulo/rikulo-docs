@@ -45,3 +45,12 @@ As shown, you can put any content in [[:var]](var.md).
 1. The RSP page returns immediately after [[:forward]](forward.md) executes. In the other words, none of the succeeding content will be rendered to the output after [[:forward]](forward.md).
 
 2. Any updates to HTTP headers in the included page will be ignored, while the forwarded page is allowed to update the headers. Thus, it is OK to write any content before and after [[:include]](include.md). It also implies before calling [[:forward]](forward.md), no content shall be output. Otherwise, it will cause an exception if the forwarded page updates the HTTP headers.
+
+Notice that whitespaces at the beginning of a RSP file won't be generated, so it is OK to have other tags before [[:forward]](forward.md). For example,
+
+    [!-- make sure no non-whitespaces before :forward --]
+    [:if !isAuthenticated() ]
+      [:forward "/login" /]
+    [:/if]
+
+where the whitespaces before [[:forward]](forward.md) won't be generated.

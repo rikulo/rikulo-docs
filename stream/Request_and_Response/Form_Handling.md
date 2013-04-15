@@ -41,11 +41,11 @@ Then, you can implement a class called `Criteria` to hold the information as fol
 
 Then, you can implement a request handling for the action called `search` in the above example as follows:
 
-    void search(HttpConnect connect) {
-      ObjectUtil.inject(new Criteria(), connect.request.queryParameters, silent: true)
+    Future search(HttpConnect connect) {
+      return ObjectUtil.inject(new Criteria(), connect.request.queryParameters, silent: true)
         .then((criteria) {
           searchResult(connect, criteria: criteria);
-        }).catchError(connect.error);
+        });
     }
 
 > For a runnable example, you can refer to the [features](source:test) example.

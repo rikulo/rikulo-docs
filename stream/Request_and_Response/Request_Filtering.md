@@ -19,23 +19,31 @@ To map a filter to a URI, you have to specify it in a map passed to the `filterM
 
 The signature of a filter is as follows:
 
-    void foo(HttpConnect connect, void chain(HttpConnect conn)) {
+    Future foo(HttpConnect connect, Future chain(HttpConnect conn)) {
       ...
     }
 
-A filter chain passed to a filter as the `chain` argument. It provides a mechanism for invoking a series of filters and the default request handling. If you call back the filter chain, the following filters that match the request URI will be called. If no more matched filter is found, the default request handling will take place (refer to [Request Routing](Request_Routing.md)).
+A filter chain passed to a filter as the `chain` argument. It provides a mechanism for invoking a series of succeeding filters and the default request handling. If you call back the filter chain, the succeeding filters that match the request URI will be called. If no more matched filter is found, the default request handling will take place (refer to [Request Routing](Request_Routing.md)).
 
 Here is the pseudo code of an authentication filter:
 
-    void authenticate(HttpConnect connect, void chain(HttpConnect conn)) {
+    Future authenticate(HttpConnect connect, Future chain(HttpConnect conn)) {
       if (isAuthenticated(connect))
-        chain(connect);
+        return chain(connect);
       else
-        connect.forward("/login");
+        return connect.forward("/login");
     }
 
 > For a runnable example, you can refer to the [features](source:test) example.
 
-##Connection Wrapper
+##Connection Wrapping
 
-You can creates a connect wrapper by use of [HttpConnectWrapper](api:stream) to, say, overrides the output stream.
+You can creates a connect wrapper by use of [HttpConnect.buffer](api:stream), [HttpConnect.chain](api:stream) or [HttpConnectWrapper](api:stream). For example, you can redirect the output to a string buffer and then process it, as follows: 
+
+    Future foo(HttpConnect connect) {
+      final buffer = new StringBuffer();
+      return another(connect.buffer(connect, buffer)).then((_) {
+        connect.response.write(_process(buffer.toString()));
+          //assume the application has a function called _process
+      });
+    }

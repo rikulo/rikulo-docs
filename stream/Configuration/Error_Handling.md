@@ -23,7 +23,7 @@ A typical handler is a URI that the request shall be forwarded to. For example,
       "404": "/webapp/404.html"
       ...
 
-In addition to URI, you can specify a handler directly if you'd like:
+In addition to URI, you can specify [a request handler](../Request_and_Response/Request_Handling.md) directly if you'd like:
 
     errorMapping: {
       "404": e404View //assume you have a template called e404View.rsp.html
@@ -37,7 +37,7 @@ Notice that if you specify an URI, Stream actually [forwards](../Request_and_Res
       "/webapp/404.html": e404View //assume you have a template called e404View.rsp.html
       ...
 
-Of course, if `404.html` is a static HTML file under `/webapp`, you don't need to map it to a handler.
+Of course, if `404.html` is a static HTML file under `/webapp`, you don't need to map it to a request handler.
 
 Since it is forwarded, [HttpRequest.uri](dart:io) is not the original URI. To retrieve, you have to access it from [HttpConnect.forwarder](api:stream). For example, in RSP, you can write:
 

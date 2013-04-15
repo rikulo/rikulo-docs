@@ -50,10 +50,10 @@ For example, if the request's URI is `/usr/foo`, then `connect.dataset['name']` 
 
 Instead of accessing [HttpConnect.dataset](api:stream) directly, you can use [ObjectUtil.inject()](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) to convert the matched groups into an object. For example,
 
-    ObjectUtil.inject(new UserInfo(), connect.dataset, silent: true)
+    return ObjectUtil.inject(new UserInfo(), connect.dataset, silent: true)
       .then((UserInfo userInfo) {
         //...handle userInfo.name
-      }).catchError(connect.error);
+      });
 
 For more information, please refer to the [Form Handling](Form_Handling.md) section.
 
@@ -71,20 +71,7 @@ In [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) servi
 
 ##Map URI to a Request Handler
 
-A URI is typically mapped to a request handler (aka., renderer). A request handler is as a closure. Its first argument must be [HttpConnect](api:stream). It can take additional optional named parameters. For example,
-
-    void listUser(HttpConnect connect) {
-    }
-    void deleteUser(HttpConnect connect, {String user}) {
-    }
-
-The request handler can return a string if it decides to forward the request to another URI. For example,
-
-    String deleteUser(HttpConnect connect) {
-      if (!isLogin(connect))
-         return "/login";
-      //...delete the user
-    }
+A URI is typically mapped to a request handler (aka., renderer). A request handler is a function (aka., a closure). Its first argument must be [HttpConnect](api:stream).  For more information, please refer to [Request Handling](Request_Handling.md).
 
 ##Map URI to Another URI
 
