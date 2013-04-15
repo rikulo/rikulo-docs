@@ -8,27 +8,29 @@ This separation of concerns helps to organize code that is easier to develop and
 
 Under Stream's asynchronous programming model, it can be more valuable: Only the controller needs to deal with the underlying data asynchronously, while the view can read and render the data synchronously.
 
-> Depending the nature of your data model, you can implement the view asynchronously by chaining the access of the data model (in a series of `Future` objects). For sake of description, we discuss only the data model that can be read synchronously.
+> Depending the nature of your data model, you can implement the view in the asynchronous approach by chaining the access of the data model (with a series of `Future` objects). For sake of description, we discuss only the data model that can be read synchronously.
 
 ##Controller
 
 The controller provides the glue logic between the model and the view. It is [a request handler](Request_Handling.md) that Stream server dispatches to. In other words, it is the handler specified in [the URI mapping](Request_Routing.md).
 
-The typical pattern is to access the underlaying data asynchronously based on the request, and then prepare it into Dart objects that the view can access. For example,
+The typical pattern is that the controller accesses the underlaying data asynchronously based on the request, and then prepare it into Dart objects for the view to display. For example,
 
     Future getUser(HttpConnect connect) {
-      return Database.loadUser(getUsername(connect)).then((User user) { //load data model
-        return userView(connect, user: user); //forward to view
+      //1. Load and/or store the data asynchronously
+      return Database.loadUser(getUsername(connect)).then((User user) {
+        //2. Forward to the view for display
+        return userView(connect, user: user);
       });
     }
 
 where we assume `Database.loadUser(String username)` is a utility to load the `User` object asynchronous, and `getUsername(HttpConnect connect)` to retrieve the user's name from the request (usually part of URI or a query parameter depending your requirement).
 
-We also assume `userView(HttpConnect connect,{User user})` is the view that will be discussed in the following section.
+We also assume `userView(HttpConnect connect,{User user})` is the view to display the data. It will be discussed in the following section.
 
 ##View
 
-The view provides the visual representation shown at the client. It is also [a request handler](Request_Handling.md) that usually has additional named argument(s) to carry the data model prepared by the controller.
+The view provides the visual representation shown at the client. It is also [a request handler](Request_Handling.md). It usually has additional named argument(s) to carry the data model prepared by the controller.
 
 For easy implementation, the view is usually implemented with the template technology called [RSP](../RSP/Fundamentals/RSP_Overview.md). For example,
 
@@ -37,10 +39,14 @@ For easy implementation, the view is usually implemented with the template techn
       <title>User: [user.name]</title>
       ...
 
-As shown, [[:page]](../RSP/Standard_Tags/page.md) specifies the named argument (`{User user}`) and then the content of the given user.
+As shown, [[:page]](../RSP/Standard_Tags/page.md) specifies the named argument (`{User user}`) and then the content of the given user. It will be compiled into a request render with the following signature:
+
+    Future userView(HttpConnect connect, {User user}) {
+      //...
+    }
 
 ##Model
 
-The model represents the underlaying data used by an application. Stream doesn't provides a model layer of its own. Depending on your requirement, you can choose the database and object mapping layer that best fits your needs.
+The model represents the underlaying data used by an application. Stream doesn't provides a model layer of its own. Depending on your requirement, you can choose the database and object mapping layer that best fits your needs, such as [CouchClient](https://github.com/rikulo/couchclient) for accessing [Couchbase](http://www.couchbase.com/).
 
 > For a runnable example, you can refer to the [hello-mvc](source:example) example.
