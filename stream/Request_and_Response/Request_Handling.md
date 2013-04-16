@@ -22,6 +22,8 @@ If a request handler finishes immediately, it doesn't have to return anything. F
         ..write(Json.stringify(info));
     }
 
+> Tip: For sake of consistency, you can always return `Future` by use of `new Future.immediate(null)`.
+
 ###Return `Future` if handled asynchronously
 
 If a request handler processes the request asynchronously, it *must* return an instance of `Future` to indicate when the processing will be completed. For example,

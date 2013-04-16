@@ -81,7 +81,7 @@ By default, the generated Dart file is an independent library. All you need to d
     //your_main.dart
     import 'abc/foo.dart';
 
-In the generated Dart file, `dart:io` and `package:stream/stream.dart` will be imported by default. If you'd like to import others, you can specify them in the `import` attribute with the [[:page]](../Standard_Tags/page.md) tag. For example,
+In the generated Dart file, `dart:io`, `dart:async` and `package:stream/stream.dart` will be imported by default. If you'd like to import others, you can specify them in the `import` attribute with the [[:page]](../Standard_Tags/page.md) tag. For example,
 
     [:page import="dart:async, dart:collection show HashMap"]
     ...

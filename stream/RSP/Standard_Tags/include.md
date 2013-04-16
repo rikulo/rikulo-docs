@@ -1,14 +1,16 @@
 #The include tag
 
-**Syntax 1**
+##Syntax 1
 
->[:include "*a_uri*" /]
+>[:include "*a_uri*" *name1*="*value1*" *name2*="*value2*" /]
 
 Includes the given URI.
 
+The URI can contain a query string. Furthermore, the arguments, if any, will be appended to it as part of the query string. You can retrieve them by use of [HttpRequest.queryParameters](dart:io).
+
 > Notice that the tag must end with `/]`.
 
-**Syntax 2**
+##Syntax 2
 
 >[:include *method_name* *name1*="*value1*" *name2*="*value2*" /]
 
@@ -38,7 +40,7 @@ In the above example, we assume `flag` and `detail` are two named parameters of 
 
 As shown, you can put any content in [[:var]](var.md). It allows you to define page fragments which can be assembled into a complete page at runtime. For more information, please refer to [Templating: Composite View Pattern](../Fundamentals/Templating-_Composite_View_Pattern.md).
 
-==Differences between include and forward==
+##Differences between include and forward
 
 1. The RSP page returns immediately after [[:forward]](forward.md) executes. In the other words, none of the succeeding content will be rendered to the output after [[:forward]](forward.md).
 

@@ -1,14 +1,18 @@
 #The forward tag
 
-**Syntax 1**
+##Syntax 1
 
->[:forward "*a_uri*" /]
+>[:forward "*a_uri*" *name1*="*value1*" *name2*="*value2*" /]
 
-Forwards to the given URI. The content following the forward tag won't be generated.
+Forwards to the given URI.
 
-> Notice: the tag must end with `/]`.
+The URI can contain a query string. Furthermore, the arguments, if any, will be appended to it as part of the query string. You can retrieve them by use of [HttpRequest.queryParameters](dart:io).
 
-**Syntax 2**
+The request handler returns immediately after forwarding. In other words, the content after the forward tag won't be generated.
+
+> Notice that the tag must end with `/]`.
+
+##Syntax 2
 
 >[:forward *method_name* *name1*="*value1*" *name2*="*value2*" /]
 
@@ -40,7 +44,7 @@ In the above example, we assume `flag` and `detail` are two named parameters of 
 
 As shown, you can put any content in [[:var]](var.md).
 
-==Differences between include and forward==
+##Differences between include and forward
 
 1. The RSP page returns immediately after [[:forward]](forward.md) executes. In the other words, none of the succeeding content will be rendered to the output after [[:forward]](forward.md).
 

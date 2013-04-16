@@ -30,9 +30,9 @@ If the `partOf` attribute is omitted, the generated Dart file will be generated 
 
 The `import` attribute specifies the libraries to import. For example,
 
-    [:page import="dart:async, dart:collection show HashMap"]
+    [:page import="dart:collection, dart:collection show HashMap"]
 
-> Notice that `dart:io` and `dart:io` and `package:stream/stream.dart` will be imported by default. You don't need to specify them.
+> Notice that `dart:io`, `dart:async` and `package:stream/stream.dart` will be imported by default. You don't need to specify them.
 
 > If a Dart file is specified in the `partOf` attribute, the given Dart file will be updated automatically with the imported libraries specified in this attribute.
 
