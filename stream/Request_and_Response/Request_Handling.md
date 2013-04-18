@@ -9,7 +9,7 @@ A *request handler* is a function that processes a particular phase of a request
         .write("<html><body>It is now ${new Date.now()}.</body></html>");
     }
 
-[HttpConnect](api:stream) encapsulates all information of a HTTP connection, including the request ([HttpRequest](dart:io)) and the response ([HttpResponse](dart:io)).
+> [HttpConnect](api:stream) encapsulates all information of a HTTP connection, including the request ([HttpRequest](dart:io)) and the response ([HttpResponse](dart:io)).
 
 ###Return `void` if completed immediately
 
@@ -37,7 +37,7 @@ If a request handler processes the request asynchronously, it *must* return an i
 
 > It is for illustration. You generally don't have to load a file, since Stream server will handle it automatically.
 
-The returned `Future` object can carry any type of objects, such as `Future<bool>`. It is application specific (as long as your caller knows how to handle it). Stream server simply ignores it.
+The returned `Future` object can carry any type of objects, such as `Future<bool>`. The type is application specific (as long as your caller knows how to handle it). Stream server simply ignores it.
 
 If you're using [Completer](dart:async), remember to *wire* the error. For example,
 
@@ -65,11 +65,11 @@ A request handler can have any number of named arguments too. They are usually u
 
 > For how to apply MVC, please refer to [the MVC Design Pattern section](MVC_Design_Pattern.md).
 
-> For how to process a form submit, please refer to [Form Handling](Form_Handling.md).
+> For how to process a form submit, please refer to [the Form Handling section](Form_Handling.md).
 
 ###Chain the request handlers
 
-Chaining the request handlers is straightforward: there is no difference from chaining `Future` objects:
+Chaining the request handlers is straightforward: there is no difference from chaining [Future](dart:async) objects:
 
     Future foo(HttpConnect connect) {
       //assume you have two other renders: header and footer
@@ -79,9 +79,10 @@ Chaining the request handlers is straightforward: there is no difference from ch
       });
     }
 
-If you'd like to wrap [HttpConnect](api:stream) to, say, prevent the update of HTTP headers or to redirect the output to a string buffer, you can use [HttpConnect.chain](api:stream), [HttpConnect.buffer](api:stream), or [HttpConnectWrapper](api:stream).
+If you'd like to wrap [HttpConnect](api:stream) to, say, preventing HTTP headers from updates or to redirecting the output to a buffer, you can use [HttpConnect.chain](api:stream), [HttpConnect.buffer](api:stream), or [HttpConnectWrapper](api:stream).
 
 ###Chain to another URI
+
 To chain to another URI, you can use [HttpConnect.include](api:stream) or [HttpConnect.forward](api:stream):
 
     Future foo(HttpConnect connect) {
@@ -107,4 +108,4 @@ To map a URI to a request handler, you can specify a URI mapping when instantiat
       }).start();
     }
 
-As shown, the URI is a regular expression staring with '/'. Furthermore, you can specify the HTTP method for RESTful services, name the matched group and so on. For more information, please refer to [Request Routing](Request_Routing.md) section.
+As shown, the URI is a regular expression staring with '/'. Furthermore, you can specify the HTTP method for RESTful services, name the matched group and so on. For more information, please refer to [the Request Routing section](Request_Routing.md).
