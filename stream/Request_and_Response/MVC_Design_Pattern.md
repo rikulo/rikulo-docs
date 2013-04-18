@@ -32,7 +32,7 @@ We also assume `userView(HttpConnect connect,{User user})` is the view to displa
 
 The view provides the visual representation shown at the client. It is also [a request handler](Request_Handling.md). It usually has additional named argument(s) to carry the data model prepared by the controller.
 
-For easy implementation, the view is usually implemented with the template engine called [RSP](../RSP/Fundamentals/RSP_Overview.md). For example,
+For easy implementation, the view is usually implemented with the template engine called [RSP (Rikulo Stream Page)](../RSP/Fundamentals/RSP_Overview.md). For example,
 
     [:page args="User user"]
     <html>
