@@ -1,6 +1,6 @@
 #RSP Overview
 
-RSP (Rikulo Stream Page) is a technology that helps developers create dynamically generated web pages based on HTML, XML or other text documents. A RSP page is a text document that contains two types of text: static data, which can be expressed in any text-based format (such as HTML, CSS, and XML), and [RSP tags](../Standard_Tags) which generate the dynamic content.
+RSP (Rikulo Stream Page) is a template technology that helps developers create dynamically generated web pages based on HTML, XML or other text documents. A RSP page is a text document that contains two types of text: static data, which can be expressed in any text-based format (such as HTML, CSS, and XML), and [RSP tags](../Standard_Tags) which generate the dynamic content.
 
 > Notice that the dynamic content is generated at the server side.
 

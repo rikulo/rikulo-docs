@@ -1,6 +1,6 @@
 #Introduction
 
-Rikulo Stream is a Dart web server supporting URI mapping, template technology, file-based static resources and MVC design pattern.
+Rikulo Stream is a Dart web server supporting URI mapping, template engine, file-based static resources and MVC design pattern.
 
 ##Installation
 
@@ -17,7 +17,7 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 
 ##Configure Dart Editor to Compile Templates Automatically
 
-[RSP (Rikulo Stream Page)](../RSP/Fundamentals/RSP_Overview.html) is the template technology allowing developers to create dynamically generated web pages based on HTML, XML or other document types.
+[RSP (Rikulo Stream Page)](../RSP/Fundamentals/RSP_Overview.html) is the template engine allowing developers to create dynamically generated web pages based on HTML, XML or other document types.
 
 To compile RSP files into Dart files automatically, you can add a build.dart file in the root directory of your project, with the following content:
 

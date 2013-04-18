@@ -1,6 +1,6 @@
 #Rikulo Stream Documentation
 
-Rikulo Stream is a Dart web server supporting request routing, template technology, file-based static resources and MVC design pattern.
+Rikulo Stream is a Dart web server supporting request routing, template engine, file-based static resources and MVC design pattern.
 
 ##Tutorial
 

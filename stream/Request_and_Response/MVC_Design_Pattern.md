@@ -6,9 +6,9 @@
 
 This separation of concerns helps to organize code that is easier to develop and cheaper to maintain.
 
-Under Stream's asynchronous programming model, it can be more valuable: Only the controller needs to deal with the underlying data asynchronously, while the view can read and render the data synchronously.
+Under Dart's asynchronous programming paradigm, it can be more valuable: Only the controller needs to deal with the underlying data asynchronously, while the view can read and render the data synchronously.
 
-> Depending the nature of your data model, you can implement the view in the asynchronous approach by chaining the access of the data model (with a series of `Future` objects). For sake of description, we discuss only the data model that can be read synchronously.
+> Depending the nature of your data model, you can implement the view in the asynchronous approach by chaining the access of the data model (with a series of [Future](dart:async) objects). For sake of description, we discuss only the data model that can be read synchronously.
 
 ##Controller
 
@@ -32,16 +32,18 @@ We also assume `userView(HttpConnect connect,{User user})` is the view to displa
 
 The view provides the visual representation shown at the client. It is also [a request handler](Request_Handling.md). It usually has additional named argument(s) to carry the data model prepared by the controller.
 
-For easy implementation, the view is usually implemented with the template technology called [RSP](../RSP/Fundamentals/RSP_Overview.md). For example,
+For easy implementation, the view is usually implemented with the template engine called [RSP](../RSP/Fundamentals/RSP_Overview.md). For example,
 
     [:page args="User user"]
     <html>
-      <title>User: [user.name]</title>
+      <title>User: [=user.name]</title>
       ...
 
-As shown, [[:page]](../RSP/Standard_Tags/page.md) specifies the named argument (`{User user}`) and then the content of the given user. It will be compiled into a request render with the following signature:
+As shown, [[:page]](../RSP/Standard_Tags/page.md) specifies the named argument (`{User user}`) and then [[=]](../RSP/Standard_Tags/=.md) retrieves the user's name from the data model. It will be compiled into a request render similar to the following:
 
     Future userView(HttpConnect connect, {User user}) {
+      //...
+      connect.response..write("<html>\n  <title>Users: ")..write(user.name);
       //...
     }
 
