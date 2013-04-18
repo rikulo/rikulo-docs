@@ -1,6 +1,6 @@
 #Request Handling
 
-##Request Handers
+##Request Handlers
 
 A *request handler* is a function that processes a particular phase of a request. A request handler *must* have one argument typed [HttpConnect](api:stream). For example,
 
@@ -22,24 +22,34 @@ If a request handler finishes immediately, it doesn't have to return anything. F
         ..write(Json.stringify(info));
     }
 
-> Tip: For sake of consistency, you can always return `Future` by use of `new Future.immediate(null)`.
+> Tip: For sake of consistency, you can always return [Future](dart:async) by use of `new Future.value()`.
 
 ###Return `Future` if handled asynchronously
 
-If a request handler processes the request asynchronously, it *must* return an instance of `Future` to indicate when the processing will be completed. For example,
+If a request handler processes the request asynchronously, it *must* return an instance of [Future](dart:async) to indicate when the processing will be completed. For example,
 
-    Future loadFile(HttpConnect connect) {
+    Future loadFile(HttpConnect connect)
+    => return new File("some_file").exists().then((exists) {
+          if (exists)
+            return connect.response.addStream(file.openRead());
+          throw new Http404("some_file");
+        });
+
+> It is for illustration. You generally don't have to load a file, since Stream server will handle it automatically.
+
+The returned `Future` object can carry any type of objects, such as `Future<bool>`. It is application specific (as long as your caller knows how to handle it). Stream server simply ignores it.
+
+If you're using [Completer](dart:async), remember to *wire* the error. For example,
+
+    Future waitUntilReady(HttpConnect connect) {
       final completer = new Completer();
-      final res = connect.response;
-      new File("some_file").openRead().listen((data) {res.writeBytes(data);},
+      doSomething(
         onDone: () => completer.complete(),
-        onError: (err) => completer.completeError(err));
+        onError: (error) => completer.completeError(error));
       return completer.future;
     }
 
-Also notice that, as shown above, the error has to be *wired* to the `Future` object being returned, so [the default error handling](../Configuration/Error_Handling.md) will be applied.
-
-The returned `Future` object can carry any type of objects, such as `Future<bool>`. It is application specific (as long as your caller knows how to handle it). Stream server simply ignores it.
+> Tip: before using [Completer](dart:async), it is always a good idea to find if a method returns [Future](dart:async) for saving the effort, such as [StreamSubscription.asFuture](dart:async) and [IOSink.done](dart:io).
 
 ###Provide additional named arguments
 
