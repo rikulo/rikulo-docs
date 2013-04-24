@@ -52,7 +52,7 @@ Then, you can implement a request handling for the action called `search` in the
 
 > For more complicated examples of injection, you can refer to [these examples](https://github.com/rikulo/commons/blob/master/test/inject.dart).
 
-##Custom Coercion
+##Custom coercion
 
 By default, [ObjectUtil.inject](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) will coerce the basic types, such as `int`, `num`, `double`, `String`, `bool`, `DateTime`, and [Color](http://api.rikulo.org/commons/latest/rikulo_util/Color.html) automatically. If you need to coerce the custom types, you can implement the coercion and pass to the `coerce` parameter.
 
@@ -61,3 +61,14 @@ By default, [ObjectUtil.inject](http://api.rikulo.org/commons/latest/rikulo_mirr
 You can validate the values in a closure by passing it to the `validate` parameter when calling [ObjectUtil.inject](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject).
 
 > Notice that the validation is called after the value is coerced successfully, and before it is assigned to the target object.
+
+##Handle POST requests
+
+Notice that [HttpRequest.queryParameters](dart:io) includes only the parameters found in the query string. In other words, if the method of the form is `POST` (i.e., `<form method="POST"...`), you have to parse the body of the POST request. It can be done easily by use of [HttpUtil.decodePostedParameters](commons:io):
+
+      HttpUtil.decodePostedParameters(request, request.queryParameters)
+      .then((Map<String, String> params) {
+        //handle params
+      });
+
+> If the body is a JSON string, you can use [IOUtil.readAsJson](commons:io) instead.
