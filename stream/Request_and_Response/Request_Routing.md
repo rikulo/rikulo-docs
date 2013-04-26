@@ -48,12 +48,11 @@ For example, if the request's URI is `/usr/foo`, then `connect.dataset['name']` 
 
 ###Coerce the Matched Groups into Objects
 
-Instead of accessing [HttpConnect.dataset](api:stream) directly, you can use [ObjectUtil.inject()](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) to convert the matched groups into an object. For example,
+Instead of accessing [HttpConnect.dataset](api:stream) directly, you can use [ObjectUtil.inject()](commons:mirrors) to convert the matched groups into an object. For example,
 
-    return ObjectUtil.inject(new UserInfo(), connect.dataset, silent: true)
-      .then((UserInfo userInfo) {
-        //...handle userInfo.name
-      });
+    final userInfo = new UserInfo();
+    ObjectUtil.inject(userInfo, connect.dataset, silent: true);
+    //...Then, handle userInfo
 
 For more information, please refer to the [Form Handling](Form_Handling.md) section.
 

@@ -1,6 +1,6 @@
 #Form Handling
 
-When handling the data of a submitted form, you can use [ObjectUtil.inject()](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) to convert the query parameters into an object.
+When handling the data of a submitted form, you can use [ObjectUtil.inject()](commons:mirrors) to convert the query parameters into an object.
 
 For example, assume we have a form as follows:
 
@@ -42,10 +42,9 @@ Then, you can implement a class called `Criteria` to hold the information as fol
 Then, you can implement a request handling for the action called `search` in the above example as follows:
 
     Future search(HttpConnect connect) {
-      return ObjectUtil.inject(new Criteria(), connect.request.queryParameters, silent: true)
-        .then((criteria) {
-          searchResult(connect, criteria: criteria);
-        });
+      final criteria = new Criteria();
+      ObjectUtil.inject(criteria, connect.request.queryParameters, silent: true);
+      return searchResult(connect, criteria: criteria);
     }
 
 > For a runnable example, you can refer to the [features](source:test) example.
@@ -54,11 +53,11 @@ Then, you can implement a request handling for the action called `search` in the
 
 ##Custom coercion
 
-By default, [ObjectUtil.inject](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject) will coerce the basic types, such as `int`, `num`, `double`, `String`, `bool`, `DateTime`, and [Color](http://api.rikulo.org/commons/latest/rikulo_util/Color.html) automatically. If you need to coerce the custom types, you can implement the coercion and pass to the `coerce` parameter.
+By default, [ObjectUtil.inject()](commons:mirrors) will coerce the basic types, such as `int`, `num`, `double`, `String`, `bool`, `DateTime`, and [Color](commons:util) automatically. If you need to coerce the custom types, you can implement the coercion and pass to the `coerce` parameter.
 
 ##Validation
 
-You can validate the values in a closure by passing it to the `validate` parameter when calling [ObjectUtil.inject](http://api.rikulo.org/commons/latest/rikulo_mirrors/ObjectUtil.html#inject).
+You can validate the values in a closure by passing it to the `validate` parameter when calling [ObjectUtil.inject()](commons:mirrors).
 
 > Notice that the validation is called after the value is coerced successfully, and before it is assigned to the target object.
 

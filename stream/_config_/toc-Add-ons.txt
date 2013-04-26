@@ -5,4 +5,4 @@
 //foo (sublink): use foo/sublink as the link
 
 !Add-ons
-  Rikulo Security
+  +Rikulo Security
