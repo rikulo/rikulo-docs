@@ -42,8 +42,9 @@ There are two ways to compile RSP files into Dart files: automatic building with
 
 To compile your RSP files automatically, you just need to add a `build.dart` file in the root directory of your project, with the following content:
 
-    import 'dart:io';
-    import 'package:stream/rspc.dart';
+    import 'dart:io' show Options;
+    import 'package:stream/rspc.dart' show build;
+
     void main() {
       build(new Options().arguments);
     }

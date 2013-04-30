@@ -9,7 +9,7 @@ For real examples, please refer to [tag.dart](source:lib/src/rspc).
 RSP tags are used by RSP compiler rather than your Stream server application. To add the customer tags to RSP
 compiler, you can modify the `build.dart` file you put int the root directory of your project. For example, you implement two custom tags, `JsonTag` and `DataTag`, then `build.dart could be as follows:
 
-    import 'dart:io';
+    import 'dart:io' show Options;
     import 'package:stream/rspc.dart' show build, tags;
     import 'mytags.dart' show JsonTag, DataTag;
 
