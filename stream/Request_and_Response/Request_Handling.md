@@ -22,7 +22,7 @@ If a request handler finishes immediately, it doesn't have to return anything. F
         ..write(Json.stringify(info));
     }
 
-> Tip: For sake of consistency, you can always return [Future](dart:async) by use of `new Future.value()`.
+> Tip: For sake of consistency, you can always return [Future](dart:async) by use of `new Future.value()`. Furthermore, you can specify `futureOnly: true` when starting [StreamServer](api:stream), such that an error will be thrown if an event handler or filter doesn't return a Future object.
 
 ###Return `Future` if handled asynchronously
 
