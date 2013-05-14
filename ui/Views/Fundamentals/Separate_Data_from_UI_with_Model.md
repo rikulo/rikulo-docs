@@ -12,7 +12,7 @@ Though [ListModel](api:model) is simple, you can use the default implementation,
 
 ##Selection
 
-Some views allow the user to select one or multiple data in the list. To work with them, your implementation of [ListModel](api:model) shall also implement [Selection](api:model) too. Alternatively, you can use [DefaultListModel](api:model) since it implements [Selection](api:model). For example,
+Some views allow the user to select one or multiple data in the list. To work with them, your implementation of [ListModel](api:model) shall also implement [SelectionModel](api:model) too. Alternatively, you can use [DefaultListModel](api:model) since it implements [SelectionModel](api:model). For example,
 
     final DefaultListModel<String> model
       = new DefaultListModel(["apple", "orange", "lemon", "juice"]);
@@ -23,7 +23,7 @@ Some views allow the user to select one or multiple data in the list. To work wi
     });
     new DropDownList(model: model);
 
-As shown, [DefaultListModel](api:model) also implements [Disables](api:model), so you can disable items that the user can't select.
+As shown, [DefaultListModel](api:model) also implements [DisablesModel](api:model), so you can disable items that the user can't select.
 
 ##Sharing the Selection
 
@@ -72,7 +72,7 @@ You can implement [TreeModel](api:model) to represent a hierarchy data structure
         ["Cromwell", "Queenstown"])]);
     new DropDownList(model: model); //DropDownList supports TreeModel too
 
-[DefaultTreeModel](api:model) also implements [Selection](api:model), so you can handle as well.
+[DefaultTreeModel](api:model) also implements [SelectionModel](api:model), so you can handle as well.
 
     model.on.select.add((event) {
       //do something when some of items is selected
