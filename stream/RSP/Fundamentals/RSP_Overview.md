@@ -63,13 +63,13 @@ A Dart file is generated for each RSP file you gave.
 
 You can put RSP files (`*.rsp.*`) under any folder you'd like. The generated Dart files (`*.rsp.dart`) will be always generated under the `webapp` folder.
 
-For example, let us say we put `foo.rsp.html` under the `abc` folder, then `foo.rsp.dart` will be generated under the `webapp/abc` folder. On the other hand, if it is already under the `webapp` folder (including its sub folders), the generated Dart file will be put into the same folder.
+If RSP files are already under the `webapp` folder (such as `webapp/rsp/signup`), the generated Dart files will be put in the same folder. If not, for example, let us say we put `signupView.rsp.html` under the `rsp/signup` folder, then `signupView.rsp.dart` will be generated under the `webapp/rsp/signup` folder.
 
-In general, it is easier to manage if we put them under the folder with other static resources, such as CSS and JS files (other than the `webapp` folder).
+Some find it is easier to manage if putting them under the `webapp` folder. Some find it is better to put under the folder with other static resources, such as CSS and JS files. It is really up to you.
 
 > Notice that RSP files can't be accessed directly from client, even if it is not put under the `webapp` folder. By default, they are mapped to [Http404](api:stream).
 
-> Also notice that the folder of a RSP file resides has no effect how it behaves. What does matter is the generated render function and the URI it is mapped to.
+> Also notice that the folder of a RSP file resides has no effect how it behaves. What does matter is how it is imported and used in your application.
 
 ##Put Together
 
@@ -80,12 +80,14 @@ The generated Dart files shall be part of your Dart server application. There ar
 By default, the generated Dart file is an independent library. All you need to do is to import it in your main program.
 
     //your_main.dart
-    import 'abc/foo.dart';
+    import 'rsp/signup/signupView.rsp.dart';
 
 In the generated Dart file, `dart:io`, `dart:async` and `package:stream/stream.dart` will be imported by default. If you'd like to import others, you can specify them in the `import` attribute with the [[:page]](../Standard_Tags/page.md) tag. For example,
 
     [:page import="dart:async, dart:collection show HashMap"]
     ...
+
+> Notice that you can split the value of the import attribute into multiple lines (for better readability).
 
 ###Generated as Part of Another Library
 
