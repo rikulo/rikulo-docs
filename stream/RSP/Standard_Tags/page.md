@@ -57,3 +57,12 @@ will generate a closure as follows:
 If the `contentType` attribute is omitted, the content type will be decided based on the file extension, and the encoding is assumed to be `UTF-8`.
 
 You can specify an expression ([[=expression]](=.md)) as the value of the `contentType` attribute.
+
+##The lastModified attribute
+
+> Optional  
+> Allowed Values: `compile` and `start`
+
+It specifies whether the generated Dart code shall set [the Last-Modified header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) automatically. If `compile` is specified, the header is set to when the RSP file is compiled. If `start` is specified, the header is set to when the server is started.
+
+If omitted (default), it won't set the Last-Modified header. You can set it with the [:header](header.md) tag with the value you prefer.
