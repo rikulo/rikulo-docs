@@ -63,13 +63,13 @@ A Dart file is generated for each RSP file you gave.
 
 You can put RSP files (`*.rsp.*`) under any folder you'd like. The generated Dart files (`*.rsp.dart`) will be always generated under the `webapp` folder.
 
-If RSP files are already under the `webapp` folder (such as `webapp/rsp/signup`), the generated Dart files will be put in the same folder. If not, for example, let us say we put `signupView.rsp.html` under the `rsp/signup` folder, then `signupView.rsp.dart` will be generated under the `webapp/rsp/signup` folder.
+If RSP files are already under the `webapp` folder (such as `webapp/rsp/signup`), the generated Dart files will be put in the same folder.
 
-Some find it is easier to manage if putting them under the `webapp` folder. Some find it is better to put under the folder with other static resources, such as CSS and JS files. It is really up to you.
+If not, for example, let us say we put `signupView.rsp.html` under the `rsp/signup` folder, then `signupView.rsp.dart` will be generated under the `webapp/rsp/signup` folder.
 
-> Notice that RSP files can't be accessed directly from client, even if it is not put under the `webapp` folder. By default, they are mapped to [Http404](api:stream).
+> Notice that the folder of a RSP file resides has no effect how it behaves. What does matter is how it is imported and used in your application.
 
-> Also notice that the folder of a RSP file resides has no effect how it behaves. What does matter is how it is imported and used in your application.
+> Also notice that RSP files can't be accessed directly from client, even if it is not put under the `webapp` folder. By default, they are mapped to [Http404](api:stream).
 
 ##Put Together
 
