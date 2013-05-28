@@ -16,20 +16,22 @@ You can create a RSP page as the template:
     [:page args="header, sidebar, body, footer"]
     <div>
       <div class="header">
-        [=header]
+        [=header, encode: 'none']
       </div>
       <div class="sidebar">
-        [=sidebar]
+        [=sidebar, encode: 'none']
       </div>
       <div class="body">
-        [=body]
+        [=body, encode: 'none']
       </div>
       <div class="footer">
-        [=footer]
+        [=footer, encode: 'none']
       </div>
     </div>
 
 As shown, the `args` attribute of the [[:page]](../Standard_Tags/page.md) tag defines the names of fragments (aka., the insert points or *gaps*). Then, you can reference them in the locations you'd like with the [[=]](../Standard_Tags/=.md) tag.
+
+> Notice that you have to specify `encode: 'none'` in the [[=]](../Standard_Tags/=.md) tag to disable the default XML encoding.
 
 ##Create the Composited Page
 
