@@ -39,7 +39,8 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
      final security = new Security(authenticator, accessControl);
      new StreamServer(uriMapping: {
        "/s_login": security.login,
-       "/s_logout": security.logout
+       "/s_logout": security.logout,
+       "/login": login //your login form
      }, filterMapping: {
        "/.*": security.filter
      }).start();
@@ -53,5 +54,7 @@ The `/s_login` and `/s_logout` paths can be any URI you prefer, as long as they 
       <input name="s_password" type="password" size="30"/>
       <p><button type="submit">Sign in</button></p>
     </form>
+
+Also notice that, if a user accesses a protected URL, he will be redirected to `/login` to ask him for logging in. Thus, you shall map the login form to `/login`, as shown above.
 
 Please refer to [this sample application](https://github.com/rikulo/security/tree/master/example/hello) for sample code.
