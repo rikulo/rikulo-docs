@@ -17,6 +17,9 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
 
  First, you have to implement [Authenticator](security:security). For sake of description, we use a dummy implementation here called [DummyAuthenticator](security:security_plugin):
 
+    import "package:rikulo_security/security.dart";
+    import "package:rikulo_security/plugin.dart" show DummyAuthenticator;
+    ...
     final authenticator = new DummyAuthenticator()
       ..addUser("john", "123", ["user"])
       ..addUser("peter", "123", ["user", "admin"]);
@@ -24,6 +27,8 @@ Then run the [Pub Package Manager](http://pub.dartlang.org/doc) (comes with the 
  Second, you can use [SimpleAccessControl](security:security_plugin) or implement your own access control
  ([AccessControl](security:security)):
 
+    import "package:rikulo_security/plugin.dart" show SimpleAccessControl;
+    ...
     final accessControl = new SimpleAccessControl({
       "/admin/.*": ["admin"],
       "/member/.*": ["user", "admin"]
