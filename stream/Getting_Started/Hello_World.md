@@ -23,6 +23,8 @@ Here is the directory structure to create in this sample.
 
 > Notice that the `web` directory is required since [pub](http://pub.dartlang.org/doc/package-layout.html) installed packages only under `web`, `test` and `example` directories.
 
+> If you prefer to structure it differently, please refer to [Directory Structure](../Configuration/Directory_Structure.md).
+
 ##Create pubspec.yaml
 
 Inside the `helloworld` directory, create a `pubspec.yaml` with the following contents:

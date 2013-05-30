@@ -28,9 +28,6 @@ To compile RSP files into Dart files automatically, you can add a build.dart fil
       build(new Options().arguments);
     }
 
-> If you prefer to compile RSP files manually, you can run `rspc` (RSP compiler) with [a command-line interface](http://en.wikipedia.org/wiki/Command-line_interface) as follows:  
-> `dart bin/rspc.dart your-rsp-file(s)`
-
 ##Explore Examples
 
 To explore the examples, you can browser the source code directly on [Stream's Git repository here](https://github.com/rikulo/stream).

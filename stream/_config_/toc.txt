@@ -7,5 +7,5 @@
 Getting Started (Introduction)
 Request and Response (Request Handling)
 RSP (Fundamentals/RSP Overview)
-Configuration (Error Handling)
+Configuration (Directory Structure)
 +Add-ons (Rikulo Security)
