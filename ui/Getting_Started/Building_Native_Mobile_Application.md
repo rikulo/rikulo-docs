@@ -85,16 +85,12 @@ Following we show you the basic elements of how to access device native resource
 
     void main() {
       //enable the device
-      Future<Device> enable = enableDeviceAccess();
-
-      //when device is enabled and ready
-      enable.then((device) => showAcceleration());
-
-      //if failed to enable the device and/or timeout!
-      enable.handleException((ex) {
-        print("Fail to enable the device.");
-        return true;
-      });
+      enableDeviceAccess()
+        .then((device) => showAcceleration())
+        .catchError((ex) {
+          print("Fail to enable the device.");
+          return true;
+        });
     }
 
 As shown above:
@@ -110,7 +106,7 @@ The [accelerometer](gap:) library is the library that handle the device motion s
 
 ###Enable Device Accessibility
 
-Calling global method [enableDeviceAccess()](gap:device) in the `main` method to enable and initialize the device accessibility. This method returns a `Future<Device>` object. After the device is enabled and ready, the function in the Future's then() method will be called with the enabled device as the function argument. If failed to enable the device or timeout, the onException function in Future's handleException() method will be called with the thrown exception object.
+Calling global method [enableDeviceAccess()](gap:device) in the `main` method to enable and initialize the device accessibility. This method returns a `Future<Device>` object. After the device is enabled and ready, the function in the Future's then() method will be called with the enabled device as the function argument. If failed to enable the device or timeout, the onException function in Future's `catchError()` method will be called with the thrown exception object.
 
 ###Access the Device Resource
 

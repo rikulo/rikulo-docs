@@ -47,13 +47,11 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 
       void main() {
         //enable the device
-        Future<Device> enable = enableDeviceAccess();
-
-        //when device is enabled and ready
-        enable.then((device) { ... });
-
-        //if failed to enable the device and/or time out!
-        enable.handleException((ex) { ... }); 
+        enableDeviceAccess()
+          .then((device) { ... })
+            //when device is enabled and ready
+          .catchError((ex) { ... }); 
+            //if failed to enable the device and/or time out!
       }
 
 * After enabling the device's accessibility, you can use the global variables such as [device](gap:device) to access nine mobile services directly. For example, you can access the accelerometer by referring [accelerometer](gap:accelerometer). Then you can call the accelerometer's method to access or watch the motion sensor.
@@ -90,14 +88,10 @@ Following is an example that watch the [Acceleration](gap:accelerometer) informa
 
       void main() {
         //enable the device
-        Future<Device> enable = enableDeviceAccess(); 
-
-        //when device is enabled and ready
-        enable.then((device) => showAcceleration());
-
-        //if failed to enable the device and/or timeout!
-        enable.handleException((ex) { 
-          print("Fail to enable the device.");
-          return true;
-        });
+        enableDeviceAccess()
+          .then((device) => showAcceleration())
+          .catchError((ex) { 
+            print("Fail to enable the device.");
+            return true;
+          });
       }
