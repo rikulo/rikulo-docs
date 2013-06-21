@@ -22,7 +22,7 @@ If a request handler finishes immediately, it doesn't have to return anything. F
         ..write(Json.stringify(info));
     }
 
-> Tip: For sake of consistency, you can always return [Future](dart:async) by use of `new Future.value()`. Furthermore, you can specify `futureOnly: true` when starting [StreamServer](api:stream), such that an error will be thrown if an event handler or filter doesn't return a Future object.
+> Tip: For sake of consistency, you can always return [Future](dart:async) by use of `new Future.value()`.
 
 ###Return `Future` if handled asynchronously
 
@@ -53,14 +53,21 @@ If you're using [Completer](dart:async), remember to *wire* the error. For examp
 
 ###Provide additional named arguments
 
-A request handler can have any number of named arguments too. They are usually used to pass data models for applying the [MVC](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) design pattern. For example,
+A request handler can have any number of named arguments too. They are usually used to pass data models for applying the [MVC design pattern](MVC_Design_Pattern.md). For example,
 
-    Future getUser(HttpConnect connect) { //controller
-      User order = new User(connect); //retrieve user from URI or query parameters...
-      return showUser(connect, order: order);
+    Future userRetriever(HttpConnect connect) { //controller
+      //1. prepare the model
+      return getUser(connect.request.uri.queryParameter["user"])
+        .then((User user) {
+          //2. pass the model to the view
+          return showUser(connect, user: user);
+        });
     }
-    Future showUser(HttpConnect connect, {User order}) { //model
+    Future userDisplay(HttpConnect connect, {User user}) { //view
       //...display the user
+    }
+    Future<User> getUser(String name) {
+      //...access the user from database
     }
 
 > For how to apply MVC, please refer to [the MVC Design Pattern section](MVC_Design_Pattern.md).
@@ -69,17 +76,16 @@ A request handler can have any number of named arguments too. They are usually u
 
 ###Chain the request handlers
 
-Chaining the request handlers is straightforward: there is no difference from chaining [Future](dart:async) objects:
+As shown above, chaining the request handlers is straightforward: there is no difference from chaining [Future](dart:async) objects.
+
+If you'd like to wrap [HttpConnect](api:stream) to, say, collect the output to a buffer for further processing, you can use [HttpConnect.stringBuffer](api:stream) or [HttpConnect.buffer](api:stream).
 
     Future foo(HttpConnect connect) {
-      //assume you have two other renders: header and footer
-      return header(connect).then((_) {
-        connect.response.write("write the body...");
-        return footer(connect);
-      });
+      final buffer = new StringBuffer();
+      return another(new HttpConnect(connect, buffer)).then(() {
+        //...process buffer and write the result to connect.response
+      })
     }
-
-If you'd like to wrap [HttpConnect](api:stream) to, say, preventing HTTP headers from updates or to redirecting the output to a buffer, you can use [HttpConnect.chain](api:stream), [HttpConnect.buffer](api:stream), or [HttpConnectWrapper](api:stream).
 
 ###Chain to another URI
 
