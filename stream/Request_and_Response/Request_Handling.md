@@ -57,16 +57,16 @@ A request handler can have any number of named arguments too. They are usually u
 
     Future userRetriever(HttpConnect connect) { //controller
       //1. prepare the model
-      return getUser(connect.request.uri.queryParameter["user"])
+      return loadUser(connect.request.uri.queryParameter["user"])
         .then((User user) {
           //2. pass the model to the view
-          return showUser(connect, user: user);
+          return userView(connect, user: user);
         });
     }
-    Future userDisplay(HttpConnect connect, {User user}) { //view
+    Future userView(HttpConnect connect, {User user}) { //view
       //...display the user
     }
-    Future<User> getUser(String name) {
+    Future<User> loadUser(String name) {
       //...access the user from database
     }
 
