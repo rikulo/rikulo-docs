@@ -29,11 +29,11 @@ If a request handler finishes immediately, it doesn't have to return anything. F
 If a request handler processes the request asynchronously, it *must* return an instance of [Future](dart:async) to indicate when the processing will be completed. For example,
 
     Future loadFile(HttpConnect connect)
-    => return new File("some_file").exists().then((exists) {
-          if (exists)
-            return connect.response.addStream(file.openRead());
-          throw new Http404("some_file");
-        });
+    => new File("some_file").exists().then((exists) {
+        if (exists)
+          return connect.response.addStream(file.openRead());
+        throw new Http404("some_file");
+      });
 
 > It is for illustration. You generally don't have to load a file, since Stream server will handle it automatically.
 

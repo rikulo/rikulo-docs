@@ -14,6 +14,8 @@ RSP provides a collection of standard tags which provides core functionality com
 * [[:if]](if.md)
 * [[:include]](include.md)
 * [[:json]](json.md)
+* [[:json-js]](json-js.md)
 * [[:page]](page.md)
+* [[:script]](script.md)
 * [[:var]](var.md)
 * [[:while]](while.md)

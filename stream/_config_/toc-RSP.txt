@@ -20,7 +20,9 @@
     if
     include
     json
+    json-js
     page
+    script
     var
     while
   +Implicit Objects

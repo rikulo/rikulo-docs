@@ -58,6 +58,8 @@ If the `contentType` attribute is omitted, the content type will be decided base
 
 You can specify an expression ([[=expression]](=.md)) as the value of the `contentType` attribute.
 
+If you prefer not to set the content type, you can specify an empty string.
+
 ##The lastModified attribute
 
 > Optional  
