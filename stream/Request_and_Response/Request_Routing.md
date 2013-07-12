@@ -44,7 +44,7 @@ You can name the matched groups of URI patterns by prefixing with the name and a
 
 It matches any URL starting with `/user/`, and the first matched group (the element following `/user/`) will be called `name` and stored in [HttpConnect.dataset](api:stream).
 
-For example, if the request's URI is `/usr/foo`, then `connect.dataset['name']`  will be `foo`.
+For example, if the request's URI is `/user/foo`, then `connect.dataset['name']`  will be `foo`.
 
 ###Coerce the Matched Groups into Objects
 
