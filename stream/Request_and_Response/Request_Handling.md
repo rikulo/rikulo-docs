@@ -2,7 +2,7 @@
 
 ##Request Handlers
 
-A *request handler* is a function that processes a particular phase of a request. A request handler *must* have one argument typed [HttpConnect](api:stream). For example,
+A *request handler* is a function that processes a particular phase of HTTP requests. A request handler *must* have one argument typed [HttpConnect](api:stream). For example,
 
     void currentTime(HttpConnect connect) {
       connect.response
@@ -10,6 +10,8 @@ A *request handler* is a function that processes a particular phase of a request
     }
 
 > [HttpConnect](api:stream) encapsulates all information of a HTTP connection, including the request ([HttpRequest](dart:io)) and the response ([HttpResponse](dart:io)).
+
+> The signature of the [WebSocket](http://en.wikipedia.org/wiki/WebSocket) handler is different. Please refer to [WebSocket Handling](WebSocket_Handling.md) for details.
 
 ###Return `void` if completed immediately
 

@@ -56,7 +56,7 @@ Instead of accessing [HttpConnect.dataset](api:stream) directly, you can use [Ob
 
 For more information, please refer to the [Form Handling](Form_Handling.md) section.
 
-###Map Request Methods
+###Map Request Methods for REST (REpresentational State Transfer)
 
 In [RESTful](http://en.wikipedia.org/wiki/Representational_state_transfer) services, it is common to map [the request methods](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) to different REST operations. To do so, you can prefix the URI pattern with the method and a colon (no whitespace is allowed). For example,
 
