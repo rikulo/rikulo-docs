@@ -28,11 +28,7 @@ Of course, you can have any number of URI mapping, WebSocket or not.
 
 ##Client-side Example
 
-If you implement the client in Dart, you can use [WebSocket](dart:html) to establish the connection.
-
-> Notice that [WebSocket](dart:html) used at the client is under `dart:html` library, while [WebSocket](dart:io) used at the server is under `dart:io` library.
-
-For demonstration purpose, we implement the client in JavaScript:
+If you implement the client in Dart, you can use [WebSocket](dart:html) to establish the connection. However, for demonstration purpose, we implement the client in JavaScript here:
 
     <script type="text/javascript">
     var ws, mimeType;
@@ -55,3 +51,7 @@ For demonstration purpose, we implement the client in JavaScript:
       }
     }
     </script>
+
+> For Dart implementation, you can refer to [Seth's Blog](http://blog.sethladd.com/2012/07/simple-dart-websocket-demo.html).
+
+> Notice that [WebSocket](dart:html) used at the client is under `dart:html` library, while [WebSocket](dart:io) used at the server is under `dart:io` library.
