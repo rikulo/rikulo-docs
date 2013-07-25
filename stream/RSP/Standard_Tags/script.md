@@ -37,3 +37,11 @@ It specifies the URI of the script to load. It can be any kind of scripts that t
 It specifies whether to generate an additional `SCRIPT` tag to load the bootstrap JavaScript code: `/packages/browser/dart.js` if necessary.
 
 You can turn it off if you'd like to multiple Dart script files in one page -- one of them requires the bootstrap JavaScript code.
+
+##The Versioning of the JavaScript and Dart Files
+
+To have the browser to reload the JavaScript (and Dart) files automatically, you can insert a version into the URL. It can be done easily by assigning a version number to [StreamServer.uriVersionPrefix](api:stream):
+
+    server.uriVersionPrefix = "/12345678"; //must start with /
+
+Then, the given prefix will be added to the generated URL. Furthermore, it is transparent to the application (the URI mapping needs not to be changed).
