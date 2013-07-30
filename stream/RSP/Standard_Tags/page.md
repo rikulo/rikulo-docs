@@ -1,8 +1,8 @@
 #The page tag
 
->[:page name="*closure_name*" args="*a_list_of_arguments*" description="*a_description*"
+>[:page name="*closure_name*" args="*a_list_of_arguments*" description="*a_description*" contentType="*a_content_type*"
 
->partOf="*a_dart_file_or_a_lib_name*" import="*a_list_of_lib_names*" contentType="*a_content_type*"]
+>  partOf="*a_dart_file_or_a_lib_name*" import="*a_list_of_lib_names*" part="*a_list_of_dart_files*" dart="*dart_code*"]
 
 Specifies the information about this page.
 
@@ -38,6 +38,21 @@ The `import` attribute specifies the libraries to import. For example,
 
 > The `import` attribute is ignored, if a library's name is specified in the `partOf` attribute.
 
+##The part attribute
+
+> Optional
+
+The `part` attribute specifies the dart files to be parted of this library. For example,
+
+    [:part import="dart:collection, dart:json as Json" part="part1.dart, part2.dart"]
+
+It will generate something similar to:
+
+    import "dart:collection";
+    import "dart:json" as Json;
+    part "part1.dart";
+    part "part2.dart";
+
 ##The name and args Attributes
 
 > Optional
@@ -68,3 +83,17 @@ If you prefer not to set the content type, you can specify an empty string.
 It specifies whether the generated Dart code shall set [the Last-Modified header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) automatically. If `compile` is specified, the header is set to when the RSP file is compiled. If `start` is specified, the header is set to when the server is started.
 
 If omitted (default), it won't set the Last-Modified header. You can set it with the [:header](header.md) tag with the value you prefer.
+
+##The dart attribute
+
+> Optional
+
+It specifies a snippet of Dart code that will be inserted before the declaration of the request handler.
+
+    [:page dart="
+    var globalVariable = 123;
+    void globalUtility() {
+      //...
+    }"]
+
+On the other hand, the [:dart](dart.md) tag specifies the Dart code that will be inserted inside the request handler.
