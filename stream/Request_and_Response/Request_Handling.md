@@ -21,7 +21,7 @@ If a request handler finishes immediately, it doesn't have to return anything. F
       final info = {"name": "Rikulo Stream", "version": connect.server.version};
       connect.response
         ..headers.contentType = contentTypes["json"]
-        ..write(Json.stringify(info));
+        ..write(JSON.encode(info));
     }
 
 > Tip: For sake of consistency, you can always return [Future](dart:async) by use of `new Future.value()`.
