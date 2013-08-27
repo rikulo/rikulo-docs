@@ -70,4 +70,4 @@ Notice that [HttpRequest.queryParameters](dart:io) includes only the parameters 
         //handle params
       });
 
-> If the body is a JSON string, you can use [IOUtil.readAsJson](commons:io) instead.
+> If the body is a JSON string, you can use [readAsJson](commons:convert) instead.
