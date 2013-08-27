@@ -44,12 +44,12 @@ The `import` attribute specifies the libraries to import. For example,
 
 The `part` attribute specifies the dart files to be parted of this library. For example,
 
-    [:part import="dart:collection, dart:json as Json" part="part1.dart, part2.dart"]
+    [:part import="dart:collection, dart:convert show JSON" part="part1.dart, part2.dart"]
 
 It will generate something similar to:
 
     import "dart:collection";
-    import "dart:json" as Json;
+    import "dart:convert" as JSON;
     part "part1.dart";
     part "part2.dart";
 

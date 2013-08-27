@@ -18,10 +18,10 @@ will generates the following to the HTML output:
 
 To retrieve it in Dart (running at the browser), you can do as follows:
 
-    import 'dart:json' as Json;
+    import 'dart:convert' show JSON;
     
     void main() {
-      serve(Json.parse(document.query("#data").innerHtml));
+      serve(JSON.decode(document.query("#data").innerHtml));
     }
     void server(Map<String, List<String>> data) {
       //...
@@ -29,4 +29,4 @@ To retrieve it in Dart (running at the browser), you can do as follows:
 
 > To generate a JavaScript object that can be used by third-party JavaScript library, please use [[:json-js]](json-js.md) instead.
 
-> Notice: [stringfy](http://api.dartlang.org/docs/releases/latest/dart_json.html#stringify) is used to convert Dart objects into JavaScript, so you have to make sure it can be serialized into a JSON string. For instance, you have to implement a method called `toJson` for your own classes.
+> Notice: [JSON](dart:convert) is used to convert between [String](dart:core) and Dart objects, so you have to make sure it can be serialized into a JSON string. For instance, you have to implement a method called `toJson` for your own classes.
