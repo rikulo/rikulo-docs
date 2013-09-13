@@ -24,7 +24,7 @@ The typical pattern is that the controller accesses the underlaying data asynchr
       });
     }
 
-where we assume `Database.loadUser(String username)` is a utility to load the `User` object asynchronous, and `getUsername(HttpConnect connect)` to retrieve the user's name from the request (usually part of URI or a query parameter depending your requirement).
+where we assume `Database.loadUser(String username)` is a utility to load the `User` object asynchronous, and `getUsername(HttpConnect connect)` to retrieve the user's name from the request (usually part of URI or a query parameter depending your requirement). Of course, depending on your requirement, it can be anything posted in the request's body, such as a JSON string. Please refer to [Form Handling](Form_Handling.md).
 
 We also assume `userView(HttpConnect connect,{User user})` is the view to display the data. It will be discussed in the following section.
 
