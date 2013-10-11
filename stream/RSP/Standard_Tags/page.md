@@ -94,7 +94,7 @@ On the other hand, the [:dart](dart.md) tag specifies the Dart code that will be
 ##The lastModified attribute
 
 > Optional  
-> Allowed Values: `compile`, `start` and an expression
+> Allowed Values: `compile`, `start` and an expression  
 > Expression allowed
 
 It specifies whether the generated Dart code shall set [the Last-Modified header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) automatically. If `compile` is specified, the header is set to when the RSP file is compiled. If `start` is specified, the header is set to when the server is started.
@@ -109,8 +109,8 @@ If omitted (default), it won't set the Last-Modified header, and won't handle th
 
 ##The etag attribute
 
-> Optional
-> Allowed Values: `true`, an identifier and an expression
+> Optional  
+> Allowed Values: `true`, an identifier and an expression  
 > Expression allowed
 
 It specifies whether the generated Dart code shall set [the ETag header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) automatically.
