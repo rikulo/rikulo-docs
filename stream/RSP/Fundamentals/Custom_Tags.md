@@ -9,15 +9,14 @@ For real examples, please refer to [tag.dart](source:lib/src/rspc).
 RSP tags are used by RSP compiler rather than your Stream server application. To add the customer tags to RSP
 compiler, you can modify the `build.dart` file you put int the root directory of your project. For example, you implement two custom tags, `JsonTag` and `DataTag`, then `build.dart could be as follows:
 
-    import 'dart:io' show Options;
     import 'package:stream/rspc.dart' show build, tags;
     import 'mytags.dart' show JsonTag, DataTag;
 
-    void main() {
+    void main(List<String> arguments) {
       for (final tag in [new JsonTag(), new DataTag()])
         tags[tag.name] = tag;
 
-      build(new Options().arguments);
+      build(arguments);
     }
 
 ##An example
@@ -30,10 +29,9 @@ Here is an example we utilize [SimpleTag](api:stream_rspc). First, assume we hav
 
 Then, we can add an additional tag called `msg` to invoke `message()` as follows:
 
-    import 'dart:io' show Options;
     import 'package:stream/rspc.dart';
 
-    void main() {
+    void main(List<String> arguments) {
       tags["msg"] = new SimpleTag("msg",
         (TagContext tc, String id, Map<String, String> args) {
           if (id == null)
@@ -46,8 +44,7 @@ Then, we can add an additional tag called `msg` to invoke `message()` as follows
           tc.writeln("));");
         });
 
-      build(new Options().arguments,
-        imports: ["package:foo/intl.dart"]);
+      build(arguments, imports: ["package:foo/intl.dart"]);
     }
 
 > Also notice that we can specify the package in the import argument when invoking [build](api:stream_rspc).

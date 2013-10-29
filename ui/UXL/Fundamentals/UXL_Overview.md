@@ -32,11 +32,10 @@ There are two ways to compile UXL: automatic building with Dart Editor or manual
 
 To have Dart Editor taking care of UXL compiling, simply add a build.dart in the root directory of your project with the following content:
 
-    import 'dart:io' show Options;
     import 'package:rikulo_uxl/uc.dart' show build;
 
-    void main() {
-      build(new Options().arguments);
+    void main(List<String> arguments) {
+      build(arguments);
     }
 
 With this build.dart script, whenever your UXL is modified, it will be re-compiled.
