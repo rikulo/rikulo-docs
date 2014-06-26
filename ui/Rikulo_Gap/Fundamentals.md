@@ -40,7 +40,7 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 
     >Please refer to section [Building Native Mobile Application](../Getting_Started/Building_Native_Mobile_Application) for details about how to setup the Cordova environment, compile the Rikulo application, and deploy and run on mobile devices.
 
-* In your Rikulo application, before accessing any specific device services or resources, you have to enable the device accessibility first by calling the global method [Device.init()](gap:device) which will initialize and enable the device services and make your Dart appliction ready to use Cordova's JavaScript APIs.
+* In your Rikulo application, before accessing any specific device services or resources, you have to enable the device accessibility first by calling the global method [Device.init()](gap:device) which will initialize and enable the device services and make your Dart application ready to use Cordova's JavaScript APIs.
 
         import 'package:rikulo_gap/device.dart';
         
