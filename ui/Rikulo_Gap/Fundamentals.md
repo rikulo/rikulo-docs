@@ -42,21 +42,21 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 
 * In your Rikulo application, before accessing any specific device services or resources, you have to enable the device accessibility first by calling the global method [Device.init()](gap:device) which will initialize and enable the device services and make your Dart appliction ready to use Cordova's JavaScript APIs.
 
-      import 'package:rikulo_ui/view.dart';
-      import 'package:rikulo_gap/device.dart';
-
-      void main() {
-        //enable the device
-        Device.init()
-        .then((Device device) {
-           //Access the device
-            ...
-        })
-        .catchError((ex) {
-           //Fail to enable the device
-            ...
-        });
-      }
+        import 'package:rikulo_ui/view.dart';
+        import 'package:rikulo_gap/device.dart';
+        
+        void main() {
+          //enable the device
+          Device.init()
+          .then((Device device) {
+             //Access the device
+              ...
+          })
+          .catchError((ex) {
+             //Fail to enable the device
+              ...
+          });
+        }
 
 * After enabling the device's accessibility, you can use the global variables such as [device](gap:device) to access nine mobile services directly. For example, you can access the accelerometer by referring [accelerometer](gap:accelerometer). Then you can call the accelerometer's method to access or watch the motion sensor.
 
