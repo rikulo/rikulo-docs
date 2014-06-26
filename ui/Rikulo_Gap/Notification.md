@@ -1,6 +1,7 @@
 #Notification
 
-* PUB Package: [rikulo_gap](http://pub.dartlang.org/packages/rikulo_gap)
+Visual, audible, and tactile device notifications.
+
 * Library: [notification](gap:)
 * API Reference: [Notification](gap:notification)
 * Source: [Notification.dart](source:gap:lib/src)
