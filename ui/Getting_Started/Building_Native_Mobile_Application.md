@@ -49,7 +49,7 @@ For convenience, following we use the Android platform and the [Hello World](Hel
     2. change `<script async src="packages/browser/dart.js"></script>` to `<script async src="js/dart.js"></script>`
   * Copy `index.html` of our Rikulo example onto `assets/www` folder and replace the old one.
   * Copy the compiled foo.dart.js file onto `assets/www/js` folder and replace `index.js`. e.g. the `helloworld.dart.js`.
-  * Copy the js file `build/web/packages/browser/dart.js` onto `assets/www/js` folder.
+  * Copy the JS file, `build/web/packages/browser/dart.js`, onto `assets/www/js` folder.
   * Copy all resource files needed for the Rikulo example onto assets/www folder. e.g. the resources folder and files under.
 
 4. Now you are ready to deploy and run the Rikulo program as a native mobile application.
