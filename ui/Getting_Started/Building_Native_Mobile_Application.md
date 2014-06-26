@@ -44,6 +44,7 @@ For convenience, following we use the Android platform and the [Hello World](Hel
   * Revise the HTML file content: 
     1. change `<script async type="application/dart" src="foo.dart"></script>` to `<script async type="text/javascript" src="js/foo.dart.js"></script>`. e.g. `<script async type="text/javascript" src="js/helloworld.dart.js"></script>`
     2. change `<script async src="packages/browser/dart.js"></script>` to `<script async src="js/dart.js"></script>`
+    3. add `<script type="text/javascript" src="cordova.js"></script>`.
   * Copy `index.html` of our Rikulo example onto `assets/www` folder and replace the old one.
   * Copy the compiled foo.dart.js file onto `assets/www/js` folder and replace `index.js`. e.g. the `helloworld.dart.js`.
   * Copy the JS file, `build/web/packages/browser/dart.js`, onto `assets/www/js` folder.
