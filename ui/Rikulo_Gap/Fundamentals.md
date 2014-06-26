@@ -42,7 +42,6 @@ For more information, please refer to [Pub: Getting Started](http://pub.dartlang
 
 * In your Rikulo application, before accessing any specific device services or resources, you have to enable the device accessibility first by calling the global method [Device.init()](gap:device) which will initialize and enable the device services and make your Dart appliction ready to use Cordova's JavaScript APIs.
 
-        import 'package:rikulo_ui/view.dart';
         import 'package:rikulo_gap/device.dart';
         
         void main() {
