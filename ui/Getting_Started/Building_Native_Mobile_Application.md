@@ -31,9 +31,6 @@ For convenience, following we use the Android platform and the [Hello World](Hel
 >For other platforms such as iOS, you can check the document [here](http://cordova.apache.org/docs/en/3.5.0/guide_platforms_index.md.html#Platform%20Guides).
 
 1. Compile your Rikulo application from Dart to JavaScript. 
-	* Open your application folder in [Dart Editor](http://www.dartlang.org/docs/editor/).
-	* Select any file or folder under the top folder.
-	* Select `Tools/Pub Build (generate JS)` from the DartEditor menubar. A folder called `build(generated)` will be generated.
 
 	>DartEditor actually calls `dart2js` in dart-sdk to do the compiling job.
 
